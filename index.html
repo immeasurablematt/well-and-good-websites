@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well and Good Websites | Local Business Websites</title>
+    <meta name="description" content="Well and Good Websites builds simple, custom one-page websites for local businesses that need more walk-ins, bookings, calls, and quote requests. Built by Matthew Baggetta in Niagara and Toronto.">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png?v=20260521">
+    <link rel="shortcut icon" type="image/png" href="icons/favicon-32x32.png?v=20260521">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png?v=20260521">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --ink: #101827;
+            --ink-soft: #3F4758;
+            --muted: #717989;
+            --line: #DADFE8;
+            --line-soft: #E9EDF3;
+            --paper: #F8F7F2;
+            --paper-strong: #FFFFFF;
+            --wash: #ECE9DF;
+            --navy: #12213B;
+            --coral: #EF4E3D;
+            --coral-dark: #D83D2D;
+            --blue: #2F5FCC;
+            --gold: #F5A524;
+            --shadow: 0 24px 70px rgba(16, 24, 39, 0.12);
+            --radius: 8px;
+        }
+        [data-theme="dark"] {
+            --ink: #F7F3EA;
+            --ink-soft: #D7D2C8;
+            --muted: #A8A194;
+            --line: rgba(247, 243, 234, 0.18);
+            --line-soft: rgba(247, 243, 234, 0.1);
+            --paper: #151A22;
+            --paper-strong: #202734;
+            --wash: #1B222E;
+            --navy: #F7F3EA;
+            --coral: #FF735F;
+            --coral-dark: #FF8C7B;
+            --blue: #8AA8FF;
+            --gold: #FFC95A;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background:
+                linear-gradient(90deg, rgba(47, 95, 204, 0.045) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(239, 78, 61, 0.04) 1px, transparent 1px),
+                var(--paper);
+            background-size: 76px 76px, 76px 76px, auto;
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(180deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--paper) 76%, transparent) 44%, var(--paper));
+        }
+        a { color: inherit; text-decoration: none; transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
+        img { max-width: 100%; display: block; }
+        h1, h2, h3 {
+            font-weight: 900;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+        p { color: var(--ink-soft); }
+        .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid var(--line);
+            background: color-mix(in srgb, var(--paper) 90%, transparent);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .top-bar-inner {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            color: var(--navy);
+        }
+        .brand img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+        }
+        .brand span { display: block; font-size: 15px; line-height: 1; }
+        .brand small {
+            display: block;
+            margin-top: 4px;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: var(--coral);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--ink-soft);
+        }
+        .nav-links a:hover { color: var(--coral); }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--paper-strong);
+            color: var(--ink);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+        }
+        .theme-toggle svg { width: 17px; height: 17px; }
+        .hamburger {
+            display: none;
+            background: none;
+            border: 0;
+            color: var(--ink);
+            cursor: pointer;
+        }
+        .hamburger svg { width: 26px; height: 26px; }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            z-index: 19;
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            padding: 16px 20px 22px;
+        }
+        .mobile-menu.open { display: grid; gap: 8px; }
+        .mobile-menu a {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--line-soft);
+            color: var(--ink-soft);
+            font-weight: 800;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            font-size: 14px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .button.primary {
+            background: var(--coral);
+            border-color: var(--coral);
+            color: #FFFFFF;
+        }
+        .button.primary:hover {
+            background: var(--coral-dark);
+            border-color: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 7px 7px 0 color-mix(in srgb, var(--navy) 14%, transparent);
+        }
+        .button.secondary {
+            background: var(--paper-strong);
+            color: var(--ink);
+        }
+        .button.secondary:hover { color: var(--coral); border-color: var(--coral); }
+        header {
+            padding: 70px 0 0;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--wash) 58%, transparent) 100%);
+        }
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+            gap: 64px;
+            align-items: end;
+        }
+        .hero h1 {
+            max-width: 760px;
+            font-size: clamp(3.2rem, 7vw, 6.55rem);
+            color: var(--navy);
+        }
+        .hero h1 span { color: var(--coral); }
+        .hero .subtitle {
+            max-width: 660px;
+            margin-top: 24px;
+            font-size: clamp(1.15rem, 2vw, 1.55rem);
+            line-height: 1.35;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px;
+        }
+        .hero-note {
+            margin-top: 28px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+        .hero-note strong { color: var(--ink); }
+        .hero-visual {
+            position: relative;
+            min-height: 560px;
+            padding-bottom: 40px;
+        }
+        .phone-frame {
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 238px;
+            min-height: 492px;
+            border: 10px solid #121826;
+            border-radius: 34px;
+            background: #111827;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            color: #FFFFFF;
+        }
+        .phone-screen {
+            min-height: 472px;
+            padding: 28px 18px;
+            background:
+                linear-gradient(160deg, rgba(239, 78, 61, 0.18), transparent 38%),
+                linear-gradient(180deg, #182234 0%, #0D111A 100%);
+        }
+        .phone-logo {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #FFFFFF;
+        }
+        .phone-screen h3 {
+            margin-top: 118px;
+            font-size: 28px;
+            line-height: 1.06;
+            letter-spacing: 0;
+        }
+        .phone-screen p {
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+        .phone-screen h3 span { color: var(--coral); }
+        .phone-cta {
+            margin-top: 18px;
+            display: grid;
+            gap: 9px;
+        }
+        .phone-cta div {
+            border: 1px solid rgba(255, 255, 255, 0.42);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 800;
+        }
+        .phone-cta div:first-child { background: var(--coral); border-color: var(--coral); }
+        .listing-card {
+            position: absolute;
+            right: 0;
+            top: 30px;
+            width: min(390px, 82%);
+            background: var(--paper-strong);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .listing-media {
+            height: 158px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 2px;
+            background: var(--line);
+        }
+        .listing-photo {
+            background:
+                linear-gradient(135deg, rgba(18, 33, 59, 0.12), rgba(239, 78, 61, 0.06)),
+                url('assets/frankbaggetta-preview.png') center top / cover;
+        }
+        .listing-map {
+            position: relative;
+            background:
+                linear-gradient(90deg, transparent 47%, rgba(47, 95, 204, 0.16) 48%, transparent 50%),
+                linear-gradient(0deg, transparent 47%, rgba(47, 95, 204, 0.16) 48%, transparent 50%),
+                #F1F3F7;
+            background-size: 44px 44px;
+        }
+        .listing-pin {
+            position: absolute;
+            left: 52%;
+            top: 38%;
+            width: 20px;
+            height: 20px;
+            background: var(--coral);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+        }
+        .listing-body { padding: 22px; }
+        .listing-body h3 {
+            font-size: 22px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+        .stars { color: var(--gold); font-weight: 900; letter-spacing: 0.03em; }
+        .listing-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line-soft);
+        }
+        .listing-tabs span {
+            font-size: 11px;
+            text-align: center;
+            color: var(--blue);
+            font-weight: 900;
+        }
+        .section {
+            padding: 86px 0;
+        }
+        .section-header {
+            display: grid;
+            grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
+            gap: 36px;
+            align-items: start;
+            margin-bottom: 34px;
+            padding-top: 18px;
+            border-top: 2px solid var(--ink);
+        }
+        .section-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3.45rem);
+            color: var(--navy);
+        }
+        .section-header p {
+            font-size: 17px;
+            max-width: 660px;
+        }
+        .proof-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.55fr);
+            gap: 28px;
+            align-items: stretch;
+        }
+        .browser-card,
+        .quote-card,
+        .service-card,
+        .insight,
+        .contact-panel {
+            background: var(--paper-strong);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: 0 1px 2px rgba(16, 24, 39, 0.04);
+        }
+        .browser-card { overflow: hidden; }
+        .browser-top {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0 14px;
+            border-bottom: 1px solid var(--line);
+            background: var(--wash);
+        }
+        .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--coral); }
+        .dot:nth-child(2) { background: var(--gold); }
+        .dot:nth-child(3) { background: #3FC27A; }
+        .browser-preview {
+            min-height: 360px;
+            display: grid;
+            grid-template-columns: 0.88fr 1.12fr;
+            background: #FAFAF7;
+            color: #142033;
+        }
+        .preview-copy {
+            padding: 42px 34px;
+        }
+        .preview-copy small {
+            font-family: 'Space Mono', monospace;
+            color: var(--coral);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .preview-copy h3 {
+            margin-top: 18px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 0.98;
+        }
+        .preview-copy p { margin-top: 16px; }
+        .preview-image {
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.02)),
+                url('assets/frankbaggetta-preview.png') center top / cover;
+            min-height: 360px;
+        }
+        .quote-card {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 26px;
+        }
+        .quote-card .score {
+            font-size: 42px;
+            line-height: 1;
+            font-weight: 900;
+            color: var(--navy);
+        }
+        .quote-card blockquote {
+            font-size: 18px;
+            line-height: 1.45;
+            color: var(--ink);
+            font-weight: 700;
+        }
+        .quote-card cite {
+            display: block;
+            margin-top: 14px;
+            font-style: normal;
+            color: var(--muted);
+            font-size: 13px;
+        }
+        .proof-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .service-card {
+            padding: 26px;
+            border-top: 4px solid var(--coral);
+        }
+        .service-card:nth-child(2) { border-top-color: var(--blue); }
+        .service-card:nth-child(3) { border-top-color: var(--gold); }
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+        }
+        .price {
+            margin: 16px 0 20px;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--coral);
+        }
+        .service-card ul,
+        .process-list {
+            list-style: none;
+        }
+        .service-card li {
+            display: flex;
+            gap: 9px;
+            color: var(--ink-soft);
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .service-card li::before {
+            content: "✓";
+            color: var(--coral);
+            font-weight: 900;
+        }
+        .process-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--line);
+            background: var(--paper-strong);
+            border-radius: var(--radius);
+        }
+        .process-list li {
+            padding: 24px;
+            border-right: 1px solid var(--line);
+        }
+        .process-list li:last-child { border-right: 0; }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            background: var(--coral);
+            color: white;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+        .process-list h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .process-list p { font-size: 14px; }
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .insight {
+            padding: 24px;
+            min-height: 190px;
+        }
+        .insight svg {
+            width: 34px;
+            height: 34px;
+            color: var(--coral);
+            margin-bottom: 24px;
+        }
+        .insight strong {
+            display: block;
+            font-size: 22px;
+            line-height: 1.18;
+            color: var(--ink);
+        }
+        .insight p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .contact-strip {
+            padding: 70px 0;
+            background: var(--coral);
+            color: #FFFFFF;
+        }
+        .contact-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.5fr);
+            gap: 36px;
+            align-items: center;
+            padding: 34px;
+            color: var(--ink);
+        }
+        .contact-panel h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--navy);
+        }
+        .contact-panel p {
+            margin-top: 14px;
+            max-width: 620px;
+            font-size: 17px;
+        }
+        .contact-actions {
+            display: grid;
+            gap: 12px;
+        }
+        footer {
+            padding: 38px 0;
+            background: #121826;
+            color: #FFFFFF;
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        footer p,
+        footer a {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 13px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        footer a:hover { color: #FFFFFF; }
+        @media (max-width: 960px) {
+            .hero,
+            .proof-layout,
+            .contact-panel {
+                grid-template-columns: 1fr;
+            }
+            .hero-visual {
+                min-height: 480px;
+            }
+            .listing-card {
+                right: 0;
+            }
+            .services-grid,
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-list li:nth-child(2) { border-right: 0; }
+            .process-list li:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+        }
+        @media (max-width: 760px) {
+            .container { width: min(100% - 32px, 1120px); }
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            header { padding-top: 46px; }
+            .hero h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
+            .hero-visual {
+                min-height: auto;
+                padding-bottom: 0;
+                display: grid;
+                gap: 16px;
+            }
+            .phone-frame,
+            .listing-card {
+                position: relative;
+                width: 100%;
+                left: auto;
+                right: auto;
+                top: auto;
+                bottom: auto;
+            }
+            .phone-frame {
+                min-height: 420px;
+                border-radius: 26px;
+            }
+            .phone-screen { min-height: 400px; }
+            .browser-preview,
+            .section-header {
+                grid-template-columns: 1fr;
+            }
+            .preview-image { min-height: 240px; }
+            .section { padding: 58px 0; }
+            .contact-strip { padding: 46px 0; }
+            .contact-panel { padding: 24px; }
+        }
+        @media (max-width: 540px) {
+            .top-bar-inner { height: 62px; }
+            .mobile-menu { top: 62px; }
+            .hero-actions,
+            .proof-actions {
+                display: grid;
+            }
+            .button { width: 100%; }
+            .process-list {
+                grid-template-columns: 1fr;
+            }
+            .process-list li {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .process-list li:last-child { border-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <a href="#top" class="brand" aria-label="Well and Good Websites home">
+                <img src="icons/favicon-32x32.png?v=20260521" alt="">
+                <span>Well and Good <small>Websites</small></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#recent-build">Recent Build</a>
+                <a href="#services">Services</a>
+                <a href="#process">Process</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </nav>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#recent-build" class="mobile-nav-link">Recent Build</a>
+        <a href="#services" class="mobile-nav-link">Services</a>
+        <a href="#process" class="mobile-nav-link">Process</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <header id="top">
+        <div class="container hero">
+            <div>
+                <h1>Websites for local businesses people can <span>choose</span> faster.</h1>
+                <p class="subtitle">Simple, custom one-page websites that turn neighborhood trust, Google searches, and referrals into walk-ins, bookings, calls, and quote requests.</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="https://t.me/matthew_ok" target="_blank" rel="noopener">Ask for a walkthrough</a>
+                    <a class="button secondary" href="#recent-build">See a recent build</a>
+                </div>
+                <p class="hero-note"><strong>Well and Good Websites is built by Matthew Baggetta.</strong> Niagara and Toronto area. I can show the draft in person, on a tablet, before you decide what to do next.</p>
+            </div>
+            <div class="hero-visual" aria-label="Mobile website and Google listing preview">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="phone-logo">Local site preview</div>
+                        <h3>Your work, shown clearly. <span>Easy next step.</span></h3>
+                        <p>A mobile-first homepage I can walk through with you in person.</p>
+                        <div class="phone-cta">
+                            <div>Book or request a quote</div>
+                            <div>Tap to call</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="listing-card">
+                    <div class="listing-media">
+                        <div class="listing-photo"></div>
+                        <div class="listing-map"><span class="listing-pin"></span></div>
+                    </div>
+                    <div class="listing-body">
+                        <h3>Your business, easy to choose</h3>
+                        <p><span class="stars">★★★★★</span> Reviews, services, hours, map, and a real website link in one place.</p>
+                        <div class="listing-tabs">
+                            <span>CALL</span>
+                            <span>BOOK</span>
+                            <span>MAP</span>
+                            <span>SITE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" id="recent-build">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Recent build</h2>
+                    <p>A focused one-page site for Frank Baggetta that shows his services, credibility, videos, photos, testimonials, and contact details without making visitors hunt.</p>
+                </div>
+                <div class="proof-layout">
+                    <article class="browser-card">
+                        <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                        <div class="browser-preview">
+                            <div class="preview-copy">
+                                <small>frankbaggetta.ca</small>
+                                <h3>A simple site that gives a real local business a home base.</h3>
+                                <p>Biography, services, videos, photos, testimonials, and contact information arranged for quick decisions.</p>
+                                <div class="proof-actions">
+                                    <a class="button primary" href="https://frankbaggetta.ca/" target="_blank" rel="noopener">View live site</a>
+                                    <a class="button secondary" href="#services">See packages</a>
+                                </div>
+                            </div>
+                            <div class="preview-image" role="img" aria-label="Website preview inspired by Frank Baggetta's live site"></div>
+                        </div>
+                    </article>
+                    <aside class="quote-card">
+                        <div>
+                            <div class="score">Built to be clear.</div>
+                            <p><span class="stars">★★★★★</span></p>
+                        </div>
+                        <blockquote>"The site should make the next step obvious: who you are, what you offer, why people trust you, and how to book, visit, call, or ask for a quote."</blockquote>
+                        <cite>That is the same structure I use when showing local owners a draft in person.</cite>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Simple packages</h2>
+                    <p>Built for owner-operated businesses I can visit, understand quickly, and show on a tablet: auto shops, barbers, salons, tattoo artists, bakeries, performers, contractors, and appointment-based services.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <h3>Starter</h3>
+                        <p>For businesses that need a clean web presence linked from Google.</p>
+                        <div class="price">$497</div>
+                        <ul>
+                            <li>Custom one-page website</li>
+                            <li>Mobile responsive design</li>
+                            <li>Tap-to-call and contact section</li>
+                            <li>Hours, map, reviews, services</li>
+                            <li>Basic search setup</li>
+                        </ul>
+                    </article>
+                    <article class="service-card">
+                        <h3>Standard</h3>
+                        <p>For businesses that want more walk-ins, bookings, calls, or quote requests.</p>
+                        <div class="price">$997</div>
+                        <ul>
+                            <li>Everything in Starter</li>
+                            <li>Photo gallery or portfolio section</li>
+                            <li>Booking or quote-request flow</li>
+                            <li>Review highlights</li>
+                            <li>Google Business Profile support</li>
+                        </ul>
+                    </article>
+                    <article class="service-card">
+                        <h3>Premium</h3>
+                        <p>For businesses that want the site plus a stronger local conversion system.</p>
+                        <div class="price">$1,497</div>
+                        <ul>
+                            <li>Everything in Standard</li>
+                            <li>Custom copywriting and positioning</li>
+                            <li>Before/after or menu/order section</li>
+                            <li>Review funnel page</li>
+                            <li>Priority launch support</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Clear process</h2>
+                    <p>No long discovery maze. I bring the idea to you, show it on a tablet, and turn the useful pieces you already have into a site that makes your business easier to find, trust, and contact.</p>
+                </div>
+                <ol class="process-list">
+                    <li>
+                        <div class="step-number">1</div>
+                        <h3>Scout</h3>
+                        <p>I review your Google listing, current links, reviews, services, photos, and nearby competitors.</p>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <h3>Show</h3>
+                        <p>I bring a tablet-ready draft so you can see the idea instead of imagining it from a pitch.</p>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <h3>Finish</h3>
+                        <p>If it makes sense, I collect the right photos, details, and approvals, then finish the site.</p>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <h3>Launch</h3>
+                        <p>The site becomes the place your Google profile, referrals, walk-ins, and follow-ups can point to.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section" id="insight">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why this works</h2>
+                    <p>Many local businesses already have the hard part: real customers, strong reviews, and a reputation. A tablet demo makes the gap obvious, and the finished site turns that trust into a clearer next step.</p>
+                </div>
+                <div class="insights-grid">
+                    <article class="insight">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.5-4.5"/></svg>
+                        <strong>Owners should see the idea, not decode a pitch.</strong>
+                        <p>An in-person tablet walkthrough makes the value concrete before anyone commits.</p>
+                    </article>
+                    <article class="insight">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.6a2 2 0 0 1-.45 2.11L8 9.67a16 16 0 0 0 6.33 6.33l1.24-1.24a2 2 0 0 1 2.11-.45c.83.27 1.7.47 2.6.59A2 2 0 0 1 22 16.92z"/></svg>
+                        <strong>Mobile visitors should not have to think.</strong>
+                        <p>Directions, booking links, hours, services, quote requests, and tap-to-call need to be obvious on a phone.</p>
+                    </article>
+                    <article class="insight">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <strong>Your reviews should do more selling.</strong>
+                        <p>The best sites make your real customer words easier to see, trust, and act on.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-strip" id="contact">
+            <div class="container">
+                <div class="contact-panel">
+                    <div>
+                        <h2>Ready to make your business easier to choose?</h2>
+                        <p>Send me your business name and current web link, if you have one. I’ll reply with the simplest useful next step, or arrange a quick walkthrough if you are nearby.</p>
+                    </div>
+                    <div class="contact-actions">
+                        <a class="button primary" href="https://t.me/matthew_ok" target="_blank" rel="noopener">Ask for a walkthrough</a>
+                        <a class="button secondary" href="https://linkedin.com/in/baggetta" target="_blank" rel="noopener">Connect on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <p>&copy; 2026 Well and Good Websites. Built by Matthew Baggetta for local businesses in Niagara and Toronto.</p>
+            <div class="footer-links">
+                <a href="https://frankbaggetta.ca/" target="_blank" rel="noopener">FrankBaggetta.ca</a>
+                <a href="https://x.com/matthew_ok" target="_blank" rel="noopener">X</a>
+                <a href="#top">Back to top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+        const saved = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', saved);
+        updateThemeIcon(saved);
+
+        function updateThemeIcon(theme) {
+            if (theme === 'light') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        });
+
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const href = a.getAttribute('href');
+                if (href === '#top') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        function cleanAnalyticsLabel(value) {
+            return (value || '')
+                .replace(/\s+/g, ' ')
+                .replace(/[^\w\s.#:/?=&@+-]/g, '')
+                .trim()
+                .slice(0, 80);
+        }
+
+        function getAnalyticsSection(element) {
+            if (element.closest('.top-bar, .mobile-menu')) return 'nav';
+            const section = element.closest('section, footer, header');
+            if (!section) return 'page';
+            if (section.id) return section.id;
+            if (section.matches('header')) return 'hero';
+            if (section.matches('footer')) return 'contact';
+            return 'page';
+        }
+
+        function getAnalyticsTarget(element) {
+            const cardTitle = element.closest('.service-card, .insight')?.querySelector('h3, strong')?.textContent;
+            const label = element.getAttribute('data-analytics-label') ||
+                element.getAttribute('aria-label') ||
+                (cardTitle ? `${cardTitle} ${element.textContent}` : element.textContent) ||
+                element.getAttribute('href') ||
+                element.id ||
+                element.className;
+            return cleanAnalyticsLabel(label) || 'Unlabeled click';
+        }
+
+        function trackClick(element) {
+            if (!window.va) return;
+            window.va('event', {
+                name: 'Site Click',
+                data: {
+                    target: getAnalyticsTarget(element),
+                    section: getAnalyticsSection(element)
+                }
+            });
+        }
+
+        document.addEventListener('click', event => {
+            const target = event.target.closest('a, button');
+            if (!target) return;
+            trackClick(target);
+        }, { capture: true });
+    </script>
+</body>
+</html>
