@@ -1,8 +1,8 @@
 # Well and Good Websites
 
-Affordable, custom one-page websites for local businesses in Niagara and Toronto.
+Tablet-first local business website service for Niagara and Toronto.
 
-This is a static one-page site for Well and Good Websites, built around fast, practical websites that help customers call, visit, book, or request a quote.
+This is a static one-page site for Well and Good Websites, built around in-person walkthroughs for owner-operated local businesses.
 
 ## Local Preview
 
