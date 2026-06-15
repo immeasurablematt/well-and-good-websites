@@ -487,10 +487,7 @@
         }
         .services-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
-            grid-template-areas:
-                "starter standard"
-                "starter premium";
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 16px;
             align-items: stretch;
         }
@@ -510,8 +507,6 @@
             background: var(--coral);
         }
         .service-card:nth-child(1) {
-            grid-area: starter;
-            min-height: 100%;
             background:
                 radial-gradient(circle at 88% 18%, rgba(231, 111, 79, 0.16), transparent 13rem),
                 var(--paper-strong);
@@ -528,8 +523,6 @@
             pointer-events: none;
             mix-blend-mode: multiply;
         }
-        .service-card:nth-child(2) { grid-area: standard; }
-        .service-card:nth-child(3) { grid-area: premium; }
         .service-card:nth-child(2)::before { background: var(--aqua); }
         .service-card:nth-child(3)::before { background: var(--sage); }
         .service-card h3 {
@@ -689,11 +682,7 @@
             .services-grid,
             .insights-grid {
                 grid-template-columns: 1fr;
-                grid-template-areas: none;
             }
-            .service-card:nth-child(1),
-            .service-card:nth-child(2),
-            .service-card:nth-child(3) { grid-area: auto; }
             .process-list {
                 grid-template-columns: repeat(2, 1fr);
             }
