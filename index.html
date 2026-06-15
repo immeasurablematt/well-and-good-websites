@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png?v=20260521">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Nunito+Sans:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -19,45 +19,49 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         :root {
-            --ink: #101827;
-            --ink-soft: #3F4758;
-            --muted: #717989;
-            --line: #DADFE8;
-            --line-soft: #E9EDF3;
-            --paper: #F8F7F2;
-            --paper-strong: #FFFFFF;
-            --wash: #ECE9DF;
-            --navy: #12213B;
-            --coral: #EF4E3D;
-            --coral-dark: #D83D2D;
-            --blue: #2F5FCC;
-            --gold: #F5A524;
-            --shadow: 0 24px 70px rgba(16, 24, 39, 0.12);
+            --ink: #123E7A;
+            --ink-soft: #294D72;
+            --muted: #6F765F;
+            --line: #BFDAD6;
+            --line-soft: rgba(191, 218, 214, 0.62);
+            --paper: #FBF4E6;
+            --paper-strong: #FFF9ED;
+            --wash: #F6EBD8;
+            --navy: #123E7A;
+            --coral: #F08B6D;
+            --coral-dark: #E17154;
+            --blue: #123E7A;
+            --sage: #7A8B5D;
+            --aqua: #BFDAD6;
+            --gold: #E5A85C;
+            --shadow: 0 20px 54px rgba(18, 62, 122, 0.13);
             --radius: 8px;
         }
         [data-theme="dark"] {
-            --ink: #F7F3EA;
-            --ink-soft: #D7D2C8;
-            --muted: #A8A194;
-            --line: rgba(247, 243, 234, 0.18);
-            --line-soft: rgba(247, 243, 234, 0.1);
-            --paper: #151A22;
-            --paper-strong: #202734;
-            --wash: #1B222E;
-            --navy: #F7F3EA;
-            --coral: #FF735F;
-            --coral-dark: #FF8C7B;
-            --blue: #8AA8FF;
-            --gold: #FFC95A;
-            --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+            --ink: #FBF4E6;
+            --ink-soft: #D8E7E5;
+            --muted: #B8C2A5;
+            --line: rgba(191, 218, 214, 0.32);
+            --line-soft: rgba(191, 218, 214, 0.18);
+            --paper: #0F2745;
+            --paper-strong: #12365F;
+            --wash: #173C68;
+            --navy: #FBF4E6;
+            --coral: #F08B6D;
+            --coral-dark: #FF9B80;
+            --blue: #BFDAD6;
+            --sage: #B9C79D;
+            --aqua: #BFDAD6;
+            --gold: #F1C880;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
         }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background:
-                linear-gradient(90deg, rgba(47, 95, 204, 0.045) 1px, transparent 1px),
-                linear-gradient(180deg, rgba(239, 78, 61, 0.04) 1px, transparent 1px),
+                radial-gradient(circle at 12% 8%, rgba(191, 218, 214, 0.42), transparent 24rem),
+                radial-gradient(circle at 82% 12%, rgba(240, 139, 109, 0.16), transparent 22rem),
+                linear-gradient(180deg, rgba(255, 249, 237, 0.9), rgba(251, 244, 230, 0.98)),
                 var(--paper);
-            background-size: 76px 76px, 76px 76px, auto;
             color: var(--ink);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
@@ -74,8 +78,9 @@
         a { color: inherit; text-decoration: none; transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
         img { max-width: 100%; display: block; }
         h1, h2, h3 {
-            font-weight: 900;
-            line-height: 0.98;
+            font-family: 'Lobster Two', Georgia, serif;
+            font-weight: 700;
+            line-height: 0.96;
             letter-spacing: 0;
         }
         p { color: var(--ink-soft); }
@@ -85,7 +90,7 @@
             top: 0;
             z-index: 20;
             border-bottom: 1px solid var(--line);
-            background: color-mix(in srgb, var(--paper) 90%, transparent);
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
         }
@@ -99,17 +104,23 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 900;
             color: var(--navy);
         }
         .brand img {
-            width: 34px;
-            height: 34px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             border: 1px solid var(--line);
+            background: var(--paper-strong);
         }
-        .brand span { display: block; font-size: 15px; line-height: 1; }
+        .brand span {
+            display: block;
+            font-family: 'Lobster Two', Georgia, serif;
+            font-size: 21px;
+            line-height: 0.88;
+        }
         .brand small {
             display: block;
             margin-top: 4px;
@@ -179,6 +190,7 @@
             font-size: 14px;
             font-weight: 900;
             line-height: 1;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
         }
         .button.primary {
             background: var(--coral);
@@ -197,20 +209,21 @@
         }
         .button.secondary:hover { color: var(--coral); border-color: var(--coral); }
         header {
-            padding: 70px 0 0;
+            padding: 64px 0 0;
             border-bottom: 1px solid var(--line);
-            background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--wash) 58%, transparent) 100%);
+            background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--aqua) 22%, transparent) 100%);
         }
         .hero {
             display: grid;
             grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
             gap: 64px;
-            align-items: end;
+            align-items: center;
         }
         .hero h1 {
             max-width: 760px;
-            font-size: clamp(3.2rem, 7vw, 6.55rem);
+            font-size: clamp(3.4rem, 7vw, 6.2rem);
             color: var(--navy);
+            text-wrap: balance;
         }
         .hero h1 span { color: var(--coral); }
         .hero .subtitle {
@@ -218,7 +231,7 @@
             margin-top: 24px;
             font-size: clamp(1.15rem, 2vw, 1.55rem);
             line-height: 1.35;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--ink-soft);
         }
         .hero-actions {
@@ -237,6 +250,80 @@
             position: relative;
             min-height: 560px;
             padding-bottom: 40px;
+        }
+        .brand-window {
+            position: relative;
+            min-height: 470px;
+            padding: 42px 34px 28px;
+            border: 6px solid var(--aqua);
+            border-radius: 42px 42px 8px 8px;
+            background: color-mix(in srgb, var(--paper-strong) 88%, transparent);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .brand-window::after {
+            content: "";
+            position: absolute;
+            left: 32px;
+            right: 32px;
+            bottom: 28px;
+            height: 34px;
+            background:
+                radial-gradient(70% 100% at 50% 100%, transparent 62%, var(--aqua) 64% 69%, transparent 71%) 0 0 / 88px 18px repeat-x;
+            opacity: 0.95;
+        }
+        .window-dots {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 44px;
+        }
+        .window-dots span {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--navy);
+        }
+        .window-dots span:nth-child(2) { background: var(--coral); }
+        .window-dots span:nth-child(3) { background: var(--sage); }
+        .hero-script {
+            position: relative;
+            z-index: 1;
+            max-width: 430px;
+            font-family: 'Lobster Two', Georgia, serif;
+            color: var(--navy);
+            font-size: clamp(3.4rem, 7vw, 6rem);
+            line-height: 0.82;
+            text-shadow: 0 3px 0 rgba(18, 62, 122, 0.05);
+        }
+        .hero-script span {
+            display: block;
+        }
+        .hero-script em {
+            display: inline-block;
+            margin: 0 0.18em;
+            font-style: normal;
+            color: var(--coral);
+            font-size: 0.45em;
+            border-bottom: 4px solid var(--coral);
+            line-height: 1;
+        }
+        .bridge-mark {
+            position: absolute;
+            left: 36px;
+            right: 36px;
+            bottom: -86px;
+            z-index: 0;
+            color: var(--sage);
+            opacity: 0.72;
+        }
+        .spark {
+            position: absolute;
+            top: 126px;
+            right: 112px;
+            color: var(--coral);
+            font-size: 44px;
+            line-height: 1;
+            transform: rotate(-18deg);
         }
         .phone-frame {
             position: absolute;
@@ -358,7 +445,9 @@
         }
         .section {
             padding: 86px 0;
+            scroll-margin-top: 86px;
         }
+        .contact-strip { scroll-margin-top: 86px; }
         .section-header {
             display: grid;
             grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
@@ -366,7 +455,7 @@
             align-items: start;
             margin-bottom: 34px;
             padding-top: 18px;
-            border-top: 2px solid var(--ink);
+            border-top: 3px solid var(--aqua);
         }
         .section-header h2 {
             font-size: clamp(2.2rem, 4vw, 3.45rem);
@@ -386,11 +475,99 @@
         .quote-card,
         .service-card,
         .insight,
-        .contact-panel {
+        .contact-panel,
+        .dna-card {
             background: var(--paper-strong);
             border: 1px solid var(--line);
             border-radius: var(--radius);
             box-shadow: 0 1px 2px rgba(16, 24, 39, 0.04);
+        }
+        .brand-dna {
+            background:
+                linear-gradient(180deg, rgba(255, 249, 237, 0.4), rgba(191, 218, 214, 0.18)),
+                var(--paper);
+        }
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+        .dna-card {
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .dna-card::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 3px solid var(--aqua);
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-radius: 24px 0 0 0;
+            pointer-events: none;
+        }
+        .dna-card h3 {
+            position: relative;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--navy);
+            margin-bottom: 18px;
+        }
+        .dna-card p,
+        .dna-card li {
+            position: relative;
+            color: var(--ink-soft);
+            font-weight: 700;
+        }
+        .dna-list {
+            position: relative;
+            list-style: none;
+            display: grid;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .dna-list li {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+        .dna-list strong {
+            display: block;
+            color: var(--navy);
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .dna-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(191, 218, 214, 0.45);
+            color: var(--sage);
+            border: 1px solid var(--line);
+        }
+        .palette-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .swatch {
+            min-height: 92px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 10px;
+            display: flex;
+            align-items: end;
+            color: #123E7A;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--swatch);
         }
         .browser-card { overflow: hidden; }
         .browser-top {
@@ -400,16 +577,16 @@
             gap: 7px;
             padding: 0 14px;
             border-bottom: 1px solid var(--line);
-            background: var(--wash);
+            background: color-mix(in srgb, var(--aqua) 28%, var(--paper-strong));
         }
         .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--coral); }
-        .dot:nth-child(2) { background: var(--gold); }
-        .dot:nth-child(3) { background: #3FC27A; }
+        .dot:nth-child(2) { background: var(--navy); }
+        .dot:nth-child(3) { background: var(--sage); }
         .browser-preview {
             min-height: 360px;
             display: grid;
             grid-template-columns: 0.88fr 1.12fr;
-            background: #FAFAF7;
+            background: var(--paper-strong);
             color: #142033;
         }
         .preview-copy {
@@ -474,8 +651,8 @@
             padding: 26px;
             border-top: 4px solid var(--coral);
         }
-        .service-card:nth-child(2) { border-top-color: var(--blue); }
-        .service-card:nth-child(3) { border-top-color: var(--gold); }
+        .service-card:nth-child(2) { border-top-color: var(--aqua); }
+        .service-card:nth-child(3) { border-top-color: var(--sage); }
         .service-card h3 {
             font-size: 1.35rem;
             margin-bottom: 8px;
@@ -519,7 +696,7 @@
             height: 30px;
             display: grid;
             place-items: center;
-            background: var(--coral);
+            background: var(--navy);
             color: white;
             border-radius: 50%;
             font-size: 13px;
@@ -543,7 +720,7 @@
         .insight svg {
             width: 34px;
             height: 34px;
-            color: var(--coral);
+            color: var(--sage);
             margin-bottom: 24px;
         }
         .insight strong {
@@ -558,7 +735,9 @@
         }
         .contact-strip {
             padding: 70px 0;
-            background: var(--coral);
+            background:
+                radial-gradient(circle at 18% 22%, rgba(251, 244, 230, 0.32), transparent 18rem),
+                var(--coral);
             color: #FFFFFF;
         }
         .contact-panel {
@@ -584,7 +763,7 @@
         }
         footer {
             padding: 38px 0;
-            background: #121826;
+            background: #123E7A;
             color: #FFFFFF;
         }
         .footer-grid {
@@ -618,7 +797,8 @@
                 right: 0;
             }
             .services-grid,
-            .insights-grid {
+            .insights-grid,
+            .dna-grid {
                 grid-template-columns: 1fr;
             }
             .process-list {
@@ -638,6 +818,24 @@
                 padding-bottom: 0;
                 display: grid;
                 gap: 16px;
+            }
+            .brand-window {
+                min-height: 430px;
+                padding: 30px 24px 24px;
+                border-width: 5px;
+                border-radius: 30px 30px 8px 8px;
+            }
+            .hero-script {
+                font-size: clamp(3.05rem, 15vw, 5rem);
+            }
+            .spark {
+                top: 104px;
+                right: 48px;
+            }
+            .bridge-mark {
+                left: 20px;
+                right: 20px;
+                bottom: -72px;
             }
             .phone-frame,
             .listing-card {
@@ -661,6 +859,8 @@
             .section { padding: 58px 0; }
             .contact-strip { padding: 46px 0; }
             .contact-panel { padding: 24px; }
+            .palette-row { grid-template-columns: repeat(2, 1fr); }
+            .swatch { min-height: 78px; }
         }
         @media (max-width: 540px) {
             .top-bar-inner { height: 62px; }
@@ -689,6 +889,7 @@
                 <span>Well and Good <small>Websites</small></span>
             </a>
             <nav class="nav-links">
+                <a href="#brand-dna">Brand DNA</a>
                 <a href="#recent-build">Recent Build</a>
                 <a href="#services">Services</a>
                 <a href="#process">Process</a>
@@ -704,6 +905,7 @@
         </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
+        <a href="#brand-dna" class="mobile-nav-link">Brand DNA</a>
         <a href="#recent-build" class="mobile-nav-link">Recent Build</a>
         <a href="#services" class="mobile-nav-link">Services</a>
         <a href="#process" class="mobile-nav-link">Process</a>
@@ -713,47 +915,74 @@
     <header id="top">
         <div class="container hero">
             <div>
-                <h1>Affordable custom websites, live in <span>48 hours.</span></h1>
-                <p class="subtitle">Well and Good Websites builds one-page sites for local businesses, designed to help customers call, visit, book, or request a quote.</p>
+                <h1>Custom one-page websites with a local heart.</h1>
+                <p class="subtitle">Well and Good Websites builds warm, clear, affordable sites for local businesses, designed to help customers call, visit, book, or request a quote.</p>
                 <div class="hero-actions">
                     <a class="button primary" href="https://t.me/matthew_ok" target="_blank" rel="noopener">Request a website</a>
                     <a class="button secondary" href="#recent-build">See a recent build</a>
                 </div>
                 <p class="hero-note"><strong>Built by Matthew Baggetta for Niagara and Toronto area businesses.</strong> Custom to your business, priced for local owners, and ready fast once the details are approved.</p>
             </div>
-            <div class="hero-visual" aria-label="Mobile website and Google listing preview">
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <div class="phone-logo">Local site preview</div>
-                        <h3>Your work, shown clearly. <span>Easy next step.</span></h3>
-                        <p>A mobile-first homepage built around the actions your customers need most.</p>
-                        <div class="phone-cta">
-                            <div>Book or request a quote</div>
-                            <div>Tap to call</div>
-                        </div>
+            <div class="hero-visual" aria-label="Well and Good Websites brand illustration">
+                <div class="brand-window">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="spark" aria-hidden="true">*</div>
+                    <div class="hero-script">
+                        <span>well</span>
+                        <em>and</em>
+                        <span>good</span>
+                        <span>websites</span>
                     </div>
-                </div>
-                <div class="listing-card">
-                    <div class="listing-media">
-                        <div class="listing-photo"></div>
-                        <div class="listing-map"><span class="listing-pin"></span></div>
-                    </div>
-                    <div class="listing-body">
-                        <h3>Your business, easy to choose</h3>
-                        <p><span class="stars">★★★★★</span> Reviews, services, hours, map, and a real website link in one place.</p>
-                        <div class="listing-tabs">
-                            <span>CALL</span>
-                            <span>BOOK</span>
-                            <span>MAP</span>
-                            <span>SITE</span>
-                        </div>
-                    </div>
+                    <svg class="bridge-mark" viewBox="0 0 520 190" role="img" aria-label="Bridge and water line art">
+                        <path d="M86 132V68h38v64M396 132V68h38v64" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M78 130h366M104 96c70-44 238-44 308 0M126 128l36-60M184 128l36-78M244 128l36-82M304 128l36-78M364 128l36-60" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M52 154c24 12 48 12 72 0s48-12 72 0 48 12 72 0 48-12 72 0 48 12 72 0 48-12 72 0" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" opacity=".48"/>
+                    </svg>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
+        <section class="section brand-dna" id="brand-dna">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Brand DNA</h2>
+                    <p>Well and Good Websites should feel like a capable local studio, not a faceless tech vendor: friendly, handmade, clear, and built around the bridge between real businesses and their next customers.</p>
+                </div>
+                <div class="dna-grid">
+                    <article class="dna-card">
+                        <h3>Warm craft, clear action.</h3>
+                        <p>The identity uses hand-lettered warmth with practical website structure. Every page should feel human first, then make the next step obvious.</p>
+                        <div class="palette-row" aria-label="Well and Good Websites colour palette">
+                            <span class="swatch" style="--swatch:#123E7A">Cobalt<br>#123E7A</span>
+                            <span class="swatch" style="--swatch:#F08B6D">Peach<br>#F08B6D</span>
+                            <span class="swatch" style="--swatch:#7A8B5D">Sage<br>#7A8B5D</span>
+                            <span class="swatch" style="--swatch:#BFDAD6">Aqua<br>#BFDAD6</span>
+                            <span class="swatch" style="--swatch:#FBF4E6">Cream<br>#FBF4E6</span>
+                        </div>
+                    </article>
+                    <article class="dna-card">
+                        <h3>How it shows up</h3>
+                        <ul class="dna-list">
+                            <li>
+                                <span class="dna-icon">1</span>
+                                <span><strong>Bridge motif</strong> A visual shorthand for connection: local business on one side, ready-to-act customers on the other.</span>
+                            </li>
+                            <li>
+                                <span class="dna-icon">2</span>
+                                <span><strong>Browser-frame corners</strong> Pale aqua lines make the brand feel digital without losing the handmade personality.</span>
+                            </li>
+                            <li>
+                                <span class="dna-icon">3</span>
+                                <span><strong>Plain-spoken promise</strong> Affordable custom sites, built quickly, with calls, maps, booking, reviews, and quote requests easy to find.</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="section" id="recent-build">
             <div class="container">
                 <div class="section-header">
