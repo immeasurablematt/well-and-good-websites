@@ -107,32 +107,25 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
             font-weight: 900;
             color: var(--navy);
         }
-        .brand img {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: 0;
-            object-fit: cover;
-        }
-        .brand span {
+        .brand-lockup {
+            width: 205px;
+            height: auto;
+            color: var(--navy);
             display: block;
-            font-size: 16px;
-            line-height: 0.95;
         }
-        .brand small {
-            display: block;
-            margin-top: 4px;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            font-size: 10px;
-            color: var(--coral);
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
+        .brand-lockup .brand-name {
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 850;
         }
-        [data-theme="dark"] .brand span,
+        .brand-lockup .brand-category {
+            font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+            font-weight: 850;
+            letter-spacing: 0.16em;
+        }
+        [data-theme="dark"] .brand-lockup,
         [data-theme="dark"] .nav-links a {
             color: #FFFDF7;
         }
@@ -727,6 +720,7 @@
         }
         @media (max-width: 540px) {
             .top-bar-inner { height: 62px; }
+            .brand-lockup { width: 164px; }
             .mobile-menu { top: 62px; }
             .hero-actions,
             .proof-actions {
@@ -748,8 +742,24 @@
     <div class="top-bar">
         <div class="container top-bar-inner">
             <a href="#top" class="brand" aria-label="Well and Good Websites home">
-                <img src="icons/favicon-32x32.png?v=20260614" alt="">
-                <span>Well and Good <small>Websites</small></span>
+                <svg class="brand-lockup" viewBox="0 0 410 112" role="img" aria-labelledby="brandLockupTitle">
+                    <title id="brandLockupTitle">Well and Good Websites</title>
+                    <circle cx="54" cy="54" r="44" fill="#FFFDF7" stroke="var(--line)" stroke-width="2"/>
+                    <circle cx="54" cy="54" r="31" fill="none" stroke="var(--navy)" stroke-width="4"/>
+                    <circle cx="42" cy="36" r="3.5" fill="var(--navy)"/>
+                    <circle cx="54" cy="36" r="3.5" fill="var(--coral)"/>
+                    <circle cx="66" cy="36" r="3.5" fill="var(--sage)"/>
+                    <g fill="none" stroke="var(--sage)" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M27 63h54" stroke-width="4"/>
+                        <path d="M33 63c11-17 31-17 42 0" stroke-width="4"/>
+                        <path d="M33 63l10-12 8 12 7-15 7 15 8-12 2 12" stroke-width="2.6"/>
+                        <path d="M33 63V49h8v14M67 63V49h8v14" stroke-width="3.4"/>
+                    </g>
+                    <path d="M31 74c7-5 14 5 21 0s14 5 21 0" fill="none" stroke="var(--aqua)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M76 36l10-10M84 37l-2-9 10 2-5 3 6 7-5 4-6-7z" fill="var(--coral)"/>
+                    <text x="118" y="53" class="brand-name" fill="currentColor" font-size="30">Well and Good</text>
+                    <text x="120" y="83" class="brand-category" fill="var(--coral)" font-size="17">WEBSITES</text>
+                </svg>
             </a>
             <nav class="nav-links">
                 <a href="#recent-build">Recent Builds</a>
