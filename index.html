@@ -356,6 +356,10 @@
             gap: 28px;
             align-items: stretch;
         }
+        .build-stack {
+            display: grid;
+            gap: 18px;
+        }
         .browser-card,
         .quote-card,
         .service-card,
@@ -406,6 +410,20 @@
                 linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.02)),
                 url('assets/frankbaggetta-preview.png') center top / cover;
             min-height: 360px;
+        }
+        .browser-card.compact .browser-preview {
+            min-height: 330px;
+        }
+        .browser-card.compact .preview-copy {
+            padding: 34px 30px;
+        }
+        .browser-card.compact .preview-copy h3 {
+            font-size: clamp(1.55rem, 2.4vw, 2.08rem);
+        }
+        .preview-image.evelyn-preview {
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)),
+                url('assets/evelyns-sandwich-factory-preview.png') center top / cover;
         }
         .quote-card {
             padding: 28px;
@@ -712,7 +730,7 @@
                 <span>Well and Good <small>Websites</small></span>
             </a>
             <nav class="nav-links">
-                <a href="#recent-build">Recent Build</a>
+                <a href="#recent-build">Recent Builds</a>
                 <a href="#services">Services</a>
                 <a href="#process">Process</a>
                 <a href="#contact">Contact</a>
@@ -727,7 +745,7 @@
         </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#recent-build" class="mobile-nav-link">Recent Build</a>
+        <a href="#recent-build" class="mobile-nav-link">Recent Builds</a>
         <a href="#services" class="mobile-nav-link">Services</a>
         <a href="#process" class="mobile-nav-link">Process</a>
         <a href="#contact" class="mobile-nav-link">Contact</a>
@@ -740,7 +758,7 @@
                 <p class="subtitle">Well and Good Websites builds one-page sites for local businesses, designed to help customers call, visit, book, or request a quote.</p>
                 <div class="hero-actions">
                     <a class="button primary" href="https://t.me/matthew_ok" target="_blank" rel="noopener">Request a website</a>
-                    <a class="button secondary" href="#recent-build">See a recent build</a>
+                    <a class="button secondary" href="#recent-build">See recent builds</a>
                 </div>
             </div>
             <div class="hero-visual" aria-label="Well and Good Websites brand preview">
@@ -764,25 +782,42 @@
         <section class="section" id="recent-build">
             <div class="container">
                 <div class="section-header">
-                    <h2>Recent build</h2>
-                    <p>A focused one-page site for Frank Baggetta that shows his services, credibility, videos, photos, testimonials, and contact details without making visitors hunt.</p>
+                    <h2>Recent builds</h2>
+                    <p>Focused one-page sites that put the most useful business details up front, so visitors can understand the offer and take the next step quickly.</p>
                 </div>
                 <div class="proof-layout">
-                    <article class="browser-card">
-                        <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                        <div class="browser-preview">
-                            <div class="preview-copy">
-                                <small>frankbaggetta.ca</small>
-                                <h3>A simple site that gives a real local business a home base.</h3>
-                                <p>Biography, services, videos, photos, testimonials, and contact information arranged for quick decisions.</p>
-                                <div class="proof-actions">
-                                    <a class="button primary" href="https://frankbaggetta.ca/" target="_blank" rel="noopener">View live site</a>
-                                    <a class="button secondary" href="#services">See packages</a>
+                    <div class="build-stack">
+                        <article class="browser-card compact">
+                            <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                            <div class="browser-preview">
+                                <div class="preview-copy">
+                                    <small>frankbaggetta.ca</small>
+                                    <h3>A simple site that gives a real local business a home base.</h3>
+                                    <p>Biography, services, videos, photos, testimonials, and contact information arranged for quick decisions.</p>
+                                    <div class="proof-actions">
+                                        <a class="button primary" href="https://frankbaggetta.ca/" target="_blank" rel="noopener">View live site</a>
+                                        <a class="button secondary" href="#services">See packages</a>
+                                    </div>
                                 </div>
+                                <div class="preview-image" role="img" aria-label="Website preview inspired by Frank Baggetta's live site"></div>
                             </div>
-                            <div class="preview-image" role="img" aria-label="Website preview inspired by Frank Baggetta's live site"></div>
-                        </div>
-                    </article>
+                        </article>
+                        <article class="browser-card compact">
+                            <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                            <div class="browser-preview">
+                                <div class="preview-copy">
+                                    <small>Evelyn's Sandwich Factory</small>
+                                    <h3>A restaurant site built around the real reasons people visit.</h3>
+                                    <p>Menu highlights, story, reviews, location details, and call-to-order actions organized for hungry customers on mobile.</p>
+                                    <div class="proof-actions">
+                                        <a class="button primary" href="https://immeasurablematt.github.io/evelyns-sandwich-factory/" target="_blank" rel="noopener">View live site</a>
+                                        <a class="button secondary" href="#services">See packages</a>
+                                    </div>
+                                </div>
+                                <div class="preview-image evelyn-preview" role="img" aria-label="Website preview of Evelyn's Sandwich Factory live site"></div>
+                            </div>
+                        </article>
+                    </div>
                     <aside class="quote-card">
                         <div>
                             <div class="score">Built to be clear.</div>
