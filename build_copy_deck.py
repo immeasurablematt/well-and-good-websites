@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Build the Well and Good Websites revised copy deck as a formatted .docx."""
+import pathlib
+
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -53,8 +55,7 @@ def cta(primary, micro=None, secondary=None):
     r = p.add_run(f"[ {primary} ]")
     r.bold = True
     r.font.size = Pt(12)
-    r.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-    # simple visual emphasis via shading is complex; keep bold colored text
+    # bold accent-colored text stands in for a button
     r.font.color.rgb = ACCENT
     if secondary:
         sp = doc.add_paragraph()
@@ -88,9 +89,10 @@ def card(name, who, feats, popular=False):
         b = p.add_run("   ★ MOST POPULAR")
         b.bold = True
         b.font.color.rgb = ACCENT
-    wp = doc.add_paragraph()
-    wr = wp.add_run(who)
-    wr.italic = True
+    if who:
+        wp = doc.add_paragraph()
+        wr = wp.add_run(who)
+        wr.italic = True
     bullets(feats)
 
 
@@ -338,6 +340,6 @@ bullets([
     "https://wellandgoodwebsites.ca/one-page-websites/",
 ])
 
-out = "/home/user/well-and-good-websites/Well-and-Good-Websites-Copy-Deck-Revised-2026-06-16.docx"
+out = str(pathlib.Path(__file__).parent / "Well-and-Good-Websites-Copy-Deck-Revised-2026-06-16.docx")
 doc.save(out)
 print("Saved:", out)
