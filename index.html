@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Well and Good Websites | Affordable Custom Websites</title>
-    <meta name="description" content="Well and Good Websites builds affordable, custom one-page websites for local businesses, live in 48 hours and designed to help customers call, visit, book, or request a quote. Built by Matthew Baggetta in Niagara and Toronto.">
+    <title>Affordable Custom Websites for Local Businesses | Well and Good Websites</title>
+    <meta name="description" content="Affordable custom one-page websites for local businesses in Niagara and Toronto. Well and Good Websites builds fast, practical sites designed to help customers call, book, visit, or request a quote.">
+    <link rel="canonical" href="https://wellandgoodwebsites.ca/">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Well and Good Websites">
+    <meta property="og:title" content="Affordable Custom Websites for Local Businesses">
+    <meta property="og:description" content="Custom one-page websites for Niagara and Toronto businesses, live in 48 hours and built to turn visitors into calls, bookings, visits, and quote requests.">
+    <meta property="og:url" content="https://wellandgoodwebsites.ca/">
+    <meta property="og:image" content="https://wellandgoodwebsites.ca/assets/wgw-logo-primary.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Affordable Custom Websites for Local Businesses">
+    <meta name="twitter:description" content="Affordable custom one-page websites for local businesses in Niagara and Toronto.">
+    <meta name="twitter:image" content="https://wellandgoodwebsites.ca/assets/wgw-logo-primary.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png?v=20260614">
     <link rel="shortcut icon" type="image/png" href="icons/favicon-32x32.png?v=20260614">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png?v=20260614">
@@ -15,6 +27,77 @@
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "ProfessionalService",
+                    "@id": "https://wellandgoodwebsites.ca/#business",
+                    "name": "Well and Good Websites",
+                    "url": "https://wellandgoodwebsites.ca/",
+                    "logo": "https://wellandgoodwebsites.ca/assets/wgw-logo-primary.png",
+                    "image": "https://wellandgoodwebsites.ca/assets/wgw-logo-primary.png",
+                    "description": "Affordable custom one-page websites for local businesses in Niagara and Toronto, built to help customers call, book, visit, or request a quote.",
+                    "founder": {
+                        "@type": "Person",
+                        "name": "Matthew Baggetta",
+                        "url": "https://linkedin.com/in/baggetta"
+                    },
+                    "areaServed": [
+                        { "@type": "AdministrativeArea", "name": "Niagara, Ontario" },
+                        { "@type": "City", "name": "Toronto, Ontario" }
+                    ],
+                    "priceRange": "$497-$1497",
+                    "sameAs": [
+                        "https://linkedin.com/in/baggetta",
+                        "https://x.com/matthew_ok"
+                    ]
+                },
+                {
+                    "@type": "Service",
+                    "@id": "https://wellandgoodwebsites.ca/#service",
+                    "name": "Affordable custom one-page website design",
+                    "serviceType": "Website design for local businesses",
+                    "provider": { "@id": "https://wellandgoodwebsites.ca/#business" },
+                    "areaServed": [
+                        { "@type": "AdministrativeArea", "name": "Niagara, Ontario" },
+                        { "@type": "City", "name": "Toronto, Ontario" }
+                    ],
+                    "offers": [
+                        {
+                            "@type": "Offer",
+                            "name": "Starter",
+                            "price": "497",
+                            "priceCurrency": "CAD",
+                            "url": "https://wellandgoodwebsites.ca/#services"
+                        },
+                        {
+                            "@type": "Offer",
+                            "name": "Standard",
+                            "price": "997",
+                            "priceCurrency": "CAD",
+                            "url": "https://wellandgoodwebsites.ca/#services"
+                        },
+                        {
+                            "@type": "Offer",
+                            "name": "Premium",
+                            "price": "1497",
+                            "priceCurrency": "CAD",
+                            "url": "https://wellandgoodwebsites.ca/#services"
+                        }
+                    ]
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://wellandgoodwebsites.ca/#website",
+                    "name": "Well and Good Websites",
+                    "url": "https://wellandgoodwebsites.ca/",
+                    "publisher": { "@id": "https://wellandgoodwebsites.ca/#business" }
+                }
+            ]
+        }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -606,6 +689,52 @@
             margin-top: 10px;
             font-size: 14px;
         }
+        .seo-links {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .seo-link-card {
+            display: block;
+            padding: 24px;
+            background: var(--paper-strong);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+        .seo-link-card small {
+            color: var(--coral);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .seo-link-card strong {
+            display: block;
+            margin-top: 10px;
+            color: var(--ink);
+            font-size: 22px;
+            line-height: 1.15;
+        }
+        .seo-link-card p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .faq-list {
+            display: grid;
+            gap: 12px;
+            max-width: 860px;
+        }
+        .faq-item {
+            padding: 22px 24px;
+            background: var(--paper-strong);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+        .faq-item h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
         .contact-strip {
             padding: 70px 0;
             background:
@@ -673,7 +802,8 @@
                 bottom: 8px;
             }
             .services-grid,
-            .insights-grid {
+            .insights-grid,
+            .seo-links {
                 grid-template-columns: 1fr;
             }
             .process-list {
@@ -787,7 +917,7 @@
         <div class="container hero">
             <div>
                 <h1>Affordable custom websites, live in <span>48 hours.</span></h1>
-                <p class="subtitle">Well and Good Websites builds one-page sites for local businesses, designed to help customers call, visit, book, or request a quote.</p>
+                <p class="subtitle">Well and Good Websites builds one-page sites for local businesses in Niagara and Toronto, designed to help customers call, visit, book, or request a quote.</p>
                 <div class="hero-actions">
                     <a class="button primary" href="https://t.me/matthew_ok" target="_blank" rel="noopener">Request a website</a>
                     <a class="button secondary" href="#recent-build">See recent builds</a>
@@ -805,7 +935,7 @@
         </div>
         <div class="hero-proof">
             <div class="container hero-proof-inner">
-                <p class="hero-note"><strong>Built by Matthew Baggetta for Niagara and Toronto area businesses.</strong> Custom to your business, priced for local owners, and ready fast once the details are approved.</p>
+                <p class="hero-note"><strong>Built by Matthew Baggetta for Niagara and Toronto area businesses.</strong> Affordable website design for small businesses that need a practical site custom to their services, reviews, photos, hours, and location.</p>
             </div>
         </div>
     </header>
@@ -856,7 +986,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Simple packages</h2>
-                    <p>Built for owner-operated businesses that need a useful website without agency prices, long timelines, or generic templates: auto shops, barbers, salons, tattoo artists, bakeries, performers, contractors, and appointment-based services.</p>
+                    <p>Built for owner-operated businesses that need affordable website design without agency prices, long timelines, or generic templates: auto shops, barbers, salons, tattoo artists, bakeries, performers, contractors, and appointment-based services.</p>
                 </div>
                 <div class="services-grid">
                     <article class="service-card">
@@ -895,6 +1025,32 @@
                             <li>Priority launch support</li>
                         </ul>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="organic-services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Website design for local searches</h2>
+                    <p>Each site is built around the details local customers actually look for: what you do, where you are, when you are open, what it costs, what customers say, and how to take the next step.</p>
+                </div>
+                <div class="seo-links">
+                    <a class="seo-link-card" href="/web-design-niagara/">
+                        <small>Niagara</small>
+                        <strong>Web design for Niagara businesses</strong>
+                        <p>Custom one-page websites for restaurants, trades, shops, salons, barbers, contractors, and appointment-based businesses across Niagara.</p>
+                    </a>
+                    <a class="seo-link-card" href="/affordable-website-design/">
+                        <small>Packages</small>
+                        <strong>Affordable website design</strong>
+                        <p>Clear $497, $997, and $1,497 website packages for small businesses that need a useful site without a slow agency process.</p>
+                    </a>
+                    <a class="seo-link-card" href="/one-page-websites/">
+                        <small>Format</small>
+                        <strong>One-page websites that convert</strong>
+                        <p>Focused single-page sites built around calls, bookings, quote requests, directions, reviews, photos, services, and menus.</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -956,6 +1112,37 @@
             </div>
         </section>
 
+        <section class="section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Questions local owners ask</h2>
+                    <p>Short answers for businesses comparing a custom website with templates, free website builders, or a traditional agency project.</p>
+                </div>
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <h3>How much does a small business website cost?</h3>
+                        <p>Well and Good Websites offers three clear packages: $497, $997, and $1,497. The right fit depends on how much copy, photography, booking flow, review support, and launch help your business needs.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Can a one-page website rank on Google?</h3>
+                        <p>A one-page website can rank for focused local searches when it has clear services, location language, fast loading, useful headings, strong business details, and links from real local profiles.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>What do you need to launch in 48 hours?</h3>
+                        <p>The fastest launches start with your business name, services, location, hours, photos, reviews, preferred contact method, and any existing Google Business Profile or social links.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Do you help with Google Business Profile?</h3>
+                        <p>Yes. The Standard and Premium packages include support for connecting the website to your Google Business Profile so customers have one clear place to call, visit, book, or request a quote.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Is this better than Wix or Squarespace?</h3>
+                        <p>Website builders can work if you have the time and confidence to write, design, structure, and launch the site yourself. Well and Good is for local owners who want a custom site done quickly around their real business.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="contact-strip" id="contact">
             <div class="container">
                 <div class="contact-panel">
@@ -976,6 +1163,9 @@
         <div class="container footer-grid">
             <p>&copy; 2026 Well and Good Websites. Built by Matthew Baggetta for local businesses in Niagara and Toronto.</p>
             <div class="footer-links">
+                <a href="/web-design-niagara/">Niagara web design</a>
+                <a href="/affordable-website-design/">Affordable website design</a>
+                <a href="/one-page-websites/">One-page websites</a>
                 <a href="https://frankbaggetta.ca/" target="_blank" rel="noopener">FrankBaggetta.ca</a>
                 <a href="https://x.com/matthew_ok" target="_blank" rel="noopener">X</a>
                 <a href="#top">Back to top</a>
