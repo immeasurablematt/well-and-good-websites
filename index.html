@@ -821,6 +821,37 @@
         .compare-table td:first-child { color: var(--ink-soft); font-weight: 700; }
         .compare-table th:last-child, .compare-table td:last-child { color: var(--coral); font-weight: 800; }
         .compare-table tbody tr:last-child td { border-bottom: 0; }
+        .section-cta { margin-top: 24px; }
+        .hero-trust {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+        .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+        .hero-trust span::before { content: "✓"; color: var(--coral); font-weight: 900; }
+        .service-card .plan-cta { margin-top: 18px; width: 100%; }
+        .lead-form { display: grid; gap: 12px; text-align: left; }
+        .lead-form input, .lead-form select, .lead-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            font: inherit;
+            font-size: 14px;
+            background: #FFFFFF;
+            color: var(--ink);
+        }
+        .lead-form textarea { min-height: 84px; resize: vertical; }
+        .lead-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .lead-form button { width: 100%; cursor: pointer; }
+        .contact-alt { margin-top: 4px; font-size: 13px; color: var(--muted); }
+        .contact-alt a { color: var(--coral); font-weight: 700; }
+        .hp-hidden { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        @media (max-width: 640px) { .lead-form .form-row { grid-template-columns: 1fr; } }
         .faq-list {
             display: grid;
             gap: 12px;
@@ -1022,11 +1053,17 @@
         <div class="container hero">
             <div>
                 <p class="hero-kicker">Good websites. Done well.</p>
-                <h1>Custom built websites and growth marketing in <span>24 hours.</span></h1>
+                <h1>Custom websites in <span>24 hours,</span> plus the growth marketing that brings you customers.</h1>
                 <p class="subtitle">Get in front of customers searching for your business on Google, ChatGPT, and social media. Show up first, often, and before your competition.</p>
                 <div class="hero-actions">
-                    <a class="button primary" href="mailto:matt@wellandgoodwebsites.ca?subject=Get%20my%20website">Get your website</a>
+                    <a class="button primary" href="#contact">Get my free prototype</a>
                     <a class="button secondary" href="#services">Grow my business</a>
+                </div>
+                <div class="hero-trust">
+                    <span>Free prototype, no commitment</span>
+                    <span>Live in 24 hours</span>
+                    <span>No lock-in</span>
+                    <span>Published pricing</span>
                 </div>
             </div>
             <div class="hero-visual" aria-label="Well and Good Websites brand preview">
@@ -1058,7 +1095,7 @@
                                 <p>Services, videos, photos, testimonials, and contact information arranged for quick decisions.</p>
                                 <div class="proof-actions">
                                     <a class="button primary" href="https://frankbaggetta.ca/" target="_blank" rel="noopener">View live website</a>
-                                    <a class="button secondary" href="mailto:matt@wellandgoodwebsites.ca?subject=Get%20my%20website">Get your website</a>
+                                    <a class="button secondary" href="#contact">Get my free prototype</a>
                                 </div>
                             </div>
                             <div class="preview-image" role="img" aria-label="Website preview inspired by Frank Baggetta's live website"></div>
@@ -1073,7 +1110,7 @@
                                 <p>Menu highlights, reviews, location details, and call-to-order actions organized for mobile.</p>
                                 <div class="proof-actions">
                                     <a class="button primary" href="https://immeasurablematt.github.io/evelyns-sandwich-factory/" target="_blank" rel="noopener">View live website</a>
-                                    <a class="button secondary" href="mailto:matt@wellandgoodwebsites.ca?subject=Get%20my%20website">Get your website</a>
+                                    <a class="button secondary" href="#contact">Get my free prototype</a>
                                 </div>
                             </div>
                             <div class="preview-image evelyn-preview" role="img" aria-label="Website preview of Evelyn's Sandwich Factory live website"></div>
@@ -1104,6 +1141,7 @@
                             <li>Review prompts plus monthly results email</li>
                         </ul>
                         <p class="plan-foot">Best for barbers, salons, trades, and cafés who just need to show up and get calls.</p>
+                        <a class="button primary plan-cta" href="#contact" data-plan="Launch">Start with Launch</a>
                     </article>
                     <article class="service-card featured">
                         <div class="plan-head"><h3>Grow</h3><span class="plan-badge">Most popular</span></div>
@@ -1119,6 +1157,7 @@
                             <li>Monthly performance report plus next steps</li>
                         </ul>
                         <p class="plan-foot">Best for owner-operated businesses serious about growth.</p>
+                        <a class="button primary plan-cta" href="#contact" data-plan="Grow">Start with Grow</a>
                     </article>
                     <article class="service-card">
                         <div class="plan-head"><h3>Dominate</h3></div>
@@ -1134,6 +1173,7 @@
                             <li>Monthly strategy call plus reporting dashboard</li>
                         </ul>
                         <p class="plan-foot">Best for businesses that want to be the obvious #1 choice in town.</p>
+                        <a class="button primary plan-cta" href="#contact" data-plan="Dominate">Start with Dominate</a>
                     </article>
                 </div>
                 <p class="section-note">Ad budget billed separately. Prices in CAD.</p>
@@ -1188,6 +1228,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="section-cta"><a class="button primary" href="#contact">Get my free prototype</a></div>
             </div>
         </section>
 
@@ -1279,10 +1320,32 @@
                 <div class="contact-panel">
                     <div>
                         <h2>Ready to get found and get more customers?</h2>
-                        <p>Send me your business name and current link, if you have one. I’ll build you a prototype website for free.</p>
+                        <p>Tell me about your business and I’ll build you a prototype website for free, no commitment.</p>
                     </div>
                     <div class="contact-actions">
-                        <a class="button primary" href="mailto:matt@wellandgoodwebsites.ca?subject=Get%20my%20website">Get in touch</a>
+                        <form class="lead-form" action="https://formsubmit.co/matt@wellandgoodwebsites.ca" method="POST">
+                            <input type="hidden" name="_subject" value="New lead from wellandgoodwebsites.ca">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://wellandgoodwebsites.ca/thank-you/">
+                            <input type="text" name="_honey" class="hp-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+                            <div class="form-row">
+                                <input type="text" name="name" placeholder="Your name" required>
+                                <input type="email" name="email" placeholder="Email" required>
+                            </div>
+                            <input type="text" name="business" placeholder="Business name and current website (optional)">
+                            <select name="plan" id="plan" aria-label="What you're interested in">
+                                <option value="Not sure yet">What are you after? (optional)</option>
+                                <option value="Free prototype">A free prototype first</option>
+                                <option value="Website only">Just a website</option>
+                                <option value="Launch">Launch plan</option>
+                                <option value="Grow">Grow plan</option>
+                                <option value="Dominate">Dominate plan</option>
+                            </select>
+                            <textarea name="message" placeholder="Anything you want me to know? (optional)"></textarea>
+                            <button type="submit" class="button primary">Get my free prototype</button>
+                        </form>
+                        <p class="contact-alt">Prefer email? <a href="mailto:matt@wellandgoodwebsites.ca?subject=Get%20my%20website">matt@wellandgoodwebsites.ca</a></p>
                     </div>
                 </div>
             </div>
@@ -1349,6 +1412,13 @@
                 }
                 const target = document.querySelector(href);
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        document.querySelectorAll('a[data-plan]').forEach(a => {
+            a.addEventListener('click', () => {
+                const sel = document.getElementById('plan');
+                if (sel) sel.value = a.getAttribute('data-plan');
             });
         });
 
