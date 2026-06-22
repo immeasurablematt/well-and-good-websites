@@ -141,24 +141,28 @@
       body{ font-family:"Inter",system-ui,sans-serif; background:#F6F1E6; }
       @keyframes wgwRise { from{ opacity:0; transform:translateY(22px);} to{ opacity:1; transform:none; } }
 
-      /* Responsive overrides. The design uses inline styles, so each rule targets
-         the relevant inline style by substring and wins with !important. */
+      /* Responsive overrides. Static sections are targeted by their inline style;
+         animated (data-reveal) sections use classes, because the reveal script
+         re-writes their inline style attribute and would defeat a substring match. */
       @media (max-width: 880px) {
+        /* header: grow + wrap, hide the uppercase nav links, keep the CTA */
         [style*="height:82px"] { height:auto !important; padding:14px 0 !important; flex-wrap:wrap !important; }
         nav[style*="gap:28px"] { gap:14px !important; flex-wrap:wrap !important; }
         [style*="letter-spacing:0.13em"] { display:none !important; }
+        /* static grids → single column */
         [style*="grid-template-columns:minmax(0,1fr) auto"] { grid-template-columns:1fr !important; gap:28px !important; }
-        [style*="grid-template-columns:1.25fr 0.9fr"],
-        [style*="grid-template-columns:0.9fr 1.25fr"] { grid-template-columns:1fr !important; gap:28px !important; }
-        [style*="grid-template-columns:120px 1fr auto"] { grid-template-columns:1fr !important; gap:6px !important; }
         [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; }
         [style*="grid-template-columns:minmax(0,1fr) minmax(340px,0.6fr)"] { grid-template-columns:1fr !important; gap:32px !important; }
-        [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
-        [style*="box-shadow:0 30px 80px rgba(0,0,0,0.35)"] { overflow-x:auto !important; -webkit-overflow-scrolling:touch; }
-        table[style*="border-collapse:collapse"] { min-width:560px; }
+        /* animated grids (class-based) */
+        .wgw-stack { grid-template-columns:1fr !important; gap:28px !important; }
+        .wgw-stats { grid-template-columns:repeat(2,1fr) !important; }
+        .wgw-procrow { grid-template-columns:1fr !important; gap:6px !important; }
+        .wgw-tablewrap { overflow-x:auto !important; -webkit-overflow-scrolling:touch; }
+        .wgw-table { min-width:560px; }
       }
       @media (max-width: 560px) {
         [style*="font-size:23px"] { font-size:18px !important; }
+        .wgw-stats { grid-template-columns:1fr !important; }
       }
     </style>
     <script defer src="dc-lite.js"></script>
@@ -170,7 +174,7 @@
   <div style="position:sticky; top:0; z-index:30; background:rgba(30,61,52,0.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(216,198,179,0.25);">
     <div style="width:min(1200px,calc(100% - 48px)); margin:0 auto; height:82px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
       <a href="#" style="display:flex; align-items:center; gap:13px; text-decoration:none;">
-        <span style="width:56px; height:56px; border-radius:50%; background:#F6F1E6; display:grid; place-items:center; flex:none; box-shadow:0 2px 12px rgba(0,0,0,0.22);"><svg viewBox="0 0 108 108" width="52" height="52" role="img" aria-label="Well and Good Websites crest" style="display:block;"><circle cx="54" cy="54" r="44" fill="#FFFDF7" stroke="#D8C6B3" stroke-width="2"/><circle cx="54" cy="54" r="31" fill="none" stroke="#1E3D34" stroke-width="4"/><circle cx="42" cy="36" r="3.5" fill="#1E3D34"/><circle cx="54" cy="36" r="3.5" fill="#E76F4F"/><circle cx="66" cy="36" r="3.5" fill="#7A8158"/><g fill="none" stroke="#7A8158" stroke-linecap="round" stroke-linejoin="round"><path d="M27 63h54" stroke-width="4"/><path d="M33 63c11-17 31-17 42 0" stroke-width="4"/><path d="M33 63l10-12 8 12 7-15 7 15 8-12 2 12" stroke-width="2.6"/><path d="M33 63V49h8v14M67 63V49h8v14" stroke-width="3.4"/></g><path d="M31 74c7-5 14 5 21 0s14 5 21 0" fill="none" stroke="#A9D6E2" stroke-width="4" stroke-linecap="round"/><path d="M76 36l10-10M84 37l-2-9 10 2-5 3 6 7-5 4-6-7z" fill="#E76F4F"/></svg></span>
+        <span style="width:56px; height:56px; border-radius:50%; background:#F6F1E6; display:grid; place-items:center; flex:none; box-shadow:0 2px 12px rgba(0,0,0,0.22);"><img src="assets/wgw-crest.png" alt="Well and Good Websites crest" style="width:52px; height:52px; display:block;" /></span>
         <span style="font-family:'Fraunces',serif; font-weight:850; font-size:23px; color:#FFFDF7; letter-spacing:-0.01em; white-space:nowrap;">Well <span style="color:#E76F4F; font-style:italic;">and</span> Good Websites</span>
       </a>
       <nav style="display:flex; align-items:center; gap:28px;">
@@ -222,7 +226,7 @@
       </div>
 
       <!-- row 1 -->
-      <div data-reveal="" style="position:relative; display:grid; grid-template-columns:1.25fr 0.9fr; gap:48px; align-items:center; margin-bottom:64px;">
+      <div data-reveal="" class="wgw-stack" style="position:relative; display:grid; grid-template-columns:1.25fr 0.9fr; gap:48px; align-items:center; margin-bottom:64px;">
         <div style="position:relative; border-radius:12px; overflow:hidden; border:1px solid #D8C6B3; box-shadow:0 28px 70px rgba(15,27,42,0.16); transition:transform 0.3s ease;" style-hover="transform:translateY(-6px);">
           <div style="height:34px; display:flex; align-items:center; gap:7px; padding:0 14px; background:#1E3D34;"><span style="width:9px;height:9px;border-radius:50%;background:#E76F4F;"></span><span style="width:9px;height:9px;border-radius:50%;background:#CDA05B;"></span><span style="width:9px;height:9px;border-radius:50%;background:#7A8158;"></span><span style="margin-left:10px; font-size:11px; font-weight:700; color:rgba(255,253,247,0.8); font-family:ui-monospace,monospace;">frankbaggetta.ca</span></div>
           <img src="assets/frankbaggetta-preview.png" alt="Frank Baggetta website" style="width:100%; display:block;" />
@@ -237,7 +241,7 @@
       </div>
 
       <!-- row 2 (reversed) -->
-      <div data-reveal="" style="position:relative; display:grid; grid-template-columns:0.9fr 1.25fr; gap:48px; align-items:center; margin-bottom:24px;">
+      <div data-reveal="" class="wgw-stack" style="position:relative; display:grid; grid-template-columns:0.9fr 1.25fr; gap:48px; align-items:center; margin-bottom:24px;">
         <div style="order:2;">
           <div style="font-family:'Fraunces',serif; font-weight:850; font-size:64px; color:#7A8158; line-height:1; opacity:0.85;">02</div>
           <p style="margin-top:8px; font-size:12px; font-weight:900; letter-spacing:0.1em; text-transform:uppercase; color:#7A8158;">Restaurant · Welland</p>
@@ -262,15 +266,15 @@
         <h2 style="font-family:'Fraunces',serif; font-weight:850; font-size:clamp(2.2rem,4.4vw,3.7rem); line-height:1.02;">Local agencies hide pricing. <span style="color:#E76F4F;">We publish ours.</span></h2>
       </div>
       <!-- stat row -->
-      <div data-reveal="" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:54px;">
+      <div data-reveal="" class="wgw-stats" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:54px;">
         <div style="border-top:3px solid #E76F4F; padding-top:16px;"><strong style="display:block; font-family:'Fraunces',serif; font-weight:850; font-size:40px; line-height:1;">Page 1</strong><span style="display:block; margin-top:10px; font-size:12.5px; color:rgba(255,253,247,0.7);">First page of Google for a competitive commercial term.</span></div>
         <div style="border-top:3px solid #A9D6E2; padding-top:16px;"><strong style="display:block; font-family:'Fraunces',serif; font-weight:850; font-size:40px; line-height:1;">163</strong><span style="display:block; margin-top:10px; font-size:12.5px; color:rgba(255,253,247,0.7);">Keywords ≈ $9,400/mo in paid-search value.</span></div>
         <div style="border-top:3px solid #CDA05B; padding-top:16px;"><strong style="display:block; font-family:'Fraunces',serif; font-weight:850; font-size:40px; line-height:1;">4.34M</strong><span style="display:block; margin-top:10px; font-size:12.5px; color:rgba(255,253,247,0.7);">Impressions from a single content program.</span></div>
         <div style="border-top:3px solid #7A8158; padding-top:16px;"><strong style="display:block; font-family:'Fraunces',serif; font-weight:850; font-size:40px; line-height:1;">9M+</strong><span style="display:block; margin-top:10px; font-size:12.5px; color:rgba(255,253,247,0.7);">Total impressions across content engines.</span></div>
       </div>
       <!-- comparison table -->
-      <div data-reveal="" style="background:#FFFDF7; color:#0F1B2A; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.35);">
-        <table style="width:100%; border-collapse:collapse; font-size:14.5px;">
+      <div data-reveal="" class="wgw-tablewrap" style="background:#FFFDF7; color:#0F1B2A; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.35);">
+        <table class="wgw-table" style="width:100%; border-collapse:collapse; font-size:14.5px;">
           <thead><tr style="background:#EFE3D3;">
             <th style="text-align:left; padding:18px 22px; font-family:'Fraunces',serif; font-size:16px; color:#1E3D34;">What you need</th>
             <th style="text-align:left; padding:18px 22px; font-family:'Fraunces',serif; font-size:16px; color:#7A8158;">Typical Niagara agency</th>
@@ -297,17 +301,17 @@
         <h2 style="font-family:'Fraunces',serif; font-weight:850; font-size:clamp(2.2rem,4vw,3.4rem); color:#1E3D34; line-height:1.0;">No discovery maze. Three steps.</h2>
       </div>
       <div style="display:grid; gap:0;">
-        <div data-reveal="" style="display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:baseline; padding:30px 0; border-bottom:1px solid #D8C6B3;">
+        <div data-reveal="" class="wgw-procrow" style="display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:baseline; padding:30px 0; border-bottom:1px solid #D8C6B3;">
           <div style="font-family:'Fraunces',serif; font-weight:850; font-size:56px; color:#1E3D34; line-height:1;">01</div>
           <div><h3 style="font-family:'Fraunces',serif; font-weight:760; font-size:1.6rem; color:#1E3D34;">Understand</h3><p style="margin-top:8px; font-size:15px; color:#334438; max-width:620px;">I review your Google listing, reviews, services, photos, social presence, customer feedback, and local competitors.</p></div>
           <span style="font-size:12px; font-weight:900; letter-spacing:0.1em; text-transform:uppercase; color:#7A8158;">Day 0</span>
         </div>
-        <div data-reveal="" style="display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:baseline; padding:30px 0; border-bottom:1px solid #D8C6B3;">
+        <div data-reveal="" class="wgw-procrow" style="display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:baseline; padding:30px 0; border-bottom:1px solid #D8C6B3;">
           <div style="font-family:'Fraunces',serif; font-weight:850; font-size:56px; color:#E76F4F; line-height:1;">02</div>
           <div><h3 style="font-family:'Fraunces',serif; font-weight:760; font-size:1.6rem; color:#1E3D34;">Build</h3><p style="margin-top:8px; font-size:15px; color:#334438; max-width:620px;">Your website goes live in 24 hours, written and optimized for local search.</p></div>
           <span style="font-size:12px; font-weight:900; letter-spacing:0.1em; text-transform:uppercase; color:#E76F4F;">Day 1</span>
         </div>
-        <div data-reveal="" style="display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:baseline; padding:30px 0; border-bottom:1px solid #D8C6B3;">
+        <div data-reveal="" class="wgw-procrow" style="display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:baseline; padding:30px 0; border-bottom:1px solid #D8C6B3;">
           <div style="font-family:'Fraunces',serif; font-weight:850; font-size:56px; color:#7A8158; line-height:1;">03</div>
           <div><h3 style="font-family:'Fraunces',serif; font-weight:760; font-size:1.6rem; color:#1E3D34;">Grow</h3><p style="margin-top:8px; font-size:15px; color:#334438; max-width:620px;">Ongoing SEO, Google Business Profile, and social keep you showing up and bringing in customers.</p></div>
           <span style="font-size:12px; font-weight:900; letter-spacing:0.1em; text-transform:uppercase; color:#7A8158;">Ongoing</span>
@@ -393,7 +397,7 @@
   <footer style="padding:38px 0; background:#1E3D34; color:#fff;">
     <div style="width:min(1200px,calc(100% - 48px)); margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:14px;">
-        <span style="width:54px; height:54px; border-radius:50%; background:#F6F1E6; display:grid; place-items:center; flex:none;"><svg viewBox="0 0 108 108" width="50" height="50" aria-hidden="true" style="display:block;"><circle cx="54" cy="54" r="44" fill="#FFFDF7" stroke="#D8C6B3" stroke-width="2"/><circle cx="54" cy="54" r="31" fill="none" stroke="#1E3D34" stroke-width="4"/><circle cx="42" cy="36" r="3.5" fill="#1E3D34"/><circle cx="54" cy="36" r="3.5" fill="#E76F4F"/><circle cx="66" cy="36" r="3.5" fill="#7A8158"/><g fill="none" stroke="#7A8158" stroke-linecap="round" stroke-linejoin="round"><path d="M27 63h54" stroke-width="4"/><path d="M33 63c11-17 31-17 42 0" stroke-width="4"/><path d="M33 63l10-12 8 12 7-15 7 15 8-12 2 12" stroke-width="2.6"/><path d="M33 63V49h8v14M67 63V49h8v14" stroke-width="3.4"/></g><path d="M31 74c7-5 14 5 21 0s14 5 21 0" fill="none" stroke="#A9D6E2" stroke-width="4" stroke-linecap="round"/><path d="M76 36l10-10M84 37l-2-9 10 2-5 3 6 7-5 4-6-7z" fill="#E76F4F"/></svg></span>
+        <span style="width:54px; height:54px; border-radius:50%; background:#F6F1E6; display:grid; place-items:center; flex:none;"><img src="assets/wgw-crest.png" alt="" style="width:50px; height:50px; display:block;" /></span>
         <div>
           <div style="font-family:'Fraunces',serif; font-weight:850; font-size:22px; color:#fff; line-height:1;">Well <span style="color:#E76F4F; font-style:italic;">and</span> Good Websites</div>
           <p style="color:rgba(255,255,255,0.66); font-size:12.5px; margin-top:7px;"><strong style="color:#fff; font-weight:700;">Good websites. Done well.</strong> © 2026 · Niagara &amp; the GTA.</p>
