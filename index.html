@@ -145,10 +145,11 @@
          animated (data-reveal) sections use classes, because the reveal script
          re-writes their inline style attribute and would defeat a substring match. */
       @media (max-width: 880px) {
-        /* header: grow + wrap, hide the uppercase nav links, keep the CTA */
-        [style*="height:82px"] { height:auto !important; padding:14px 0 !important; flex-wrap:wrap !important; }
-        nav[style*="gap:28px"] { gap:14px !important; flex-wrap:wrap !important; }
+        /* header: slim down, hide the uppercase nav links and the redundant header CTA (hero CTA covers it) */
+        [style*="height:82px"] { height:auto !important; padding:14px 0 !important; }
+        nav[style*="gap:28px"] { gap:14px !important; }
         [style*="letter-spacing:0.13em"] { display:none !important; }
+        a[style*="min-height:44px"] { display:none !important; }
         /* static grids → single column */
         [style*="grid-template-columns:minmax(0,1fr) auto"] { grid-template-columns:1fr !important; gap:28px !important; }
         [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; }
