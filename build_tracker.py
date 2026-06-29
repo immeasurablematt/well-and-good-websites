@@ -1,195 +1,119 @@
 #!/usr/bin/env python3
-"""Build a side-by-side copy-recommendations tracker as .xlsx."""
-import pathlib
+"""Build the COPY-EDITS-ONLY recommendations tracker as .xlsx and .csv.
+Structural/technical actions live separately (see build_actions.py)."""
+import pathlib, csv
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
-wb = openpyxl.Workbook()
-ws = wb.active
-ws.title = "Copy Recommendations"
+HEADERS = ["#", "Page", "Element", "Current copy", "Proposed copy",
+           "Why (principle)", "Priority", "Status", "Your notes"]
 
-HEADERS = ["#", "Source pass", "Page", "Element", "Current copy / state",
-           "Proposed edit / action", "Why (principle)", "Priority", "Status"]
-
-# Status legend: OPEN / TEST / VERIFY / SHIPPED
+# Copy edits only: changes to the actual words on the page.
+# Status: READY (decided) / TEST (A/B variant) / OPEN (needs your input) / VERIFY (confirm live state)
 rows = [
-    # ---- Homepage, OPEN copy edits (Pass 3 / 06-29) ----
-    ["P3 06-29", "Homepage", "Hero H1",
+    ["Homepage", "Hero H1 (control)",
      "Get found by local customers, and chosen before your competitors.",
-     "Get found by local customers, and chosen before the competitor down the street. Live in 24 hours.",
-     "Specificity over vagueness: restore the timeframe the current H1 dropped.", "High", "OPEN"],
-    ["P3 06-29", "Homepage", "Hero H1, test variant A",
-     "(same as above)",
-     "Get found on Google and chosen by local customers, your site live in 24 hours.",
-     "Outcome + timeframe; A/B against current.", "Test", "TEST"],
-    ["P3 06-29", "Homepage", "Hero H1, test variant B",
-     "(same as above)",
-     "The website an agency charges $5,000 for. Found-first, live in 24 hours, from $99/month.",
-     "Price-contrast angle.", "Test", "TEST"],
-    ["P3 06-29", "Homepage", "Hero H1, test variant C",
-     "(same as above)",
-     "See your new website before you pay a cent, live in 24 hours.",
-     "Leads with the free-preview risk-reversal hook.", "Test", "TEST"],
-    ["P3 06-29", "Homepage", "Primary CTA button",
-     "[CONFIRM actual button label, not readable from page]",
+     "No website? Your next customer is Googling you, and calling someone else.",
+     "Names the missed opportunity: high-intent searchers you can't capture yet, not existing customers. Pain-led.",
+     "High", "READY", ""],
+    ["Homepage", "Hero subhead (pairs with H1)",
+     "Get a custom website that shows up on Google, ChatGPT, and social for 80% less than agencies charge.",
+     "Get a custom site live in 24 hours, for 80% less than an agency.",
+     "Carries the speed and price proof under the hook; tighter rhythm.",
+     "High", "READY", ""],
+    ["Homepage", "Hero H1 (challenger, A/B)",
+     "(tested against the control above)",
+     "Get found by the customers searching for you right now.",
+     "Positive capture framing. Test against the pain-led control.",
+     "Test", "TEST", ""],
+    ["Homepage", "Primary CTA button",
+     "[CONFIRM actual button label, not readable from the page]",
      "Get my free preview",
-     "CTA = action verb + what they get; put the free-preview hook in the button.", "High", "OPEN"],
-    ["P3 06-29", "Homepage", "About-Matt closing CTA",
+     "CTA = action verb + what they get. Put the free, no-commitment hook in the button.",
+     "High", "OPEN", ""],
+    ["Homepage", "About-Matt closing CTA",
      "If you want to see what I can do for your business, let's chat.",
      "See a free preview of your site, no commitment.",
-     "\"Let's chat\" is a weak/vague CTA; end the strongest block with a concrete, zero-risk action.", "Med", "OPEN"],
-    ["P3 06-29", "Homepage", "Eyebrow / bundle line",
+     "Replace the weak, vague \"let's chat\" with the same concrete, zero-risk action used elsewhere.",
+     "Med", "READY", ""],
+    ["Homepage", "Eyebrow / bundle line",
      "Everything other agencies upsell you on - website, SEO, social, reviews - in one low monthly price.",
      "Everything agencies sell you separately, website, SEO, social, reviews, in one monthly price from $99.",
-     "Specificity ($99 beats \"low\") + cleaner em-dashes.", "Med", "OPEN"],
-    ["P3 06-29", "Homepage", "Duplicate tagline",
+     "Specificity ($99 beats \"low\"); \"sell you separately\" lands the bundle contrast.",
+     "Med", "READY", ""],
+    ["Homepage", "Duplicate tagline",
      "\"Agency results, a fraction of the price\" appears twice on the page.",
-     "Keep once as a section divider; remove the duplicate.",
-     "One idea per section; repetition dilutes.", "Low", "OPEN"],
-    ["P3 06-29", "Homepage", "Frank testimonial, label",
+     "Keep it once as a section divider; remove the duplicate.",
+     "One idea per section; repetition dilutes.",
+     "Low", "READY", ""],
+    ["Homepage", "Frank testimonial label",
      "Accordion player · Toronto",
      "Reconcile the location to match how Frank is referenced elsewhere (Niagara / his own site).",
-     "Honest, consistent detail (testimonial wording itself is strong, leave it).", "Low", "OPEN"],
-
-    # ---- Sub-pages, OPEN (Pass 3) ----
-    ["P3 06-29", "Niagara + Affordable", "Proof / testimonial",
-     "None, no testimonial, no founder block, no proof (homepage has all three).",
-     "Add Frank's testimonial + a \"Built by Matt, here in Welland\" trust line with the Jetta Grove proof.",
-     "These are your SEO landing pages; they convert worse than the homepage today.", "High", "OPEN"],
-    ["P3 06-29", "Sub-pages (all)", "Guarantee placement",
-     "Guarantee appears only in the bottom CTA.",
-     "Move the guarantee line into the hero on each sub-page.",
-     "Risk reversal belongs above the fold.", "Med", "OPEN"],
-    ["P3 06-29", "One-Page page", "Hero H1",
-     "[CONFIRM, may be \"When a one-page website works well.\"]",
+     "Honest, consistent detail. The testimonial wording itself is strong, leave it.",
+     "Low", "OPEN", ""],
+    ["One-Page page", "Hero H1",
+     "[CONFIRM live H1, may be \"When a one-page website works well.\"]",
      "One-page websites that make the next step obvious.",
-     "Keyword + outcome-led H1 for \"one-page websites\" search intent.", "Med", "VERIFY"],
-
-    # ---- CRO structural (Pass 3) ----
-    ["P3 06-29 (CRO)", "Homepage", "CTA repetition",
-     "Primary CTA not repeated down a now-long (~850-word) page.",
-     "Repeat the primary CTA after the table, after the testimonial, after About, and after pricing.",
-     "Long pages lose visitors between CTAs.", "High", "OPEN"],
-    ["P3 06-29 (CRO)", "Homepage", "Booking option",
-     "Form only, \"Tell me about your business and I'll build you a free preview\" (you reply later).",
-     "Add an instant \"Book a 15-min call\" option (Cal.com) beside the form.",
-     "High-intent visitors can act now instead of waiting; a competitor already books instantly.", "High", "OPEN"],
-    ["P3 06-29 (CRO)", "Homepage", "FAQ section",
-     "None.",
-     "Add a short FAQ: what you need from me / is a 24-hour (AI) site any good / can I cancel / do I own it.",
-     "Concentrates objection-handling right before the CTA.", "Med", "OPEN"],
-    ["P3 06-29 (CRO)", "Homepage", "Review stars",
-     "None.",
-     "Add Google review stars + count near the hero once you have 5–10 (ask Frank first).",
-     "Trust signal competitors lead with; you have none yet.", "Med", "OPEN"],
-    ["P3 06-29 (CRO)", "Technical", "Meta title length",
+     "Keyword plus outcome-led H1 for \"one-page websites\" search intent.",
+     "Med", "VERIFY", ""],
+    ["Homepage", "Meta title (SEO copy)",
      "Custom Websites in 24 Hours + Local Growth Marketing | Well and Good Websites (77 chars)",
-     "Shorten to <65, e.g. \"Custom Websites in 24 Hours | Well & Good Websites\".",
-     "Avoids truncation in Google results.", "Med", "OPEN"],
-    ["P3 06-29 (CRO)", "Technical", "Image alt text",
-     "Missing (flagged: no_image_alt).",
-     "Add descriptive alt text to all images.",
-     "Accessibility + local image SEO.", "Low", "OPEN"],
-    ["P3 06-29 (CRO)", "Technical", "Analytics",
-     "GA4 / Hotjar were failing to load in an earlier check.",
-     "Verify tracking fires before running any A/B test.",
-     "You can't measure a test if events don't fire.", "High", "OPEN"],
-
-    # ---- Earlier passes, now SHIPPED (shown for progress) ----
-    ["P1 06-27", "Homepage", "Hero (then)",
-     "Custom sites in 24 hours. At 80% less than agency pricing.",
-     "Move to an outcome-led hero.",
-     "Headline should lead with the customer outcome, not a product attribute.", ", ", "SHIPPED"],
-    ["P1 06-27", "Homepage", "Guarantee",
-     "None.",
-     "\"Your site live in 24 hours, or your first month is free. Then I'll revise it until you're happy.\"",
-     "Only risk-reversal in the competitive set.", ", ", "SHIPPED"],
-    ["P2 06-28", "Homepage", "Testimonial",
-     "None (only a client's \"4.9-star\" reputation, not yours).",
-     "Frank case study with a real, attributed result.",
-     "Proof is the #1 conversion bottleneck.", ", ", "SHIPPED"],
-    ["P2 06-28", "Homepage", "About-Matt block",
-     "Anonymous founder (\"I'll build you...\" with no name/face).",
-     "First-person founder story + photo + mission.",
-     "Solo + anonymous is a hard ask for a monthly commitment.", ", ", "SHIPPED"],
-    ["P2 06-28", "Homepage", "Founder proof",
-     "Unattributed \"4.34M impressions / 163 keywords / Page 1.\"",
-     "Attribute to your consultancy, Jetta Grove (founder track record), with a link.",
-     "Unattributed bold stats read as less believable than none.", ", ", "SHIPPED"],
-    ["P2 06-28", "Homepage", "Eyebrow line",
-     "Get more attention. Get more customers.",
-     "Bundle line (everything agencies sell separately, one price).",
-     "Replace filler only you-can't-say with a real differentiator.", ", ", "SHIPPED"],
-    ["P2 06-28", "Homepage", "github.io prototypes",
-     "Two \"Recent Work\" demos on immeasurablematt.github.io read as fake client work.",
-     "Relabel \"Concept build\" or move to real subdomains.",
-     "Contradicted the \"agency results\" claim.", ", ", "VERIFY"],
+     "Custom Websites in 24 Hours | Well & Good Websites",
+     "Avoids truncation in Google results (keep under ~65 chars).",
+     "Med", "READY", ""],
 ]
 
-# ---- write ----
-thin = Side(style="thin", color="D9D9D9")
-border = Border(left=thin, right=thin, top=thin, bottom=thin)
+# ---- xlsx ----
+wb = openpyxl.Workbook(); ws = wb.active; ws.title = "Copy Edits"
+thin = Side(style="thin", color="D9D9D9"); border = Border(left=thin, right=thin, top=thin, bottom=thin)
 header_fill = PatternFill("solid", fgColor="1A534F")
 status_fills = {
-    "OPEN": PatternFill("solid", fgColor="FFF2CC"),
+    "READY": PatternFill("solid", fgColor="E2EFDA"),
     "TEST": PatternFill("solid", fgColor="DDEBF7"),
+    "OPEN": PatternFill("solid", fgColor="FFF2CC"),
     "VERIFY": PatternFill("solid", fgColor="FCE4D6"),
-    "SHIPPED": PatternFill("solid", fgColor="E2EFDA"),
 }
-
 ws.append(HEADERS)
 for c in ws[1]:
     c.font = Font(bold=True, color="FFFFFF"); c.fill = header_fill
-    c.alignment = Alignment(vertical="center", horizontal="left", wrap_text=True)
-    c.border = border
-
+    c.alignment = Alignment(vertical="center", horizontal="left", wrap_text=True); c.border = border
 for i, r in enumerate(rows, start=1):
     ws.append([i] + r)
-
-widths = [4, 14, 18, 22, 46, 50, 40, 9, 10]
+widths = [4, 16, 26, 48, 50, 40, 9, 9, 22]
 for idx, w in enumerate(widths, start=1):
     ws.column_dimensions[get_column_letter(idx)].width = w
-
 for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
     for c in row:
-        c.alignment = Alignment(vertical="top", wrap_text=True)
-        c.border = border
-    status = row[8].value
-    if status in status_fills:
-        row[8].fill = status_fills[status]
-        row[8].font = Font(bold=True)
+        c.alignment = Alignment(vertical="top", wrap_text=True); c.border = border
+    st = row[7].value
+    if st in status_fills:
+        row[7].fill = status_fills[st]; row[7].font = Font(bold=True)
+ws.freeze_panes = "A2"; ws.auto_filter.ref = f"A1:I{ws.max_row}"
 
-ws.freeze_panes = "A2"
-ws.auto_filter.ref = f"A1:I{ws.max_row}"
-
-# legend sheet
 leg = wb.create_sheet("How to use")
-leg["A1"] = "How to use this tracker"; leg["A1"].font = Font(bold=True, size=14)
-notes = [
-    "",
-    "One row per recommendation across all copy passes. Filter the Status column to focus.",
-    "",
-    "Status legend:",
-    " OPEN, proposed, not yet done. Your action.",
-    " TEST, an A/B variant to try, not a straight swap.",
-    " VERIFY, confirm current state on the live site (I couldn't read it).",
-    " SHIPPED, already live; shown so you can see progress.",
-    "",
-    "Columns E and F are the side-by-side: existing copy vs proposed edit.",
-    "Column G is the principle (from the copywriting / CRO skills) behind the change.",
-    "",
-    "Source pass key:",
-    "  P1 06-27 = Live Copy Audit",
-    "  P2 06-28 = Competitive Action Plan + ready-to-ship copy",
-    "  P3 06-29 = Copy Pass #2 (copywriting + CRO)",
-    "",
-    "Add a 'Notes' or 'Decision' column on the right as you review, yours to edit.",
-]
-for i, n in enumerate(notes, start=2):
+leg["A1"] = "Copy-edits tracker"; leg["A1"].font = Font(bold=True, size=14)
+for i, n in enumerate([
+    "", "This tab is copy edits only: changes to the actual words on the page.",
+    "Structural and technical items (booking, FAQ, CTA repetition, review stars, sub-page proof blocks,",
+    "image alt, analytics) are tracked separately in the Actions Plan.", "",
+    "Status: READY = decided, implement as written. TEST = A/B variant. OPEN = needs your input.",
+    "VERIFY = confirm the current live wording first.", "",
+    "Columns D and E are the side-by-side: current copy vs proposed copy.",
+], start=2):
     leg[f"A{i}"] = n
-leg.column_dimensions["A"].width = 70
+leg.column_dimensions["A"].width = 90
 
-out = str(pathlib.Path(__file__).parent / "Well-and-Good-Websites-Copy-Recommendations-Tracker.xlsx")
-wb.save(out)
-print("Saved:", out, "| rows:", len(rows))
+base = pathlib.Path(__file__).parent
+xlsx_out = base / "Well-and-Good-Websites-Copy-Recommendations-Tracker.xlsx"
+wb.save(xlsx_out)
+
+# ---- csv (for import into Google Sheets) ----
+csv_out = base / "Well-and-Good-Websites-Copy-Edits.csv"
+with open(csv_out, "w", newline="", encoding="utf-8") as f:
+    w = csv.writer(f)
+    w.writerow(HEADERS)
+    for i, r in enumerate(rows, start=1):
+        w.writerow([i] + r)
+
+print("Saved:", xlsx_out.name, "and", csv_out.name, "| rows:", len(rows))
