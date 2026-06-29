@@ -97,7 +97,7 @@ def card(name, who, feats, popular=False):
 
 
 # =====================================================================
-title("Well and Good Websites — Website Copy Deck")
+title("Well and Good Websites: Website Copy Deck")
 sub = doc.add_paragraph()
 sr = sub.add_run("Revised 2026-06-16 · updated positioning, transparent pricing, and optional care plans (recurring)")
 sr.italic = True
@@ -109,16 +109,16 @@ bullets([
     "Audience broadened from “local businesses” to small and medium businesses, serving both leads and existing customers.",
     "Positioning leads with “custom websites”; one-page is presented as a format (still its own page + SEO term), not the headline identity.",
     "Niagara/Toronto local SEO targeting kept intact (organic focus unchanged).",
-    "NEW: optional recurring care plans (Essential / Growth / Pro) added to the homepage and woven into the FAQ — pricing left as $XX placeholders until you decide.",
-    "NEW: transparency wedge (“every price is on the page”) and “no lock-in / cancel anytime” folded through all pages — angles drawn from the competitor pricing analysis.",
+    "NEW: optional recurring care plans (Essential / Growth / Pro) added to the homepage and woven into the FAQ, pricing left as $XX placeholders until you decide.",
+    "NEW: transparency wedge (“every price is on the page”) and “no lock-in / cancel anytime” folded through all pages, angles drawn from the competitor pricing analysis.",
     "Kept OFF the site by design: margins, cost structure, “AI-built” as a lead message, and hard competitor price multiples (accuracy/legal risk).",
     "Carried over from the prior pass: primary CTA “Get my website quote”, prices on package cards, “Most popular” on Standard, risk-reversal FAQ, trust line.",
 ])
-flag("Two items still need your input — see the red flags inline: the footer name/link (Frank vs. Matthew) and a real proof number for the trust line. Nothing fabricated.")
+flag("Two items still need your input, see the red flags inline: the footer name/link (Frank vs. Matthew) and a real proof number for the trust line. Nothing fabricated.")
 
 h2("Positioning (reference)")
 label("Primary promise", "A custom website for your business, live in 48 hours.")
-label("Positioning", "Practical custom websites for small and medium businesses that need calls, bookings, and visits — from leads and customers who need quotes, service details, hours, and directions.")
+label("Positioning", "Practical custom websites for small and medium businesses that need calls, bookings, and visits, from leads and customers who need quotes, service details, hours, and directions.")
 label("Organic focus", "web design Niagara, affordable website design, affordable website design for small business, one-page websites, local website design for Niagara and Toronto businesses.")
 label("Pages covered", "Homepage, Web Design Niagara, Affordable Website Design, One-Page Websites, robots.txt, sitemap.xml.")
 
@@ -133,15 +133,15 @@ label("Open Graph description", "Custom websites for Niagara and Toronto busines
 h2("Hero")
 body("Well and Good")
 body("WEBSITES")
-h3("A custom website for your business — live in 48 hours.")
-body("Custom websites for small and medium businesses in Niagara and Toronto, built so leads and customers can call, book, visit, or get a quote — and find your hours and directions fast.")
+h3("A custom website for your business, live in 48 hours.")
+body("Custom websites for small and medium businesses in Niagara and Toronto, built so leads and customers can call, book, visit, or get a quote, and find your hours and directions fast.")
 cta("Get my website quote",
     micro="Just your business name and current link. I’ll reply with the simplest next step.",
     secondary="See recent builds")
 tp = doc.add_paragraph()
 tr = tp.add_run("Built by Matthew Baggetta for Niagara and Toronto businesses. ")
 tr.bold = True
-flag("[PROOF NUMBER NEEDED — e.g. “12+ sites launched” or a review count. Left blank rather than invented.]")
+flag("[PROOF NUMBER NEEDED, e.g. “12+ sites launched” or a review count. Left blank rather than invented.]")
 
 h2("Recent builds")
 body("Focused sites that put the most useful business details up front, so visitors understand the offer and take the next step quickly.")
@@ -153,52 +153,52 @@ body("Menu highlights, reviews, location, and call-to-order actions organized fo
 cta("View live site", secondary="See packages")
 
 h2("Simple packages")
-body("Built for owner-operated small and medium businesses — auto shops, barbers, salons, tattoo artists, bakeries, contractors, performers, and appointment-based services — that want a real website without agency prices, long timelines, or cookie-cutter templates.")
-body("Every price is on the page. Most agencies make you request a quote first — here you can decide before you ever call.")
-card("Starter — $497", "Just need to exist and be findable.", [
+body("Built for owner-operated small and medium businesses, auto shops, barbers, salons, tattoo artists, bakeries, contractors, performers, and appointment-based services, that want a real website without agency prices, long timelines, or cookie-cutter templates.")
+body("Every price is on the page. Most agencies make you request a quote first, here you can decide before you ever call.")
+card("Starter, $497", "Just need to exist and be findable.", [
     "Custom website", "Mobile responsive design", "Tap-to-call and contact section",
     "Hours, map, reviews, services", "Basic search setup"])
-card("Standard — $997", "Want the site to actively bring in calls and bookings.", [
+card("Standard, $997", "Want the site to actively bring in calls and bookings.", [
     "Everything in Starter", "Photo gallery or portfolio section",
     "Booking or quote-request flow", "Review highlights", "Google Business Profile support"],
     popular=True)
-card("Premium — $1,497", "Want the site plus a system that turns reviews into customers.", [
+card("Premium, $1,497", "Want the site plus a system that turns reviews into customers.", [
     "Everything in Standard", "Custom copywriting and positioning",
     "Before/after or menu/order section", "Review funnel page", "Priority launch support"])
 
-h2("Live — and looked after.")
-body("Your site is yours, with no lock-in. An optional care plan keeps it hosted, secure, backed up, and current — and small edits are included, not billed by the quarter-hour. Every price is published; cancel anytime, or pay yearly for two months free.")
-care_note = "[CARE-PLAN PRICING NOT FINAL — $XX / $XXX are placeholders. Recommendation on the table: $19 / $39 / $79 monthly. Drop final numbers in here and in the FAQ once decided.]"
-card("Essential — $XX/mo  ($XXX/yr)", "Keep the site online, secure, and current.", [
+h2("Live, and looked after.")
+body("Your site is yours, with no lock-in. An optional care plan keeps it hosted, secure, backed up, and current, and small edits are included, not billed by the quarter-hour. Every price is published; cancel anytime, or pay yearly for two months free.")
+care_note = "[CARE-PLAN PRICING NOT FINAL, $XX / $XXX are placeholders. Recommendation on the table: $19 / $39 / $79 monthly. Drop final numbers in here and in the FAQ once decided.]"
+card("Essential, $XX/mo ($XXX/yr)", "Keep the site online, secure, and current.", [
     "Fast, secure hosting and SSL", "Domain and uptime monitoring", "Automatic backups",
     "One content edit a month (hours, photos, text)", "Email and Telegram support"])
-card("Growth — $XX/mo  ($XXX/yr)", "For businesses whose details change often.", [
+card("Growth, $XX/mo ($XXX/yr)", "For businesses whose details change often.", [
     "Everything in Essential", "Unlimited small content edits, 24–48 hour turnaround",
     "Quarterly booking and link check", "One seasonal refresh a year"], popular=True)
-card("Pro — $XX/mo  ($XXX/yr)", "Your site plus an active local presence.", [
+card("Pro, $XX/mo ($XXX/yr)", "Your site plus an active local presence.", [
     "Everything in Growth", "Google Business Profile management", "Review-funnel upkeep",
     "Light monthly local SEO with a plain-English performance note", "Priority turnaround"])
-body("New builds get the first month free on the matching plan. Prefer to handle your own updates? You can — single edits start at $XX, no plan required.")
+body("New builds get the first month free on the matching plan. Prefer to handle your own updates? You can, single edits start at $XX, no plan required.")
 flag(care_note)
 
 h2("Website design for local searches")
 body("Each site is built around the details customers actually look for: what you do, where you are, when you are open, what it costs, what customers say, and how to take the next step.")
-h3("Niagara — web design for Niagara businesses")
+h3("Niagara, web design for Niagara businesses")
 body("Custom websites for restaurants, trades, shops, salons, barbers, contractors, and appointment-based businesses across Niagara.")
-h3("Packages — affordable website design")
+h3("Packages, affordable website design")
 body("Clear $497, $997, and $1,497 website packages for small and medium businesses that need a useful site without a slow agency process.")
-h3("Format — one-page websites that convert")
+h3("Format, one-page websites that convert")
 body("When it fits, a focused single-page site built around calls, bookings, quote requests, directions, reviews, photos, services, and menus.")
 
 h2("Clear process")
 body("No long discovery maze. I turn the useful pieces your business already has into a custom website that is easy to find, trust, and contact.")
-h3("1 — Understand")
+h3("1. Understand")
 body("I review your Google listing, current links, reviews, services, photos, and nearby competitors.")
-h3("2 — Shape")
+h3("2. Shape")
 body("I map the page around your business, your customers, and the actions that matter: call, visit, book, or request a quote.")
-h3("3 — Build")
+h3("3. Build")
 body("I collect the right photos, details, and approvals, then build the site with custom copy, layout, and mobile-first design.")
-h3("4 — Launch")
+h3("4. Launch")
 body("The site goes live within 48 hours after the details are approved, giving your Google profile, referrals, and follow-ups one clear place to point.")
 
 h2("Why this works")
@@ -213,7 +213,7 @@ body("The best sites make your real customer words easier to see, trust, and act
 h2("Questions owners ask")
 body("Short answers for businesses comparing a custom website with templates, free website builders, or a traditional agency project.")
 h3("How much does a small business website cost?")
-body("Every price is published up front — no “request a quote” maze. The build is a one-time $497, $997, or $1,497, and the right fit depends on how much copy, photography, booking flow, review support, and launch help you need. Keeping the site online afterward is an optional care plan, also priced openly.")
+body("Every price is published up front, no “request a quote” maze. The build is a one-time $497, $997, or $1,497, and the right fit depends on how much copy, photography, booking flow, review support, and launch help you need. Keeping the site online afterward is an optional care plan, also priced openly.")
 h3("Can a one-page website rank on Google?")
 body("A one-page website can rank for focused local searches when it has clear services, location language, fast loading, useful headings, strong business details, and links from real local profiles.")
 h3("What do you need to launch in 48 hours?")
@@ -221,13 +221,13 @@ body("The fastest launches start with your business name, services, location, ho
 h3("Do you help with Google Business Profile?")
 body("Yes. The Standard and Premium packages include support for connecting the website to your Google Business Profile so customers have one clear place to call, visit, book, or request a quote.")
 h3("Is this better than Wix or Squarespace?")
-body("Website builders can work if you have the time and confidence to write, design, structure, and launch the site yourself. Well and Good is done for you — like the bigger online website services, but without a large setup fee or a $200-a-month plan — and built fast around your real business.")
+body("Website builders can work if you have the time and confidence to write, design, structure, and launch the site yourself. Well and Good is done for you, like the bigger online website services, but without a large setup fee or a $200-a-month plan, and built fast around your real business.")
 h3("What does it cost to keep my site online?")
-body("Hosting, security, backups, and small updates are handled through an optional care plan, published up front from $XX a month — no setup fee, no lock-in. Prefer not to subscribe? You can pay per edit instead.")
+body("Hosting, security, backups, and small updates are handled through an optional care plan, published up front from $XX a month, no setup fee, no lock-in. Prefer not to subscribe? You can pay per edit instead.")
 h3("Can I change my site after it’s live?")
-body("Yes. Send the change by message — hours, a photo, a price, a new section — and I make it for you. On the Growth and Pro care plans, small edits are included instead of billed by the quarter-hour.")
+body("Yes. Send the change by message, hours, a photo, a price, a new section, and I make it for you. On the Growth and Pro care plans, small edits are included instead of billed by the quarter-hour.")
 h3("Is there a contract or lock-in?")
-body("No. Care plans are month to month, you can cancel anytime, and you own your domain. Pay yearly if you’d like two months free — but you are never locked in.")
+body("No. Care plans are month to month, you can cancel anytime, and you own your domain. Pay yearly if you’d like two months free, but you are never locked in.")
 h3("What if I don’t like it?")
 body("I share a first draft before launch and revise it until it’s right for your business. You approve the details before the site goes live.")
 flag("Confirm this revision-policy wording matches what you can actually promise.")
@@ -237,7 +237,7 @@ h3("Ready to make your business easier to choose?")
 body("Send me your business name and current web link, if you have one. I’ll reply with the simplest useful next step for getting a custom site live quickly.")
 cta("Get my website quote")
 body("Connect on LinkedIn")
-flag("[CONFIRM NAME/LINK — doc currently shows “FrankBaggetta.ca” but the builder is Matthew Baggetta.]")
+flag("[CONFIRM NAME/LINK, doc currently shows “FrankBaggetta.ca” but the builder is Matthew Baggetta.]")
 body("X")
 body("Back to top")
 
@@ -252,7 +252,7 @@ label("Open Graph description", "Affordable custom websites for Niagara business
 h2("Hero")
 body("Well and Good Websites")
 body("Web design Niagara")
-h3("Custom websites for Niagara businesses — built to win more local calls and bookings.")
+h3("Custom websites for Niagara businesses, built to win more local calls and bookings.")
 body("Well and Good Websites builds focused sites for businesses across Niagara that need leads and customers to call, visit, book, or request a quote.")
 cta("Get my website quote", secondary="See recent builds")
 body("Designed for restaurants, trades, shops, barbers, salons, contractors, performers, and appointment-based services.")
@@ -268,9 +268,9 @@ body("Connect the site to clear page titles, descriptions, headings, schema, ana
 
 h2("What can be included.")
 body("The first build is usually a focused one-page website. Extra pages can be added when there is a clear search reason.")
-card("Starter — $497", "", ["Custom one-page website", "Services, hours, map, reviews", "Mobile responsive design"])
-card("Standard — $997", "", ["Everything in Starter", "Gallery or portfolio section", "Booking or quote-request flow", "Google Business Profile support"], popular=True)
-card("Premium — $1,497", "", ["Everything in Standard", "Custom copywriting and positioning", "Review funnel page", "Priority launch support"])
+card("Starter, $497", "", ["Custom one-page website", "Services, hours, map, reviews", "Mobile responsive design"])
+card("Standard, $997", "", ["Everything in Starter", "Gallery or portfolio section", "Booking or quote-request flow", "Google Business Profile support"], popular=True)
+card("Premium, $1,497", "", ["Everything in Standard", "Custom copywriting and positioning", "Review funnel page", "Priority launch support"])
 
 h2("Need a Niagara business website that is simple to launch?")
 body("Send your business name, current link if you have one, and the main action you want from customers. I’ll reply with the simplest useful next step.")
@@ -299,7 +299,7 @@ body("The goal is not a cheap-looking site. The goal is to use the strongest par
 h3("Real business details")
 body("Services, photos, hours, location, reviews, and the main customer action come before decoration.")
 h3("Clear pricing")
-body("Every price is on the page — builds and care plans both. No “request a quote” maze, no surprise invoice. Most agencies nearby hide their pricing; here you decide before you ever call.")
+body("Every price is on the page, builds and care plans both. No “request a quote” maze, no surprise invoice. Most agencies nearby hide their pricing; here you decide before you ever call.")
 h3("Fast launch path")
 body("Once the required details are approved, the site is built around a 48-hour launch target.")
 
@@ -309,8 +309,8 @@ card("Starter: $497", "", ["Custom website", "Mobile responsive layout", "Hours,
 card("Standard: $997", "", ["Everything in Starter", "Photo gallery or portfolio", "Booking or quote-request flow", "Google Business Profile support"], popular=True)
 card("Premium: $1,497", "", ["Everything in Standard", "Custom copywriting", "Review funnel page", "Priority launch support"])
 
-body("Keeping the site online afterward is an optional care plan from $XX a month — published up front, cancel anytime, and you own your domain. No lock-in, ever.")
-flag("[CARE-PLAN PRICING placeholder $XX — keep in sync with the homepage care section.]")
+body("Keeping the site online afterward is an optional care plan from $XX a month, published up front, cancel anytime, and you own your domain. No lock-in, ever.")
+flag("[CARE-PLAN PRICING placeholder $XX, keep in sync with the homepage care section.]")
 
 h2("Want an affordable website that still feels like your business?")
 body("Send your business name and current web link, if you have one. I’ll reply with the simplest useful next step.")
@@ -352,7 +352,7 @@ bullets(["Tap-to-call", "Booking or quote request", "Directions and hours", "Con
 
 h2("Need a simple one-page website for your business?")
 body("Send your business name, what customers need to do next, and any current links. I’ll map the simplest useful website for you.")
-body("Clear prices up front, and an optional care plan to keep it current — month to month, no lock-in.")
+body("Clear prices up front, and an optional care plan to keep it current, month to month, no lock-in.")
 cta("Get my website quote")
 
 # =====================================================================

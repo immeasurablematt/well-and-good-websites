@@ -26,7 +26,7 @@ def kv(lbl, value):
     p = doc.add_paragraph(); r = p.add_run(f"{lbl}: "); r.bold = True; r.font.color.rgb = ACCENT
     p.add_run(value); return p
 def market(t):
-    p = doc.add_paragraph(); r = p.add_run("vs. the market — "); r.bold = True; r.font.color.rgb = GREEN
+    p = doc.add_paragraph(); r = p.add_run("vs. the market, "); r.bold = True; r.font.color.rgb = GREEN
     p.add_run(t); return p
 def notincl(items):
     p = doc.add_paragraph(); r = p.add_run("Explicitly NOT included (add-on or higher tier):"); r.bold = True; r.font.color.rgb = RED
@@ -47,18 +47,18 @@ def table(headers, rows, widths=None):
     return t
 
 # =====================================================================
-title("Well and Good Websites — Statement of Work by Tier")
+title("Well and Good Websites: Statement of Work by Tier")
 sub("Scope-of-work specification for every pricing tier. Two product lines: (1) recurring growth bundles "
     "(Launch / Grow / Dominate), (2) one-time builds (Express / Starter / Standard / Premium) + optional Care. "
     "Written 2026-06-28. Designed to be both your delivery checklist and the basis of a client agreement.")
 
-flag("ASSUMPTIONS TO CONFIRM — these specs are sensible, competitive defaults; the numbers below are your operational "
+flag("ASSUMPTIONS TO CONFIRM, these specs are sensible, competitive defaults; the numbers below are your operational "
      "call. Adjust any before this goes client-facing: revision-round counts, content word counts (assumed 600–1000), "
      "citation counts (10 / 25 / 35+), tracked-keyword counts (5 / 15 / 30+), link-building targets (2–4/mo on Dominate), "
      "edit-turnaround SLAs (2-day / 1-day / priority), small-edit allowances, and every price on the Add-On Rate Card.")
 
 # ---- shared terms ----
-h1("0 — Shared terms (apply to all tiers)")
+h1("0. Shared terms (apply to all tiers)")
 
 h2("Definitions (so 'one-page' and 'content page' mean something)")
 table(["Term", "Definition"], [
@@ -85,7 +85,7 @@ h2("Client responsibilities (the 24-hour clock depends on these)")
 body("The 24-hour build clock starts when ALL of the following are received and the setup fee / first payment has cleared:")
 bullets([
     "Business name, services, hours, service area, and preferred contact method.",
-    "Logo (or a request to create one — add-on), brand colours if any.",
+    "Logo (or a request to create one, add-on), brand colours if any.",
     "Photos (or approval to use stock/AI imagery), and access to existing Google reviews.",
     "Google Business Profile access, domain/DNS access, and any existing social accounts.",
 ])
@@ -100,16 +100,16 @@ bullets([
 ])
 
 # =====================================================================
-h1("1 — Recurring growth bundles (at-a-glance)")
+h1("1. Recurring growth bundles (at-a-glance)")
 sub("The build inside each bundle mirrors a one-time tier: Launch≈Starter (one-page), Grow≈Standard (multi-page + "
     "booking), Dominate≈Premium (8 pages + custom copy). Everything else is the growth engine on top.")
-table(["Deliverable", "Launch — $99/mo", "Grow — $399/mo", "Dominate — $899/mo"], [
+table(["Deliverable", "Launch, $99/mo", "Grow, $399/mo", "Dominate, $899/mo"], [
     ["Setup / onboarding", "$497 (or $990/yr)", "$997 (or $3,990/yr)", "$1,497 (or $8,990/yr)"],
     ["Website", "One-page, up to 6 sections", "Standard, up to 5 pages + booking/quote", "Premium, up to 8 pages + custom copy"],
     ["Build revision rounds", "2", "3", "4 + iterative"],
     ["Tracked local keywords", "5", "15", "30+"],
     ["Citations (cumulative)", "10", "25", "35+ ongoing"],
-    ["Content pieces / month", "—", "2", "4"],
+    ["Content pieces / month", ", ", "2", "4"],
     ["Google Business Profile", "Optimize + 1 post/mo", "+ weekly posts", "+ full management"],
     ["Social posts / month", "4 (1 platform)", "~12 (2 platforms)", "20+ (3–4 platforms) + weekly video"],
     ["Review management", "Monitor", "Request flow + responses", "Full reputation strategy"],
@@ -118,8 +118,8 @@ table(["Deliverable", "Launch — $99/mo", "Grow — $399/mo", "Dominate — $89
 ])
 
 # ----- LAUNCH -----
-h1("2 — Launch · $99/mo + $497 setup")
-kv("Who it's for", "A local owner who needs to exist on Google, look credible, and capture calls — without an agency.")
+h1("2. Launch · $99/mo + $497 setup")
+kv("Who it's for", "A local owner who needs to exist on Google, look credible, and capture calls, without an agency.")
 h3("Website")
 bullets(["One-page site, up to 6 sections, mobile-responsive, tap-to-call, click-to-map.",
          "2 revision rounds. Preview within 24 business hours of assets; live same day on approval."])
@@ -141,11 +141,11 @@ notincl(["Blog / content pages (Grow+)", "Booking or quote flow (Grow+)",
          "Multi-platform or video social (Grow / Dominate)", "Paid ad management", "Professional photo/video shoot"])
 body("Acceptance: 2 revision rounds; accepted on launch + 7 days.")
 market("Agencies bill $800–$2,500/mo for local SEO ALONE and $950–$3,000/mo for social. Launch bundles a custom site, "
-       "SEO foundation, GBP, and social for $99/mo — published, no contract. KMK and most locals won't even show a price.")
+       "SEO foundation, GBP, and social for $99/mo, published, no contract. KMK and most locals won't even show a price.")
 
 # ----- GROW -----
-h1("3 — Grow · $399/mo + $997 setup   (Most popular)")
-kv("Who it's for", "An owner who wants the site to actively generate calls, bookings, and quotes — and to climb on Google.")
+h1("3. Grow · $399/mo + $997 setup (Most popular)")
+kv("Who it's for", "An owner who wants the site to actively generate calls, bookings, and quotes, and to climb on Google.")
 h3("Website")
 bullets(["Everything in Launch, plus a Standard site (up to 5 pages) with a booking or quote-request flow "
          "(Cal.com/Calendly or a structured quote form).",
@@ -168,12 +168,12 @@ bullets(["Unlimited small edits, 1-business-day turnaround.",
 notincl(["Weekly video / short-form production (Dominate)", "Aggressive link building & outreach (Dominate)",
          "Monthly strategy call + live dashboard (Dominate)", "Paid ad management", "Custom positioning/messaging workshop (Dominate)"])
 body("Acceptance: 3 revision rounds; accepted on launch + 7 days.")
-market("This replaces an SEO retainer ($800–2,500) PLUS a social retainer ($950–3,000) PLUS maintenance — a bundle "
+market("This replaces an SEO retainer ($800–2,500) PLUS a social retainer ($950–3,000) PLUS maintenance, a bundle "
        "agencies would invoice at $1,800–$5,500/mo. Grow is $399/mo, cancel anytime. Cool Koala's floor is a $2,500 "
        "one-time project with no ongoing growth attached.")
 
 # ----- DOMINATE -----
-h1("4 — Dominate · $899/mo + $1,497 setup")
+h1("4. Dominate · $899/mo + $1,497 setup")
 kv("Who it's for", "An owner who wants to own the local market: a premium site plus an aggressive, managed growth system.")
 h3("Website")
 bullets(["Everything in Grow, plus a Premium site (up to 8 pages) with custom positioning & messaging (copywriting).",
@@ -185,7 +185,7 @@ bullets(["30+ tracked keywords; 4 content pieces/month (mix of pages + posts, 80
          "Quarterly technical SEO audit; ongoing citation growth (35+)."])
 h3("Social + video")
 bullets(["20+ posts/month across 3–4 platforms.",
-         "1 short-form video per week — client provides raw clips, or I script + edit footage they supply.",
+         "1 short-form video per week, client provides raw clips, or I script + edit footage they supply.",
          "[Confirm video workflow: edit-only vs. you filming. On-site filming is an add-on.]"])
 h3("Strategy & reporting")
 bullets(["Monthly 45-minute strategy call.",
@@ -202,28 +202,28 @@ market("Full-service agencies run $2,500–$80k+ on projects plus monthly retain
        "'request a quote' wall. Dominate is an integrated, published-price growth system at $899/mo with no lock-in.")
 
 # =====================================================================
-h1("5 — One-time builds (no recurring fee)")
+h1("5. One-time builds (no recurring fee)")
 sub("For owners who want a website now and will handle their own growth. Add Care ($39/mo) for hosting + small edits. "
     "Upgrade into a recurring plan anytime; the setup fee paid converts toward onboarding.")
 table(["Spec", "Express $297", "Starter $497", "Standard $997", "Premium $1,497"], [
     ["Scope", "1-section landing (hero, contact, tap-to-call, map)", "One-page, up to 6 sections", "Up to 5 pages + booking/quote flow", "Up to 8 pages + custom copywriting & positioning"],
     ["On-page SEO", "Basic (title/meta)", "Standard (titles, meta, schema)", "Standard + per-page", "Advanced + content structure"],
-    ["GBP setup", "—", "Basic", "Optimized", "Optimized"],
+    ["GBP setup", ", ", "Basic", "Optimized", "Optimized"],
     ["Revision rounds", "1", "2", "3", "4"],
     ["Timeline", "24 hours", "24 hours", "2–3 business days", "3–5 business days"],
     ["Copywriting", "Template + your text", "Light edit of your text", "Section copy written", "Full custom copy & positioning"],
 ])
-h3("Care add-on — $39/mo")
+h3("Care add-on, $39/mo")
 bullets(["Hosting, SSL, daily backups, uptime monitoring.",
          "Up to 2 small edits/month, 2-business-day turnaround.",
          "Upgrade to Launch/Grow/Dominate anytime."])
-notincl(["Ongoing SEO, content, social, reviews, or reporting — those live in the recurring plans.",
+notincl(["Ongoing SEO, content, social, reviews, or reporting, those live in the recurring plans.",
          "Anything beyond the listed page/section count (Add-On rate card)."])
 market("Cool Koala starts at a $2,500 project; Cedar+Mint $4,800+; KMK is quote-only. Your one-time builds top out at "
-       "$1,497 with custom copy — and every price is published.")
+       "$1,497 with custom copy, and every price is published.")
 
 # =====================================================================
-h1("6 — What the setup / onboarding fee buys")
+h1("6. What the setup / onboarding fee buys")
 sub("Justifies the upfront fee and scopes it, so it isn't confused with the monthly.")
 table(["Fee", "Covers"], [
     ["$497 (Launch)", "Discovery, asset collection, one-page build, GBP claim/optimize, 10 citations, SEO foundation, GA4, launch."],
@@ -232,14 +232,14 @@ table(["Fee", "Covers"], [
 ])
 
 # =====================================================================
-h1("7 — Add-On Rate Card (the scope-creep guardrail)")
-sub("Publish or keep internal — either way it gives every out-of-scope ask a price, so extra work is paid, not absorbed.")
-flag("All prices below are SUGGESTED defaults — set your own before using.")
+h1("7. Add-On Rate Card (the scope-creep guardrail)")
+sub("Publish or keep internal, either way it gives every out-of-scope ask a price, so extra work is paid, not absorbed.")
+flag("All prices below are SUGGESTED defaults, set your own before using.")
 table(["Add-on", "Suggested price"], [
     ["Extra revision round", "$79"],
     ["Extra content page / post", "$99 each"],
     ["Extra social platform (ongoing)", "$79 / mo"],
-    ["Rush — same-business-day change", "$49"],
+    ["Rush, same-business-day change", "$49"],
     ["Extra website page (one-time build)", "$149"],
     ["New section on an existing one-page site", "$129"],
     ["Logo creation", "from $149"],
@@ -249,7 +249,7 @@ table(["Add-on", "Suggested price"], [
 ])
 
 # =====================================================================
-h1("8 — Billing & terms (summary)")
+h1("8. Billing & terms (summary)")
 bullets([
     "Setup/onboarding fee due upfront; the 24-hour clock starts once it clears and all assets/access are received.",
     "Monthly plans billed in advance, month-to-month, cancel anytime with 30 days' notice.",
