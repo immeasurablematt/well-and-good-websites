@@ -5,6 +5,7 @@
 - Never use em-dashes (the "—" character) in any copy, document, spreadsheet, commit message, or chat reply. Use periods, commas, colons, or parentheses instead. En-dashes in numeric ranges (for example "$2,500–$8,000") are fine.
 - Match the rest of the copywriting/CRO guidance: clarity over cleverness, benefits over features, specific over vague, no exclamation points, no marketing buzzwords without substance.
 - Never fabricate statistics, testimonials, or client results. The only real proof assets are Frank Baggetta (live client) and the owner's Jetta Grove consultancy track record. Leave placeholders rather than invent.
+- Whenever the copy mentions ChatGPT, mention Claude alongside it (for example "Google, ChatGPT, and Claude", or "ChatGPT or Claude"). This applies to visible copy and meta/OG descriptions.
 
 ## Context
 
