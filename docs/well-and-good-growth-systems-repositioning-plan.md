@@ -218,7 +218,7 @@ Every insight article includes: author (Matthew Baggetta), relevant experience, 
 
 Proof constraint (from CLAUDE.md, non-negotiable): the only real proof assets today are Frank Baggetta and the Jetta Grove track record. Never fabricate results, testimonials, or client outcomes. Leave placeholders rather than invent.
 
-Schema: updated `Organization`, `Service`, `Article`, `FAQ`, and `Breadcrumb` schema, with `Offer` data scoped per the Two-Track rules. The current company-level `Offer` and `priceRange` data is removed as part of the Phase 1 scrub.
+Schema: updated `Organization`, `Service`, `Article`, `FAQPage`, and `BreadcrumbList` schema, with `Offer` data scoped per the Two-Track rules. The current company-level `Offer` and `priceRange` data is removed as part of the Phase 1 scrub.
 
 ## Implementation Sequence
 
@@ -279,7 +279,7 @@ Success: acquisition-page rankings and impressions hold through the repositionin
 
 - Add `/llms.txt` with accurate company and service context.
 - Expand the XML sitemap.
-- Implement `Service`, `Organization`, `Article`, `FAQ`, and `Breadcrumb` schema per the Two-Track scoping.
+- Implement `Service`, `Organization`, `Article`, `FAQPage`, and `BreadcrumbList` schema per the Two-Track scoping.
 - Add author identity and updated dates.
 - Publish direct-answer FAQs.
 - Build the AEO and operations topic clusters at the two-per-month cadence.
