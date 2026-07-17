@@ -47,6 +47,10 @@
     var els = document.querySelectorAll('[data-reveal]');
     var vh = window.innerHeight || 800;
     var show = function (el) { el.style.opacity = '1'; el.style.transform = 'none'; };
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(show);
+      return;
+    }
     els.forEach(function (el) {
       el.style.transition =
         'opacity 0.6s cubic-bezier(0.22,0.61,0.36,1), transform 0.6s cubic-bezier(0.22,0.61,0.36,1)';

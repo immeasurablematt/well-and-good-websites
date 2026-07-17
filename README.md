@@ -1,8 +1,8 @@
 # Well and Good Websites
 
-Affordable, custom one-page websites for local businesses in Niagara and Toronto.
+Website design and managed local marketing for businesses in Niagara.
 
-This is a static one-page site for Well and Good Websites, built around fast, practical websites that help customers call, visit, book, or request a quote.
+This is the static marketing site for Well and Good Websites. The primary offer combines a conversion-focused website with local SEO, Google Business Profile management, reviews, repurposed content, and reporting. Supporting pages cover Niagara web design, affordable website options, and one-page websites.
 
 ## Local Preview
 
