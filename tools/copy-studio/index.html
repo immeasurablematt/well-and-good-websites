@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Copy Studio - Well and Good Websites</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#12181f; color:#e8ecf1; }
+  header { display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:12px 18px; background:#1b232d; border-bottom:1px solid #2a3542; position:sticky; top:0; z-index:10; }
+  header h1 { font-size:14px; font-weight:700; margin:0; letter-spacing:0.02em; color:#f2c9b6; }
+  .stats { display:flex; gap:14px; font-size:12.5px; color:#9fb0c0; }
+  .stats strong { color:#fff; }
+  .spacer { flex:1; }
+  .btn-group { display:flex; gap:6px; background:#0f151b; padding:4px; border-radius:8px; }
+  .btn-group button { border:0; background:transparent; color:#9fb0c0; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+  .btn-group button.active { background:#2a3542; color:#fff; }
+  .action { border:1px solid #3a4756; background:#212b36; color:#e8ecf1; padding:7px 14px; border-radius:7px; font-size:12.5px; font-weight:600; cursor:pointer; }
+  .action:hover { background:#2a3542; }
+  .action.danger { border-color:#7a3b2e; color:#f2b8a4; }
+  .file-btn { display:inline-flex; align-items:center; }
+  #frame-wrap { margin:24px auto; width:100%; max-width:1280px; transition:width 0.2s ease; background:#fff; box-shadow:0 20px 60px rgba(0,0,0,0.4); }
+  iframe { width:100%; height:calc(100vh - 120px); border:0; display:block; background:#fff; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Copy Studio</h1>
+  <div class="stats">Fields <strong id="stat-fields">0</strong> &middot; Changed <strong id="stat-changed">0</strong></div>
+  <div class="btn-group">
+    <button data-viewport="1280px" class="active">Desktop</button>
+    <button data-viewport="768px">Tablet</button>
+    <button data-viewport="390px">Mobile</button>
+  </div>
+  <div class="spacer"></div>
+  <button class="action" id="btn-export">Export draft</button>
+  <label class="action file-btn">Import draft<input type="file" id="input-import" accept="application/json" style="display:none;"></label>
+  <button class="action danger" id="btn-reset">Reset to source</button>
+</header>
+<div id="frame-wrap">
+  <iframe id="studio-frame" title="Well and Good Websites (live preview)"></iframe>
+</div>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
