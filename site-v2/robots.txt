@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wellandgoodwebsites.ca/sitemap.xml

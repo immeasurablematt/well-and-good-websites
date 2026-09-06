@@ -1,7 +1,5 @@
 # Well and Good Growth Systems Repositioning Plan
 
-> Historical planning document, July 2026. Retained during the September 2026 branch consolidation. Pricing, conversion claims, schedules, naming proposals, and line references below describe that planning snapshot, not verified current facts or approved commitments. See `docs/v2-launch-decisions-2026-09-06.md` for the current release decisions.
-
 *Created: 2026-07-15. Revised: 2026-07-15 (v2: analyzed and optimized against the repo's competitor research, SEO plan, live homepage, and proof constraints).*
 
 ## Decision
