@@ -4,15 +4,15 @@ Matthew Baggetta runs Well and Good from Welland, serving Niagara and the GTA. T
 
 ## Current release status
 
-The root HTML is the production site. The complete `site-v2/` preview is pending Matthew's review of its audience and homepage hierarchy before publication. See `docs/v2-launch-decisions-2026-09-06.md`. Archived July drafts and copy decks do not override that decision record.
+Matthew approved the v2 audience and homepage hierarchy on September 6, 2026. `site-v2/` is the selected production source; root HTML is retained v1 content. See `docs/v2-launch-decisions-2026-09-06.md`. Archived July drafts and copy decks do not override that decision record.
 
-## V2 preview direction
+## Approved v2 direction
 
 Agentic OS leads the homepage and navigation. It is a custom service connecting AI agents, business knowledge, and existing business tools into repeatable workflows. Start with one process and agree inputs, access, outputs, testing, and human approval. Examples include inbox briefs, lead intake, draft replies, research, documents, and meeting follow-up.
 
 Websites, SEO, and AI visibility support the same business audience. Website visitors can request a free preview. Workflow visitors can request a conversation. The form sends an enquiry; it does not reserve a calendar slot.
 
-The broader business audience is a review proposal. The old auto-repair-only homepage is preserved in the external July snapshot and is not the default for new v2 edits.
+The broader business audience is approved for v2. The old auto-repair-only homepage is preserved in the external July snapshot and is not the default for new v2 edits.
 
 ## Evidence and offers
 

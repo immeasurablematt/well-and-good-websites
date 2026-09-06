@@ -2,7 +2,7 @@
 
 ## Release direction
 
-Matthew requested branch consolidation and a v2 that gives Agentic OS more prominence. The review preview leads with Agentic OS for owner-led businesses, retaining websites and search as supporting services. The audience and homepage hierarchy are pending Matthew's review before production publication.
+Matthew requested branch consolidation and a v2 that gives Agentic OS more prominence. The review preview leads with Agentic OS for owner-led businesses, retaining websites and search as supporting services. Matthew approved the preview on September 6, 2026 ("I love it") in response to the audience and homepage hierarchy review. The approved v2 is selected for production publication.
 
 Keep the existing green, cream, and coral visual identity, the Well and Good display name, and wellandgoodwebsites.ca. No legal rename or domain migration is part of this release.
 
@@ -10,7 +10,7 @@ Keep the existing green, cream, and coral visual identity, the Well and Good dis
 
 | Element | Decision and evidence |
 | --- | --- |
-| Audience | Business owners with recurring work across inboxes, documents, meetings, and existing tools. Broad-audience preview pending review. |
+| Audience | Business owners with recurring work across inboxes, documents, meetings, and existing tools. Broad business audience approved by Matthew. |
 | Reader problem | Manually gathering context, preparing replies, and carrying tasks between tools. An audience hypothesis, not a measured customer finding. |
 | Offer | Custom Agentic OS service, starting with a scoped workflow. Existing project marketing context lists intake, research, reporting, document, knowledge, and meeting workflows. |
 | Promise | Prepare routine work for review and reduce manual handoffs. No quantified savings, response-time promise, or autonomous customer sending. |
@@ -33,12 +33,12 @@ Keep the existing green, cream, and coral visual identity, the Well and Good dis
 
 Before changes, all refs were saved to `/Users/mbaggetta/Archive/well-and-good-cleanup-2026-09-06/all-branches.bundle`. All 95 untracked files in the main checkout and 55 in the competitor worktree were archived with SHA-256 verification alongside manifests in that directory.
 
-The production baseline is 88cdecb. Publication must use the verified Vercel project prj_EPl9SoTk0Yg8LfWdXroL1KBPuSGC in matthew-ok, which owns wellandgoodwebsites.ca. The old local project-name alias resolves to this same project ID.
+The pre-v2 production baseline is 368601e (deployment dpl_F6amoS9r47eGn5Qu43agBHu5C4Qm). To recover the v1 build through Git, restore `SOURCE = ROOT` in `scripts/build_public.py` and deploy the reviewed change. Publication must use the verified Vercel project prj_EPl9SoTk0Yg8LfWdXroL1KBPuSGC in matthew-ok, which owns wellandgoodwebsites.ca. The old local project-name alias resolves to this same project ID.
 
 ## Preview and verification
 
 V2 preview: https://well-and-good-websites-j104eze85-matthew-ok.vercel.app
 
-Vercel deployment dpl_3oKnrtK8YAzRRTUGuiNSAbm5Mjgg is READY, target preview, in the verified existing project. Root production content remains selected until Matthew reviews the v2 direction.
+Vercel deployment dpl_3oKnrtK8YAzRRTUGuiNSAbm5Mjgg is READY, target preview, in the verified existing project. The approved v2 source is now selected by `scripts/build_public.py`; the root v1 pages remain available for recovery.
 
 The 17-page structural validator checks routes and anchors, assets and stylesheets, canonical URLs, metadata, JSON-LD, form labels and delivery settings, pricing scope, punctuation, and sitemap coverage. Repeated builds produce identical files. Mobile menu, Escape dismissal, service preselection, plan links, invalid-email handling, and layouts have been checked in the browser. No form submission was sent, so inbox delivery has not been retested.
