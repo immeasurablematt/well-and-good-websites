@@ -13,7 +13,7 @@ Agentic OS for owner-led businesses
 
 ### AI workflows for the work you keep doing by hand.
 
-I build AI workflows that gather the context, prepare the reply, and keep track of the next step. You spend less time moving work between tools, and stay in charge of what happens next.
+I build AI workflows that gather context, prepare replies, and track next steps, with you in charge.
 
 Built by Matthew Baggetta in Welland. Start with one workflow.
 
@@ -27,11 +27,9 @@ How an enquiry could move through Agentic OS
 
 Illustrative workflow. The steps and permissions are agreed for your business.
 
-The work behind the work
+#### The context, ready when you need it.
 
-#### Too much of your day goes into getting ready to do the job.
-
-Agentic OS connects AI agents with the tools and information your business already uses. Each workflow has a defined job, access limits, and a place for your approval.
+Agentic OS connects AI agents with your existing tools and information. Each workflow has a defined job, access limits, and a place for your approval.
 
 #### An inbox becomes a briefing
 
@@ -44,8 +42,6 @@ Gather the details, check them against your criteria, and prepare a reply for yo
 #### A meeting becomes follow-through
 
 Turn the transcript into a summary and proposed tasks, with owners and decisions you can check.
-
-Start where it helps
 
 #### A useful first workflow beats a grand AI overhaul.
 
@@ -67,15 +63,11 @@ Clear services, credible work, and a direct way to call, book, or ask for a quot
 
 Technical SEO, useful content, and consistent business facts for Google and AI answers from ChatGPT and Claude.
 
-The person doing the work
-
 #### You work directly with me.
 
 I’m Matthew Baggetta. Through Jetta Grove Consulting, I’ve worked on content and growth marketing for technology businesses. Well and Good brings that experience into websites, search, and AI operations for businesses in Niagara and the GTA.
 
 You can see the website I built for Toronto musician Frank Baggetta, or explore how an Agentic OS workflow could handle a new enquiry.
-
-Start with a conversation
 
 #### What keeps landing back on your desk?
 
@@ -91,9 +83,7 @@ Services
 
 ### Help with the work your business depends on.
 
-Agentic OS, websites, SEO, and AI visibility. Each service has its own starting point and scope. You do not need to buy all four.
-
-Choose your starting point
+Agentic OS, websites, SEO, and AI visibility. Start with the service your business needs.
 
 #### What needs to work better?
 
@@ -113,8 +103,6 @@ Improve the technical foundation, business information, and useful content behin
 
 Make your services and business facts clear and consistent, then check how your business appears in answers from ChatGPT and Claude.
 
-Start with a conversation
-
 #### What keeps landing back on your desk?
 
 Tell me about one recurring task, the tools involved, and where it gets stuck. We can work out whether there is a useful first step.
@@ -129,9 +117,7 @@ Websites for local businesses
 
 ### Give your next customer a clear reason to call.
 
-Your services, your work, and the details customers need to choose you. I build custom websites for businesses in Niagara and the GTA, with clear copy, mobile layouts, and a direct path to a call, booking, or quote.
-
-Built around your business
+Custom websites for Niagara and GTA businesses, with clear services, real work, and a direct way to get in touch.
 
 #### The useful details come first.
 
@@ -150,8 +136,6 @@ Tap-to-call, a booking link, or a focused enquiry form, chosen for the way custo
 #### Build a search foundation
 
 Clear headings, relevant pages, and consistent business details help search engines understand the site.
-
-Published website plans
 
 #### A website, with ongoing support for growth.
 
@@ -207,15 +191,11 @@ Plus $2,500 onboarding. Annual plan: $12,990.
 
 Prices in CAD. Ad budget billed separately. Monthly plans can be cancelled anytime. Agentic OS is scoped separately.
 
-Website only
-
 #### Need a build without a monthly plan?
 
 Published one-time options: Express $297, Starter $497, Standard $997, and Premium $1,497. We confirm the pages, content, and functionality that fit the build before you buy.
 
 A larger site or custom integration is scoped separately.
-
-Questions, answered
 
 #### Before you get started
 
@@ -230,8 +210,6 @@ Where your platform supports it, we can link to or embed your booking flow. The 
 **Summary:** Can you guarantee rankings or AI recommendations?
 
 No. A clear, accessible website and consistent business facts provide a foundation, but Google, ChatGPT, and Claude choose their own results.
-
-Free website preview
 
 #### See the direction before you decide.
 
@@ -263,9 +241,7 @@ SEO and local search
 
 ### Be easier to find when customers need what you do.
 
-SEO improves the content, technical structure, and business information that help search engines understand your website. I work on the pages and queries that matter to your services, then report what changes.
-
-The work
+Improve the pages, technical foundations, and business information behind your search visibility. See what changes through regular reporting.
 
 #### Build a stronger search foundation.
 
@@ -285,13 +261,9 @@ Connect your website with accurate Google Business Profile details, service info
 
 Track search visibility and customer actions where tracking is available. Explain what changed and what still needs work.
 
-Relevant experience
-
 #### Search and content work through Jetta Grove.
 
 My prior consultancy work covers SEO, content, and growth marketing for technology businesses. I bring that experience to the service pages, customer questions, and local searches that matter to your business.
-
-Questions, answered
 
 #### Before you get started
 
@@ -302,8 +274,6 @@ No. Rankings depend on the site, competition, demand, and decisions made by sear
 **Summary:** How is this different from AI visibility?
 
 SEO focuses on search visibility. AI visibility work also checks how your business is described or cited in answers from ChatGPT and Claude. Both benefit from clear, accurate information about your business.
-
-Start with a conversation
 
 #### Which searches matter to your business?
 
@@ -319,9 +289,7 @@ AI visibility and AEO
 
 ### Make your business easier to understand in AI answers.
 
-Answer engine optimization, or AEO, focuses on how your business can be understood and cited in answers from systems such as ChatGPT and Claude. The work starts with accurate facts and clear, useful content.
-
-What the work covers
+Make your business facts clear and consistent, then check how you appear in answers from ChatGPT and Claude.
 
 #### Clear answers. Consistent facts. Observable results.
 
@@ -337,15 +305,11 @@ Keep business details consistent across the site and relevant public profiles. U
 
 Review agreed questions in the relevant answer engines and record citations, mentions, and descriptions separately.
 
-What to expect
-
 #### A clearer source, with no citation guarantee.
 
 AI systems decide which sources to use. Content and technical improvements do not guarantee a recommendation, a ranking, or a citation.
 
 We record what appears for the agreed questions, check whether the facts are right, and use those findings to decide what needs attention.
-
-Questions, answered
 
 #### Before you get started
 
@@ -356,8 +320,6 @@ That depends on how your customers look for help. We can review the relevant que
 **Summary:** What counts as progress?
 
 We agree the questions and what to measure, such as whether the business is mentioned accurately, cited, or recommended. A mention alone is not a lead or a sale.
-
-Start with a conversation
 
 #### Find out how your business is being described.
 
@@ -373,9 +335,7 @@ Agentic OS
 
 ### Routine work, ready for your judgment.
 
-Agentic OS is a custom service that connects AI agents, business knowledge, and your existing tools into repeatable workflows. It can prepare an inbox brief, draft a client reply, or turn a meeting into proposed tasks. You set the boundaries and review the actions that need your judgment.
-
-What it can cover
+Connect AI agents with your business knowledge and tools to prepare routine work for your review.
 
 #### Choose a job that keeps coming back.
 
@@ -397,8 +357,6 @@ Gather information from agreed sources and prepare a recurring report. Keep sour
 
 Draft from your templates and approved information. Organize the context needed for recurring work so each task does not begin from scratch.
 
-A workflow in practice
-
 #### The agent prepares. You decide.
 
 For customer communication, the system brings the draft and supporting context to you. Nothing in this example sends itself.
@@ -413,8 +371,6 @@ How an enquiry could move through Agentic OS
 
 Illustrative workflow. The steps and permissions are agreed for your business.
 
-How we build it
-
 #### Start with one workflow.
 
 #### Map the job
@@ -428,8 +384,6 @@ I connect the agreed parts and test the normal path, missing information, and fa
 #### Review before rollout
 
 You see the outputs and approval points before the workflow enters daily use. We agree how to stop it, check errors, and handle maintenance.
-
-Questions, answered
 
 #### Before you get started
 
@@ -453,8 +407,6 @@ We agree a baseline and a useful result, then compare the tested workflow with t
 
 It is a service for designing and building workflows around your business. The scope includes the tools, responsibilities, and support arrangements you agree to.
 
-Start with a conversation
-
 #### What keeps landing back on your desk?
 
 Tell me about one recurring task, the tools involved, and where it gets stuck. We can work out whether there is a useful first step.
@@ -469,9 +421,7 @@ How it works
 
 ### Agree the job before building the system.
 
-A useful first conversation identifies what is getting in the way, what you already use, and what an appropriate first step could be. You work directly with me throughout.
-
-Choose the right engagement
+Work directly with me to identify the problem, agree the scope, and choose a useful first step.
 
 #### The process follows the work.
 
@@ -487,8 +437,6 @@ Request a free preview, then choose the build and confirm the content. Monthly w
 
 Review the current site and business goals. Agree the technical, content, and measurement work based on the market and available evidence.
 
-Questions, answered
-
 #### Before you get started
 
 **Summary:** What is free?
@@ -502,8 +450,6 @@ Yes. A specific recurring task gives us a manageable place to test usefulness be
 **Summary:** What determines the price?
 
 Scope, integrations, content, testing, and ongoing responsibilities. Website plan prices are published; Agentic OS and standalone search work are scoped to the engagement.
-
-Start with a conversation
 
 #### What keeps landing back on your desk?
 
@@ -527,8 +473,6 @@ Live website client
 
 A website for a Toronto musician, bringing performance videos, photographs, services, and a clear enquiry path together.
 
-Concept builds
-
 #### Design examples for local businesses.
 
 Concept build
@@ -543,19 +487,13 @@ Concept build
 
 A phone-friendly menu, hours, location, and ordering path. A design concept, not a client engagement.
 
-Prior consultancy work
-
 #### Jetta Grove Consulting
 
 My earlier work through Jetta Grove covered SEO, content, and growth marketing for technology businesses. This is prior consultancy experience, separate from Well and Good client work.
 
-Agentic OS
-
 #### See how an enquiry could become a prepared reply.
 
 Explore an illustrative workflow from the first enquiry to a draft reply, with the supporting context and a place for you to review the next step.
-
-Start with a conversation
 
 #### What keeps landing back on your desk?
 
@@ -573,15 +511,11 @@ Live website client
 
 Frank Baggetta’s site brings his music, photographs, and service details together so people can understand his work and get in touch.
 
-The website
-
 #### Help visitors decide, then enquire.
 
 The site presents performance videos, information about events, and a direct contact path.
 
 Visitors can hear Frank perform, explore his services, and get in touch about their event.
-
-Start with a conversation
 
 #### Have a website in mind?
 
@@ -597,9 +531,7 @@ About Matthew Baggetta
 
 ### Work with the person doing the work.
 
-I’m Matthew Baggetta, based in Welland. Well and Good brings together the website, search, and AI workflow work I do for businesses in Niagara and the GTA.
-
-Experience
+I’m Matthew Baggetta in Welland. I build websites and AI workflows, and improve search visibility for Niagara and GTA businesses.
 
 #### From content and growth to the systems behind the work.
 
@@ -608,8 +540,6 @@ Through Jetta Grove Consulting, I worked on content and growth marketing for tec
 Today, that same attention goes into the operations behind a business: how an enquiry is understood, how a reply gets prepared, and how a decision becomes a next step.
 
 I build the website or workflow around the job it needs to do. You have one person to discuss the work with, make decisions with, and hold accountable.
-
-Approach
 
 #### Make the work useful and understandable.
 
@@ -625,8 +555,6 @@ Agree what the system can access and where it needs a person to decide.
 
 Review the actual page, workflow, or output together. Be clear about what the evidence does and does not show.
 
-Start with a conversation
-
 #### What keeps landing back on your desk?
 
 Tell me about one recurring task, the tools involved, and where it gets stuck. We can work out whether there is a useful first step.
@@ -639,19 +567,9 @@ Tell me about one recurring task, the tools involved, and where it gets stuck. W
 
 Contact
 
-### Tell me what keeps coming back to you.
+### Let’s talk about the work.
 
-A recurring task, a website that needs work, or a search problem. Share a few details and I’ll reply personally to discuss a useful next step.
-
-Start here
-
-#### A conversation about the work.
-
-For Agentic OS, describe one task, the tools it touches, and where you get stuck. For a website, send a link and what customers should be able to do.
-
-The initial conversation is free. This form sends an enquiry; I’ll reply to arrange a time or ask for the details needed to help.
-
-Prefer email? matt@wellandgoodwebsites.ca
+Share a recurring task, website idea, or search problem. I’ll reply personally to discuss a useful next step.
 
 **Form label:** Your name
 
@@ -685,6 +603,14 @@ Prefer email? matt@wellandgoodwebsites.ca
 
 Your details are sent through FormSubmit for email delivery and used to respond to your enquiry. Read the privacy notice.
 
+#### What to include
+
+For Agentic OS, describe one task, the tools it touches, and where you get stuck. For a website, send a link and what customers should be able to do.
+
+The initial conversation is free. This form sends an enquiry; I’ll reply to arrange a time or ask for the details needed to help.
+
+Prefer email? matt@wellandgoodwebsites.ca
+
 ## /web-design-niagara/
 
 **SEO title:** Web Design Niagara | Well and Good
@@ -696,8 +622,6 @@ Website options
 ### A website that feels like your Niagara business.
 
 Work directly with Matthew Baggetta in Welland on a website built around your services, your customers, and the way people contact you.
-
-Choose a practical starting point
 
 #### Build around the customer’s decision.
 
@@ -713,13 +637,9 @@ Use real photographs, work examples, and approved reviews rather than generic cl
 
 Readable service details, tap-to-call actions, and booking links where visitors can find them.
 
-Prices and inclusions
-
 #### Compare the current website plans.
 
 One-time builds and monthly website plans are listed together, with their setup costs and inclusions.
-
-Start with a conversation
 
 #### See a preview for your business.
 
@@ -737,8 +657,6 @@ Website options
 
 Choose a one-time build or a monthly website and growth plan. You can see a free preview before you buy, and confirm the scope before work begins.
 
-Choose a practical starting point
-
 #### Build around the customer’s decision.
 
 #### One-time builds
@@ -753,13 +671,9 @@ Launch starts at $199 per month plus $750 setup. Grow and Dominate add website, 
 
 The website plans page puts current prices and inclusions together, so you can compare the options before contacting me.
 
-Prices and inclusions
-
 #### Compare the current website plans.
 
 One-time builds and monthly website plans are listed together, with their setup costs and inclusions.
-
-Start with a conversation
 
 #### See a preview for your business.
 
@@ -777,8 +691,6 @@ Website options
 
 A focused website for a business with a straightforward offer. Give visitors your services, real work, contact details, and the booking or enquiry path they need.
 
-Choose a practical starting point
-
 #### Build around the customer’s decision.
 
 #### When one page works
@@ -793,13 +705,9 @@ Distinct services, multiple locations, or a large catalogue usually need more ro
 
 Service details, useful photos, business information, approved reviews, and a direct way to call or book.
 
-Prices and inclusions
-
 #### Compare the current website plans.
 
 One-time builds and monthly website plans are listed together, with their setup costs and inclusions.
-
-Start with a conversation
 
 #### See a preview for your business.
 
@@ -862,8 +770,6 @@ Thank you
 ### Thanks for getting in touch.
 
 I’ll review the details and reply personally. If you requested a website preview, I’ll check the business information first. For Agentic OS, we’ll start with the workflow you described.
-
-While you wait
 
 #### See the work and the approach.
 
