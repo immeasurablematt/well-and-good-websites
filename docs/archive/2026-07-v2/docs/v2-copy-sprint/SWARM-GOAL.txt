@@ -1,0 +1,48 @@
+Produce the complete Well & Good Growth v2 markdown copy pack under docs/v2-copy-sprint/.
+
+LOCKED CONSTRAINTS (non-negotiable):
+- Brand display name ALWAYS exactly: Well & Good Growth
+- Homepage H1 exactly: Your next customer found someone else first.
+- Core services only: Websites (/services/websites/), Growth (/services/growth/), Automation (/services/automation/)
+- One-page is package/SEO landing only, not a core service
+- Segments: full auto-repair page from approved matrix; HVAC page structure with honest unknowns; no food; family law out of scope for this sprint
+- Real estate only as automation example if needed
+- Capability = client outcome; SEO/AEO/GBP/analytics/tracking = functionality
+- Growth capability = more qualified enquiries, appointments, and sales
+- No guarantees of rankings, citations, appointments, revenue, timelines
+- Zero em dashes; no exclamation points in reader-facing copy
+- ChatGPT mentions must include Claude
+- Proof labels only: live client Frank Baggetta; concepts; Jetta Grove prior consultancy; internal automation demos
+- Do not call audience small/smaller
+- Primary website CTA: free website prototype
+- Do NOT edit live HTML in site-v2/ or root production files
+- Do NOT commit or push
+- Read and obey docs/v2-copy-sprint/00-BRIEF.md
+- Use docs/v2-homepage-copy-draft-2026-07-28.md for homepage
+- Use docs/v2-auto-repair-product-messaging-matrix-2026-07-28.md for auto-repair
+- Use docs/v2-architecture-revision-v1-base-2026-07-28.md and docs/v2-dataforseo-architecture-research-2026-07-28.md for IA/SEO
+
+REQUIRED OUTPUT FILES (write all under /Users/mbaggetta/dev/well-and-good-websites/docs/v2-copy-sprint/):
+00-INDEX.md
+01-homepage.md
+02-websites.md
+03-growth.md
+04-automation.md
+05-how-it-works.md
+06-work.md
+07-about.md
+08-contact.md
+09-web-design-niagara.md
+10-affordable-website-design.md
+11-one-page-websites.md
+12-for-auto-repair.md
+13-for-hvac.md
+14-thank-you.md
+99-VERIFICATION.md
+
+Each page file must include: Route, Primary CTA, Job, SEO title+meta, full sectioned copy, Notes.
+Synthesizer must write the final files on disk.
+Workers propose page copy packages with full draft text.
+Verifier checks constraint compliance before synthesis is accepted.
+Include published website pricing on Websites page using latest site-v2/services/websites values if present.
+Keep copy concise. No filler. No invented proof.
