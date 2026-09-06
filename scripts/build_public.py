@@ -4,9 +4,8 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-# Keep the current homepage live until Matthew reviews the v2 positioning.
-# After approval, change this to ROOT / "site-v2".
-SOURCE = ROOT
+# Matthew approved the Agentic OS-led v2 on September 6, 2026.
+SOURCE = ROOT / "site-v2"
 OUTPUT = ROOT / "public"
 DIRECTORIES = (
     "assets", "icons", "affordable-website-design", "one-page-websites",
