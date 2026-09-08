@@ -1,5 +1,53 @@
 {
   "framework": null,
   "buildCommand": "python3 scripts/build_public.py",
-  "outputDirectory": "public"
+  "outputDirectory": "public",
+  "redirects": [
+    {
+      "source": "/services/",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/services/seo/",
+      "destination": "/services/growth/",
+      "permanent": true
+    },
+    {
+      "source": "/services/aeo/",
+      "destination": "/services/growth/",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/work/",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/engagements/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/affordable-website-design/",
+      "destination": "/services/websites/",
+      "permanent": true
+    },
+    {
+      "source": "/one-page-websites/",
+      "destination": "/services/websites/",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-niagara/",
+      "destination": "/services/websites/",
+      "permanent": true
+    }
+  ],
+  "trailingSlash": true
 }

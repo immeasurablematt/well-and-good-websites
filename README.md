@@ -1,25 +1,23 @@
-# Well and Good Websites
+# Well and Good Growth
 
-Well and Good, run by Matthew Baggetta in Welland. Websites, search, and Agentic OS services.
+Websites, growth marketing, and custom AI automation with Matthew Baggetta in Welland, Ontario.
 
-The approved production source lives in `site-v2/`, with Agentic OS leading the homepage. Matthew approved this direction on September 6, 2026. The root HTML pages are the retained v1 source.
+The production site follows the approved September 8, 2026 review. Its copy and shared markup live in `scripts/build_growth.py`; styles, browser behavior, images, and fonts live in `site-growth/`.
 
-## Local Preview
+## Local preview
 
 ```bash
-python3 build_site_v2.py
-python3 scripts/validate_v2.py
-python3 -m http.server 4175 --bind 127.0.0.1 --directory site-v2
+python3 scripts/build_public.py
+python3 scripts/validate_growth.py
+python3 -m http.server 4175 --bind 127.0.0.1 --directory public
 ```
 
-Then open `http://127.0.0.1:4175/`.
+Open `http://127.0.0.1:4175/`. Edit source files, then rebuild. Generated `public/` is not committed.
 
-## Copy and release
+## Release
 
-- Edit v2 copy and shared layout in `build_site_v2.py`, then regenerate. The preserved privacy text is in `content/privacy.html`.
-- Shared v2 styles and browser behaviour are in `site-v2/styles.css` and `site-v2/site.js`.
-- `python3 scripts/build_site_v2_copy.py` exports the implemented copy to `site-v2-copy.md`.
-- Vercel builds only the explicit public website files via `scripts/build_public.py`. Research, documents, instructions, and Copy Studio are outside the public output.
-- To release changes, regenerate v2, run `python3 scripts/validate_v2.py` and `python3 scripts/build_public.py`, review the preview deployment, and merge. Vercel publishes `public/`.
-- July copy and research are historical. See `docs/copy-deck-status.md` and `docs/archive/2026-07-v2/README.md`.
-- Current decisions and recovery information: `docs/v2-launch-decisions-2026-09-06.md`.
+Vercel uses `scripts/build_public.py` and publishes only `public/`. The build creates versioned CSS and JavaScript, canonical metadata, a sitemap, and indexing rules. Forms use the existing FormSubmit destination. The contact page remains usable without JavaScript.
+
+Validate the build and browser behavior, review a Vercel preview, then merge the approved release. Check the live domain and legacy redirects after deployment.
+
+`site-v2/`, `build_site_v2.py`, and the root HTML are retained historical sources. They are not the current production build. The privacy content is retained in `content/privacy.html`. Release verification and recovery details: `docs/growth-launch-2026-09-08.md`.
