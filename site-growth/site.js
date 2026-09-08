@@ -10,7 +10,7 @@ const enquiryCopy = {
     question: 'What would you like to improve?',
     prompt: 'Tell me what your business does and where you could use support.'
   },
-  'Website builds': {
+  'Web development': {
     title: 'Let’s plan your website.',
     intro: 'Tell me about the site you need. We can discuss a package or a one-time build.',
     question: 'What should your website help customers do?',
@@ -22,7 +22,7 @@ const enquiryCopy = {
     question: 'What do you want to promote, and to whom?',
     prompt: 'Which products or services do you want to promote? Who are your customers, and where do you want to reach them?'
   },
-  'Agentic Ops': {
+  'Agentic automation': {
     title: 'Let’s talk about automating your admin.',
     intro: 'Tell me which repetitive tasks you’d like to automate and what software you use.',
     question: 'What would you like to automate?',
@@ -36,11 +36,11 @@ function updateEnquiry() {
   document.querySelector('#contact-intro').textContent = copy.intro;
   document.querySelector('#message-label').textContent = copy.question;
   form.elements.message.placeholder = copy.prompt;
-  const showPackages = service === 'Website builds' || service === 'Growth marketing';
+  const showPackages = service === 'Web development' || service === 'Growth marketing';
   document.querySelector('#package-field').hidden = !showPackages;
   form.elements.package.disabled = !showPackages;
   if (!showPackages) form.elements.package.value = '';
-  document.querySelector('#automation-form-note').hidden = service !== 'Agentic Ops';
+  document.querySelector('#automation-form-note').hidden = service !== 'Agentic automation';
   document.querySelector('.form-result').textContent = '';
 }
 form.elements.service.addEventListener('change', updateEnquiry);
