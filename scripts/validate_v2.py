@@ -12,6 +12,7 @@ from urllib.parse import unquote, urlparse
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1] / "site-v2"
+SITE_ORIGIN = "https://wellandgoodwebsites.ca"
 ALLOWED_PRICE_PAGES = {
     "services/websites/index.html",
     "affordable-website-design/index.html",
@@ -194,7 +195,7 @@ def validate_page(path: Path) -> list[str]:
         errors.append(f"{rel}: missing Open Graph title or description")
     if not canonical_value(parser):
         errors.append(f"{rel}: missing canonical link")
-    elif canonical_value(parser) != "https://wellandgoodwebsites.ca" + route_for_file(path):
+    elif canonical_value(parser) != SITE_ORIGIN + route_for_file(path):
         errors.append(f"{rel}: canonical does not match its public route")
     if len(parser.ids) != len(set(parser.ids)):
         errors.append(f"{rel}: duplicate element IDs")
@@ -268,7 +269,7 @@ def validate_page(path: Path) -> list[str]:
             if form.get("action") != "https://formsubmit.co/835081ce825a6a057837907299436066" or form.get("method", "").lower() != "post":
                 errors.append(f"{rel}: unexpected form delivery destination or method")
         inputs = {item.get("name"): item for item in parser.inputs}
-        if inputs.get("_next", {}).get("value") != "https://wellandgoodwebsites.ca/thank-you/":
+        if inputs.get("_next", {}).get("value") != SITE_ORIGIN + "/thank-you/":
             errors.append(f"{rel}: incorrect form return URL")
         if "_honey" not in inputs:
             errors.append(f"{rel}: missing spam honeypot")
