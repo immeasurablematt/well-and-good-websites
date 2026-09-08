@@ -1,0 +1,163 @@
+#!/usr/bin/env python3
+"""Build the approved Well and Good Growth website for production."""
+from pathlib import Path
+from html import escape
+from hashlib import sha256
+import shutil
+import json
+import re
+from urllib.parse import urlencode
+
+ROOT = Path(__file__).resolve().parents[1]
+DESIGN = ROOT / 'site-growth'
+OUTPUT = ROOT / 'public'
+# Content-addressed assets keep returning visitors on the matching stylesheet and script.
+ASSETS = {name: f'{Path(name).stem}.{sha256((DESIGN / name).read_bytes()).hexdigest()[:12]}{Path(name).suffix}' for name in ('style.css', 'site.js')}
+
+
+def cta(label='Let’s talk', service='Help me choose'):
+    return f'<button class="button" type="button" data-contact="{escape(service)}">{label}<span aria-hidden="true">↗</span></button>'
+
+
+def faq(items):
+    return '<section class="container section faq"><h2>A few practical questions.</h2><div>' + ''.join(
+        f'<details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>' for question, answer in items) + '</div></section>'
+
+
+def contact(title='What needs attention?', body='Tell me about your business. We’ll work out where I can help.', label='Let’s talk', service='Help me choose'):
+    return f'<section class="contact-section container section" id="contact"><h2>{title}</h2><p>{body}</p>{cta(label, service)}</section>'
+
+
+def pricing():
+    plans = [
+        ('Launch', '199', '$750 setup', '$1,990', 'A website and the essentials for being found.', [
+            'One-page website with mobile tap-to-call', 'Google Business Profile, local SEO, AI search foundations and citations', 'Hosting, SSL, backups and monitoring', '4 social posts per month on 1 platform']),
+        ('Grow', '699', '$1,500 onboarding', '$6,990', 'A fuller website and regular marketing support.', [
+            'Everything in Launch', 'Standard website with booking or quote flow', 'Active local SEO and 2 content pages per month', 'Social on 2 platforms, around 12 posts per month', 'Review management and a monthly report']),
+        ('Dominate', '1,299', '$2,500 onboarding', '$12,990', 'More content, more channels, and ongoing strategy.', [
+            'Everything in Grow', 'Premium website, positioning and messaging', 'SEO and AI search work, 4 content pieces per month', 'Social on 3 to 4 platforms and weekly video', 'Monthly strategy call and reporting dashboard']),
+    ]
+    cards = ''.join(f'''<article class="plan"><h3>{name}</h3><p class="plan-description">{description}</p><p class="price">${amount}<span>/month</span></p><p class="plan-terms">Plus {setup}<br>Annual plan: {annual}</p><ul>{''.join(f'<li>{item}</li>' for item in items)}</ul>{cta('Let’s talk',name)}</article>''' for name,amount,setup,annual,description,items in plans)
+    return f'''<section class="pricing-section section" id="plans"><div class="container"><h2>Your website.<br>Your next stage of growth.</h2><p class="section-intro">Three website and growth packages. Choose the level of ongoing support your business needs.</p><div class="plans">{cards}</div><p class="pricing-note">All prices in CAD. Ad budget billed separately. Monthly plans can be cancelled anytime. Agentic Ops is bespoke and scoped separately.</p></div></section>'''
+
+
+def project():
+    return '''<section class="portfolio-section container section" id="work"><h2>A few websites<br>I’ve built.</h2><div class="portfolio-grid"><article class="portfolio-feature"><a class="portfolio-image" href="/frank-baggetta/" aria-label="Read the Frank Baggetta case study"><img src="/assets/frankbaggetta-20260908.webp" width="1440" height="1000" loading="lazy" alt="Frank Baggetta’s updated website: The Accordion Player Who Gets Toronto Dancing."></a><div class="portfolio-caption"><div><p>Completed client website</p><h3>Frank Baggetta</h3></div><a class="text-link" href="/frank-baggetta/">Read case study ↗</a></div></article><article><a class="portfolio-image" href="https://immeasurablematt.github.io/evelyns-sandwich-factory/" aria-label="View Evelyn’s Sandwich Factory concept website"><img src="/assets/evelyns-preview.webp" width="1000" height="729" loading="lazy" alt="Evelyn’s Sandwich Factory concept website, with menu and ordering information."></a><div class="portfolio-caption"><div><p>Concept build</p><h3>Evelyn’s Sandwich Factory</h3></div><a class="text-link" href="https://immeasurablematt.github.io/evelyns-sandwich-factory/">View concept ↗</a></div></article><article><a class="portfolio-image" href="https://immeasurablematt.github.io/jk-motors/" aria-label="View the JK Motors concept website"><img src="/assets/jk-motors-preview.webp" width="1000" height="729" loading="lazy" alt="JK Motors concept website, with repair services and a call-first layout."></a><div class="portfolio-caption"><div><p>Concept build</p><h3>JK Motors</h3></div><a class="text-link" href="https://immeasurablematt.github.io/jk-motors/">View concept ↗</a></div></article></div><p class="small-note">Evelyn’s and JK Motors are concept builds, not commissioned client websites.</p></section>'''
+
+
+def founder():
+    return '''<section class="founder-section container section" id="about"><div class="founder-photo"><img src="/assets/matt-headshot.jpg" width="600" height="600" loading="lazy" alt="Matthew Baggetta."></div><div><h2>You work<br>directly with Matt.</h2><p>I’m Matthew Baggetta, based in Welland. Through Jetta Grove Consulting, I’ve worked on content and growth marketing for technology businesses.</p><p>Here, I bring that experience to your website, marketing, and everyday operations. We agree on the work, and you review it with me.</p>''' + cta() + '</div></section>'
+
+
+def page(title, description, body, active=''):
+    links = [('websites','Websites','/services/websites/'),('growth','Growth marketing','/services/growth/'),('automation','Agentic Ops','/services/automation/')]
+    current_service = {'websites':'Website builds','growth':'Growth marketing','automation':'Agentic Ops'}.get(active,'Help me choose')
+    body = body.replace('data-contact="Help me choose"', f'data-contact="{current_service}"')
+    nav = ''.join(f'<a href="{url}"' + (' aria-current="page"' if key == active else '') + f'>{label}</a>' for key,label,url in links)
+    html = f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index,follow"><link rel="icon" href="/assets/brand-mark.webp" type="image/webp"><title>{escape(title)} | Well and Good Growth</title><meta name="description" content="{escape(description)}"><link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/{ASSETS['style.css']}"><script defer src="/{ASSETS['site.js']}"></script></head>
+<body><a href="#main" class="skip-link">Skip to content</a><header class="site-header container"><a class="brand" href="/">Well <em>and</em> Good Growth</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button><nav class="main-nav" id="main-nav" aria-label="Main navigation">{nav}<a href="/#about">Meet Matt</a>{cta(service=current_service)}</nav></header><main id="main">{body}</main><footer class="container"><a class="brand" href="/">Well <em>and</em> Good Growth</a><div><span>Matthew Baggetta · Welland, Ontario</span><a href="/privacy/">Privacy</a><a href="mailto:matt@wellandgoodwebsites.ca">Email Matt</a></div></footer>
+<dialog class="contact-preview" aria-labelledby="contact-title"><button class="dialog-close" type="button">Close</button><h2 id="contact-title">Let’s find the right service.</h2><p id="contact-intro" aria-live="polite">Choose what you’re interested in and tell me a little about your business.</p><form class="enquiry-form" action="https://formsubmit.co/835081ce825a6a057837907299436066" method="post" data-page-service="{current_service}"><input type="hidden" name="_subject" value="Well and Good Growth: service enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://wellandgoodwebsites.ca/thank-you/"><input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><label>What would you like help with?<select name="service"><option value="Help me choose">Help me choose</option><option value="Website builds">Website builds</option><option value="Growth marketing">Growth marketing</option><option value="Agentic Ops">Agentic Ops (AI automation)</option></select></label><label id="package-field" hidden>Package you’re considering (optional)<select name="package" disabled><option value="">Help me choose</option><option>Launch</option><option>Grow</option><option>Dominate</option><option>Custom project</option></select></label><p class="service-form-note" id="automation-form-note" hidden>Custom scope and pricing. We’ll start with a free conversation.</p><label>Business name or website (optional)<input name="business" autocomplete="off"></label><label><span id="message-label">What would you like to improve?</span><textarea name="message" required placeholder="Tell me what your business does and where you could use support."></textarea></label><div class="contact-details"><label>Your name<input name="name" autocomplete="name" required></label><label>Email address<input name="email" type="email" autocomplete="email" required></label></div><button class="button" type="submit">Send enquiry <span aria-hidden="true">↗</span></button><p class="form-privacy">Your details are sent through FormSubmit for email delivery and used to respond to your enquiry. <a href="/privacy/">Privacy notice</a>.</p></form><p class="form-result" role="status"></p></dialog></body></html>'''
+    # Link fallback allows enquiries with scripts disabled or opening a new tab.
+    def contact_link(match):
+        attrs, label = match.groups()
+        selection = re.search(r'data-contact="([^"]+)"', attrs).group(1)
+        is_package = selection in {'Launch', 'Grow', 'Dominate'}
+        query = {'service': current_service if is_package else selection}
+        if is_package:
+            query['package'] = selection
+        attrs = attrs.replace(' type="button"', '')
+        return f'<a {attrs} href="/contact/?{escape(urlencode(query))}">{label}</a>'
+    return re.sub(r'<button ([^>]*data-contact="[^"]+"[^>]*)>(.*?)</button>', contact_link, html)
+
+
+home = '''<section class="business-hero"><div class="container"><h1>Running your business shouldn’t mean <em>doing everything yourself.</em></h1><p class="hero-description">Websites, growth marketing, and Agentic Ops. Work directly with Matt on the part your business needs.</p><div class="hero-actions">''' + cta() + '''<a class="text-link" href="#services">Explore services ↗</a></div></div></section>
+<section class="services-section container section" id="services"><h2>Where could you use a hand?</h2><div class="service-links"><a href="/services/websites/"><h3>Website builds</h3><p>A clear, useful website that explains your business and makes it easy to get in touch.</p><span class="service-link-label">Websites &amp; packages ↗</span></a><a href="/services/growth/"><h3>Growth marketing</h3><p>Search, content, and marketing that help the right people find and consider your business.</p><span class="service-link-label">Growth &amp; packages ↗</span></a><a href="/services/automation/"><h3>Agentic Ops</h3><p>Bespoke AI workflows for everyday admin, project coordination, and operations.</p><span class="service-link-label">Explore Agentic Ops ↗</span></a></div></section>''' + founder() + project() + contact()
+
+websites = '''<section class="service-hero container"><p class="label">Websites</p><h1>Give people a clear<br>reason to choose you.</h1><div class="hero-lower"><div class="hero-copy"><p class="hero-description">Strategy, copy, design, and development. A website that explains your business and makes the next step easy.</p><div class="hero-actions">''' + cta() + '''<a class="text-link" href="#plans">Compare packages ↗</a></div></div><figure class="website-hero-art"><img src="/assets/frankbaggetta-20260908.webp" width="1440" height="1000" fetchpriority="high" alt="The website built for musician Frank Baggetta."></figure></div></section>''' + pricing() + '''<section class="approach-section container section"><h2>See a direction<br>before you decide.</h2><ol class="process-list"><li><h3>Tell me about the business.</h3><p>Share your current website or social page and what customers should be able to do.</p></li><li><h3>Review a free preview.</h3><p>I prepare a private preview. You can judge the direction with no obligation to buy.</p></li><li><h3>Agree on the build.</h3><p>We confirm scope, price, and support. You review the work before publication.</p></li></ol></section>''' + project() + faq([
+('Can you work with my existing website?', 'Yes, where the platform and access support the changes. We look at what you have before deciding whether to update or rebuild.'),
+('Can I keep my booking system?', 'Where supported, we can link to or embed your existing booking flow. We check that connection before including it in the scope.'),
+('Do you offer one-time website builds?', 'Yes. One-time builds are also available. We agree the pages, content, functionality, and price before paid work begins.')
+]) + contact('Let’s see what your website could be.', 'Tell me about your business and request a free private preview.', service='Website builds')
+
+growth = '''<section class="service-hero container"><p class="label">Growth marketing</p><h1>Help the right people<br>find your business.</h1><div class="hero-lower growth-lower"><div class="hero-copy"><p class="hero-description">SEO, content, and visibility in Google, ChatGPT, and Claude. Built around what you sell and how customers search.</p><div class="hero-actions">''' + cta() + '''<a class="text-link" href="#plans">Compare packages ↗</a></div></div><div class="growth-art" aria-label="Search, content and enquiries"><span>Search.</span><span>Consider.</span><span>Get in touch.</span></div></div></section>
+<section class="capabilities container section"><h2>Make your expertise<br>easier to find.</h2><div class="capability-list"><article><h3>Search and local visibility</h3><p>Technical foundations, service pages, Google Business Profile, and consistent business listings.</p></article><article><h3>Content worth finding</h3><p>Clear service information and useful answers to the questions your customers ask.</p></article><article><h3>AI search and measurement</h3><p>Check mentions and citations in ChatGPT and Claude. Use available search and enquiry data to assess the work.</p></article></div></section>''' + pricing() + founder() + faq([
+('Do I need a new website first?', 'Not necessarily. We can improve an existing site where its platform and access support the agreed work.'),
+('Can you guarantee rankings or AI recommendations?', 'No. Google, ChatGPT, and Claude choose their own results. We agree the work and measures without promising rankings, citations, or sales.'),
+('Can we start with a specific project?', 'Yes. A defined search or content project can be scoped separately from the monthly packages.')
+]) + contact('Who do you want to reach?', 'Tell me what you sell, where you work, and what needs attention.', service='Growth marketing')
+
+automation = '''<section class="service-hero container"><p class="label">Agentic Ops · Custom AI automation</p><h1>Automate the tasks<br>that eat up your day.</h1><div class="hero-lower"><div class="hero-copy"><p class="hero-description">I build custom AI automations that read documents and images, organize information, and take action across your business tools. Less time on repetitive admin. More time for customers, decisions, and growing your business.</p>''' + cta('Request a free call') + '''</div><div class="automation-picker"><p class="picker-heading" id="picker-heading">I spend too much time…</p><div class="picker-choices" role="group" aria-labelledby="picker-heading"><button type="button" data-automation-choice="data" aria-pressed="true" aria-controls="automation-data">Copying data</button><button type="button" data-automation-choice="documents" aria-pressed="false" aria-controls="automation-documents">Writing documents</button><button type="button" data-automation-choice="updates" aria-pressed="false" aria-controls="automation-updates">Chasing updates</button></div><div class="picker-result" aria-live="polite" aria-atomic="true"><div id="automation-data" data-automation-panel="data"><p class="label">Connect your tools</p><h2>Enter it once.</h2><p>An enquiry arrives through your website. Its details become a client record and a follow-up task, without copying them into separate apps.</p></div><div id="automation-documents" data-automation-panel="documents" hidden><p class="label">Automate document drafts</p><h2>Skip the blank page.</h2><p>Use meeting notes, client details, and your own templates to prepare a proposal draft with the relevant information already filled in.</p></div><div id="automation-updates" data-automation-panel="updates" hidden><p class="label">Track outstanding tasks</p><h2>Know what needs a nudge.</h2><p>Check project records for overdue tasks and missing details. Bring the outstanding items together and prepare the follow-up messages for your review.</p></div></div></div></div></section>
+<section class="capabilities container section"><h2>Still doing it all manually?</h2><p class="section-intro">Copying information between apps. Chasing missing details. Rebuilding the same documents. Let’s automate the parts that keep repeating.</p><div class="capability-list automation-capabilities"><article><h3>Document automation</h3><p>Extract details from PDFs, forms, and images. Use them to prepare draft proposals, summaries, and reports in your own templates.</p></article><article><h3>Client intake and follow-up</h3><p>Organize new enquiries, create client records, prepare replies, and keep track of who needs a response.</p></article><article><h3>Workflow integration</h3><p>Connect your forms, spreadsheets, and business apps so information moves between them without repeated data entry.</p></article><article><h3>Research and reporting</h3><p>Gather relevant information, check sources, and bring the findings together in a brief or recurring report.</p></article></div></section>
+<section class="builds-section container section" id="builds"><h2>Selected projects.</h2><div class="builds"><article><p class="label">Real estate</p><h3>Task management and follow-up</h3><p>Date-based task views and editable email templates for keeping track of client deadlines and preparing the next message.</p></article><article><p class="label">Business development</p><h3>Project research briefs</h3><p>Project fit, stage, and milestones brought together in sourced briefs, ready to assess before pursuing an opportunity.</p></article><article><p class="label">Contact research</p><h3>Professional contact sourcing</h3><p>Football-industry research that brings together relevant roles and professional contact details, checked against club and federation sources.</p></article></div></section>
+<section class="bespoke-section container section"><h2>From first call<br>to a tested automation.</h2><p>An AI agent can interpret information, choose the next step, and use connected software to carry it out. Agentic Ops is my service for building those capabilities into your business.</p><p>You work directly with me to identify what to automate, test it, and get it running. Each project is bespoke. You receive a quote covering the build, software costs, and support before paid work begins.</p>''' + cta('Request a free call') + '</section>' + faq([
+('Will this work with the software I already use?', 'We check your existing tools first. Where they support the connections you need, the automation can run between them. Sometimes a feature you already pay for is enough.'),
+('How much control do I keep?', 'You choose which actions run automatically and which need approval. I build in review points for customer messages, spending, and incomplete or uncertain information.'),
+('What does an automation cost?', 'It depends on the process, the tools involved, and how often it runs. We compare the time and effort involved today with the build and running costs, then agree a scope and price.')
+]) + contact('Find out what’s<br>worth automating.', 'Tell me which tasks take up your time and what software you use. In a free first conversation, I’ll help you identify a useful starting point and explain what building it would involve.', label='Request a free call', service='Agentic Ops')
+
+frank_case = '''<section class="service-hero container case-hero"><p class="label">Case study · Frank Baggetta · Toronto</p><h1>Fifteen years online.<br>Three enquiries in month one.</h1><p class="hero-description">A website rebuild for a Toronto musician, bringing local search, performance videos, and event enquiries together.</p><div class="hero-actions"><a class="button" href="https://frankbaggetta.ca/" target="_blank" rel="noopener">Visit Frank’s website <span aria-hidden="true">↗</span></a><a class="text-link" href="/#work">More websites ↗</a></div></section>
+<figure class="container case-screenshot"><a href="https://frankbaggetta.ca/" target="_blank" rel="noopener"><img src="/assets/frankbaggetta-20260908.webp" width="1440" height="1000" alt="Frank Baggetta’s updated website, headed The Accordion Player Who Gets Toronto Dancing." fetchpriority="high"></a><figcaption>Frank’s current website, captured September 8, 2026.</figcaption></figure>
+<article class="case-story container section"><h2>A long career.<br>A website that wasn’t bringing bookings.</h2><p>Frank Baggetta has performed for fifty years on Toronto’s biggest stages, from the Rogers Centre to the Royal Ontario Museum. For fifteen of those years he had a website. It never brought him a single booking.</p><p>It wasn’t built to be found: it didn’t rank, it wasn’t built for mobile, and it had collected a decade of dead pages.</p><h2>The rebuild</h2><p>We rebuilt it as a fast, mobile-first site organized around five services: weddings, corporate events, cocktail piano, Italian music, and jazz. Every page was written and structured for local search.</p><p>Visitors could hear Frank perform, find the music for their event, and get in touch directly.</p>
+<h2>Results from the original launch</h2><div class="case-stats"><div><strong>3.3</strong><span>Average Google position for “accordion player Toronto”</span></div><div><strong>48%</strong><span>Click-through rate for searches for Frank’s name</span></div><div><strong>53%</strong><span>Of visits came from organic search</span></div></div><ul class="case-results"><li>Three new enquiries in the first month, after fifteen years without a booking through the old site.</li><li>Ranked first on Google for “frank baggetta.”</li><li>Organic search became the site’s largest source of traffic.</li><li>A 76% engagement rate, with visitors spending about a minute per visit.</li><li>70% of search clicks came from mobile.</li></ul><p class="small-note">Search and traffic figures: Google Search Console and GA4, approximately the first 3.5 months after launch. First-month enquiries reported by Frank.</p>
+<blockquote class="case-quote"><p>“I had a website for fifteen years and it never brought me a single booking. I’m not a tech person, so I kept putting it off. Matt had my new site live faster than I thought was possible, and in the first month it already brought in three new enquiries. I sent him what I had and he handled the rest. Completely painless.”</p><cite>Frank Baggetta · FrankBaggetta.ca</cite></blockquote></article>''' + contact('Could your website<br>be doing more for you?', 'Tell me about your business and request a free private website preview.', label='Request a website preview', service='Website builds')
+
+pages = {
+    'frank-baggetta/index.html': page('Frank Baggetta website case study', 'The original website rebuild, launch-period search results, and approved testimonial from Toronto musician Frank Baggetta.', frank_case, 'websites'),
+    'index.html': page('Websites, growth marketing and AI operations', 'Work directly with Matthew Baggetta on websites, growth marketing, and AI operations for your business.', home),
+    'services/websites/index.html': page('Websites for Niagara and GTA businesses', 'Website strategy, copy, design, and development. Compare website and growth packages, or request a free preview.', websites,'websites'),
+    'services/growth/index.html': page('Growth marketing, SEO and content', 'SEO, content, and visibility in Google, ChatGPT, and Claude. Website and growth packages with Matthew Baggetta.', growth,'growth'),
+    'services/automation/index.html': page('Custom AI automations for your business | Agentic Ops', 'Custom AI automation for documents, client follow-up, connected business tools, and research. Work directly with Matthew Baggetta.', automation,'automation'),
+}
+
+# Preserve the existing privacy content while using the approved site shell.
+privacy_body = (ROOT / 'content/privacy.html').read_text()
+privacy_body = privacy_body.replace('Well and Good is operated', 'Well and Good Growth is operated')
+privacy_body = privacy_body.replace('class="page-hero"', 'class="service-hero container"').replace('class="section section-paper"', 'class="case-story container section"')
+privacy_body = re.sub(r' data-reveal', '', privacy_body)
+privacy_body = re.sub(r'<p class="breadcrumbs">.*?</p>', '', privacy_body, flags=re.S)
+privacy_body = privacy_body.replace('class="eyebrow"', 'class="label"').replace('<p>Well and Good Growth is operated', '<p class="hero-description">Well and Good Growth is operated')
+pages['privacy/index.html'] = page('Privacy notice', 'How Well and Good Growth handles the information you submit through this website.', privacy_body)
+pages['contact/index.html'] = page('Contact Matthew Baggetta', 'Discuss a website, growth marketing, or custom AI automation with Matthew Baggetta.', '<section class="service-hero container"><p class="label">Contact Matt</p><h1>Let’s talk.</h1><p class="hero-description">Choose a service and tell me a little about your business. I’ll reply personally.</p></section><section class="container section contact-page"><!-- CONTACT_FORM --></section>')
+contact_html = pages['contact/index.html']
+inline_form = re.search(r'<dialog.*?>(.*?)</dialog>', contact_html, re.S).group(1)
+inline_form = inline_form.replace('<button class="dialog-close" type="button">Close</button>', '')
+contact_html = re.sub(r'<dialog.*?</dialog>', '', contact_html, flags=re.S)
+pages['contact/index.html'] = contact_html.replace('<!-- CONTACT_FORM -->', '<div class="contact-panel">' + inline_form + '</div>')
+pages['thank-you/index.html'] = page('Thank you', 'Thank you for contacting Well and Good Growth.', '<section class="service-hero container"><h1>Thanks for getting in touch.</h1><p class="hero-description">I’ll review your enquiry and reply personally.</p><a class="button" href="/">Back to home <span aria-hidden="true">↗</span></a></section>')
+pages['404.html'] = page('Page not found', 'Find websites, growth marketing, and AI automation services from Well and Good Growth.', '<section class="service-hero container"><h1>Page not found.</h1><p class="hero-description">Try the homepage or choose a service from the menu.</p><a class="button" href="/">Back to home <span aria-hidden="true">↗</span></a></section>')
+
+
+def build():
+    if OUTPUT.exists():
+        shutil.rmtree(OUTPUT)
+    OUTPUT.mkdir()
+    for name in ['assets', 'fonts']:
+        shutil.copytree(DESIGN / name, OUTPUT / name)
+    for name, versioned_name in ASSETS.items():
+        shutil.copy2(DESIGN / name, OUTPUT / versioned_name)
+    urls = []
+    for name, html in pages.items():
+        route = '/' + name.removesuffix('index.html')
+        url = 'https://wellandgoodwebsites.ca' + route
+        title = re.search(r'<title>(.*?)</title>', html).group(1)
+        description = re.search(r'<meta name="description" content="([^"]*)">', html).group(1)
+        metadata = f'<link rel="canonical" href="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="Well and Good Growth"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://wellandgoodwebsites.ca/assets/wgw-logo-primary.png"><meta name="twitter:card" content="summary_large_image">'
+        schema = {'@context':'https://schema.org', '@type':'ProfessionalService', 'name':'Well and Good Growth', 'url':'https://wellandgoodwebsites.ca/', 'email':'matt@wellandgoodwebsites.ca', 'founder':{'@type':'Person','name':'Matthew Baggetta'}, 'areaServed':['Niagara Region, Ontario','Greater Toronto Area, Ontario']}
+        metadata += '<script type="application/ld+json">' + json.dumps(schema) + '</script><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script>'
+        html = html.replace('</head>', metadata + '</head>')
+        if name in {'thank-you/index.html', '404.html'}:
+            html = html.replace('index,follow', 'noindex,follow')
+        else:
+            urls.append(url)
+        path = OUTPUT / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(html.replace('<br>', '<br> '))
+    (OUTPUT / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://wellandgoodwebsites.ca/sitemap.xml\n')
+    (OUTPUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{url}</loc></url>' for url in urls) + '</urlset>')
+    (OUTPUT / 'llms.txt').write_text('# Well and Good Growth\n\nWebsites, growth marketing, and custom AI automation with Matthew Baggetta in Welland, Ontario. Agentic Ops is bespoke. Website and growth packages are listed on their service pages. Frank Baggetta is a completed client website. Evelyn’s and JK Motors are concept builds.\n\n' + '\n'.join('- ' + url for url in urls) + '\n')
+    print(f'Built approved Growth site: {len(pages)} pages in {OUTPUT}')
+
+
+if __name__ == '__main__':
+    build()

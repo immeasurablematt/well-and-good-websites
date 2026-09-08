@@ -18,6 +18,7 @@ ALLOWED_PRICE_PAGES = {
     "one-page-websites/index.html",
     "web-design-niagara/index.html",
 }
+REQUIRED_FILES = ("styles.css", "site.js", "robots.txt", "llms.txt")
 NOINDEX_PAGES = {"thank-you/index.html", "404.html"}
 FORBIDDEN_WORDS = {
     "seamless",
@@ -339,7 +340,7 @@ def main() -> int:
         if rel not in NOINDEX_PAGES:
             publishable_routes.add(route_for_file(page))
 
-    required = [ROOT / name for name in ("styles.css", "site.js", "robots.txt", "llms.txt")]
+    required = [ROOT / name for name in REQUIRED_FILES]
     for file in required:
         if not file.exists():
             errors.append(f"{file.name}: missing required site file")
