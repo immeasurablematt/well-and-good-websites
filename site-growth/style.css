@@ -62,7 +62,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--page);color:var(--i
 .service-hero:before{content:"";position:absolute;inset:0 calc((100vw - 100%)/-2);z-index:-1;background:linear-gradient(rgba(30,61,52,.94),rgba(30,61,52,.97)),url('/assets/wgw-pattern-texture.webp') center/460px}
 .pricing-section{background:linear-gradient(rgba(239,227,211,.96),rgba(239,227,211,.96)),url('/assets/wgw-pattern-texture.webp') center/460px}
 @media(max-width:1100px){.business-hero>.container{grid-template-columns:minmax(0,1fr) 220px;gap:32px}.hero-emblem{width:220px;height:220px}}
-@media(max-width:640px){.brand.brand-with-logo{gap:9px}.brand .bridge-emblem{width:43px;height:43px}.business-hero>.container{grid-template-columns:1fr;gap:30px}.hero-emblem{width:150px;height:150px;justify-self:start;grid-row:1}.business-hero h1{font-size:clamp(34px,8.6vw,48px)}}
+@media(max-width:640px){.brand.brand-with-logo{gap:9px}.brand .bridge-emblem{width:43px;height:43px}.business-hero>.container{grid-template-columns:1fr;gap:30px}.hero-emblem{width:150px;height:150px;justify-self:center;grid-row:1}.business-hero h1{font-size:clamp(34px,8.6vw,48px)}}
 
 /* Homepage ident: fixed dimensions, static first paint and optional motion. */
 .hero-motion{position:relative;overflow:visible;border-radius:0;mix-blend-mode:lighten}
@@ -74,4 +74,4 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--page);color:var(--i
 .motion-toggle[hidden]{display:none}
 @media(prefers-reduced-motion:reduce){.hero-motion .motion-video{display:none}.motion-toggle{display:none}}
 
-@media(max-width:640px){.business-hero>.container{row-gap:50px}}
+@media(max-width:640px){.business-hero{padding-top:18px}.business-hero>.container{row-gap:34px}.hero-motion .motion-toggle{bottom:-30px}}
