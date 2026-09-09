@@ -2,3 +2,6 @@
 .env.local
 *.env.local
 tools/copy-studio/
+
+# Editable motion sources and render history are not website build inputs.
+motion/
