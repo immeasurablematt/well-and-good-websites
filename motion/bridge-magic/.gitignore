@@ -1,0 +1,17 @@
+node_modules/
+.venv/
+.cache/
+workbench-runtime/workbench/.parity/
+workbench-runtime/workbench/.render-public/
+workbench-runtime/workbench/.dev.pid
+workbench-runtime/workbench/proj
+workbench-runtime/workbench/demosrc
+*.log
+
+# Local render history and copied editing runtime stay on this machine.
+versions/
+workbench-runtime/
+out/qa/
+public/audio/
+__pycache__/
+.DS_Store

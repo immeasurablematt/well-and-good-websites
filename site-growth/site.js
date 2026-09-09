@@ -115,3 +115,48 @@ document.querySelectorAll('[data-automation-choice]').forEach(button => {
     });
   });
 });
+
+// Load the decorative hero film only when visible and motion is welcome.
+const heroMotion = document.querySelector('[data-hero-motion]');
+if (heroMotion) {
+  const film = heroMotion.querySelector('video');
+  const toggle = heroMotion.querySelector('button');
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection;
+  const allowed = () => !preference.matches && !connection?.saveData;
+  let loaded = false;
+  const fallback = () => {
+    film.pause();
+    heroMotion.classList.remove('is-playing');
+    toggle.hidden = true;
+  };
+  const play = () => {
+    if (!allowed()) return;
+    if (!loaded) {
+      film.querySelectorAll('source').forEach(source => { source.src = source.dataset.src; });
+      loaded = true;
+      film.load();
+    }
+    film.muted = true;
+    film.play().catch(fallback);
+  };
+  film.addEventListener('playing', () => {
+    heroMotion.classList.add('is-playing');
+    toggle.hidden = false;
+    toggle.textContent = 'Pause animation';
+  });
+  film.addEventListener('ended', () => { toggle.hidden = true; });
+  film.addEventListener('error', fallback);
+  toggle.addEventListener('click', () => {
+    if (film.paused) play();
+    else { film.pause(); toggle.textContent = 'Play animation'; }
+  });
+  preference.addEventListener('change', fallback);
+  connection?.addEventListener('change', () => { if (!allowed()) fallback(); });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); play(); }
+    }, {threshold: 0.25});
+    observer.observe(heroMotion);
+  } else play();
+}

@@ -1,0 +1,24 @@
+{
+  "name": "wgw-bridge-magic",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts --port=3107",
+    "render": "remotion render src/index.ts BridgeMagic out/bridge-magic.mp4 --muted",
+    "render:silent": "remotion render src/index.ts BridgeMagic out/bridge-magic-silent.mp4 --props=props-silent.json --muted",
+    "poster": "remotion still src/index.ts BridgeMagic out/poster.png --frame=179",
+    "typecheck": "tsc --noEmit",
+    "preview": "node scripts/preview.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "remotion": "4.0.484",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "typescript": "5.8.3"
+  }
+}
