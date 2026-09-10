@@ -143,6 +143,7 @@ if (heroMotion) {
     heroMotion.classList.add('is-playing');
     heroMotion.classList.remove('is-static');
   });
+  film.addEventListener('ended', () => heroMotion.classList.add('is-complete'));
   film.addEventListener('error', fallback);
   preference.addEventListener('change', fallback);
   connection?.addEventListener('change', () => { if (!allowed()) fallback(); });
