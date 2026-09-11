@@ -65,15 +65,15 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--page);color:var(--i
 
 /* Homepage ident: fixed dimensions, clean startup and static fallback. */
 .hero-motion{position:relative;overflow:visible;border-radius:0}
-.hero-motion.is-playing:not(.is-complete){mix-blend-mode:lighten}
+.hero-motion.is-playing{mix-blend-mode:lighten}
 .motion-view{position:relative;width:100%;height:100%;overflow:hidden;border-radius:0;background:transparent}
 .motion-view .motion-poster,.motion-view .motion-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:100%}
 .motion-poster{visibility:hidden}
 .hero-motion.is-static .motion-poster{visibility:visible}
 .motion-video{opacity:0;transition:opacity .2s ease}
 .hero-motion.is-playing .motion-video{opacity:1}
-/* Hide the source artwork's outer fringe after the full-frame reveal. */
-.motion-poster,.hero-motion.is-complete .motion-video{clip-path:ellipse(33% 33.5% at 50% 50%)}
+/* Match the fallback poster to the crest edge already baked into the film. */
+.motion-poster{clip-path:ellipse(33% 33.5% at 50% 50%)}
 @media(prefers-reduced-motion:reduce){.hero-motion .motion-video{display:none}.hero-motion .motion-poster{visibility:visible}}
 
 @media(max-width:640px){.business-hero{padding-top:0}}

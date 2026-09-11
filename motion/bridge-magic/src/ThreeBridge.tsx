@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useRef} from 'react';
 import {useCurrentFrame} from 'remotion';
 import paths from './paths.json';
+import {CLICK,REVEAL} from './timeline';
 type V=[number,number,number];
 const mix=(a:number,b:number,t:number)=>a+(b-a)*t;
 const ease=(f:number,a:number,b:number)=>{const t=Math.max(0,Math.min(1,(f-a)/(b-a)));return t*t*t*(t*(t*6-15)+10)};
@@ -20,7 +21,7 @@ function fromLogo(x:number,y:number,z:number,slope=0):V{
 // Every member is a closed rectangular prism in world space. Both truss walls,
 // tower cross-bracing and deck cross-members have real depth and occlusion.
 export const ThreeBridge:React.FC=()=>{
- const f=Math.min(useCurrentFrame(),132);
+ const f=useCurrentFrame();
  const lower=ease(f,0,42);
  // Fixed viewing direction: the opening is a close shot of the lift descending.
  // A straight pullback makes room for the crest, then stops before the click.
@@ -71,19 +72,20 @@ export const ThreeBridge:React.FC=()=>{
   const l=mix(.76+.24*Math.max(0,dot(n,unit([-1,2,-2]))),1,ease(f,102,132));
   const points=v.map(project);faces.push({v:points,color:`rgb(${color.map(c=>Math.round(c*l)).join(',')})`,depth:points.reduce((t,p)=>t+p[2],0)/points.length});
  };
- // Thick curved rails, visibly three-dimensional during the reveal.
- for(const [radius,width,color,delay] of [[343,23,[255,253,247],60],[305,11,[203,208,151],63]] as [number,number,number[],number][]){
-  const amount=ease(f,delay,112),count=Math.ceil(128*amount);
-  const max=radius===343?Math.PI*2:Math.PI*2-.565;
-  const start=radius===343?-Math.PI/2:.105;
+ // The inner rail retains its depth; the outer edge is shared with the final logo.
+ {
+  const radius=305,width=11,color=[203,208,151];
+  const amount=ease(f,REVEAL+3,112),count=Math.ceil(128*amount);
+  const max=Math.PI*2-.565;
+  const start=.105;
   for(let i=0;i<count;i++){
    const a=start+max*i/128,b=start+max*Math.min(i+1,128*amount)/128;
    beam(native(625+radius*Math.cos(a),470+radius*Math.sin(a),30),native(625+radius*Math.cos(b),470+radius*Math.sin(b),30),width,color);
   }
  }
- // Three shaded spheres spring outward from the click, then settle into the mark.
+ // Three shaded spheres settle into the mark before the cursor arrives.
  [[255,253,247],[255,146,117],[203,208,151]].forEach((color,k)=>{
-  const t=ease(f,60+k*3,80+k*3);if(!t)return;
+  const t=ease(f,REVEAL+k*3,REVEAL+20+k*3);if(!t)return;
   const bounce=1+Math.sin(t*Math.PI)*.15,r=23*t*bounce;
   const c=native(488+k*86,292-35*(1-t),-30);
   const point=(a:number,b:number):V=>[c[0]+r*Math.sin(a)*Math.cos(b),c[1]+r*Math.cos(a),c[2]+r*Math.sin(a)*Math.sin(b)];
@@ -93,21 +95,20 @@ export const ThreeBridge:React.FC=()=>{
   }
  });
  // Water is built from aqua tubular members rather than a flat overlay.
- paths.water.forEach((line,k)=>{let prev:V|undefined;const t=ease(f,60+k*3,91+k*3);
+ paths.water.forEach((line,k)=>{let prev:V|undefined;const t=ease(f,REVEAL+k*3,REVEAL+31+k*3);
   line.slice(0,Math.floor(line.length*t)).forEach(([cmd,x,y])=>{const p=native(Number(x),Number(y)+Math.sin(Number(x)/35-f*.13)*3*(1-ease(f,100,132)),-10);if(cmd==='L'&&prev)beam(prev,p,14,[169,214,226]);prev=p;});
  });
  // A beveled-volume cursor follows a continuous world-space path into the click.
- if(f>=45){
-  const t=ease(f,45,60),home=ease(f,65,126);
-  const cx=mix(mix(1120,790,t),840,home),cy=mix(mix(240,465,t),388,home);
-  const press=1-.12*Math.sin(Math.PI*ease(f,60,66));
+ if(f>=112){
+  const t=ease(f,112,CLICK-6);
+  const cx=mix(1120,840,t),cy=mix(240,388,t);
+  const press=1-.12*(ease(f,CLICK-6,CLICK)-ease(f,CLICK,CLICK+6));
   const outline=[[0,0],[74,36],[49,45],[72,68],[60,80],[38,57],[28,82]];
   const verts=outline.map(([x,y])=>native(cx+x*press,cy+y*press,-55));
   const back=outline.map(([x,y])=>native(cx+x*press,cy+y*press,-43));
   for(const tri of [[0,1,2],[0,2,4],[2,3,4],[0,4,5],[0,5,6]])face(tri.map(i=>verts[i]),[255,146,117]);
   for(let i=0;i<verts.length;i++){const j=(i+1)%verts.length;face([verts[i],back[i],back[j],verts[j]],[206,100,74]);}
-  if(f>=60){const r=ease(f,60,68);const fade=1-ease(f,70,85);if(fade>0)for(let i=0;i<5;i++){const a=i*Math.PI/3-.9;beam(native(cx+Math.cos(a)*(12+r*14),cy+Math.sin(a)*(12+r*14),-58),native(cx+Math.cos(a)*(18+r*23),cy+Math.sin(a)*(18+r*23),-58),3*fade,[255,146,117]);}}
-  const rays=ease(f,120,131);if(rays>0)for(const [x,y,xx,yy] of [[-50,5,-26,5],[-34,-36,-17,-18],[10,-50,7,-25],[49,-24,29,-13]])beam(native(cx+x,cy+y,-55),native(cx+xx,cy+yy,-55),7*rays,[255,146,117]);
+  const rays=ease(f,CLICK,CLICK+6);if(rays>0)for(const [x,y,xx,yy] of [[-50,5,-26,5],[-34,-36,-17,-18],[10,-50,7,-25],[49,-24,29,-13]])beam(native(cx+x,cy+y,-55),native(cx+xx,cy+yy,-55),7*rays,[255,146,117]);
  }
  // A depth buffer resolves occlusion per pixel, including every truss opening.
  const canvas=useRef<HTMLCanvasElement>(null);
