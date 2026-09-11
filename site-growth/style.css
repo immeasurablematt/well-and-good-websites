@@ -83,3 +83,8 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--page);color:var(--i
 
 /* Keep the expanded footer links inside narrower screens. */
 footer>div{flex-wrap:wrap}
+
+/* Keep package enquiry labels readable in narrow columns. */
+.plan .button{gap:12px;padding-inline:12px;white-space:normal;text-align:left}
+/* Separate the two paragraphs and preview action on local service pages. */
+.approach-section>div>p+p{margin-top:18px}.approach-section>div>.button{margin-top:24px}
