@@ -53,7 +53,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--page);color:var(--i
 .brand.brand-with-logo{display:flex;align-items:center;gap:12px;white-space:normal}
 .brand .brand-name{margin:0;font:inherit;letter-spacing:inherit;text-transform:none}
 .brand .bridge-emblem,.bridge-emblem{display:block;position:relative;width:52px;height:52px;overflow:hidden;border-radius:50%;flex-shrink:0;margin:0}
-.bridge-emblem img{position:absolute;width:180%;max-width:none;height:auto;left:-38%;top:-15.7%}
+.bridge-emblem img{position:absolute;width:150%;max-width:none;height:auto;left:50%;top:50%;transform:translate(-50%,-50%);clip-path:ellipse(33% 33.5% at 50% 50%)}
 .business-hero>.container{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:center}
 .business-hero h1{font-size:clamp(38px,4.6vw,64px);max-width:850px}
 .hero-emblem{width:min(100%,480px);aspect-ratio:1;justify-self:center}
