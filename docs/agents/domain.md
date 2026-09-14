@@ -16,5 +16,7 @@ strategy, current tools and sound practice applied to the customer's business.
 Convenience alone does not explain why the customer should hire Matt.
 Give each service-page section a distinct purpose. Avoid repeating the same
 capabilities across multiple sections, and keep supporting FAQ answers concise.
+The founder bio is approved copy. Preserve it during broader site revisions;
+change it only when Matthew explicitly requests a bio edit.
 
 If a future task needs a shared glossary, maintain `CONTEXT.md`. Record hard-to-reverse domain decisions under `docs/adr/`. Create these only when the work produces a real decision; their absence does not block routine fixes.

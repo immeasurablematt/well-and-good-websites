@@ -140,3 +140,10 @@ line rectangles before and during pointer hover. All three remained identical
 after the page finished scrolling. The site build and route validator passed.
 This refinement and the reviewed copy are prepared for draft PR #51; production
 publication is a separate step.
+
+## Bio restoration
+
+Matthew rejected the founder-bio revision. Restored `founder()` exactly from
+commit `2b63256`, including its first-person copy, heading and contact action.
+This supersedes the founder changes described above. General copy or layout
+passes must preserve this bio unless Matthew specifically asks to edit it.
