@@ -28,6 +28,7 @@ instead of treating every document in the repository as current authority.
 | S09 | [Frank's current enquiry page](https://frankbaggetta.ca/contact) | Event information requested, personal reply and current service navigation | Browser checked September 14; interface features do not establish conversion improvement |
 | S10 | [Frank search snapshot](../frank-performance-2026-09-14/performance.json) | September 14 Search Console observations and exact comparison periods | Recorded by the separate Frank SEO task; no booking attribution or causal lift |
 | S11 | [September 14 draft review](review-2026-09-14.md) | Current owner decisions translated into proposed copy | Review draft; does not establish publication approval |
+| S12 | [Welland Votes](https://wellandvotes.ca/) | Live independent election guide, candidate comparisons, source links, interactive ward map and Well and Good creator attribution | Added to the portfolio at Matthew's request; a community project, not a commissioned client or a measured growth claim. Live screenshot captured September 14 in `site-growth/assets/wellandvotes-preview-20260914.webp` |
 | R01 | `private-data/positioning/customer-evidence.md` in the local project | Research observations, owner interview, customer language and unresolved questions | Ignored by Git; may contain private material; not a public copy source wholesale |
 | R02 | `private-data/positioning/proof-review-2026-09-14.md` in the local project | Exact proof inventory and implementation observations | Private sources remain local; only the general workflow description is used in copy |
 | M01 | [Charlie Hills post](https://x.com/charliejhills/status/2099182810426986898), its attached four-prompt graphic, and [linked article](https://charliehills.substack.com/p/graph-engineering-claude-code) | Method for evidence-backed customer, company, offer and voice context and linked sources | External method, not evidence of Well and Good customers or results |
@@ -66,6 +67,7 @@ September 14, 2026.
 | 51 Google clicks versus 25 in the prior 28 days | S10 | Non-overlapping periods ending September 12 and August 15; search activity, not enquiries or bookings |
 | Interview preparation and working-document updates | R01, R02 | Owner-described AI-assisted workflow, supported by local implementation review; no unattended-execution or time-saving claim |
 | Evelyn's and JK Motors | S01, S03 | Label as concept builds |
+| Welland Votes | S12 and Matthew's explicit portfolio request | Label as a live community project; describe its verified features without inventing traffic or audience results |
 | Current automation diagrams and examples | S01, S03 | Illustrative scope; no client outcome, time-saving or reliability claim |
 
 ## Voice and expression
