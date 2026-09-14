@@ -1,0 +1,165 @@
+{
+  "recorded_at": "2026-09-14",
+  "source": "Authenticated Google Search Console UI",
+  "property": "https://frankbaggetta.ca/",
+  "search_type": "Web",
+  "countries": "All",
+  "devices": "All",
+  "current_28_days": {
+    "start": "2026-08-16",
+    "end": "2026-09-12",
+    "clicks": 51,
+    "impressions": 401,
+    "ctr_percent": 12.7,
+    "average_position": 8.7
+  },
+  "previous_28_days": {
+    "start": "2026-07-19",
+    "end": "2026-08-15",
+    "clicks": 25,
+    "impressions": 346,
+    "ctr_percent": 7.2,
+    "average_position": 10
+  },
+  "current_3_months": {
+    "start": "2026-06-13",
+    "end": "2026-09-12",
+    "clicks": 110,
+    "impressions": 1106,
+    "ctr_percent": 9.9,
+    "average_position": 9.3
+  },
+  "last_recorded_2026_09_08": {
+    "current_28_days": {
+      "start": "2026-08-10",
+      "end": "2026-09-06",
+      "clicks": 45,
+      "impressions": 379,
+      "ctr_percent": 11.9,
+      "average_position": 10
+    },
+    "current_3_months": {
+      "start": "2026-06-07",
+      "end": "2026-09-06",
+      "clicks": 104,
+      "impressions": 1088,
+      "ctr_percent": 9.6,
+      "average_position": 9.4
+    }
+  },
+  "page_comparison_columns": [
+    "path",
+    "current_clicks",
+    "previous_clicks",
+    "current_impressions",
+    "previous_impressions",
+    "current_position",
+    "previous_position"
+  ],
+  "page_comparison": [
+    [
+      "/",
+      24,
+      14,
+      152,
+      100,
+      3,
+      3.8
+    ],
+    [
+      "/italian-music",
+      13,
+      5,
+      163,
+      163,
+      6.5,
+      7.4
+    ],
+    [
+      "/toronto-accordion-player",
+      11,
+      3,
+      126,
+      57,
+      4.9,
+      7.8
+    ],
+    [
+      "/about",
+      3,
+      3,
+      65,
+      43,
+      3.7,
+      5.8
+    ],
+    [
+      "/weddings",
+      2,
+      0,
+      50,
+      42,
+      16.5,
+      21.4
+    ],
+    [
+      "/corporate",
+      0,
+      0,
+      43,
+      35,
+      19.9,
+      23
+    ],
+    [
+      "/cocktail-piano",
+      0,
+      0,
+      14,
+      10,
+      11.8,
+      10.6
+    ]
+  ],
+  "query_3month_columns": [
+    "query",
+    "clicks",
+    "impressions",
+    "average_position"
+  ],
+  "selected_queries_3month": [
+    [
+      "italian accordion player",
+      1,
+      18,
+      6.9
+    ],
+    [
+      "accordion player toronto",
+      0,
+      14,
+      5.9
+    ],
+    [
+      "accordion players for hire near me",
+      1,
+      4,
+      9.5
+    ],
+    [
+      "corporate entertainment toronto",
+      0,
+      6,
+      22.7
+    ]
+  ],
+  "limits": [
+    "Search clicks are not sessions, enquiries or bookings.",
+    "Current and prior 28-day periods are non-overlapping; September 8 snapshots overlap September 14 windows and are not month-on-month growth.",
+    "Page-level aggregation differs from property-level totals.",
+    "Historical launch-period GA4 and enquiry claims retained as historical, not refreshed.",
+    "Average position is impression-weighted, not a fixed map-pack or organic ranking.",
+    "Small samples do not establish causation.",
+    "Comparison chart accessibility date label rendered Invalid Date; exact dates verified from date-range dialog and prior single-period chart."
+  ]
+}

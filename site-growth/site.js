@@ -5,26 +5,26 @@ const dialog = document.querySelector('.contact-preview');
 const form = document.querySelector('.enquiry-form');
 const enquiryCopy = {
   'Help me choose': {
-    title: 'Let’s find the right service.',
-    intro: 'Choose what you’re interested in and tell me a little about your business.',
+    title: 'Tell me what you need a hand with.',
+    intro: 'Choose a service, or leave it on “Help me choose.” I’ll read your enquiry and reply personally.',
     question: 'What would you like to improve?',
-    prompt: 'Tell me what your business does and where you could use support.'
+    prompt: 'What does your business do, and what would you like to change or take off your plate?'
   },
   'Web development': {
-    title: 'Let’s plan your website.',
-    intro: 'Tell me about the site you need. We can discuss a package or a one-time build.',
+    title: 'Tell me about your website.',
+    intro: 'Request a free private preview, or ask about a package or one-time build. I’ll reply personally to discuss the next step.',
     question: 'What should your website help customers do?',
     prompt: 'Tell me what you sell, whether you need a new site or an update, and what visitors should be able to do.'
   },
   'Growth marketing': {
-    title: 'Let’s talk about growing your business.',
-    intro: 'Tell me who you want to reach and what you’d like your marketing to achieve.',
+    title: 'Tell me who you want to reach.',
+    intro: 'Share the services you want to promote and the customers you want to reach. We can discuss a specific project or ongoing support.',
     question: 'What do you want to promote, and to whom?',
     prompt: 'Which products or services do you want to promote? Who are your customers, and where do you want to reach them?'
   },
   'Agentic automation': {
-    title: 'Let’s talk about automating your admin.',
-    intro: 'Tell me which repetitive tasks you’d like to automate and what software you use.',
+    title: 'Walk me through the task.',
+    intro: 'Describe one task you repeat and the tools involved. We’ll arrange a free first conversation to see whether automation would help.',
     question: 'What would you like to automate?',
     prompt: 'Describe a task you repeat, how often it comes up, and the tools you use to do it.'
   }
