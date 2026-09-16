@@ -22,7 +22,7 @@ const enquiryCopy = {
     question: 'What do you want to promote, and to whom?',
     prompt: 'Which products or services do you want to promote? Who are your customers, and where do you want to reach them?'
   },
-  'Agentic automation': {
+  'AI automation': {
     title: 'Walk me through the task.',
     intro: 'Describe one task you repeat and the tools involved. We’ll arrange a free first conversation to see whether automation would help.',
     question: 'What would you like to automate?',
@@ -40,7 +40,7 @@ function updateEnquiry() {
   document.querySelector('#package-field').hidden = !showPackages;
   form.elements.package.disabled = !showPackages;
   if (!showPackages) form.elements.package.value = '';
-  document.querySelector('#automation-form-note').hidden = service !== 'Agentic automation';
+  document.querySelector('#automation-form-note').hidden = service !== 'AI automation';
   document.querySelector('.form-result').textContent = '';
 }
 form.elements.service.addEventListener('change', updateEnquiry);
