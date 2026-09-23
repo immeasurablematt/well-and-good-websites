@@ -2,8 +2,8 @@
 
 Status: active
 Branch: claude/copy-optimization-skills-2xydff
-Pull request: none yet
-Updated: 2026-09-23 00:56 UTC by Claude cloud
+Pull request: #60 (draft)
+Updated: 2026-09-23 01:00 UTC by Claude cloud
 
 ## Goal
 Let Matthew stop in one AI tool (Claude cloud, Claude desktop, Codex on Mac, Hermes) and continue the same work in another without losing context, and without being able to break anything by accident.
@@ -19,7 +19,7 @@ Test the setup from a different tool. In Codex on the Mac or in Hermes, open thi
 - Claude Code now runs the handoff check automatically when a session starts (`.claude/settings.json`).
 
 ## Waiting on Matthew
-- Merge the pull request for this branch. It changes no website pages.
+- Merge pull request #60 (mark it ready for review first; it is a draft). It changes no website pages.
 
 ## Notes for the next tool
 - `AGENTS.md` is a symlink to `CLAUDE.md`. Edit `CLAUDE.md` only.
