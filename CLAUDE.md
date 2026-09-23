@@ -1,5 +1,35 @@
 # Well and Good Websites
 
+## Continuing work across AI tools (do this first)
+
+Matthew moves between Claude (cloud and desktop), Codex on his Mac, and Hermes, often when one runs out of tokens mid-task. Each piece of work (a workstream) has one handoff note in `handoffs/NAME.md`, so the next tool can continue without the chat history. Matthew is not a developer: do every Git step yourself and explain results in plain words, never as commands for him to run.
+
+At the start of every session, before any other work:
+
+1. Run `python3 scripts/handoff.py`. It checks GitHub and lists the open workstreams, the next step for each, and where the newest version lives.
+2. If Matthew says "continue" (or anything like it) and one workstream is open, continue it. If several are open, list them in plain words and ask which one. If he asks for something new, start a new workstream (step 4).
+3. To continue, run `python3 scripts/handoff.py show NAME` and follow its instructions. Matthew allows pushing to the branch it names, which keeps one pull request per workstream. If your tool cannot push there (for example, a cloud session limited to its own branch), merge that branch into yours instead, update the note's `Branch` and `Pull request` lines, and tell Matthew your pull request now includes the older one, so he only needs to merge yours.
+4. For new work, create a branch as usual, then run `python3 scripts/handoff.py new NAME "Plain title" --by "TOOL"`. NAME is short, lowercase, and hyphenated. TOOL is one of: Claude cloud, Claude desktop, Codex on Mac, Hermes. Every task that changes files gets a note.
+5. Tell Matthew in one or two sentences what you are picking up and what the next step is.
+
+While working:
+
+- Save the note after every meaningful step, not only at the end: the session can be cut off without warning. Update `Updated:`, `Next step`, and `Done so far`, written so a tool with no chat history can start the next step without asking.
+- Each time you save the note, commit it together with the related work and push the branch.
+- Edit only your own workstream's note. Never delete or rewrite another workstream's note.
+- Never commit to `main` directly: merging to `main` publishes the website. Never force-push.
+- No passwords, API keys, or private client details in notes: this repository is public on GitHub.
+
+If the script shows a warning:
+
+- "saved N minutes ago", and you did not make that save: ask Matthew whether another AI session is still working on it before you change anything.
+- "has a different version": two sessions changed the same workstream. Combine both versions before continuing and tell Matthew what you combined. Ask him only if the versions disagree about what to do.
+- Uncommitted changes in this folder that you did not make: do not switch branches, stash, or discard them. Ask Matthew.
+
+When Matthew says "handoff", "wrap up", or that he is switching tools, and when `finish-session` or `finish-session-work` runs here: save the note, commit, push, and reply in one line with what is saved and "In the next tool, say: continue."
+
+Use `Status: waiting` when the work is blocked on Matthew. When a workstream is finished (its pull request is merged, or Matthew says it is done), set `Status: done`, commit, and push. Keep the file as the record.
+
 ## Copy and writing style
 
 - Never use em-dashes (the "—" character) in any copy, document, spreadsheet, commit message, or chat reply. Use periods, commas, colons, or parentheses instead. En-dashes in numeric ranges (for example "$2,500–$8,000") are fine.

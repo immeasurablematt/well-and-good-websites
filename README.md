@@ -2,6 +2,8 @@
 
 Websites, growth marketing, and custom AI automation with Matthew Baggetta in Welland, Ontario.
 
+Switching between Claude, Codex, and Hermes? See [handoffs/README.md](handoffs/README.md).
+
 The production site follows the approved September 8, 2026 review. Its copy and shared markup live in `scripts/build_growth.py`; styles, browser behavior, images, and fonts live in `site-growth/`.
 
 ## Local preview
