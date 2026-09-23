@@ -1,1 +1,15 @@
-{}
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/handoff.py\" || true",
+            "timeout": 90
+          }
+        ]
+      }
+    ]
+  }
+}
