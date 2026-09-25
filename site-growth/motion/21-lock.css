@@ -4,15 +4,28 @@
    the drawing: one label under each lock on wide screens, stacked on phones. The markup is the finished
    state; 21-lock.js runs the simulation. Markup: LOCK_SECTION in scripts/art_showpieces.py. */
 .lock-section{border-top:1px solid var(--rule)}
-.lock-figure{max-width:1000px;margin:28px 0 0}
+/* The heading uses the FAQ heading size, so its two lines stay clear of the third gate on wide screens. */
+.lock-section h2{font-size:clamp(30px,3vw,38px)}
+.lock-figure{max-width:1060px;margin:8px 0 0}
 .cl-art{display:block;width:100%;height:auto;overflow:visible}
-/* The drawing keeps 70 units of headroom above the locks (viewBox top -60) so the raised gates fit.
-   On wide screens the heading never reaches the fourth gate's column (80% across), so the drawing moves
-   up into that headroom (-11.5% of its width is 69 units): gate 4 rises beside the heading, and the
-   48px margin keeps gate 3 (60% across, 24 units above) clear of it. */
+/* The viewBox starts at y -60, above the highest wall (18), so the raised gates fit, and the drawing moves
+   up into that headroom so the staircase rises toward the heading. A raised gate lifts 72 units: gate 1
+   (20% across) tops out at y 54, gate 2 (40%) at 20, gate 3 (60%) at -14, gate 4 (80%) at -48. A margin-top
+   in % is a share of the figure's width, and the width is 600 units, so -1% moves the drawing up 6 units.
+   Each rule puts the highest raised gate that can pass under the heading's text 8 to 20px below the
+   heading, and no raised gate or the badge ever overlaps its text (measured from 360 to 1920 wide). */
+/* Phones: the heading can run past gate 4, so gate 4's raised top (-48) sits 8px below the heading. */
+.cl-art{margin-top:-2%}
+/* Mid widths: the heading runs past gate 3, so gate 3's raised top (-14) sits 16px below the heading. */
 @media (min-width:761px){
-  .lock-figure{margin-top:48px}
-  .cl-art{margin-top:-11.5%}
+  .lock-figure{margin-top:16px}
+  .cl-art{margin-top:-7.667%}
+}
+/* Wide screens: the heading ends before gate 3 (59% across), so gates 3 and 4 and the review badge rise
+   beside it, and gate 2's raised top (20) sits 20px below the heading. */
+@media (min-width:900px){
+  .lock-figure{margin-top:20px}
+  .cl-art{margin-top:-13.333%}
 }
 
 /* The drawing */
