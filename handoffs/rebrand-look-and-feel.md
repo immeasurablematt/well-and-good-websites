@@ -3,13 +3,13 @@
 Status: waiting
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 03:49 UTC by Claude cloud
+Updated: 2026-09-25 04:02 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
 
 ## Next step
-Workshop phase, one question at a time (brainstorming approach: no site code changes until Matthew approves a written design). Matthew is choosing between three visual directions on a private preview page: https://claude.ai/artifact/DHDY3gazersy8Q374mdtVs (only his account can open it). A "Ink line": fine ink lines, Fraunces set light, closest to the current site. B "Canal lock": two-colour print look, Besley and Libre Franklin, the automation drawing is a boat rising through canal locks with his review as the lock gate. C "Draftsman": engineer's drawing on grid paper, Newsreader and Barlow Semi Condensed, the review step is a "hold point". Recommended to him: B, or A's lines with B's lock drawing. When he answers, record it under "Decisions", then write `docs/specs/2026-09-25-rebrand-design.md` (mark and lockup, palette, type, motion, the automation drawing, and the two open questions under "Notes for the next tool": the homepage video ident and the drawing versus the task picker), get his approval, and only then build the pilot (homepage plus AI automation page) in `site-growth/` and `scripts/build_growth.py`.
+Workshop phase, one question at a time (brainstorming approach: no site code changes until Matthew approves a written design). In progress: rebuilding the preview page (same URL) as "B, round two": three new two-ink palettes he can switch between, a bridge redrawn from parameters so both towers are identical, and a lock drawing that works like a real lock (chamber fills and lifts the boat, the gate lifts, the boat moves across; his review gate waits for approval; step labels in an HTML list under the drawing so they stay readable on phones). Then ask him to pick a palette and confirm the lock drawing. Round one, for reference: the preview page showed three directions: https://claude.ai/artifact/DHDY3gazersy8Q374mdtVs (only his account can open it). A "Ink line": fine ink lines, Fraunces set light, closest to the current site. B "Canal lock": two-colour print look, Besley and Libre Franklin, the automation drawing is a boat rising through canal locks with his review as the lock gate. C "Draftsman": engineer's drawing on grid paper, Newsreader and Barlow Semi Condensed, the review step is a "hold point". Recommended to him: B, or A's lines with B's lock drawing. When he answers, record it under "Decisions", then write `docs/specs/2026-09-25-rebrand-design.md` (mark and lockup, palette, type, motion, the automation drawing, and the two open questions under "Notes for the next tool": the homepage video ident and the drawing versus the task picker), get his approval, and only then build the pilot (homepage plus AI automation page) in `site-growth/` and `scripts/build_growth.py`.
 
 ## Done so far
 - Reviewed the current production site (built from `scripts/build_growth.py` and `site-growth/`), the brand crest (`assets/wgw-logo-primary.png`), and the bridge motion piece in `motion/bridge-magic/`.
@@ -24,6 +24,7 @@ Workshop phase, one question at a time (brainstorming approach: no site code cha
 - Mood (2026-09-25, option 1 plus diagrams): warm and crafted as the base (editorial serif type, paper-and-ink feel, line illustrations that draw themselves as you scroll), with animated system diagrams on the service pages (a search becomes a visit, then a booking, then an automated follow-up).
 - Pages first (2026-09-25, option 2): pilot the new look on the homepage plus the AI automation page, then roll it out to the rest of the site.
 - Logo (2026-09-25, option 1): the Welland lift bridge is the one symbol. The browser dots and the cursor are dropped. The wordmark reads Well and Good Growth.
+- Direction (2026-09-25): B, Canal lock (two-ink print look, Besley and Libre Franklin, heavier lines, paper grain, lock drawing for automation), with three changes Matthew asked for: totally reimagined colours (no forest and coral), both bridge towers the same height, and a better-executed lock animation (he likes the concept).
 
 ## Notes for the next tool
 - Current look: forest green, cream, and coral; Fraunces headings and Inter body text; a repeating bridge pattern behind the hero; one fade-in animation. Tokens are at the top of `site-growth/style.css`.
