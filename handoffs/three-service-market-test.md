@@ -1,28 +1,27 @@
 # Compare markets across all three service lines
 
-Status: active
+Status: waiting
 Branch: codex/three-service-market-test
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
-Updated: 2026-09-25 22:10 EDT by Claude desktop
+Updated: 2026-09-25 22:30 EDT by Claude desktop
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
 
 ## Next step
-Claude desktop is running the comparable research (one specialist per service line, then a cross-line challenge). If this session was cut off, finish that research: read plan.md and claude-prompt.md, use data/keyword-sample-three-lines.csv for search data (do not buy it again), then write analysis.md, comparison.csv, source-register.md, and experiment.md beside the plan and update pull request #65. Nothing has been sent to prospects and the site is unchanged.
+Matthew reviews docs/strategy/three-service-market-test/analysis.md and experiment.md in pull request #65. If he approves the test, help him with Week 0 of experiment.md only: the four private questions, the private network count, and the gate decision. Keep answers, names, and amounts outside this public repository (for example ~/Hermes/Workbench/market-test/). Do not contact prospects, send offers, change the site, or merge until he says so.
 
 ## Done so far
-- Claude desktop finished comparable research for all three lines (research/ folder), wrote source-register.md, and built comparison.csv from build_comparison.py (prices observed, hours assumed). Cross-line challenge done (research/challenge.md) and analysis.md written. experiment.md not yet written.
-- Claude desktop collected comparable Google Ads keyword estimates for websites, growth marketing, and extra automation terms (47 phrases, Canada and US, Sep 2025 to Aug 2026). Two calls, US$0.18 total. Raw files: data/keywords-three-line-canada.json and data/keywords-three-line-usa.json; flattened: data/keyword-sample-three-lines.csv.
-- Saved the analysis and commercial-test plan, including economics, evidence standards, cross-selling, fair comparisons, and decision rules.
-- Saved the complete Claude prompt and a public-source index.
-- Synced the packet to GitHub and opened draft pull request #65 for Claude to continue. No merge or site deployment was performed.
-- Included two successful raw September 25 keyword-data responses and an 18-row CSV; these cover automation only and cost US$0.18 in total when originally collected.
-- Verified the packet contains no production changes, private conversation screenshot, or private client anecdotes.
-- Kept unrelated local output and writing folders untouched. The plan was prepared in an isolated checkout.
+- Recommendation (analysis.md): initial sales priority is growth marketing for B2B tech and software teams through Matthew's professional network, GTA first, with automation needs recorded in the same conversations. Confidence low to medium and gated on a private count of qualified network contacts. Credible alternative: fixed-scope website builds (from about CAD 3,000) for established local service businesses through warm relationships and referrals, confidence medium. Local Launch/Grow/Dominate packages and standalone local automation stay available but should not lead acquisition.
+- Comparable research for all three lines by three specialist agents, plus an independent cross-line challenge that changed the recommendation (research/ folder).
+- comparison.csv (regenerate with python3 build_comparison.py): 10 service, buyer, and channel rows plus 2 exclusions. Prices observed; hours and exchange rate are assumptions. Base-case net CAD per founder hour, first 90 days: B2B content 130, network automation 137, local website build 78, Grow package 45, Launch by cold outreach 31.
+- source-register.md: dated evidence for all three lines, evidence types separated, research costs. Total metered spend for the workstream US$0.36 (Codex US$0.18 plus Claude US$0.18 for 47 website, growth, and automation keywords in Canada and the US).
+- experiment.md: six-week test with a day-60 review, gate thresholds, equal acquisition-hours caps, prospect and time-log fields, decision rules, and four draft offer outlines. Marked unlaunched.
+- Codex earlier saved plan.md, claude-prompt.md, sources.md, and the automation-only keyword data, and opened draft pull request #65. No production files changed, no outreach, no merge.
 
 ## Waiting on Matthew
-- Nothing blocks the research. Revenue or owner-income target, available weekly hours, deadline, and usable pipeline evidence would improve the economics. Ask concisely and proceed with explicit scenarios if unanswered.
+- Review the recommendation and decide whether to run the experiment.
+- Four private answers that could flip the result: monthly revenue or income target and deadline; weekly hours; why the B2B consultancy work ended and whether he wants more of it; how the one completed website client was won.
 
 ## Notes for the next tool
 - Previous research centered on automation and cannot justify prioritizing that service over websites or growth marketing.
