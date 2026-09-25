@@ -28,7 +28,10 @@ def bundle(name):
     stopping the others (partials are IIFEs and share nothing but window.WG).
     """
     base = DESIGN / name
-    parts = [base] + sorted(MOTION.glob('*' + base.suffix))
+    partials = sorted(MOTION.glob('*' + base.suffix))
+    # Fail loudly rather than publish a site without its animations (a deploy ignore rule once dropped this folder).
+    assert partials, f'No motion partials found in {MOTION}: check .vercelignore and the checkout'
+    parts = [base] + partials
     chunks = []
     for part in parts:
         label = part.relative_to(DESIGN).as_posix()
