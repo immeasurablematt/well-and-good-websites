@@ -3,7 +3,7 @@
 Status: active
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 04:58 UTC by Claude cloud
+Updated: 2026-09-25 05:20 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
@@ -19,6 +19,8 @@ Build the approved rebrand across the whole site on this branch, following `docs
 - Built round three (Lake & Marigold only, simulated lock animation, no dot artifacts at the start of line drawings) and republished it as version 3.
 - Built the motion catalogue (`design/rebrand-preview/build_catalogue.py` and `catalogue_template.html`, output `motion-catalogue.html`, published at the URL under "Waiting on Matthew"). 17 demos with real copy, photo, screenshot, and results. Everywhere: 1 headlines print in (marigold then indigo into register), 2 letterpress buttons, 3 header bridge span lifts on hover or tap, 4 ink underline links, 5 canal reading bar with a freighter at the top of the page, 6 enquiry form ink lines and a freighter casting off on send, 7 FAQ icons as lift gates. Shared sections: 8 process step numbers fill like locks, 9 Launch, Grow, Dominate as rising water levels, 10 real results fill water columns and count up (SeamlessFi 1,412 to 3,871 views per post; io.net 5,097 to 27,022 estimated monthly visits; Frank nearly 3x), 11 portfolio screenshots glide and tilt, 12 founder photo develops from an indigo and marigold duotone to colour. Showpieces: 13 homepage service drawings, 14 scroll-driven boat journey (Find you, See the fit, Get in touch) for Growth marketing and Niagara SEO, 15 Welland Canal map with the page's town pinned (Welland, St. Catharines, Niagara), 16 404 "Bridge up" with sign, lamps, and road barrier that lower on hover of Back to home, 17 thank-you freighter through a last lock. Bridge geometry now lives in `design/rebrand-preview/bridge_geometry.py`, shared by the preview and the catalogue (the preview rebuilt byte-identical after the move).
 - Fixed the gate heights and republished as version 4: every gate now reaches the top of the higher chamber's wall (COPES + 6), 12 units above the highest level on either side, with three braced panels like the bridge towers; closed end gates sit at both ends of the flight. `build_preview.py` asserts the clearance so this cannot regress. The lock drawing's viewBox is now 0 -60 600 332 so raised gates fit.
+
+- Rebuild lane A (foundation) done and pushed (commits d0f6d1b, e81c2bc, b4dbdbe): Besley and Libre Franklin self-hosted, `site-growth/style.css` rewritten in Lake & Marigold on paper with grain, new logo SVGs, favicon, touch icon and social image (`scripts/make_brand_images.py`), header and footer bridge lockup, ship sprite, `site-growth/motion/` partials bundled into the hashed CSS and JS, `window.WG` helpers in `motion/00-core.js`, and motion pieces 1 to 5. Shared drawing code is in `scripts/growth_art.py`; `scripts/art_showpieces.py` and `scripts/art_local.py` are stubs for lanes C and D. Build and validation pass. Lanes B, C, D are next (briefs are summarised under Next step).
 
 ## Waiting on Matthew
 - Nothing right now. When the rebuild is done: review the Vercel preview and the list of new wording in pull request #61. Motion catalogue for reference: https://claude.ai/artifact/DXkW5LHxed24eMhzgEiCYg
