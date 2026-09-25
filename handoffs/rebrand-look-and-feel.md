@@ -1,15 +1,15 @@
 # Rebrand the site with a new look, animations, and custom graphics
 
-Status: active
+Status: waiting
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 12:40 UTC by Claude cloud
+Updated: 2026-09-25 12:55 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
 
 ## Next step
-Matthew reviewed the preview and said the animations look nothing like the examples he approved in the motion catalogue. Next: a side-by-side fidelity audit of every piece (frames from `design/rebrand-preview/motion-catalogue.html` and `well-and-good-growth-rebrand.html` against the built site), then rework each piece that drifted so it matches the catalogue, then rebuild, validate, push, and ask Matthew to look again. The preview is still at https://well-and-good-websites-git-claude-copy-optimi-5783c6-matthew-ok.vercel.app . Code layout: spec section 8.
+The rebuilt site is on the Vercel preview for pull request #61 (https://well-and-good-websites-git-claude-copy-optimi-5783c6-matthew-ok.vercel.app) and Matthew likes it ("works! looks amazing!"). His first round of changes is done (see Decisions). Waiting on any further changes from him. When he replies, apply them on this branch (code layout in spec section 8: `site-growth/style.css`, partials in `site-growth/motion/`, drawings in `scripts/growth_art.py`, `scripts/art_showpieces.py`, `scripts/art_local.py`), run `python3 scripts/build_public.py` and `python3 scripts/validate_growth.py`, check in a browser, and push. Matthew merges pull request #61 himself when he is happy; merging publishes the site.
 
 ## Done so far
 - Reviewed the current production site (built from `scripts/build_growth.py` and `site-growth/`), the brand crest (`assets/wgw-logo-primary.png`), and the bridge motion piece in `motion/bridge-magic/`.
@@ -25,9 +25,10 @@ Matthew reviewed the preview and said the animations look nothing like the examp
 - Rebuild lanes C and D merged. C (showpieces, `scripts/art_showpieces.py`, motion 13, 16, 17, 20, 21): the homepage hero bridge draws and lifts its span (the video and its files are gone), service drawings, the canal lock section on the AI automation page (picker kept), 404 Bridge up, thank-you last lock. D (local, `scripts/art_local.py`, motion 10, 14, 15): the scroll-driven journey in the Growth marketing and Niagara SEO heroes, the canal map on the three location pages, and results columns for the Jetta Grove numbers and Frank's nearly 3x. Build and validation pass. Next: whole-site QA (lane E), then check the Vercel preview and list the new wording in pull request #61. Known leftovers: unused `.hero-motion`, `.motion-view`, and `.growth-art` rules in style.css.
 - Rebuild lane E (whole-site QA) done (last commit 5019a2a): every page checked at 1280 and 390 wide, with reduced motion and with scripts off; no console errors, no sideways scroll, interactions and anchor links work, approved copy unchanged against main, no em-dashes. Fixes: marigold text darkened to #8c5100 for AA contrast on the grain (spec updated), case stories aligned with other sections, lock section tightened (heading max 38px), no jump when scripts load late, unused old styles removed, Welland Votes screenshot shrunk to 149 KB.
 - Found why the preview had no animations and crude drawings: `.vercelignore` listed `motion/` (meant for the old video project at the repository root), which also excluded `site-growth/motion/`, so Vercel built the site without any animation scripts or drawing styles. Local builds were unaffected, which is why local QA passed. Fixed by anchoring it to `/motion/` (commit dd02655); the build now fails if the partials are missing (b88ff51). Verified the deployed script matches the local build byte for byte.
+- Matthew's first changes after the fixed preview, done (commit aeec0f7): the enquiry form heading is now just "Let’s talk" (intro paragraph and per-service headings and intros removed; the question label and placeholder still follow the chosen service); LOCK 1 to 5 labels removed from the automation lock drawing; the founder photo stays in colour (duotone removed) and its frame plays on mouseover instead (the marigold echo swings once around it, the photo lifts, an indigo rule draws clockwise around it; once on screen on touch screens). The catalogue fidelity audit was stopped because Matthew is happy with the animations.
 
 ## Waiting on Matthew
-- Nothing right now. Asked him which animations looked most off and on which device.
+- Any further changes after reviewing the preview, or merging pull request #61 to publish.
 
 ## Decisions
 - How deep (2026-09-25, option 2): keep the name Well and Good Growth, redraw the logo too, and reinvent the look, animations, and custom graphics. Which parts of the current crest survive the redraw is still an open question.
@@ -42,6 +43,7 @@ Matthew reviewed the preview and said the animations look nothing like the examp
 - Spec open questions (2026-09-25): (1) yes, replace the homepage bridge video with the drawn bridge animation. (2) yes, lock drawing in its own section below the automation hero, keep the task picker. (3) not yet: before launching, Matthew wants many more animations across the site, subtle ones and dynamic ones triggered by scrolling, hovering, and clicking. His words: "I want this site to blow away the luddites."
 - Motion catalogue (2026-09-25): "I love everything." All 17 pieces are approved. Matthew asked for the whole site to be rebuilt with them, using subagents, until the full working preview is ready. New labels (like a heading above the lock drawing) may be written in his style, as long as every new line is listed for him to check. Spec section 8 records the pieces and the code layout.
 - Preview review (2026-09-25): "the animations look nothing like the examples we agreed on." The catalogue demos are the standard; the site must match them.
+- Preview round one (2026-09-25): once the Vercel fix landed, "works! looks amazing!" Changes: remove the LOCK labels from the workflow drawing, no tint on the headshot (make the border do something on mouseover instead), and replace the form heading and intro with a simple "Let’s talk".
 
 ## Notes for the next tool
 - Current look: forest green, cream, and coral; Fraunces headings and Inter body text; a repeating bridge pattern behind the hero; one fade-in animation. Tokens are at the top of `site-growth/style.css`.
