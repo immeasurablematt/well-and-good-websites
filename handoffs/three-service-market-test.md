@@ -3,15 +3,16 @@
 Status: active
 Branch: codex/three-service-market-test
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
-Updated: 2026-09-25 16:41 EDT by Codex on Mac
+Updated: 2026-09-25 20:55 EDT by Claude desktop
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
 
 ## Next step
-In Claude, read docs/strategy/three-service-market-test/claude-prompt.md and perform the full analysis in plan.md. Research all three service lines comparably. Save analysis.md, comparison.csv, source-register.md, and experiment.md beside the plan, then update this note and the same pull request. The research comparison and market experiment have not yet been performed or launched.
+Claude desktop is running the comparable research (one specialist per service line, then a cross-line challenge). If this session was cut off, finish that research: read plan.md and claude-prompt.md, use data/keyword-sample-three-lines.csv for search data (do not buy it again), then write analysis.md, comparison.csv, source-register.md, and experiment.md beside the plan and update pull request #65. Nothing has been sent to prospects and the site is unchanged.
 
 ## Done so far
+- Claude desktop collected comparable Google Ads keyword estimates for websites, growth marketing, and extra automation terms (47 phrases, Canada and US, Sep 2025 to Aug 2026). Two calls, US$0.18 total. Raw files: data/keywords-three-line-canada.json and data/keywords-three-line-usa.json; flattened: data/keyword-sample-three-lines.csv.
 - Saved the analysis and commercial-test plan, including economics, evidence standards, cross-selling, fair comparisons, and decision rules.
 - Saved the complete Claude prompt and a public-source index.
 - Synced the packet to GitHub and opened draft pull request #65 for Claude to continue. No merge or site deployment was performed.
