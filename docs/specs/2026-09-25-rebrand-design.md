@@ -1,6 +1,6 @@
 # Well and Good Growth rebrand: design
 
-- Status: approved 2026-09-25, being built on the preview branch
+- Status: approved 2026-09-25 and built on the preview branch (pull request #61), waiting for Matthew to review the preview
 - Date: 2026-09-25
 - Workstream: `handoffs/rebrand-look-and-feel.md` (pull request #61)
 - Preview: https://claude.ai/artifact/DHDY3gazersy8Q374mdtVs (private to Matthew's account). Source: `design/rebrand-preview/`
@@ -38,13 +38,13 @@ The name stays **Well and Good Growth**. The new identity is the "Canal lock" di
 | paper | #f3efe6 | Page background |
 | ink | #1c2a6b | Text, lines, structure |
 | marigold | #f0a30a | Fills, the print echo, button shadow, the review gate. Never text on paper |
-| marigold text | #9a5a00 | Accent text on paper: headline emphasis, labels, "and" |
+| marigold text | #8c5100 on the site (#9a5a00 in the logo files) | Accent text on paper: headline emphasis, labels, "and" |
 | water | #93a2dc | Water in illustrations |
 | soft | ink 80% on paper (#475184) | Body text |
 | rule | ink 20% on paper | Dividers |
 | earth, wall | ink 12% and 6% on paper | Illustration grounds |
 
-Contrast on paper: ink 11.5:1, body text 6.6:1, marigold text 4.8:1 (meets WCAG AA for normal text), paper on an indigo button 11.5:1. Bright marigold on paper is 1.8:1, which is why it is reserved for shapes. The site stays a single light theme: the brand commits to paper.
+Contrast on paper: ink 11.5:1, body text 6.6:1, marigold text 4.6:1 or better on the grained paper (meets WCAG AA for normal text; the first value, #9a5a00, measured about 4.2:1 once the grain was added, so the site uses #8c5100), paper on an indigo button 11.5:1. Bright marigold on paper is 1.8:1, which is why it is reserved for shapes. The site stays a single light theme: the brand commits to paper.
 
 ## 3. Type
 

@@ -1,15 +1,15 @@
 # Rebrand the site with a new look, animations, and custom graphics
 
-Status: active
+Status: waiting
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 11:30 UTC by Claude cloud
+Updated: 2026-09-25 12:35 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
 
 ## Next step
-Build the approved rebrand across the whole site on this branch, following `docs/specs/2026-09-25-rebrand-design.md` (sections 1 to 8, especially the build order in section 7 and the motion layer and code layout in section 8). Matthew approved all 17 animations and asked for the full rebuild, working until the Vercel preview for pull request #61 is ready. Work in this order, checking off each lane under "Done so far" as it lands: (A) foundation: Besley and Libre Franklin fonts, Lake & Marigold tokens, grain, logo files and favicon, header and footer lockup, the motion partial build (`site-growth/motion/`), `00-core.js`, and pieces 1 to 5; (B) shared sections, CSS and JS only: pieces 6, 7, 8, 9, 11, 12; (C) showpieces: homepage hero bridge, piece 13, automation lock section, pieces 16 and 17; (D) local pages: pieces 14, 15, 10; (E) QA: build, `python3 scripts/validate_growth.py`, screenshots at phone and desktop sizes, reduced motion, console errors, em-dash sweep. Then push, confirm the Vercel preview builds, and list every new line of wording in the pull request for Matthew to check. Nothing goes to main.
+The full rebuild is done and on the Vercel preview for pull request #61: https://well-and-good-websites-git-claude-copy-optimi-5783c6-matthew-ok.vercel.app . Waiting on Matthew to review it on phone and desktop, and to check the list of new wording in the pull request description (lock section label and heading, Watch again, BRIDGE UP, chart and map labels, image descriptions). When he replies, apply his changes on this branch (spec: `docs/specs/2026-09-25-rebrand-design.md`; code layout in its section 8: `site-growth/style.css`, partials in `site-growth/motion/`, drawings in `scripts/growth_art.py`, `scripts/art_showpieces.py`, `scripts/art_local.py`), run `python3 scripts/build_public.py` and `python3 scripts/validate_growth.py`, and push. Matthew merges pull request #61 himself when he is happy; merging publishes the site.
 
 ## Done so far
 - Reviewed the current production site (built from `scripts/build_growth.py` and `site-growth/`), the brand crest (`assets/wgw-logo-primary.png`), and the bridge motion piece in `motion/bridge-magic/`.
@@ -23,9 +23,10 @@ Build the approved rebrand across the whole site on this branch, following `docs
 - Rebuild lane A (foundation) done and pushed (commits d0f6d1b, e81c2bc, b4dbdbe): Besley and Libre Franklin self-hosted, `site-growth/style.css` rewritten in Lake & Marigold on paper with grain, new logo SVGs, favicon, touch icon and social image (`scripts/make_brand_images.py`), header and footer bridge lockup, ship sprite, `site-growth/motion/` partials bundled into the hashed CSS and JS, `window.WG` helpers in `motion/00-core.js`, and motion pieces 1 to 5. Shared drawing code is in `scripts/growth_art.py`; `scripts/art_showpieces.py` and `scripts/art_local.py` are stubs for lanes C and D. Build and validation pass. Lanes B, C, D are next (briefs are summarised under Next step).
 - Rebuild lane B (shared sections) merged: enquiry form ink lines and castoff (piece 6, never delays sending), FAQ lift gates (7), process steps fill like locks (8), plans as water levels (9), portfolio glide and tilt (11), founder photo develops from duotone (12). All in `site-growth/motion/06` to `12`; build_growth.py changes limited to `faq()`, `founder()`, and the enquiry form. No new wording.
 - Rebuild lanes C and D merged. C (showpieces, `scripts/art_showpieces.py`, motion 13, 16, 17, 20, 21): the homepage hero bridge draws and lifts its span (the video and its files are gone), service drawings, the canal lock section on the AI automation page (picker kept), 404 Bridge up, thank-you last lock. D (local, `scripts/art_local.py`, motion 10, 14, 15): the scroll-driven journey in the Growth marketing and Niagara SEO heroes, the canal map on the three location pages, and results columns for the Jetta Grove numbers and Frank's nearly 3x. Build and validation pass. Next: whole-site QA (lane E), then check the Vercel preview and list the new wording in pull request #61. Known leftovers: unused `.hero-motion`, `.motion-view`, and `.growth-art` rules in style.css.
+- Rebuild lane E (whole-site QA) done (last commit 5019a2a): every page checked at 1280 and 390 wide, with reduced motion and with scripts off; no console errors, no sideways scroll, interactions and anchor links work, approved copy unchanged against main, no em-dashes. Fixes: marigold text darkened to #8c5100 for AA contrast on the grain (spec updated), case stories aligned with other sections, lock section tightened (heading max 38px), no jump when scripts load late, unused old styles removed, Welland Votes screenshot shrunk to 149 KB.
 
 ## Waiting on Matthew
-- Nothing right now. When the rebuild is done: review the Vercel preview and the list of new wording in pull request #61. Motion catalogue for reference: https://claude.ai/artifact/DXkW5LHxed24eMhzgEiCYg
+- Review the rebuilt site on the Vercel preview (link under Next step) on phone and desktop, and the new wording listed in pull request #61. Reply with anything to change, or merge the pull request to publish.
 
 ## Decisions
 - How deep (2026-09-25, option 2): keep the name Well and Good Growth, redraw the logo too, and reinvent the look, animations, and custom graphics. Which parts of the current crest survive the redraw is still an open question.
