@@ -20,15 +20,10 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
 .changes b{color:var(--table-ink);font-weight:600}
 
 .board{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
-.board-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
-.pal-label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--table-soft);margin-bottom:10px}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{display:flex;align-items:center;gap:12px;background:transparent;color:var(--table-ink);border:1px solid var(--table-line);border-radius:12px;padding:10px 16px 10px 12px;font:inherit;text-align:left;cursor:pointer;min-height:48px}
-.chip:hover{border-color:var(--table-soft)}
-.chip[aria-pressed="true"]{border-color:var(--table-ink);background:#1f262d}
-.chip b{display:block;font-weight:600;font-size:15px;line-height:1.3}
-.chip small{display:block;font-size:13px;color:var(--table-soft);line-height:1.3}
-.sw{width:30px;height:30px;border-radius:50%;flex:none;background:linear-gradient(135deg,var(--s1) 0 50%,var(--s2) 50% 100%);box-shadow:0 0 0 3px var(--s3)}
+.board-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.palette-name{display:flex;align-items:center;gap:12px;font-weight:600}
+.palette-name small{display:block;font-weight:400;color:var(--table-soft);font-size:13px}
+.sw{width:30px;height:30px;border-radius:50%;flex:none;background:linear-gradient(135deg,#1c2a6b 0 50%,#f0a30a 50% 100%);box-shadow:0 0 0 3px #f3efe6}
 .replay{background:transparent;color:var(--table-ink);border:1px solid var(--table-line);border-radius:999px;padding:9px 16px;font:500 14px Commissioner,system-ui,sans-serif;cursor:pointer;min-height:40px}
 .replay:hover{border-color:var(--table-soft)}
 .closing{display:grid;gap:14px;max-width:720px;border-top:1px solid var(--table-line);padding-top:40px}
@@ -36,14 +31,13 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
 .closing p{color:var(--table-soft);max-width:62ch}
 .closing strong{color:var(--table-ink);font-weight:600}
 
-/* The sheet: direction B, with switchable ink palettes */
+/* The sheet: direction B in Lake & Marigold */
 .sheet{--paper:#f3efe6;--ink:#1c2a6b;--accent:#f0a30a;--accent-ink:#9a5a00;--water:#93a2dc;
+  --water-deep:color-mix(in srgb,var(--water) 60%,var(--ink));
   --soft:color-mix(in srgb,var(--ink) 80%,var(--paper));--rule:color-mix(in srgb,var(--ink) 20%,var(--paper));
-  --earth:color-mix(in srgb,var(--ink) 14%,var(--paper));--wall:color-mix(in srgb,var(--ink) 6%,var(--paper));
+  --earth:color-mix(in srgb,var(--ink) 12%,var(--paper));--wall:color-mix(in srgb,var(--ink) 6%,var(--paper));
   --display:Besley,Georgia,serif;--body:"Libre Franklin","Segoe UI",system-ui,sans-serif;
-  background-color:var(--paper);color:var(--ink);font-family:var(--body);padding:clamp(20px,4.5vw,60px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(44px,7vw,84px);position:relative;overflow:hidden;border-radius:3px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);transition:background-color .4s}
-.sheet[data-palette="freighter"]{--paper:#f2ebe0;--ink:#5c1a22;--accent:#2b8c87;--accent-ink:#1f6a66;--water:#2b8c87}
-.sheet[data-palette="grape"]{--paper:#f1eee6;--ink:#3a2254;--accent:#9fbd30;--accent-ink:#58700f;--water:#9fbd30}
+  background-color:var(--paper);color:var(--ink);font-family:var(--body);padding:clamp(20px,4.5vw,60px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(44px,7vw,84px);position:relative;overflow:hidden;border-radius:3px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
 .sheet::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .2 0 0 0 0 .14 0 0 0 .9 -.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .sheet>*{position:relative;z-index:1}
 .part{display:grid;gap:20px;min-width:0}
@@ -70,41 +64,56 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
 .art svg{display:block;width:100%;height:auto;max-width:560px;margin-inline:auto;overflow:visible}
 .sheet .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
 @media (max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}.links{display:none}.art svg{max-width:440px}}
-@media (max-width:640px){.pill{display:none}.board-head{align-items:start}}
+@media (max-width:640px){.pill{display:none}}
 
 /* Drawing and motion */
 .ln{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .b-ink{stroke:var(--ink)}
 .b-accent{stroke:var(--accent)}
-.draw,.tick{stroke-dasharray:1}
+/* Gap of 2 and a start just past 1 keep round caps from showing as dots before a line draws. */
+.draw,.tick{stroke-dasharray:1 2}
 .play .draw{animation:draw var(--t,1.2s) var(--d,0s) cubic-bezier(.55,0,.25,1) both}
 .play .span-lift{animation:lift 2.8s 2.4s cubic-bezier(.45,0,.2,1) both}
-@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes draw{from{stroke-dashoffset:1.02}to{stroke-dashoffset:0}}
 @keyframes lift{0%{transform:translateY(0)}30%,64%{transform:translateY(-38px)}100%{transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){.play .draw,.play .span-lift{animation:none}}
-.tick{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
 /* Lock drawing */
 .lockfig{display:grid;gap:0}
 .lockfig svg{width:100%;height:auto;display:block;overflow:visible}
 .lockfig .wallface{fill:var(--wall)}
-.lockfig .water{fill:var(--water);opacity:.82}
+.lockfig .masonry{fill:url(#lkm)}
+.lockfig .wet{fill:var(--ink);opacity:0}
+.lockfig .locknum{font-family:var(--body);font-weight:700;font-size:9.5px;letter-spacing:.14em;fill:var(--ink);opacity:.5}
+.lockfig .coping{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.lockfig .water{fill:url(#lkw);opacity:.92}
+.lockfig .surf{fill:none;stroke:var(--paper);stroke-width:1.3;opacity:.75;stroke-linecap:round;stroke-linejoin:round}
+.lockfig .rip{fill:none;stroke:var(--ink);stroke-width:1.1;opacity:.14;stroke-dasharray:9 9;stroke-linecap:round}
+.lockfig .p-b{fill:var(--paper);opacity:.8}
+.lockfig .p-d{fill:var(--water-deep)}
+.lockfig .p-f{fill:var(--paper)}
+.lockfig .splash{fill:none;stroke:var(--paper);stroke-width:1}
 .lockfig .earth{fill:var(--earth)}
-.lockfig .bed{fill:none;stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
-.lockfig .coping{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round}
-.lockfig .gantry{fill:none;stroke:var(--ink);stroke-width:2}
-.lockfig .gantry.yours{stroke:var(--accent-ink)}
+.lockfig .hatch-fill{fill:url(#lkh)}
+.lockfig .bed{fill:none;stroke:var(--ink);stroke-width:4.5;stroke-linejoin:round;stroke-linecap:round}
 .lockfig .gate rect{fill:var(--ink)}
+.lockfig .gate .rib{fill:none;stroke:var(--paper);stroke-width:.9;opacity:.55}
 .lockfig .gate.yours rect{fill:var(--accent)}
+.lockfig .gate.yours .rib{stroke:var(--ink);opacity:.45}
 .lockfig .hull{fill:var(--ink)}
-.lockfig .house{fill:var(--paper);stroke:var(--ink);stroke-width:2}
-.lockfig .stack{fill:var(--accent)}
-.lockfig .badge circle{fill:var(--paper);stroke:var(--accent-ink);stroke-width:2.2;transition:fill .3s}
+.lockfig .stripe{fill:none;stroke:var(--accent);stroke-width:1.6}
+.lockfig .house{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.lockfig .stack{fill:var(--accent);stroke:var(--ink);stroke-width:1}
+.lockfig .win{fill:var(--ink)}
+.lockfig .mast,.lockfig .hatch{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-linecap:round}
+.lockfig .ring{fill:none;stroke:var(--accent-ink);stroke-width:2;stroke-dasharray:1 2;stroke-linecap:round}
+.lockfig .disc{fill:var(--paper);stroke:var(--accent-ink);stroke-width:1.6;transition:fill .3s}
+.lockfig.approved .disc{fill:var(--accent)}
 .lockfig .badge .tick{stroke:var(--accent-ink);transition:stroke .3s}
-.lockfig.approved .badge circle{fill:var(--accent)}
 .lockfig.approved .badge .tick{stroke:var(--ink)}
-.lockfig.waiting .gate.yours rect{animation:pulse .7s ease-in-out infinite alternate}
-@keyframes pulse{from{opacity:1}to{opacity:.3}}
+.lockfig.waiting .gate.yours rect{animation:pulse .8s ease-in-out infinite alternate}
+@keyframes pulse{from{opacity:1}to{opacity:.35}}
 .steps{list-style:none;margin-top:14px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .steps li{padding:12px 12px 0 0;border-top:3px solid var(--rule);display:grid;gap:4px;align-content:start;transition:border-color .3s}
 .steps li.done{border-top-color:var(--ink)}
@@ -124,29 +133,24 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
 
 <main>
 <header class="intro">
-<p class="kicker">Rebrand preview, round two</p>
-<h1>Canal lock, reworked</h1>
-<p>Direction B with the three changes from your notes.</p>
+<p class="kicker">Rebrand preview, round three</p>
+<h1>Canal lock in Lake &amp; Marigold</h1>
+<p>Your palette is in, and the lock animation has been rebuilt so the water behaves like water.</p>
 <ul class="changes">
-<li><span><b>New colours.</b> Three two-ink palettes to compare, none of them the old green and coral. Tap one to repaint the page.</span></li>
-<li><span><b>A redrawn bridge.</b> Both towers now match. The bridge is drawn from measurements instead of traced from the old logo, so it is symmetric and stays crisp at any size.</span></li>
-<li><span><b>A rebuilt lock drawing.</b> It now works like a real canal lock: the chamber fills and lifts the boat, the gate rises, and the boat moves on. Your review is the one gate that waits for you.</span></li>
+<li><span><b>Water that fills like a real lock.</b> It pours in through the sluices at the gate, fast at first and slowing as the levels meet. The surface ripples, churns near the inflow, and bubbles rise through it.</span></li>
+<li><span><b>More detail, kept neat.</b> Braced lift gates that echo the bridge towers, drip as they rise, and settle with a small splash. A Great Lakes freighter that bobs, rocks, and leaves a wake. Chambers drain behind it and leave a wet mark on the wall that fades.</span></li>
+<li><span><b>Your gate.</b> A ring fills around your badge while the job waits for you, then the tick lands and the gate opens.</span></li>
 </ul>
 <p>Preview only. Your website has not changed.</p>
 </header>
 
 <section class="board" aria-label="Direction B preview">
 <div class="board-head">
-<div><p class="pal-label">Colours</p>
-<div class="chips">
-<button type="button" class="chip" id="pal-lake" data-p="lake" aria-pressed="true"><span class="sw" style="--s1:#1c2a6b;--s2:#f0a30a;--s3:#f3efe6" aria-hidden="true"></span><span><b>Lake &amp; Marigold</b><small>Deep indigo and warm yellow</small></span></button>
-<button type="button" class="chip" id="pal-freighter" data-p="freighter" aria-pressed="false"><span class="sw" style="--s1:#5c1a22;--s2:#2b8c87;--s3:#f2ebe0" aria-hidden="true"></span><span><b>Freighter &amp; Canal</b><small>Oxblood and canal teal</small></span></button>
-<button type="button" class="chip" id="pal-grape" data-p="grape" aria-pressed="false"><span class="sw" style="--s1:#3a2254;--s2:#9fbd30;--s3:#f1eee6" aria-hidden="true"></span><span><b>Grape &amp; Pear</b><small>Niagara fruit colours</small></span></button>
-</div></div>
+<p class="palette-name"><span class="sw" aria-hidden="true"></span><span>Lake &amp; Marigold<small>Deep indigo and warm yellow</small></span></p>
 <button class="replay" type="button" id="replay">Replay animations</button>
 </div>
 
-<div class="sheet" id="sheet" data-palette="lake">
+<div class="sheet" id="sheet">
 <div class="part anim"><p class="part-tag">The mark</p>
 <div class="lockup"><svg class="mark" viewBox="366 396 498 290" role="img" aria-label="The mark: the Welland lift bridge printed in two inks"><g transform="translate(9 7)" style="mix-blend-mode:multiply;opacity:.9"><path class="ln draw" pathLength="1" style="--d:.15s;--t:1.6s;stroke:var(--accent);stroke-width:10" d="M382 650 L386 442 L440 442 L444 650 M381 441 L381 429 L396 412 L430 412 L445 429 L445 441 Z M387 449 L439 516 L387 583 L439 649 M785 650 L789 442 L843 442 L847 650 M784 441 L784 429 L799 412 L833 412 L848 429 L848 441 Z M842 449 L790 516 L842 583 L790 649 M449 587 H780 M449 539 L490.4 518.4 L531.8 503.8 L573.1 494.9 L614.5 492 L655.9 494.9 L697.2 503.8 L738.6 518.4 L780 539 M449 587 V539 M490.4 587 V518.4 M531.8 587 V503.8 M573.1 587 V494.9 M614.5 587 V492 M655.9 587 V494.9 M697.2 587 V503.8 M738.6 587 V518.4 M780 587 V539"/></g><path class="ln draw" pathLength="1" style="--t:1.6s;stroke:var(--ink);stroke-width:10" d="M382 650 L386 442 L440 442 L444 650 M381 441 L381 429 L396 412 L430 412 L445 429 L445 441 Z M387 449 L439 516 L387 583 L439 649 M785 650 L789 442 L843 442 L847 650 M784 441 L784 429 L799 412 L833 412 L848 429 L848 441 Z M842 449 L790 516 L842 583 L790 649 M449 587 H780 M449 539 L490.4 518.4 L531.8 503.8 L573.1 494.9 L614.5 492 L655.9 494.9 L697.2 503.8 L738.6 518.4 L780 539 M449 587 V539 M490.4 587 V518.4 M531.8 587 V503.8 M573.1 587 V494.9 M614.5 587 V492 M655.9 587 V494.9 M697.2 587 V503.8 M738.6 587 V518.4 M780 587 V539"/><path class="ln draw" pathLength="1" style="--d:1.1s;--t:1s;stroke:var(--water);stroke-width:10" d="M424 662 q15.9 -10 31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0 t31.8 0"/></svg><p class="wordmark">Well <i>and</i> Good Growth</p></div><div class="sizes" aria-label="The mark at small sizes"><span><svg width="96" height="56" style="--mw:13" aria-hidden="true" focusable="false"><use href="#mk" width="100%" height="100%"/></svg>56 px</span><span><svg width="55" height="32" style="--mw:20;--echo:0" aria-hidden="true" focusable="false"><use href="#mk" width="100%" height="100%"/></svg>32 px</span><span><svg width="31" height="18" style="--mw:30;--echo:0" aria-hidden="true" focusable="false"><use href="#mk" width="100%" height="100%"/></svg>18 px</span></div></div>
 
@@ -157,15 +161,15 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
 
 <div class="part"><p class="part-tag">AI automation page</p>
 <div class="copy"><p class="eyebrow">AI automation · Niagara &amp; GTA</p><h3 class="hl">Get the recurring work off your list.</h3><p>Spend less time preparing research, drafting follow-ups, and updating records. Get AI workflows built around your business, with clear points for review.</p></div>
-<figure class="lockfig anim approved" data-kind="lock"><svg viewBox="0 -30 600 302" role="img" aria-label="Side view of five canal locks rising left to right. A lake freighter rises lock by lock. The fourth gate, your review, waits until you approve."><path class="wallface" d="M0 154 H120 V120 H240 V86 H360 V52 H480 V18 H600 V114 H480 V148 H360 V182 H240 V216 H120 V250 H0 Z"/><g class="boat" transform="translate(540 70)"><path class="hull" d="M-31 -3 H32 L27 8 H-27 Z"/><rect class="house" x="-29" y="-11" width="12" height="8"/><rect class="stack" x="-25" y="-18" width="4" height="7"/><rect class="house" x="18" y="-14" width="10" height="11"/></g><rect class="water" x="0" y="206" width="120" height="44"/><rect class="water" x="120" y="172" width="120" height="44"/><rect class="water" x="240" y="138" width="120" height="44"/><rect class="water" x="360" y="104" width="120" height="44"/><rect class="water" x="480" y="70" width="120" height="44"/><path class="earth" d="M0 250 H120 V216 H240 V182 H360 V148 H480 V114 H600 V272 H0 Z"/><path class="bed" d="M0 250 H120 V216 H240 V182 H360 V148 H480 V114 H600"/><g class="gate"><rect x="115" y="158" width="10" height="58" rx="1.5"/></g><g class="gate"><rect x="235" y="124" width="10" height="58" rx="1.5"/></g><g class="gate"><rect x="355" y="90" width="10" height="58" rx="1.5"/></g><g class="gate yours"><rect x="475" y="56" width="10" height="58" rx="1.5"/></g><g class="badge"><circle cx="462" cy="30" r="11"/><path class="tick" pathLength="1" d="M456.5 30 l3.8 4 l7.5 -8.5"/></g></svg><ol class="steps"><li class="done"><span class="n">1</span><span class="t">A new enquiry arrives</span></li><li class="done"><span class="n">2</span><span class="t">Research prepared</span></li><li class="done"><span class="n">3</span><span class="t">Follow-up drafted</span></li><li class="done yours"><span class="n">4</span><span class="t">You review<small>Your gate opens when you have checked the work</small></span></li><li class="done"><span class="n">5</span><span class="t">Sent, and records updated</span></li></ol><figcaption><span>Illustrative example.</span> Each lock lifts the job one step while the routine work runs itself. The fourth gate is yours: it stays shut until you have checked the work.</figcaption></figure>
+<figure class="lockfig anim approved" data-kind="lock"><svg viewBox="0 -30 600 302" role="img" aria-label="Side view of five canal locks rising left to right. A lake freighter rises lock by lock as each chamber fills. The fourth gate, your review, waits until you approve."><defs><linearGradient id="lkw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--water)"/><stop offset="1" style="stop-color:var(--water-deep)"/></linearGradient><pattern id="lkh" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" style="stroke:var(--ink);stroke-width:1.2;opacity:.2"/></pattern><pattern id="lkm" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M0 11.5 H24 M0 23.5 H24 M6 0 V11.5 M18 12 V23.5" style="fill:none;stroke:var(--ink);stroke-width:.8;opacity:.08"/></pattern></defs><path class="wallface" d="M0 154 H120 V120 H240 V86 H360 V52 H480 V18 H600 V114 H480 V148 H360 V182 H240 V216 H120 V250 H0 Z"/><path class="masonry" d="M0 154 H120 V120 H240 V86 H360 V52 H480 V18 H600 V114 H480 V148 H360 V182 H240 V216 H120 V250 H0 Z"/><rect class="wet" x="0" y="206" width="120" height="44"/><rect class="wet" x="120" y="172" width="120" height="44"/><rect class="wet" x="240" y="138" width="120" height="44"/><rect class="wet" x="360" y="104" width="120" height="44"/><rect class="wet" x="480" y="70" width="120" height="44"/><text class="locknum" x="8" y="168">LOCK 1</text><text class="locknum" x="128" y="134">LOCK 2</text><text class="locknum" x="248" y="100">LOCK 3</text><text class="locknum" x="368" y="66">LOCK 4</text><text class="locknum" x="488" y="32">LOCK 5</text><path class="coping" d="M0 154 H120 M120 120 H240 M240 86 H360 M360 52 H480 M480 18 H600"/><g class="boat" transform="translate(540 70)"><g class="rock"><path class="hull" d="M-33 -4 H30 Q34 -4 35 -6 L31 8 H-29 Q-33 8 -33 3 Z"/><path class="stripe" d="M-31 -0.5 H31"/><path class="hatch" d="M-12 -4 V-6 M-4 -4 V-6 M4 -4 V-6 M12 -4 V-6"/><rect class="house" x="-30" y="-12" width="13" height="8"/><rect class="stack" x="-26.5" y="-19" width="5" height="7"/><rect class="house" x="19" y="-15" width="10" height="11"/><rect class="win" x="20.8" y="-13" width="6.4" height="2.6"/><path class="mast" d="M24 -15 V-21"/></g></g><path class="water" d="M0 250 L0 206.00 L5 206.74 L10 207.10 L15 206.99 L20 206.62 L25 206.32 L30 206.25 L35 206.31 L40 206.21 L45 205.78 L50 205.16 L55 204.72 L60 204.75 L65 205.28 L70 206.01 L75 206.53 L80 206.66 L85 206.54 L90 206.44 L95 206.56 L100 206.79 L105 206.83 L110 206.47 L115 205.75 L120 205.04 L120 250 Z"/><path class="water" d="M120 216 L120 170.79 L125 170.83 L130 171.37 L135 172.14 L140 172.74 L145 172.92 L150 172.73 L155 172.48 L160 172.42 L165 172.54 L170 172.58 L175 172.28 L180 171.66 L185 170.98 L190 170.66 L195 170.87 L200 171.46 L205 172.06 L210 172.36 L215 172.37 L220 172.31 L225 172.44 L230 172.77 L235 173.04 L240 172.95 L240 216 Z"/><path class="water" d="M240 182 L240 138.09 L245 137.58 L250 136.98 L255 136.67 L260 136.88 L265 137.52 L270 138.22 L275 138.63 L280 138.65 L285 138.49 L290 138.45 L295 138.62 L300 138.83 L305 138.75 L310 138.25 L315 137.50 L320 136.88 L325 136.72 L330 137.06 L335 137.60 L340 138.00 L345 138.10 L350 138.07 L355 138.17 L360 138.54 L360 182 Z"/><path class="water" d="M360 148 L360 104.44 L365 104.56 L370 104.51 L375 104.10 L380 103.42 L385 102.82 L390 102.67 L395 103.03 L400 103.68 L405 104.21 L410 104.40 L415 104.35 L420 104.33 L425 104.53 L430 104.87 L435 105.06 L440 104.81 L445 104.14 L450 103.36 L455 102.88 L460 102.90 L465 103.27 L470 103.66 L475 103.83 L480 103.79 L480 148 Z"/><path class="water" d="M480 114 L480 70.61 L485 70.46 L490 70.49 L495 70.69 L500 70.83 L505 70.62 L510 70.01 L515 69.25 L520 68.76 L525 68.79 L530 69.23 L535 69.77 L540 70.07 L545 70.11 L550 70.09 L555 70.27 L560 70.69 L565 71.11 L570 71.18 L575 70.75 L580 69.99 L585 69.30 L590 69.01 L595 69.15 L600 69.45 L600 114 Z"/><path class="surf" d="M0 206.00 L5 206.74 L10 207.10 L15 206.99 L20 206.62 L25 206.32 L30 206.25 L35 206.31 L40 206.21 L45 205.78 L50 205.16 L55 204.72 L60 204.75 L65 205.28 L70 206.01 L75 206.53 L80 206.66 L85 206.54 L90 206.44 L95 206.56 L100 206.79 L105 206.83 L110 206.47 L115 205.75 L120 205.04"/><path class="surf" d="M120 170.79 L125 170.83 L130 171.37 L135 172.14 L140 172.74 L145 172.92 L150 172.73 L155 172.48 L160 172.42 L165 172.54 L170 172.58 L175 172.28 L180 171.66 L185 170.98 L190 170.66 L195 170.87 L200 171.46 L205 172.06 L210 172.36 L215 172.37 L220 172.31 L225 172.44 L230 172.77 L235 173.04 L240 172.95"/><path class="surf" d="M240 138.09 L245 137.58 L250 136.98 L255 136.67 L260 136.88 L265 137.52 L270 138.22 L275 138.63 L280 138.65 L285 138.49 L290 138.45 L295 138.62 L300 138.83 L305 138.75 L310 138.25 L315 137.50 L320 136.88 L325 136.72 L330 137.06 L335 137.60 L340 138.00 L345 138.10 L350 138.07 L355 138.17 L360 138.54"/><path class="surf" d="M360 104.44 L365 104.56 L370 104.51 L375 104.10 L380 103.42 L385 102.82 L390 102.67 L395 103.03 L400 103.68 L405 104.21 L410 104.40 L415 104.35 L420 104.33 L425 104.53 L430 104.87 L435 105.06 L440 104.81 L445 104.14 L450 103.36 L455 102.88 L460 102.90 L465 103.27 L470 103.66 L475 103.83 L480 103.79"/><path class="surf" d="M480 70.61 L485 70.46 L490 70.49 L495 70.69 L500 70.83 L505 70.62 L510 70.01 L515 69.25 L520 68.76 L525 68.79 L530 69.23 L535 69.77 L540 70.07 L545 70.11 L550 70.09 L555 70.27 L560 70.69 L565 71.11 L570 71.18 L575 70.75 L580 69.99 L585 69.30 L590 69.01 L595 69.15 L600 69.45"/><path class="rip" d="M12 219 H108"/><path class="rip" d="M12 233 H108"/><path class="rip" d="M132 185 H228"/><path class="rip" d="M132 199 H228"/><path class="rip" d="M252 151 H348"/><path class="rip" d="M252 165 H348"/><path class="rip" d="M372 117 H468"/><path class="rip" d="M372 131 H468"/><path class="rip" d="M492 83 H588"/><path class="rip" d="M492 97 H588"/><g class="fx"></g><path class="earth" d="M0 250 H120 V216 H240 V182 H360 V148 H480 V114 H600 V272 H0 Z"/><path class="hatch-fill" d="M0 250 H120 V216 H240 V182 H360 V148 H480 V114 H600 V272 H0 Z"/><path class="bed" d="M0 250 H120 V216 H240 V182 H360 V148 H480 V114 H600"/><g class="gate"><rect x="115" y="158" width="10" height="58" rx="1.2"/><path class="rib" d="M115 177.3 H125 M115 196.7 H125 M116.5 161 L123.5 213 M123.5 161 L116.5 213"/></g><g class="gate"><rect x="235" y="124" width="10" height="58" rx="1.2"/><path class="rib" d="M235 143.3 H245 M235 162.7 H245 M236.5 127 L243.5 179 M243.5 127 L236.5 179"/></g><g class="gate"><rect x="355" y="90" width="10" height="58" rx="1.2"/><path class="rib" d="M355 109.3 H365 M355 128.7 H365 M356.5 93 L363.5 145 M363.5 93 L356.5 145"/></g><g class="gate yours"><rect x="475" y="56" width="10" height="58" rx="1.2"/><path class="rib" d="M475 75.3 H485 M475 94.7 H485 M476.5 59 L483.5 111 M483.5 59 L476.5 111"/></g><g class="badge"><circle class="ring" pathLength="1" cx="456" cy="30" r="15" transform="rotate(-90 456 30)"/><circle class="disc" cx="456" cy="30" r="10.5"/><path class="tick" pathLength="1" d="M450.8 30.2 l3.6 3.8 l7.2 -8.2"/></g></svg><ol class="steps"><li class="done"><span class="n">1</span><span class="t">A new enquiry arrives</span></li><li class="done"><span class="n">2</span><span class="t">Research prepared</span></li><li class="done"><span class="n">3</span><span class="t">Follow-up drafted</span></li><li class="done yours"><span class="n">4</span><span class="t">You review<small>Your gate opens when you have checked the work</small></span></li><li class="done"><span class="n">5</span><span class="t">Sent, and records updated</span></li></ol><figcaption><span>Illustrative example.</span> Each lock lifts the job one step while the routine work runs itself. The fourth gate is yours: it stays shut until you have checked the work.</figcaption></figure>
 </div>
 </div>
 </section>
 
 <section class="closing" aria-labelledby="next-title">
 <h2 id="next-title">What I need from you</h2>
-<p><strong>Pick a palette:</strong> Lake &amp; Marigold, Freighter &amp; Canal, or Grape &amp; Pear. My lean is Lake &amp; Marigold. It is the furthest from the old look, the indigo reads as trustworthy, and the marigold keeps it warm.</p>
-<p><strong>Tell me whether the lock drawing now does what you had in mind.</strong> Once both are settled, I will write the design up for your sign-off before anything is built.</p>
+<p><strong>Does the lock feel right now?</strong> Tell me anything that still looks off, like speed, detail, or how the boat moves.</p>
+<p>Once you are happy with it, I will write the full design up for your sign-off before anything is built.</p>
 </section>
 </main>
 
@@ -174,6 +178,8 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ease = t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   const lin = t => t;
+  const backOut = t => { const c1 = 1.3, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+  const settle = t => (t < .78 ? Math.pow(t / .78, 2) : 1 - .07 * Math.sin(((t - .78) / .22) * Math.PI));
   const tween = (ms, fn, alive, e = ease) => new Promise(res => {
     const t0 = performance.now();
     const step = now => {
@@ -186,47 +192,170 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
   });
   const wait = ms => new Promise(r => setTimeout(r, ms));
 
-  const W = 120, FLOORS = [250, 216, 182, 148, 114], LOWS = FLOORS.map(f => f - 44), LIFT = 72;
+  /* ---------- Lock simulation. Geometry matches build_preview.py. ---------- */
+  const W = 120, FL = [250, 216, 182, 148, 114], LO = FL.map(f => f - 44), LIFT = 72;
+  const fig = document.querySelector('.lockfig');
+  const svg = fig.querySelector('svg');
+  const all = s => [...svg.querySelectorAll(s)];
+  const waterEls = all('.water'), surfEls = all('.surf'), ripEls = all('.rip'), wetEls = all('.wet'), gateEls = all('.gate');
+  const boat = svg.querySelector('.boat'), rock = svg.querySelector('.rock');
+  const ringEl = svg.querySelector('.ring'), tickEl = svg.querySelector('.badge .tick');
+  const steps = [...fig.querySelectorAll('.steps li')];
+  const fx = svg.querySelector('.fx'), NS = 'http://www.w3.org/2000/svg';
+  const dots = [], rings = [];
+  for (let k = 0; k < 44; k++) { const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '0'); fx.appendChild(c); dots.push(c); }
+  for (let k = 0; k < 18; k++) { const e = document.createElementNS(NS, 'ellipse'); e.setAttribute('class', 'splash'); e.setAttribute('rx', '0'); e.setAttribute('ry', '0'); fx.appendChild(e); rings.push(e); }
 
-  async function lock(el, alive) {
-    const boat = el.querySelector('.boat');
-    const waters = [...el.querySelectorAll('.water')];
-    const gates = [...el.querySelectorAll('.gate')];
-    const tick = el.querySelector('.badge .tick');
-    const steps = [...el.querySelectorAll('.steps li')];
-    const level = (i, y) => { waters[i].setAttribute('y', y); waters[i].setAttribute('height', FLOORS[i] - y); };
-    const moor = (x, y) => boat.setAttribute('transform', `translate(${x} ${y})`);
-    const gate = (i, dy) => gates[i].setAttribute('transform', `translate(0 ${dy})`);
-    const at = k => steps.forEach((s, j) => { s.classList.toggle('done', j < k); s.classList.toggle('active', j === k); });
+  const S = {
+    t: 0, level: LO.slice(), fin: [0, 0, 0, 0, 0], fout: [0, 0, 0, 0, 0],
+    gate: [0, 0, 0, 0], prevGate: [0, 0, 0, 0], gateIn: [true, true, true, true],
+    bx: 4 * W + W / 2, by: LO[4], pbx: 4 * W + W / 2, wetTop: LO.slice(), wetA: [0, 0, 0, 0, 0],
+    ring: 1, tick: 1, parts: [], rings: []
+  };
+  const chamberAt = x => Math.max(0, Math.min(4, Math.floor(x / W)));
+  function surf(i, x) {
+    let y = S.level[i] + .9 * Math.sin(.085 * x + S.t * 1.6 + i) + .45 * Math.sin(.19 * x - S.t * 2.3);
+    if (S.fin[i] > 0) y += S.fin[i] * 3.4 * Math.exp(-((i + 1) * W - x) / 26) * Math.sin(.42 * x - S.t * 9);
+    if (S.fout[i] > 0) y += S.fout[i] * 1.6 * Math.exp(-(x - i * W) / 30) * Math.sin(.3 * x + S.t * 7);
+    return y;
+  }
+  const surfAt = x => surf(chamberAt(x), x);
+  const spawn = p => { if (S.parts.length < dots.length) S.parts.push(p); };
+  const splash = (x, y, size) => { if (S.rings.length < rings.length) S.rings.push({ x, y, size, age: 0, life: .6 }); };
 
-    LOWS.forEach((y, i) => level(i, y));
-    gates.forEach((g, i) => gate(i, 0));
-    tick.style.strokeDashoffset = 1;
-    el.classList.remove('approved', 'waiting');
-    moor(W / 2, LOWS[0]); at(0);
-    await wait(800); if (!alive()) return;
-
-    for (let i = 0; i < 4; i++) {
-      // The chamber fills to the next level and lifts the boat with it.
-      await tween(1000, t => { const y = LOWS[i] + (LOWS[i + 1] - LOWS[i]) * t; level(i, y); moor(W / 2 + i * W, y); }, alive);
-      if (!alive()) return;
-      if (i === 3) {
-        // Your gate: the job waits until you approve it.
-        el.classList.add('waiting');
-        await wait(1300); if (!alive()) return;
-        await tween(450, t => { tick.style.strokeDashoffset = 1 - t; }, alive, lin);
-        el.classList.remove('waiting'); el.classList.add('approved');
-        await wait(300); if (!alive()) return;
+  function step(dt) {
+    S.t += dt;
+    // Inflow at the sluice: bubbles boil up from the chamber floor next to the upper gate.
+    for (let i = 0; i < 5; i++) {
+      const fi = S.fin[i];
+      if (fi > .03 && Math.random() < fi * .9) {
+        spawn({ k: 'b', x: (i + 1) * W - 8 - Math.random() * 16, y: FL[i] - 3, vx: -Math.random() * .5, vy: -(.5 + Math.random() * .8), r: .8 + Math.random() * 1.8, age: 0 });
       }
-      await tween(550, t => gate(i, -LIFT * t), alive);
-      if (!alive()) return;
-      await tween(1100, t => moor(W / 2 + i * W + W * t, LOWS[i + 1]), alive);
-      if (!alive()) return;
+    }
+    // Gates: drips while raised, a splash when the gate drops back into the water.
+    for (let g = 0; g < 4; g++) {
+      const lift = S.gate[g], b = (g + 1) * W, bottom = FL[g + 1] - lift;
+      const rising = lift - S.prevGate[g] > .2;
+      if (lift > 18 && Math.random() < (rising ? .35 : .05)) spawn({ k: 'd', x: b + (Math.random() - .5) * 8, y: bottom, vx: 0, vy: .2, r: 1.1 + Math.random() * .6, age: 0 });
+      const sy = surfAt(b - 1), inWater = bottom > sy;
+      if (inWater && !S.gateIn[g]) {
+        for (let n = 0; n < 5; n++) spawn({ k: 'f', x: b + (Math.random() - .5) * 14, y: sy, vx: (Math.random() - .5) * .8, r: 1 + Math.random() * 1.2, age: 0, life: .7 });
+        splash(b, sy, 1.4);
+      }
+      S.gateIn[g] = inWater; S.prevGate[g] = lift;
+    }
+    // The freighter: stern wash and a small bow wave while it moves.
+    const vx = (S.bx - S.pbx) / Math.max(dt, 1e-3); S.pbx = S.bx;
+    if (Math.abs(vx) > 8) {
+      if (Math.random() < .5) spawn({ k: 'f', x: S.bx - 34, y: surfAt(S.bx - 34), vx: -.4 - Math.random() * .3, r: .9 + Math.random() * 1.3, age: 0, life: .9 });
+      if (Math.random() < .12) splash(S.bx + 36, surfAt(S.bx + 36), .9);
+    }
+    S.parts = S.parts.filter(p => {
+      p.age += dt;
+      if (p.k === 'b') {
+        p.x += p.vx + Math.sin(p.age * 9 + p.r) * .15; p.y += p.vy;
+        const sy = surfAt(p.x); if (p.y <= sy + 1) { splash(p.x, sy, p.r * .5); return false; }
+        return p.age < 4;
+      }
+      if (p.k === 'd') {
+        p.vy += .22; p.y += p.vy;
+        if (Math.abs(p.x - S.bx) < 33 && p.y >= S.by - 13 && p.y <= S.by) return false;
+        const sy = surfAt(p.x); if (p.y >= sy) { splash(p.x, sy, .8); return false; }
+        return p.age < 3;
+      }
+      p.x += p.vx; p.y = surfAt(p.x);
+      return p.age < (p.life || .8);
+    });
+    S.rings = S.rings.filter(r => (r.age += dt) < r.life);
+    for (let i = 0; i < 5; i++) S.wetA[i] *= Math.pow(.55, dt);
+    // The boat floats on the surface and rocks with its slope and the inflow.
+    const ci = chamberAt(S.bx);
+    S.by += (surf(ci, S.bx) - S.by) * .3;
+    const slope = (surfAt(S.bx + 14) - surfAt(S.bx - 14)) / 28;
+    const rot = Math.max(-4, Math.min(4, Math.atan(slope) * 57.3 * .8)) + S.fin[ci] * 1.4 * Math.sin(S.t * 5);
+    draw(rot);
+  }
+
+  function draw(rot) {
+    for (let i = 0; i < 5; i++) {
+      const x0 = i * W, x1 = x0 + W;
+      let d = `M${x0} ${FL[i]}`, line = '';
+      for (let x = x0; x <= x1; x += 5) { const y = surf(i, x).toFixed(2); d += ` L${x} ${y}`; line += (line ? ' L' : 'M') + `${x} ${y}`; }
+      waterEls[i].setAttribute('d', d + ` L${x1} ${FL[i]} Z`);
+      surfEls[i].setAttribute('d', line);
+      [13, 27].forEach((depth, k) => {
+        const el = ripEls[i * 2 + k], y = S.level[i] + depth;
+        if (y < FL[i] - 4) { el.setAttribute('d', `M${x0 + 12} ${y.toFixed(1)} H${x1 - 12}`); el.style.strokeDashoffset = (-(S.t * 9 + i * 7)) % 18; el.style.visibility = ''; }
+        else el.style.visibility = 'hidden';
+      });
+      const wt = S.wetTop[i];
+      wetEls[i].setAttribute('y', wt.toFixed(1)); wetEls[i].setAttribute('height', (FL[i] - wt).toFixed(1));
+      wetEls[i].style.opacity = S.wetA[i].toFixed(3);
+    }
+    gateEls.forEach((g, k) => g.setAttribute('transform', `translate(0 ${(-S.gate[k]).toFixed(2)})`));
+    boat.setAttribute('transform', `translate(${S.bx.toFixed(2)} ${S.by.toFixed(2)})`);
+    rock.setAttribute('transform', `rotate(${rot.toFixed(2)})`);
+    dots.forEach((c, k) => {
+      const p = S.parts[k];
+      if (!p) { c.setAttribute('r', '0'); return; }
+      c.setAttribute('cx', p.x.toFixed(1)); c.setAttribute('cy', p.y.toFixed(1)); c.setAttribute('r', p.r.toFixed(2));
+      c.setAttribute('class', 'p-' + p.k);
+      c.style.opacity = p.k === 'f' ? (1 - p.age / (p.life || .8)).toFixed(2) : '';
+    });
+    rings.forEach((e, k) => {
+      const r = S.rings[k];
+      if (!r) { e.setAttribute('rx', '0'); e.setAttribute('ry', '0'); return; }
+      const f = r.age / r.life, rx = (1.5 + f * 6) * r.size + 1;
+      e.setAttribute('cx', r.x.toFixed(1)); e.setAttribute('cy', r.y.toFixed(1));
+      e.setAttribute('rx', rx.toFixed(2)); e.setAttribute('ry', (rx * .32).toFixed(2)); e.style.opacity = (1 - f).toFixed(2);
+    });
+    ringEl.style.strokeDashoffset = ((1 - S.ring) * 1.02).toFixed(3);
+    tickEl.style.strokeDashoffset = ((1 - S.tick) * 1.02).toFixed(3);
+  }
+
+  // Run the simulation only while the drawing is on screen.
+  let running = false, last = 0, onScreen = false;
+  const loop = now => {
+    if (!running) return;
+    step(Math.min(.05, (now - last) / 1000 || .016)); last = now;
+    requestAnimationFrame(loop);
+  };
+  const start = () => { if (running || reduce || !onScreen || document.hidden) return; running = true; last = performance.now(); requestAnimationFrame(loop); };
+  const stop = () => { running = false; };
+  if (!reduce && 'IntersectionObserver' in window) {
+    new IntersectionObserver(es => es.forEach(e => { onScreen = e.isIntersecting; onScreen ? start() : stop(); })).observe(fig);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  }
+
+  const at = k => steps.forEach((s, j) => { s.classList.toggle('done', j < k); s.classList.toggle('active', j === k); });
+
+  async function story(alive) {
+    S.level = LO.slice(); S.fin = [0, 0, 0, 0, 0]; S.fout = [0, 0, 0, 0, 0];
+    S.gate = [0, 0, 0, 0]; S.prevGate = [0, 0, 0, 0]; S.gateIn = [true, true, true, true];
+    S.wetA = [0, 0, 0, 0, 0]; S.parts = []; S.rings = [];
+    S.bx = S.pbx = W / 2; S.by = LO[0]; S.ring = 0; S.tick = 0;
+    fig.classList.remove('approved', 'waiting'); at(0);
+    await wait(900); if (!alive()) return;
+    for (let i = 0; i < 4; i++) {
+      const lo = LO[i], hi = LO[i + 1];
+      // Fill: fast while the difference in level is large, slowing as the levels meet.
+      await tween(1800, t => { const r = 1 - t; S.level[i] = hi + (lo - hi) * r * r; S.fin[i] = r; }, alive, lin);
+      S.fin[i] = 0; if (!alive()) return;
+      if (i === 3) {
+        fig.classList.add('waiting');
+        await tween(1700, t => { S.ring = t; }, alive, lin); if (!alive()) return;
+        await tween(420, t => { S.tick = t; }, alive, lin); if (!alive()) return;
+        fig.classList.remove('waiting'); fig.classList.add('approved');
+        await wait(350); if (!alive()) return;
+      }
+      await tween(750, t => { S.gate[i] = LIFT * backOut(t); }, alive, lin); if (!alive()) return;
+      await tween(1500, t => { S.bx = W / 2 + i * W + W * ease(t); }, alive, lin); if (!alive()) return;
       at(i + 1);
-      // Gate drops behind the boat, and the chamber drains back for the next job.
-      const drain = tween(900, t => level(i, LOWS[i + 1] + (LOWS[i] - LOWS[i + 1]) * t), alive);
-      await tween(450, t => gate(i, -LIFT * (1 - t)), alive);
-      await drain; if (!alive()) return;
+      // Close the gate behind the boat and drain the chamber, leaving a wet mark on the wall.
+      S.wetTop[i] = hi; S.wetA[i] = .2;
+      const drain = tween(1600, t => { const r = 1 - t; S.level[i] = lo + (hi - lo) * r * r; S.fout[i] = r * .8; }, alive, lin);
+      await tween(700, t => { S.gate[i] = LIFT * (1 - settle(t)); }, alive, lin);
+      await drain; S.fout[i] = 0; if (!alive()) return;
       await wait(150);
     }
     at(5);
@@ -239,7 +368,7 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
     el.classList.add('play');
     if (el.dataset.kind === 'lock') {
       const id = (el._run = (el._run || 0) + 1);
-      lock(el, () => el._run === id).catch(() => {});
+      story(() => el._run === id).catch(() => {});
     }
   }
 
@@ -251,13 +380,5 @@ button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
     anims.forEach(el => io.observe(el));
   }
   document.getElementById('replay').addEventListener('click', () => anims.forEach(play));
-
-  const sheet = document.getElementById('sheet');
-  document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      sheet.dataset.palette = chip.dataset.p;
-      document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
-    });
-  });
 })();
 </script>

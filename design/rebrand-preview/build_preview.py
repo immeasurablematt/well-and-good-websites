@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Well and Good Growth rebrand preview, round two (direction B, Canal lock).
+"""Build the Well and Good Growth rebrand preview (direction B, Canal lock, Lake & Marigold).
 
 The bridge is drawn from measurements rather than traced, so both towers are
 identical and the span is symmetric. The lock drawing is generated here too;
@@ -9,6 +9,7 @@ Run: python3 design/rebrand-preview/build_preview.py
 Output: design/rebrand-preview/well-and-good-growth-rebrand.html (the artifact page).
 Keep this script em-dash free.
 """
+import math
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
@@ -118,11 +119,13 @@ HERO = ('<svg viewBox="366 380 510 350" role="img" aria-label="The Welland lift 
         + bridge_plate('b-ink', 6.5, 0) + '</svg>')
 
 # ---------------------------------------------------------------- lock drawing
+# Static markup is the resting state (the job has passed every lock). The
+# animation in preview_template.html runs a small simulation over the same
+# geometry, so these numbers must match the constants there.
 W, STEP, DEPTH = 120, 34, 44
 FLOORS = [250 - i * STEP for i in range(5)]      # canal bed of each chamber
 LOWS = [fl - DEPTH for fl in FLOORS]              # resting water level of each chamber
 COPES = [fl - 96 for fl in FLOORS]                # top of the chamber walls
-GATE_LIFT = 72
 
 
 def stair(ys):
@@ -133,30 +136,68 @@ def stair(ys):
 
 
 BED = stair(FLOORS)
-COPING = stair(COPES)
-WALL = COPING + f" V{FLOORS[4]}" + ''.join(f" H{i * W} V{FLOORS[i - 1]}" for i in range(4, 0, -1)) + " H0 Z"
+WALL = stair(COPES) + f" V{FLOORS[4]}" + ''.join(f" H{i * W} V{FLOORS[i - 1]}" for i in range(4, 0, -1)) + " H0 Z"
 EARTH = BED + " V272 H0 Z"
+COPINGS = ' '.join(f"M{i * W} {COPES[i]} H{(i + 1) * W}" for i in range(5))
 
-waters = ''.join(f'<rect class="water" x="{i * W}" y="{LOWS[i]}" width="{W}" height="{FLOORS[i] - LOWS[i]}"/>' for i in range(5))
+
+def surf0(i, x):
+    """Resting surface: the same gentle ripple the animation starts from."""
+    return LOWS[i] + 0.9 * math.sin(0.085 * x + i) + 0.45 * math.sin(0.19 * x)
+
+
+water, surfaces, ripples, wets, numbers = [], [], [], [], []
+for i in range(5):
+    x0, x1 = i * W, (i + 1) * W
+    pts = [(x, surf0(i, x)) for x in range(x0, x1 + 1, 5)]
+    water.append(f'<path class="water" d="M{x0} {FLOORS[i]} ' + ' '.join(f'L{x} {y:.2f}' for x, y in pts) + f' L{x1} {FLOORS[i]} Z"/>')
+    surfaces.append('<path class="surf" d="M' + ' L'.join(f'{x} {y:.2f}' for x, y in pts) + '"/>')
+    ripples.append(f'<path class="rip" d="M{x0 + 12} {LOWS[i] + 13} H{x1 - 12}"/><path class="rip" d="M{x0 + 12} {LOWS[i] + 27} H{x1 - 12}"/>')
+    wets.append(f'<rect class="wet" x="{x0}" y="{LOWS[i]}" width="{W}" height="{FLOORS[i] - LOWS[i]}"/>')
+    numbers.append(f'<text class="locknum" x="{x0 + 8}" y="{COPES[i] + 14}">LOCK {i + 1}</text>')
+
 gates = []
 for i in range(4):
     b, lo, fl = (i + 1) * W, LOWS[i + 1], FLOORS[i + 1]
+    top = lo - 14
+    h = fl - top
     yours = ' yours' if i == 3 else ''
-    gates.append(f'<g class="gate{yours}"><rect x="{b - 5}" y="{lo - 14}" width="10" height="{fl - lo + 14}" rx="1.5"/></g>')
+    gates.append(
+        f'<g class="gate{yours}"><rect x="{b - 5}" y="{top}" width="10" height="{h}" rx="1.2"/>'
+        f'<path class="rib" d="M{b - 5} {top + h / 3:.1f} H{b + 5} M{b - 5} {top + 2 * h / 3:.1f} H{b + 5} '
+        f'M{b - 3.5} {top + 3} L{b + 3.5} {fl - 3} M{b + 3.5} {top + 3} L{b - 3.5} {fl - 3}"/></g>')
 
-BOAT = (f'<g class="boat" transform="translate({4 * W + W // 2} {LOWS[4]})">'
-        '<path class="hull" d="M-31 -3 H32 L27 8 H-27 Z"/>'
-        '<rect class="house" x="-29" y="-11" width="12" height="8"/>'
-        '<rect class="stack" x="-25" y="-18" width="4" height="7"/>'
-        '<rect class="house" x="18" y="-14" width="10" height="11"/></g>')
+# A Great Lakes freighter: long low hull, stripe at the waterline, stern house and stack, pilothouse at the bow.
+BOAT = (f'<g class="boat" transform="translate({4 * W + W // 2} {LOWS[4]})"><g class="rock">'
+        '<path class="hull" d="M-33 -4 H30 Q34 -4 35 -6 L31 8 H-29 Q-33 8 -33 3 Z"/>'
+        '<path class="stripe" d="M-31 -0.5 H31"/>'
+        '<path class="hatch" d="M-12 -4 V-6 M-4 -4 V-6 M4 -4 V-6 M12 -4 V-6"/>'
+        '<rect class="house" x="-30" y="-12" width="13" height="8"/>'
+        '<rect class="stack" x="-26.5" y="-19" width="5" height="7"/>'
+        '<rect class="house" x="19" y="-15" width="10" height="11"/>'
+        '<rect class="win" x="20.8" y="-13" width="6.4" height="2.6"/>'
+        '<path class="mast" d="M24 -15 V-21"/></g></g>')
 
-BADGE = ('<g class="badge"><circle cx="462" cy="30" r="11"/>'
-         '<path class="tick" pathLength="1" d="M456.5 30 l3.8 4 l7.5 -8.5"/></g>')
+BADGE = ('<g class="badge"><circle class="ring" pathLength="1" cx="456" cy="30" r="15" transform="rotate(-90 456 30)"/>'
+         '<circle class="disc" cx="456" cy="30" r="10.5"/>'
+         '<path class="tick" pathLength="1" d="M450.8 30.2 l3.6 3.8 l7.2 -8.2"/></g>')
+
+DEFS = ('<defs>'
+        '<linearGradient id="lkw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--water)"/>'
+        '<stop offset="1" style="stop-color:var(--water-deep)"/></linearGradient>'
+        '<pattern id="lkh" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+        '<line x1="0" y1="0" x2="0" y2="7" style="stroke:var(--ink);stroke-width:1.2;opacity:.2"/></pattern>'
+        '<pattern id="lkm" width="24" height="24" patternUnits="userSpaceOnUse">'
+        '<path d="M0 11.5 H24 M0 23.5 H24 M6 0 V11.5 M18 12 V23.5" style="fill:none;stroke:var(--ink);stroke-width:.8;opacity:.08"/></pattern>'
+        '</defs>')
 
 LOCK_SVG = ('<svg viewBox="0 -30 600 302" role="img" aria-label="Side view of five canal locks rising left to right. '
-            'A lake freighter rises lock by lock. The fourth gate, your review, waits until you approve.">'
-            f'<path class="wallface" d="{WALL}"/>' + BOAT + waters
-            + f'<path class="earth" d="{EARTH}"/><path class="bed" d="{BED}"/>'
+            'A lake freighter rises lock by lock as each chamber fills. The fourth gate, your review, waits until you approve.">'
+            + DEFS
+            + f'<path class="wallface" d="{WALL}"/><path class="masonry" d="{WALL}"/>'
+            + ''.join(wets) + ''.join(numbers) + f'<path class="coping" d="{COPINGS}"/>'
+            + BOAT + ''.join(water) + ''.join(surfaces) + ''.join(ripples) + '<g class="fx"></g>'
+            + f'<path class="earth" d="{EARTH}"/><path class="hatch-fill" d="{EARTH}"/><path class="bed" d="{BED}"/>'
             + ''.join(gates) + BADGE + '</svg>')
 
 STEPS = ('<ol class="steps">'
