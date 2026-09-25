@@ -1,0 +1,66 @@
+/* 15. Your town on the canal: a stylized Niagara map beside the capabilities list on the three location
+   pages (markup from scripts/art_local.py, canal_map()). The town names are buttons over the drawing:
+   choosing one moves the marigold pin there. 15-map.js draws the canal and drops the pins the first time
+   the map comes on screen, and sails a freighter along the canal while it is visible. */
+
+/* Layout: on wider screens the capabilities list stacks beside the map, under the full-width heading. */
+@media (min-width:761px){
+  .capabilities.has-map{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,400px);column-gap:clamp(36px,6vw,96px);align-items:start}
+  .capabilities.has-map>*{grid-column:1}
+  .capabilities.has-map>h2{grid-column:1/-1}
+  .capabilities.has-map>.canal-map{grid-column:2;grid-row:2/span 2;margin-top:44px}
+  .capabilities.has-map .capability-list{grid-template-columns:minmax(0,1fr);gap:30px}
+  .capabilities.has-map .capability-list p{max-width:60ch}
+}
+@media (max-width:760px){
+  .capabilities.has-map>.canal-map{margin-top:40px;max-width:400px}
+}
+
+.canal-map{min-width:0}
+.map-stage{position:relative;container-type:inline-size;padding:0;background:var(--sheet);border:2px solid var(--ink);border-radius:3px;box-shadow:8px 8px 0 var(--accent);overflow:hidden}
+.map-art{display:block;width:100%;height:auto}
+.canal-map figcaption{margin-top:16px;font-size:13px;font-style:italic;color:var(--soft)}
+
+.map-lake{fill:var(--water);opacity:.5}
+.map-lake-name{font:italic 12px var(--sans);fill:var(--ink)}
+.map-water-name{font:italic 9.5px var(--sans);fill:var(--soft)}
+.map-river{fill:none;stroke:var(--water);stroke-width:4;stroke-linecap:round}
+.map-canal-bank,.map-canal{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2;stroke-dashoffset:0}
+.map-canal-bank{stroke:var(--ink);stroke-width:6.5}
+.map-canal{stroke:var(--water);stroke-width:3}
+.map-dot{fill:var(--paper);stroke:var(--ink);stroke-width:1.8;transition:fill .25s ease}
+.map-dot.is-pinned{fill:var(--ink)}
+
+/* Pins: the marigold one moves; small ink ones mark the towns a page names and stay put. */
+.map-pin-body path{stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+.map-pin.is-primary .map-pin-body path{fill:var(--accent)}
+.map-pin.is-also .map-pin-body path{fill:var(--ink);stroke:var(--paper);stroke-width:1.4}
+.map-pin-eye{fill:var(--paper)}
+.map-pin.is-also .map-pin-eye{fill:var(--accent)}
+.map-pin.is-under{display:none}
+.map-pulse{fill:none;stroke:var(--accent-text);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+
+/* Town names: buttons placed on their dots. Each button also covers its dot, so the dot is tappable too. */
+.map-towns{position:absolute;inset:0}
+.map-town{position:absolute;left:var(--x);top:var(--y);display:inline-flex;align-items:center;min-height:30px;padding:2px 6px;border:0;border-radius:2px;background:transparent;color:var(--ink);font:600 clamp(12px,3.8cqw,15px)/1.1 var(--sans);white-space:nowrap;cursor:pointer;
+  text-shadow:0 0 2px var(--paper),0 0 2px var(--paper),0 0 4px var(--paper)}
+.map-town.is-start{padding-left:18px;transform:translate(-10px,-50%)}
+.map-town.is-end{padding-right:18px;transform:translate(calc(-100% + 10px),-50%)}
+.map-town[aria-pressed=true]{font-weight:800}
+.map-town:hover,.map-town:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.map-town:focus-visible{outline:3px solid var(--ink);outline-offset:1px}
+
+/* Motion. .is-armed is set only on maps that start below the screen, so they are complete at rest. */
+@keyframes wg-map-draw{from{stroke-dashoffset:1.02}to{stroke-dashoffset:0}}
+@keyframes wg-pin-drop{from{opacity:0;transform:translateY(-26px)}to{opacity:1;transform:none}}
+@keyframes wg-map-fade{from{opacity:0}to{opacity:1}}
+@keyframes wg-map-pulse{from{opacity:.85;transform:scale(1)}to{opacity:0;transform:scale(4)}}
+@media (prefers-reduced-motion:no-preference){
+  .canal-map.is-armed .map-canal-bank,.canal-map.is-armed .map-canal{stroke-dashoffset:1.02}
+  .canal-map.is-armed .map-pin-body,.canal-map.is-armed .map-ship{opacity:0}
+  .canal-map.is-drawing .map-canal-bank,.canal-map.is-drawing .map-canal{animation:wg-map-draw 1.8s cubic-bezier(.5,0,.3,1) both}
+  .canal-map.is-drawing .map-pin-body{animation:wg-pin-drop .7s calc(1.45s + var(--pd,0s)) cubic-bezier(.3,1.6,.5,1) both}
+  .canal-map.is-drawing .map-ship{animation:wg-map-fade .6s 1.5s both}
+  .canal-map .map-pin.is-dropping .map-pin-body{animation:wg-pin-drop .6s cubic-bezier(.3,1.6,.5,1) both}
+  .canal-map.is-live .map-pin.is-primary .map-pulse{animation:wg-map-pulse 2.2s 1s ease-out infinite}
+}

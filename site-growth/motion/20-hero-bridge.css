@@ -1,0 +1,25 @@
+/* Homepage hero: the Welland lift bridge in two inks (spec section 5), replacing the old video ident.
+   The marigold plate sits offset under the indigo and is multiplied, like a two-colour print slightly out
+   of register. On load each line draws itself, the water follows, then the span lifts and settles back,
+   once. 20-hero-bridge.js holds the drawing back only when the page opens scrolled past the hero.
+   At rest and under reduced motion the drawing is complete with the span down.
+   Markup: HERO_BRIDGE in scripts/art_showpieces.py. */
+.hero-bridge{width:100%;max-width:540px;justify-self:center}
+.hero-bridge-art{display:block;width:100%;height:auto;overflow:visible}
+.hb-line{fill:none;stroke-width:6.5;stroke-linecap:round;stroke-linejoin:round}
+.hb-ink{stroke:var(--ink)}
+.hb-accent{stroke:var(--accent)}
+.hb-echo{mix-blend-mode:multiply;opacity:.9}
+.hb-line.hb-water{stroke:var(--water)}
+/* pathLength="1": a dash of 1 and a gap of 2, starting just past 1, keeps round caps from showing as dots. */
+.hb-draw{stroke-dasharray:1 2}
+@keyframes hb-draw{from{stroke-dashoffset:1.02}to{stroke-dashoffset:0}}
+@keyframes hb-lift{0%{transform:translateY(0)}30%,64%{transform:translateY(-38px)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:no-preference){
+  .hero-bridge .hb-draw{animation:hb-draw var(--t,1.2s) var(--d,0s) cubic-bezier(.55,0,.25,1) both}
+  .hero-bridge .hb-span{animation:hb-lift 2.8s 2.4s cubic-bezier(.45,0,.2,1) both}
+}
+/* Phones: the drawing sits above the headline, small enough that the headline stays on the first screen. */
+@media (max-width:760px){
+  .hero-bridge{grid-row:1;max-width:min(300px,78vw);justify-self:start;margin-bottom:6px}
+}

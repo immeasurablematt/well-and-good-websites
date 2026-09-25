@@ -1,0 +1,6 @@
+/* 2. Letterpress buttons: on hover or keyboard focus the button lifts off the paper as its
+   marigold shadow slips; pressing stamps it flat. --press (the shadow offset) is set in style.css. */
+.button{transition:transform .16s ease,box-shadow .16s ease}
+.button:hover,.button:focus-visible{transform:translate(-1px,-2px);--press:7px}
+.button:active{transform:translate(3px,3px);--press:0px;transition-duration:.07s}
+@media (prefers-reduced-motion:reduce){.button:hover,.button:focus-visible,.button:active{transform:none}}

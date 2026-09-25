@@ -1,0 +1,34 @@
+/* 17. Through the last lock, on the thank-you page: once on load the chamber fills, the freighter rises,
+   the marigold gate lifts, the freighter sails out, and the tick lands on the badge (17-thank-you.js).
+   The markup is the finished state, which is also what reduced motion shows.
+   Markup: THANK_YOU_LOCK in scripts/art_showpieces.py. */
+.ty-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--gap);align-items:center}
+.ty-copy .hero-description{max-width:46ch}
+.ty-copy .button{margin-top:28px}
+.ty-lock{min-width:0}
+.ty-art{display:block;width:100%;max-width:520px;height:auto;margin-inline:auto;overflow:visible}
+.ty-wall{fill:var(--wall)}
+.ty-water{fill:var(--water);opacity:.9}
+.ty-surf{fill:none;stroke:var(--paper);stroke-width:1.2;opacity:.75}
+.ty-earth{fill:var(--earth)}
+.ty-bed{fill:none;stroke:var(--ink);stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.ty-gate rect{fill:var(--ink)}
+.ty-gate-up rect{fill:var(--accent)}
+.ty-badge circle{fill:var(--accent);stroke:var(--ink);stroke-width:1.8}
+.ty-tick{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2}
+/* Until 17-thank-you.js takes over (it adds .is-live), a page that will run it shows the script's first frame:
+   the chamber low, the freighter waiting in it, and the tick not yet drawn. So a script that arrives after the
+   first paint never makes the freighter jump back into the chamber. .js is set by an inline script in the page
+   head; without scripts, and under reduced motion, the finished drawing stays. */
+@media (prefers-reduced-motion:no-preference){
+  .js .ty-art:not(.is-live) .ty-chamber{transform-box:view-box;transform-origin:0 140px;transform:scaleY(.5714)}
+  .js .ty-art:not(.is-live) .ty-surf{transform:translateY(30px)}
+  .js .ty-art:not(.is-live) .ty-ship{transform:translate(140px,95.3px) scale(.8)}
+  .js .ty-art:not(.is-live) .ty-tick{stroke-dashoffset:1.02}
+}
+/* Phones: the drawing sits above the heading. */
+@media (max-width:760px){
+  .ty-hero{grid-template-columns:minmax(0,1fr);gap:20px}
+  .ty-lock{grid-row:1}
+  .ty-art{max-width:400px;margin-inline:0}
+}

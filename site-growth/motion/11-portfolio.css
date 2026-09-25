@@ -1,0 +1,14 @@
+/* 11. Portfolio screenshots glide and tilt. On hover or keyboard focus the screenshot pans slowly through
+   its frame to show the part the frame crops (the lower half of the tall Welland Votes page, for one), and
+   eases back when you move away. With a mouse, the frame also tilts slightly toward the pointer while its
+   marigold shadow shifts. Phones play the glide once as each screenshot scrolls in. No tilt on touch
+   screens or under reduced motion. 11-portfolio.js adds .is-tilting and .is-gliding. */
+.portfolio-grid .portfolio-image img{transition:object-position 1.4s cubic-bezier(.45,0,.25,1)}
+.portfolio-grid .portfolio-image:hover img,.portfolio-grid .portfolio-image:focus-visible img,.portfolio-grid .portfolio-image.is-gliding img{object-position:50% 100%;transition-duration:3.2s}
+.portfolio-grid .portfolio-feature .portfolio-image:hover img,.portfolio-grid .portfolio-feature .portfolio-image:focus-visible img,.portfolio-grid .portfolio-feature .portfolio-image.is-gliding img{object-position:100% 100%}
+.portfolio-grid .portfolio-image:focus-visible{box-shadow:6px 6px 0 var(--accent)}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .portfolio-grid .portfolio-image{transition:transform .45s cubic-bezier(.3,.7,.3,1),box-shadow .45s cubic-bezier(.3,.7,.3,1)}
+  .portfolio-grid .portfolio-image.is-tilting{transform:perspective(1000px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));box-shadow:var(--shade-x,0px) var(--shade-y,8px) 0 var(--accent);transition-duration:.15s}
+}
+@media (prefers-reduced-motion:reduce){.portfolio-grid .portfolio-image img{transition:none}}
