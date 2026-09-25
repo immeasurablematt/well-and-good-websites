@@ -102,7 +102,7 @@ def _surf0(i, x):
     return LOWS[i] + 0.9 * math.sin(0.085 * x + i) + 0.45 * math.sin(0.19 * x)
 
 
-_water, _surfaces, _ripples, _wets, _numbers = [], [], [], [], []
+_water, _surfaces, _ripples, _wets = [], [], [], []
 for _i in range(5):
     _x0, _x1 = _i * W, (_i + 1) * W
     _pts = [(x, _surf0(_i, x)) for x in range(_x0, _x1 + 1, 5)]
@@ -110,7 +110,6 @@ for _i in range(5):
     _surfaces.append('<path class="cl-surf" d="M' + ' L'.join(f'{x} {y:.2f}' for x, y in _pts) + '"/>')
     _ripples.append(f'<path class="cl-rip" d="M{_x0 + 12} {LOWS[_i] + 13} H{_x1 - 12}"/><path class="cl-rip" d="M{_x0 + 12} {LOWS[_i] + 27} H{_x1 - 12}"/>')
     _wets.append(f'<rect class="cl-wet" x="{_x0}" y="{LOWS[_i]}" width="{W}" height="{FLOORS[_i] - LOWS[_i]}"/>')
-    _numbers.append(f'<text class="cl-locknum" x="{_x0 + 14}" y="{COPES[_i] + 14}">LOCK {_i + 1}</text>')
 
 
 def _gate(b, top, sill, cls):
@@ -170,7 +169,7 @@ LOCK_SVG = ('<svg class="cl-art" viewBox="0 -60 600 332" role="img" '
             'as each chamber fills. The fourth gate, your review, waits until you approve.">'
             + _DEFS
             + f'<path class="cl-wallface" d="{_WALL}"/><path class="cl-masonry" d="{_WALL}"/>'
-            + ''.join(_wets) + ''.join(_numbers) + f'<path class="cl-coping" d="{_COPINGS}"/>'
+            + ''.join(_wets) + f'<path class="cl-coping" d="{_COPINGS}"/>'
             + _BOAT + ''.join(_water) + ''.join(_surfaces) + ''.join(_ripples) + '<g class="cl-fx"></g>'
             + f'<path class="cl-earth" d="{_EARTH}"/><path class="cl-hatch-fill" d="{_EARTH}"/><path class="cl-bed" d="{_BED}"/>'
             + ''.join(_gates) + _END_GATES + _BADGE + '</svg>')

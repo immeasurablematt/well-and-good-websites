@@ -1,14 +1,33 @@
-/* 12. Founder photo develops: before the section scrolls in, Matt's photo shows as a two-ink print
-   (indigo shadows, marigold highlights), then develops into full colour. Pointing at it with a mouse
-   shows the print again; on touch screens a tap does. Without scripts, and under reduced motion, it is
-   simply the colour photo. The print is an overlay (.founder-duo) above the colour photo, hidden at rest:
-   the grey copy multiplies onto marigold, then indigo is laid over it with lighten. Markup: founder() in
-   scripts/build_growth.py. 12-founder.js adds .is-print. */
-.founder-print{position:relative;overflow:hidden;border:2px solid var(--ink);border-radius:3px;box-shadow:8px 8px 0 var(--accent);background:var(--wall)}
-.founder-photo .founder-print img{border:0;border-radius:0;box-shadow:none}
-.founder-duo{position:absolute;inset:0;isolation:isolate;background:var(--accent);opacity:0;transition:opacity 2.4s cubic-bezier(.45,0,.3,1);pointer-events:none}
-.founder-photo .founder-duo img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
-.founder-duo::after{content:"";position:absolute;inset:0;background:var(--ink);mix-blend-mode:lighten}
-.founder-print.is-print .founder-duo{opacity:1;transition-duration:.5s}
-@media (hover:hover){.founder-print:hover .founder-duo{opacity:1;transition-duration:.6s}}
-@media (prefers-reduced-motion:reduce){.founder-duo{display:none}}
+/* 12. Founder photo frame. At rest the colour photo sits in an indigo border with the marigold print echo.
+   On mouseover the echo swings once around the frame, like a second printing plate finding register,
+   the photo lifts a touch, and an indigo rule draws itself around the frame, clockwise from the top left.
+   Touch screens play it once when the photo comes on screen (12-founder.js adds .is-lit).
+   Under reduced motion the rule simply appears and nothing moves. Markup: founder() in scripts/build_growth.py. */
+.founder-print{position:relative;border:2px solid var(--ink);border-radius:3px;box-shadow:8px 8px 0 var(--accent);background:var(--wall);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s cubic-bezier(.2,.8,.2,1)}
+.founder-photo .founder-print img{display:block;border:0;border-radius:1px;box-shadow:none}
+.founder-trace{position:absolute;inset:-15px;pointer-events:none;opacity:0;transition:opacity .4s ease;
+  background:linear-gradient(var(--ink),var(--ink)) left top/100% 2px no-repeat,linear-gradient(var(--ink),var(--ink)) right top/2px 100% no-repeat,
+    linear-gradient(var(--ink),var(--ink)) right bottom/100% 2px no-repeat,linear-gradient(var(--ink),var(--ink)) left bottom/2px 100% no-repeat}
+@keyframes founder-trace{
+  0%{background-size:0 2px,2px 0,0 2px,2px 0}
+  25%{background-size:100% 2px,2px 0,0 2px,2px 0}
+  50%{background-size:100% 2px,2px 100%,0 2px,2px 0}
+  75%{background-size:100% 2px,2px 100%,100% 2px,2px 0}
+  100%{background-size:100% 2px,2px 100%,100% 2px,2px 100%}}
+@keyframes founder-orbit{
+  0%{box-shadow:8px 8px 0 var(--accent)}
+  24%{box-shadow:-8px 8px 0 var(--accent)}
+  48%{box-shadow:-8px -8px 0 var(--accent)}
+  72%{box-shadow:8px -8px 0 var(--accent)}
+  100%{box-shadow:11px 11px 0 var(--accent)}}
+.founder-print.is-lit{animation:founder-orbit 1.15s cubic-bezier(.45,0,.3,1) both;transform:translate(-3px,-3px)}
+.founder-print.is-lit .founder-trace{opacity:1;transition-duration:0s;animation:founder-trace 1s linear .2s both}
+@media (hover:hover){
+  .founder-print:hover{animation:founder-orbit 1.15s cubic-bezier(.45,0,.3,1) both;transform:translate(-3px,-3px)}
+  .founder-print:hover .founder-trace{opacity:1;transition-duration:0s;animation:founder-trace 1s linear .2s both}
+}
+@media (prefers-reduced-motion:reduce){
+  .founder-print,.founder-print:hover,.founder-print.is-lit{animation:none;transform:none;transition:none}
+  .founder-trace,.founder-print:hover .founder-trace,.founder-print.is-lit .founder-trace{animation:none;transition:none}
+}
