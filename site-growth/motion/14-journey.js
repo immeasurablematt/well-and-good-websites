@@ -79,6 +79,7 @@
     };
 
     draw(0);   // the first time it shows, the boat sails in from the start of the route
+    figure.classList.add('is-live');   // the markup's first-frame styles (14-journey.css) hand over to draw()
     WG.whileVisible(figure, () => { visible = true; kick(); }, () => {
       visible = false;
       if (frame) { cancelAnimationFrame(frame); frame = 0; }

@@ -58,5 +58,6 @@
   });
 
   draw();
+  svg.classList.add('is-live');   // the markup's first-frame styles (17-thank-you.css) hand over to draw()
   WG.onceInView(svg, sail, .3);
 })();

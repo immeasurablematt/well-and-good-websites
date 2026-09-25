@@ -22,3 +22,13 @@
 }
 @media (max-width:420px){.journey-stops li{font-size:16px}}
 @media (prefers-reduced-motion:reduce){.journey-stop circle,.journey-stops li{transition:none}}
+/* Until 14-journey.js takes over (it adds .is-live), a page that will run it shows the script's first frame:
+   the boat at the start of the route and no stop lit yet. So a script that arrives after the first paint never
+   makes the boat jump back from the end of the route. .js is set by an inline script in the page head; without
+   scripts, and under reduced motion, the whole route stays travelled. */
+@media (prefers-reduced-motion:no-preference){
+  .js .journey:not(.is-live) .journey-ship{transform:translate(30px,107px) rotate(-22.2deg) scale(.8)}
+  .js .journey:not(.is-live) .journey-done{stroke-dashoffset:1.02}
+  .js .journey:not(.is-live) .journey-stop circle{fill:var(--paper)}
+  .js .journey:not(.is-live) .journey-stops li{color:var(--soft)}
+}
