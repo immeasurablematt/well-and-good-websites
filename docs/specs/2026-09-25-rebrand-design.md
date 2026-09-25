@@ -106,9 +106,9 @@ Contrast on paper: ink 11.5:1, body text 6.6:1, marigold text 4.8:1 (meets WCAG 
 
 ## Open questions for Matthew
 
-1. **Homepage animation.** Replace the bridge video with the drawn bridge animation (recommended: lighter, sharper at any size, and it matches the new logo), or keep a video?
-2. **AI automation page.** Put the lock drawing in its own section below the hero and keep the task picker (recommended), or replace the picker?
-3. **Rollout.** The new colours, fonts, and logo change every page at once. Launch that way, with the new drawings on the two pilot pages first (recommended)?
+1. **Homepage animation.** Answered 2026-09-25: yes, replace the bridge video with the drawn bridge animation.
+2. **AI automation page.** Answered 2026-09-25: yes, the lock drawing gets its own section below the hero and the task picker stays.
+3. **Rollout.** Not yet. Before launch, Matthew wants a motion layer across the whole site: subtle animations plus dynamic ones triggered by scrolling, hovering, and clicking. A motion catalogue is being prototyped; the approved pieces will be added to this spec as section 8.
 
 ## Not in scope
 
