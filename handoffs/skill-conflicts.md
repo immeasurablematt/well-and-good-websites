@@ -1,15 +1,15 @@
 # Remove skills that conflict with Writing Desk
 
-Status: active
+Status: waiting
 Branch: claude/copy-optimization-skills-2xydff
-Pull request: #62 (draft)
-Updated: 2026-09-25 17:10 UTC by Claude cloud
+Pull request: #62 (merged 2026-09-25 at Matthew's request); mb-skills #28 (merged the same day)
+Updated: 2026-09-25 17:45 UTC by Claude cloud
 
 ## Goal
 Matthew installed his Writing Desk skill pack (writing-desk plus copyedit, copywriting, line-editing, structural-editing, professional-writing, editorial-research, webcopywriting, all from `immeasurablematt/mb-skills`) and wants no pre-existing skill to conflict with it.
 
 ## Next step
-Matthew chose to fix the root cause (three parts). (1) Account: he uploads the eight Writing Desk upload files (built and validated with mb-skills `skills/book-compiler/scripts/validate_claude_skill.py`, evals rule skipped, `provenance` field left out because the account has never accepted it) at claude.ai, Settings, Customize, Skills, and deletes `humanizer` there. After that, the cloud copies in `~/.claude/skills/` become duplicates of the account versions and should be removed from cloud workspaces. (2) This repository: no skills live here any more; merge pull request #62. (3) mb-skills: draft pull request immeasurablematt/mb-skills#28 (branch `claude/skill-clash-check`, all 10 test suites pass) tracks `angles` as Matthew's skill and `cro` as a vendor skill from coreyhaines31/marketingskills (Personal Codex profile), and adds a clash check to `scripts/skills.py status`. Next: Matthew reviews and merges mb-skills #28, then publishes it on his Mac as usual (promote and sync); on the Mac, delete `~/.agents/skills/cro` first if it is a plain folder, or vendor sync stops there. Then run `python3 scripts/skills.py status` in mb-skills: it now reports skill clashes across harness roots, synced account skills, and project repositories.
+Both pull requests are merged at Matthew's request: this repository no longer holds any skills, and mb-skills main now has `angles`, `cro` (vendor), `overlaps.json`, and the clash check in `scripts/skills.py status`. Remaining, all Matthew's: (1) on claude.ai, Settings, Customize, Skills, upload the eight Writing Desk files and the seven refreshed skills (book-compiler, linkedin-optimizer, matthew-voice, mb-content-strategy, product-messaging-matrix, seo-content-brief-generator, wysiwyg-copy-studio), and delete `humanizer`; (2) on the Mac, publish mb-skills as usual (promote and sync; delete `~/.agents/skills/cro` first if it is a plain folder). When he says the uploads are done, a Claude cloud session removes the duplicate Writing Desk copies from `~/.claude/skills/`, runs `python3 scripts/skills.py status` in mb-skills, confirms no clashes remain, and sets this note to done.
 
 ## Done so far
 - Installed the eight Writing Desk skills in the Claude cloud workspace (`~/.claude/skills`), identical to mb-skills commit c68c3ec. The older general marketing `copywriting` (v2.0.2, coreyhaines31/marketingskills) there was moved to `~/.claude/skills/.trash/`.
@@ -22,8 +22,8 @@ Matthew chose to fix the root cause (three parts). (1) Account: he uploads the e
 - Its smoke run found one more conflict in the cloud workspace, `~/.agents/skills/copywriting` (the old marketing copy, installed 2026-09-23 with the others); moved to `~/.claude/skills/.trash/`. It also found seven account skills older than the library (book-compiler, linkedin-optimizer, matthew-voice, mb-content-strategy, product-messaging-matrix, seo-content-brief-generator, wysiwyg-copy-studio); validated upload files for those were sent to Matthew with the Writing Desk ones.
 
 ## Waiting on Matthew
-- On claude.ai (Settings, Customize, Skills): upload the eight Writing Desk files and the seven refreshed skills, and delete humanizer. Then tell a Claude session so it can remove the duplicate cloud copies in `~/.claude/skills/`.
-- Merge pull request #62 here, and review and merge mb-skills #28.
+- The claude.ai uploads and the humanizer deletion (Settings, Customize, Skills).
+- Publishing mb-skills on the Mac.
 
 ## Notes for the next tool
 - Matthew's choices (2026-09-25): remove humanizer; keep `cro` and `angles` but manage them in mb-skills instead of this repository; put Writing Desk on his claude.ai account; add a clash check to mb-skills.
