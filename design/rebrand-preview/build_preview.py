@@ -209,6 +209,6 @@ template = (HERE / 'preview_template.html').read_text()
 html = (template.replace('%%SYMBOLS%%', SYMBOLS).replace('%%GRAIN%%', GRAIN)
         .replace('%%SHEET_A%%', SHEET_A).replace('%%SHEET_B%%', SHEET_B).replace('%%SHEET_C%%', SHEET_C))
 assert '%%' not in html, 'unfilled placeholder'
-assert '—' not in html, 'em-dash found'
+assert chr(0x2014) not in html, 'em-dash found'
 OUT.write_text(html)
 print('Saved', OUT, len(html), 'bytes')
