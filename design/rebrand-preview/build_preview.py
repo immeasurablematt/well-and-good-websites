@@ -1,213 +1,181 @@
 #!/usr/bin/env python3
-"""Build the Well and Good Growth rebrand directions preview (artifact HTML).
+"""Build the Well and Good Growth rebrand preview, round two (direction B, Canal lock).
 
-Bridge geometry comes from motion/bridge-magic/src/paths.json so every
-direction draws the same traced Welland lift bridge.
+The bridge is drawn from measurements rather than traced, so both towers are
+identical and the span is symmetric. The lock drawing is generated here too;
+its animation lives in preview_template.html.
+
+Run: python3 design/rebrand-preview/build_preview.py
+Output: design/rebrand-preview/well-and-good-growth-rebrand.html (the artifact page).
+Keep this script em-dash free.
 """
-import json
 import pathlib
 
 HERE = pathlib.Path(__file__).parent
-SRC = HERE.parents[1] / 'motion' / 'bridge-magic' / 'src' / 'paths.json'
 OUT = HERE / 'well-and-good-growth-rebrand.html'
 
-raw = json.loads(SRC.read_text())
 
-
-def fmt(n):
+def f(n):
     return f"{n:.1f}".rstrip('0').rstrip('.')
 
 
-def to_d(subpaths, step=1):
-    out = []
-    for sp in subpaths:
-        segs = sp
-        if step > 1 and len(sp) > 8:
-            segs = [sp[0]] + sp[1:-1][::step] + [sp[-1]]
-        for seg in segs:
-            out.append(seg[0] + ' '.join(fmt(n) for n in seg[1:]))
-    return ' '.join(out)
+# ---------------------------------------------------------------- bridge
+CX = 614.5                      # mirror line of the whole bridge
+TOWER_CENTRES = (413.0, 816.0)  # symmetric about CX
+HALF = 32.0                     # half tower width
+CAP_TOP, CAP_SHOULDER, CAP_BASE = 412.0, 429.0, 441.0
+LEG_TOP, LEG_BOT = 442.0, 650.0
+SPAN_L, SPAN_R = 449.0, 780.0   # small clearance from each tower, as on a real lift span
+DECK_Y, CHORD_END_Y, CHORD_PEAK_Y = 587.0, 539.0, 492.0
+PANELS = 8
 
 
-LEFT = to_d(raw['left'])
-RIGHT = to_d(raw['right'])
-SPAN = to_d(raw['span'])
-WATER = to_d(raw['water'], step=4)
-# Simplified mark: tower outline, cap and one zigzag each; arch, deck and verticals; one water line.
-MARK_D = to_d(raw['left'][:3] + raw['right'][:3] + raw['span'][:3])
-MARK_WATER = to_d(raw['water'][:1], step=4)
+def chord_y(x):
+    half = (SPAN_R - SPAN_L) / 2
+    return CHORD_PEAK_Y + (CHORD_END_Y - CHORD_PEAK_Y) * ((x - CX) / half) ** 2
 
 
-def hero_paths(width, water_style, delay=0.0, cls='b-ink'):
-    """Full-detail bridge with draw classes and a lifting span group."""
-    d = delay
-    return (
-        f'<g class="{cls}" style="stroke-width:{width}">'
-        f'<path class="ln draw" pathLength="1" style="--d:{d:.2f}s;--t:1.3s" d="{LEFT}"/>'
-        f'<path class="ln draw" pathLength="1" style="--d:{d + .2:.2f}s;--t:1.3s" d="{RIGHT}"/>'
-        f'<g class="span-lift"><path class="ln draw" pathLength="1" style="--d:{d + .8:.2f}s;--t:1.4s" d="{SPAN}"/></g>'
-        f'</g>'
-        + (f'<path class="ln draw" pathLength="1" style="--d:{d + 1.5:.2f}s;--t:1.2s;{water_style}" d="{WATER}"/>' if water_style else '')
-    )
+def tower(c, detail, mirror=False):
+    l, r = c - HALF, c + HALF
+    d = [f"M{f(l + 1)} {f(LEG_BOT)} L{f(l + 5)} {f(LEG_TOP)} L{f(r - 5)} {f(LEG_TOP)} L{f(r - 1)} {f(LEG_BOT)}",
+         f"M{f(l)} {f(CAP_BASE)} L{f(l)} {f(CAP_SHOULDER)} L{f(l + 15)} {f(CAP_TOP)} L{f(r - 15)} {f(CAP_TOP)} "
+         f"L{f(r)} {f(CAP_SHOULDER)} L{f(r)} {f(CAP_BASE)} Z"]
+    if detail:
+        ys = [449, 516, 583, 649]
+        for a, b in zip(ys, ys[1:]):
+            d.append(f"M{f(l + 6)} {a} L{f(r - 6)} {b} M{f(r - 6)} {a} L{f(l + 6)} {b}")
+        for y in ys[1:-1]:
+            d.append(f"M{f(l + 4)} {y} L{f(r - 4)} {y}")
+    else:
+        a, b = (r - 6, l + 6) if mirror else (l + 6, r - 6)
+        d.append(f"M{f(a)} 449 L{f(b)} 516 L{f(a)} 583 L{f(b)} 649")
+    return ' '.join(d)
 
 
-# ---------------------------------------------------------------- marks
-A_VB, A_AR = '315 265 600 600', 1.0
-B_VB, B_AR = '366 395 498 335', 498 / 335
-C_VB, C_AR = '331 360 568 405', 568 / 405
+def span(detail):
+    xs = [SPAN_L + k * (SPAN_R - SPAN_L) / PANELS for k in range(PANELS + 1)]
+    top = [(x, chord_y(x)) for x in xs]
+    d = [f"M{f(SPAN_L)} {f(DECK_Y)} H{f(SPAN_R)}",
+         'M' + ' L'.join(f"{f(x)} {f(y)}" for x, y in top)]
+    d += [f"M{f(x)} {f(DECK_Y)} V{f(y)}" for x, y in top]
+    if detail:
+        mid = PANELS // 2
+        for k in range(PANELS):
+            (x0, y0), (x1, y1) = top[k], top[k + 1]
+            d.append(f"M{f(x0)} {f(y0)} L{f(x1)} {f(DECK_Y)}" if k < mid else f"M{f(x1)} {f(y1)} L{f(x0)} {f(DECK_Y)}")
+    return ' '.join(d)
 
-SYMBOLS = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-<symbol id="mk-a" viewBox="{A_VB}"><g class="ln" style="stroke:var(--ink);stroke-width:var(--mw)"><circle cx="615" cy="565" r="282"/><path d="{MARK_D}"/></g><path class="ln" style="stroke:var(--water);stroke-width:var(--mw)" d="{MARK_WATER}"/></symbol>
-<symbol id="mk-b" viewBox="{B_VB}"><g class="ln" transform="translate(9 7)" style="stroke:var(--accent);stroke-width:var(--mw);opacity:var(--echo,.9);mix-blend-mode:multiply"><path d="{MARK_D}"/></g><path class="ln" style="stroke:var(--ink);stroke-width:var(--mw)" d="{MARK_D}"/><path class="ln" style="stroke:var(--accent);stroke-width:var(--mw)" d="{MARK_WATER}"/></symbol>
-<symbol id="mk-c" viewBox="{C_VB}"><rect x="345" y="383" width="540" height="358" class="ln" style="stroke:var(--ink);stroke-width:calc(var(--mw) * .55)"/><path class="ln" style="stroke:var(--ink);stroke-width:var(--mw)" d="{MARK_D}"/><path class="ln" style="stroke:var(--water);stroke-width:var(--mw)" d="{MARK_WATER}"/></symbol>
-</svg>'''
+
+def wave(x0, x1, y, amp, n):
+    step = (x1 - x0) / n
+    return f"M{f(x0)} {f(y)} q{f(step / 2)} {f(-2 * amp)} {f(step)} 0" + f" t{f(step)} 0" * (n - 1)
 
 
-def use(letter, h, mw, ar, echo=None):
-    w = round(h * ar)
+LEFT = tower(TOWER_CENTRES[0], True)
+RIGHT = tower(TOWER_CENTRES[1], True, mirror=True)
+SPAN = span(True)
+WATER = wave(424, 805, 662, 5, 12) + ' ' + wave(487.5, 741.5, 704, 5, 8)
+MARK_D = tower(TOWER_CENTRES[0], False) + ' ' + tower(TOWER_CENTRES[1], False, mirror=True) + ' ' + span(False)
+MARK_WATER = wave(424, 805, 662, 5, 12)
+
+MARK_VB = '366 396 498 290'
+MARK_AR = 498 / 290
+
+SYMBOL = (f'<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">'
+          f'<symbol id="mk" viewBox="{MARK_VB}">'
+          f'<g class="ln" transform="translate(9 7)" style="stroke:var(--accent);stroke-width:var(--mw);opacity:var(--echo,.9);mix-blend-mode:multiply"><path d="{MARK_D}"/></g>'
+          f'<path class="ln" style="stroke:var(--ink);stroke-width:var(--mw)" d="{MARK_D}"/>'
+          f'<path class="ln" style="stroke:var(--water);stroke-width:var(--mw)" d="{MARK_WATER}"/></symbol></svg>')
+
+
+def use(h, mw, echo=None):
     extra = f';--echo:{echo}' if echo is not None else ''
-    return (f'<svg width="{w}" height="{h}" style="--mw:{mw}{extra}" aria-hidden="true" focusable="false">'
-            f'<use href="#mk-{letter}" width="100%" height="100%"/></svg>')
+    return (f'<svg width="{round(h * MARK_AR)}" height="{h}" style="--mw:{mw}{extra}" aria-hidden="true" focusable="false">'
+            f'<use href="#mk" width="100%" height="100%"/></svg>')
 
 
-def sizes(letter, ar, mws, echo_small=False):
-    cells = []
-    for h, mw in zip((56, 32, 18), mws):
-        echo = 0 if (echo_small and h <= 32) else None
-        cells.append(f'<span>{use(letter, h, mw, ar, echo)}{h} px</span>')
-    return '<div class="sizes" aria-label="The mark at small sizes">' + ''.join(cells) + '</div>'
+SIZES = ('<div class="sizes" aria-label="The mark at small sizes">'
+         + ''.join(f'<span>{use(h, mw, 0 if h <= 32 else None)}{h} px</span>' for h, mw in ((56, 13), (32, 20), (18, 30)))
+         + '</div>')
+
+MARK = (f'<svg class="mark" viewBox="{MARK_VB}" role="img" aria-label="The mark: the Welland lift bridge printed in two inks">'
+        f'<g transform="translate(9 7)" style="mix-blend-mode:multiply;opacity:.9"><path class="ln draw" pathLength="1" style="--d:.15s;--t:1.6s;stroke:var(--accent);stroke-width:10" d="{MARK_D}"/></g>'
+        f'<path class="ln draw" pathLength="1" style="--t:1.6s;stroke:var(--ink);stroke-width:10" d="{MARK_D}"/>'
+        f'<path class="ln draw" pathLength="1" style="--d:1.1s;--t:1s;stroke:var(--water);stroke-width:10" d="{MARK_WATER}"/></svg>')
 
 
-MARK_A = (f'<svg class="mark" viewBox="{A_VB}" role="img" aria-label="Direction A mark: the lift bridge inside a fine ring">'
-          f'<circle class="ln draw" pathLength="1" style="--t:1.2s;stroke:var(--ink);stroke-width:5" cx="615" cy="565" r="282"/>'
-          f'<path class="ln draw" pathLength="1" style="--d:.3s;--t:1.5s;stroke:var(--ink);stroke-width:6.5" d="{MARK_D}"/>'
-          f'<path class="ln draw" pathLength="1" style="--d:1.1s;--t:1s;stroke:var(--water);stroke-width:6.5" d="{MARK_WATER}"/></svg>')
-MARK_B = (f'<svg class="mark" viewBox="{B_VB}" role="img" aria-label="Direction B mark: the lift bridge printed in forest and coral">'
-          f'<g transform="translate(9 7)" style="mix-blend-mode:multiply;opacity:.9"><path class="ln draw" pathLength="1" style="--d:.15s;--t:1.5s;stroke:var(--accent);stroke-width:11" d="{MARK_D}"/></g>'
-          f'<path class="ln draw" pathLength="1" style="--t:1.5s;stroke:var(--ink);stroke-width:11" d="{MARK_D}"/>'
-          f'<path class="ln draw" pathLength="1" style="--d:1s;--t:1s;stroke:var(--accent);stroke-width:11" d="{MARK_WATER}"/></svg>')
-MARK_C = (f'<svg class="mark" viewBox="{C_VB}" role="img" aria-label="Direction C mark: the lift bridge in a drawing frame">'
-          f'<rect class="ln draw" pathLength="1" style="--t:1s;stroke:var(--ink);stroke-width:3.5" x="345" y="383" width="540" height="358"/>'
-          f'<path class="ln draw" pathLength="1" style="--d:.3s;--t:1.5s;stroke:var(--ink);stroke-width:6" d="{MARK_D}"/>'
-          f'<path class="ln draw" pathLength="1" style="--d:1.1s;--t:1s;stroke:var(--water);stroke-width:6" d="{MARK_WATER}"/></svg>')
+def bridge_plate(cls, width, delay):
+    d = delay
+    return (f'<g class="{cls}" style="stroke-width:{width}">'
+            f'<path class="ln draw" pathLength="1" style="--d:{d:.2f}s;--t:1.3s" d="{LEFT}"/>'
+            f'<path class="ln draw" pathLength="1" style="--d:{d + .2:.2f}s;--t:1.3s" d="{RIGHT}"/>'
+            f'<g class="span-lift"><path class="ln draw" pathLength="1" style="--d:{d + .8:.2f}s;--t:1.4s" d="{SPAN}"/></g></g>')
 
-# ---------------------------------------------------------------- heroes
-HERO_A = (f'<svg viewBox="366 380 498 352" role="img" aria-label="The Welland lift bridge drawn in a fine ink line">'
-          + hero_paths(2.6, 'stroke:var(--water);stroke-width:2.6') + '</svg>')
 
-HERO_B = ('<svg viewBox="366 380 510 360" role="img" aria-label="The Welland lift bridge printed in two inks">'
-          '<g transform="translate(6 5)" style="mix-blend-mode:multiply;opacity:.9">'
-          + hero_paths(7, None, delay=.15, cls='b-accent') + '</g>'
-          + f'<path class="ln draw" pathLength="1" style="--d:1.5s;--t:1.2s;stroke:var(--accent);stroke-width:7" d="{WATER}"/>'
-          + hero_paths(7, None) + '</svg>')
+HERO = ('<svg viewBox="366 380 510 350" role="img" aria-label="The Welland lift bridge printed in two inks; the span lifts between the towers">'
+        '<g transform="translate(6 5)" style="mix-blend-mode:multiply;opacity:.9">' + bridge_plate('b-accent', 6.5, .15) + '</g>'
+        + f'<path class="ln draw" pathLength="1" style="--d:1.5s;--t:1.2s;stroke:var(--water);stroke-width:6.5" d="{WATER}"/>'
+        + bridge_plate('b-ink', 6.5, 0) + '</svg>')
 
-HERO_C = ('<svg viewBox="356 376 552 360" role="img" aria-label="An elevation drawing of the Welland lift bridge with construction lines">'
-          '<g class="construct fade"><line x1="360" y1="654" x2="890" y2="654"/><line x1="413" y1="394" x2="413" y2="728"/><line x1="816" y1="394" x2="816" y2="728"/></g>'
-          '<text class="cl fade" x="413" y="389" text-anchor="middle">CL</text><text class="cl fade" x="816" y="389" text-anchor="middle">CL</text>'
-          + hero_paths(2.2, 'stroke:var(--water);stroke-width:2.2')
-          + '<g class="dim"><line x1="852" y1="587" x2="886" y2="587"/><line x1="852" y1="549" x2="886" y2="549"/>'
-            '<line x1="876" y1="553" x2="876" y2="583"/><path d="M872 558 L876 551 L880 558 M872 578 L876 585 L880 578"/>'
-            '<text x="897" y="568" transform="rotate(-90 897 568)" text-anchor="middle">LIFT</text></g>'
-          + '</svg>')
+# ---------------------------------------------------------------- lock drawing
+W, STEP, DEPTH = 120, 34, 44
+FLOORS = [250 - i * STEP for i in range(5)]      # canal bed of each chamber
+LOWS = [fl - DEPTH for fl in FLOORS]              # resting water level of each chamber
+COPES = [fl - 96 for fl in FLOORS]                # top of the chamber walls
+GATE_LIFT = 72
 
-# ---------------------------------------------------------------- diagrams
-DIAG_A = '''<svg viewBox="0 0 360 540" role="img" aria-label="A line runs through five steps: a new enquiry arrives, research prepared, follow-up drafted, you review, then sent and records updated.">
-<path class="route" pathLength="1" d="M70 50 C130 85 10 125 70 160 C130 195 10 235 70 270 C130 305 10 345 70 380 C130 415 10 455 70 490"/>
-<g class="stn reached" data-x="70" data-y="50"><circle cx="70" cy="50" r="8"/><text class="main" x="104" y="56">A new enquiry arrives</text></g>
-<g class="stn reached" data-x="70" data-y="160"><circle cx="70" cy="160" r="8"/><text class="main" x="104" y="166">Research prepared</text></g>
-<g class="stn reached" data-x="70" data-y="270"><circle cx="70" cy="270" r="8"/><text class="main" x="104" y="276">Follow-up drafted</text></g>
-<g class="stn reached ok" data-x="70" data-y="380"><circle cx="70" cy="380" r="8"/><text class="main" x="104" y="386">You review</text><text class="sub" x="104" y="406">your checkpoint</text><path class="tick" pathLength="1" d="M200 377 l7 8 l15 -17"/></g>
-<g class="stn reached" data-x="70" data-y="490"><circle cx="70" cy="490" r="8"/><text class="main" x="104" y="496">Sent, and records updated</text></g>
-<circle class="dot" cx="70" cy="490" r="6.5"/>
-</svg>'''
 
-labels_b = [('A new enquiry', 'arrives'), ('Research', 'prepared'), ('Follow-up', 'drafted'),
-            ('You review', 'the lock gate'), ('Sent, and', 'records updated')]
-chambers = []
-for i, (l1, l2) in enumerate(labels_b):
-    x0, floor, w = 14 + i * 22, 528 - i * 100, 118
-    top, level = floor - 60, floor - 36
-    lx = x0 + w + 16
-    ok = ' ok' if i == 3 else ''
-    tick = f'<path class="tick" pathLength="1" d="M{lx + 102} {level - 9} l6 7 l13 -15"/>' if i == 3 else ''
-    chambers.append(
-        f'<g class="chamber{ok}" data-bx="{x0 + w / 2:g}" data-by="{level}">'
-        f'<rect class="water" x="{x0 + 4}" y="{level}" width="{w - 8}" height="{floor - level - 3}"/>'
-        f'<path class="wall" d="M{x0} {top} V{floor} H{x0 + w} V{top}"/>'
-        f'<g class="lbl on"><text class="num" x="{lx}" y="{level - 2}">{i + 1}</text>'
-        f'<text class="main" x="{lx + 20}" y="{level - 2}">{l1}</text>'
-        f'<text class="sub" x="{lx + 20}" y="{level + 16}">{l2}</text>{tick}</g></g>')
-bx4, by4 = 14 + 4 * 22 + 59, 528 - 400 - 36
-DIAG_B = ('<svg viewBox="0 0 380 560" role="img" aria-label="A boat rises through five canal locks: a new enquiry arrives, research prepared, follow-up drafted, you review at the lock gate, then sent and records updated.">'
-          + ''.join(chambers)
-          + '<rect class="gate" x="78" y="165" width="122" height="6" style="transform:translateX(-76px)"/>'
-          + f'<g class="boat" transform="translate({bx4} {by4})"><rect class="cabin" x="-10" y="-13" width="16" height="10"/><path class="hull" d="M-22 -3 H22 L15 8 H-15 Z"/></g>'
-          + '</svg>')
+def stair(ys):
+    d = f"M0 {ys[0]}"
+    for i in range(1, 5):
+        d += f" H{i * W} V{ys[i]}"
+    return d + " H600"
 
-labels_c = ['NEW ENQUIRY ARRIVES', 'RESEARCH PREPARED', 'FOLLOW-UP DRAFTED', 'YOU REVIEW', 'SENT, RECORDS UPDATED']
-ys_c = [48, 138, 228, 318, 408]
-c_parts = []
-for i, (lbl, y) in enumerate(zip(labels_c, ys_c)):
-    c_parts.append(
-        f'<g class="balloon reached" data-y="{y}"><circle cx="64" cy="{y}" r="15"/><text x="64" y="{y + 5}">{i + 1}</text></g>'
-        f'<line class="leader" x1="79" y1="{y}" x2="104" y2="{y}"/><text class="clbl" x="112" y="{y + 5}">{lbl}</text>')
-DIAG_C = ('<svg viewBox="0 0 380 560" role="img" aria-label="An engineering-style drawing of five numbered steps: new enquiry arrives, research prepared, follow-up drafted, you review at a hold point, then sent and records updated.">'
-          '<line class="cline" pathLength="1" x1="64" y1="18" x2="64" y2="440"/>'
-          + ''.join(c_parts)
-          + '<g transform="rotate(-3 186 348)"><g class="stamp"><rect x="112" y="333" width="148" height="30"/><text x="186" y="353" text-anchor="middle">HOLD POINT</text></g></g>'
-          + '<path class="tick" pathLength="1" d="M216 310 l6 7 l13 -15"/>'
-          + '<circle class="marker" r="21" transform="translate(64 408)"/>'
-          + '<g class="tblock"><rect x="140" y="470" width="232" height="78"/>'
-            '<line x1="140" y1="490" x2="372" y2="490"/><line x1="140" y1="509" x2="372" y2="509"/><line x1="140" y1="528" x2="372" y2="528"/><line x1="262" y1="509" x2="262" y2="548"/>'
-            '<text class="big" x="148" y="484">WELL AND GOOD GROWTH</text>'
-            '<text x="148" y="503">DWG: AI FOLLOW-UP WORKFLOW</text>'
-            '<text x="148" y="522">SCALE: NTS</text><text x="270" y="522">SHEET 2 OF 2</text>'
-            '<text x="148" y="541">DRAWN: M. BAGGETTA</text><text x="270" y="541">WELLAND, ON</text></g>'
-          + '</svg>')
+
+BED = stair(FLOORS)
+COPING = stair(COPES)
+WALL = COPING + f" V{FLOORS[4]}" + ''.join(f" H{i * W} V{FLOORS[i - 1]}" for i in range(4, 0, -1)) + " H0 Z"
+EARTH = BED + " V272 H0 Z"
+
+waters = ''.join(f'<rect class="water" x="{i * W}" y="{LOWS[i]}" width="{W}" height="{FLOORS[i] - LOWS[i]}"/>' for i in range(5))
+gates = []
+for i in range(4):
+    b, lo, fl = (i + 1) * W, LOWS[i + 1], FLOORS[i + 1]
+    yours = ' yours' if i == 3 else ''
+    gates.append(f'<g class="gate{yours}"><rect x="{b - 5}" y="{lo - 14}" width="10" height="{fl - lo + 14}" rx="1.5"/></g>')
+
+BOAT = (f'<g class="boat" transform="translate({4 * W + W // 2} {LOWS[4]})">'
+        '<path class="hull" d="M-31 -3 H32 L27 8 H-27 Z"/>'
+        '<rect class="house" x="-29" y="-11" width="12" height="8"/>'
+        '<rect class="stack" x="-25" y="-18" width="4" height="7"/>'
+        '<rect class="house" x="18" y="-14" width="10" height="11"/></g>')
+
+BADGE = ('<g class="badge"><circle cx="462" cy="30" r="11"/>'
+         '<path class="tick" pathLength="1" d="M456.5 30 l3.8 4 l7.5 -8.5"/></g>')
+
+LOCK_SVG = ('<svg viewBox="0 -30 600 302" role="img" aria-label="Side view of five canal locks rising left to right. '
+            'A lake freighter rises lock by lock. The fourth gate, your review, waits until you approve.">'
+            f'<path class="wallface" d="{WALL}"/>' + BOAT + waters
+            + f'<path class="earth" d="{EARTH}"/><path class="bed" d="{BED}"/>'
+            + ''.join(gates) + BADGE + '</svg>')
+
+STEPS = ('<ol class="steps">'
+         '<li class="done"><span class="n">1</span><span class="t">A new enquiry arrives</span></li>'
+         '<li class="done"><span class="n">2</span><span class="t">Research prepared</span></li>'
+         '<li class="done"><span class="n">3</span><span class="t">Follow-up drafted</span></li>'
+         '<li class="done yours"><span class="n">4</span><span class="t">You review<small>Your gate opens when you have checked the work</small></span></li>'
+         '<li class="done"><span class="n">5</span><span class="t">Sent, and records updated</span></li>'
+         '</ol>')
 
 GRAIN = ("url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E"
          "%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E"
          "%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .2 0 0 0 0 .14 0 0 0 .9 -.25'/%3E%3C/filter%3E"
          "%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")")
 
-HOME_H = 'Running your business shouldn’t mean <em>doing everything yourself.</em>'
-HOME_P = ('Free up your time with AI automation, and turn more interest into enquiries with a website and marketing '
-          'built around your customers. Put a decade of marketing experience and today’s technology to work for your business.')
-AUTO_P = ('Spend less time preparing research, drafting follow-ups, and updating records. '
-          'Get AI workflows built around your business, with clear points for review.')
-
-
-def site_bar(letter, ar, mw, echo=None):
-    return (f'<div class="site-bar" aria-hidden="true"><span class="mini">{use(letter, 30, mw, ar, echo)}'
-            f'<span>Well <i>and</i> Good Growth</span></span>'
-            '<span class="links"><span>Websites</span><span>Growth marketing</span><span>AI automation</span><span>Meet Matt</span></span>'
-            '<span class="pill">Contact</span></div>')
-
-
-def sheet(letter, mark, wordmark_extra, sizes_html, bar, hero, hero_extra, diagram, caption):
-    return f'''<div class="sheet sheet-{letter}">
-<div class="part anim" data-part="mark"><p class="part-tag">The mark</p>
-<div class="lockup">{mark}<div><p class="wordmark">Well <i>and</i> Good Growth</p>{wordmark_extra}</div></div>{sizes_html}</div>
-<div class="part"><p class="part-tag">Homepage</p>{bar}
-<div class="hero"><div class="copy"><h3 class="hl">{HOME_H}</h3><p>{HOME_P}</p><span class="btn">Choose a service <span aria-hidden="true">↗</span></span></div>
-<div class="art anim" data-part="hero">{hero}{hero_extra}</div></div></div>
-<div class="part"><p class="part-tag">AI automation page</p>
-<div class="auto-grid"><div class="copy"><p class="eyebrow">AI automation · Niagara &amp; GTA</p><h3 class="hl">Get the recurring work off your list.</h3><p>{AUTO_P}</p></div>
-<figure class="diagram anim" data-part="diagram" data-kind="{letter}">{diagram}<figcaption><span>Illustrative example.</span> {caption}</figcaption></figure></div></div>
-</div>'''
-
-
-SHEET_A = sheet('a', MARK_A, '', sizes('a', A_AR, (18, 30, 46)), site_bar('a', A_AR, 30), HERO_A, '', DIAG_A,
-                'The line stops where you review, then carries on.')
-SHEET_B = sheet('b', MARK_B, '', sizes('b', B_AR, (16, 24, 34), echo_small=True), site_bar('b', B_AR, 24, 0), HERO_B, '', DIAG_B,
-                'Each lock lifts the job one step. Yours is the gate, and it opens when you have checked the work.')
-SHEET_C = sheet('c', MARK_C, '<p class="place">Welland, Ontario</p>', sizes('c', C_AR, (12, 20, 32)), site_bar('c', C_AR, 20), HERO_C,
-                '<p class="elev">Elevation · not to scale</p>', DIAG_C,
-                'A hold point is where the work stops until it is checked. Here, that is you.')
-
 template = (HERE / 'preview_template.html').read_text()
-html = (template.replace('%%SYMBOLS%%', SYMBOLS).replace('%%GRAIN%%', GRAIN)
-        .replace('%%SHEET_A%%', SHEET_A).replace('%%SHEET_B%%', SHEET_B).replace('%%SHEET_C%%', SHEET_C))
+html = (template.replace('%%SYMBOL%%', SYMBOL).replace('%%GRAIN%%', GRAIN)
+        .replace('%%MARK%%', MARK).replace('%%SIZES%%', SIZES).replace('%%MINI%%', use(30, 22, 0))
+        .replace('%%HERO%%', HERO).replace('%%LOCK%%', LOCK_SVG).replace('%%STEPS%%', STEPS))
 assert '%%' not in html, 'unfilled placeholder'
 assert chr(0x2014) not in html, 'em-dash found'
 OUT.write_text(html)
