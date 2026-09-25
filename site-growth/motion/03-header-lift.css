@@ -1,0 +1,5 @@
+/* 3. The bridge in the header and footer logo: the span lifts between the towers on hover,
+   keyboard focus, or tap, and settles back. The .lift groups come from growth_art.mark_svg(). */
+.brand-mark .lift{transition:transform .7s cubic-bezier(.45,0,.2,1)}
+.brand:hover .brand-mark .lift,.brand:focus-visible .brand-mark .lift,.brand:active .brand-mark .lift{transform:translateY(-44px)}
+@media (prefers-reduced-motion:reduce){.brand-mark .lift{transition:none}}

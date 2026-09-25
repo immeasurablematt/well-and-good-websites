@@ -1,0 +1,13 @@
+/* 5. Canal reading bar: a thin water line along the top edge, with the freighter riding it as you read.
+   The page reserves the bar's height (--bar-space) and the sticky header sits below it, so the bar
+   never covers the header's links. Markup is in page() in scripts/build_growth.py. Hidden under
+   reduced motion and in print, where the reserved space goes too. */
+:root{--bar-h:24px;--bar-space:calc(var(--bar-h) + env(safe-area-inset-top,0px))}
+body{padding-top:var(--bar-space)}
+.canal-bar{position:fixed;top:0;left:0;right:0;z-index:30;height:var(--bar-space);background-color:var(--paper);background-image:var(--paper-grain);pointer-events:none}
+.canal-track,.canal-fill{position:absolute;left:0;bottom:5px;height:3px}
+.canal-track{right:0;background:var(--rule)}
+.canal-fill{width:100%;background:var(--water);transform:scaleX(0);transform-origin:0 50%}
+.canal-ship{position:absolute;left:8px;bottom:4px;width:40px;height:19px;overflow:visible}
+@media (prefers-reduced-motion:reduce){:root{--bar-space:0px}.canal-bar{display:none}}
+@media print{:root{--bar-space:0px}.canal-bar{display:none}}

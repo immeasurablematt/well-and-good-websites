@@ -1,4 +1,5 @@
-/* Navigation, service-aware enquiries, and progressive enhancement. */
+/* Navigation, service-aware enquiries, and progressive enhancement.
+   The build appends site-growth/motion/*.js after this file, in name order. */
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
 const dialog = document.querySelector('.contact-preview');
@@ -89,19 +90,7 @@ if (!form.elements.package.disabled && ['Launch', 'Grow', 'Dominate', 'Custom pr
   form.elements.package.value = requestedPackage;
 }
 
-// Progressive enhancement: content stays readable if JavaScript is unavailable.
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-if (!reduceMotion.matches && 'IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
-  }), {threshold: 0.08});
-  document.querySelectorAll('.portfolio-section, .founder-section, .capability-list').forEach(el => {
-    el.classList.add('reveal-ready'); observer.observe(el);
-  });
-  reduceMotion.addEventListener('change', event => {
-    if (event.matches) { observer.disconnect(); document.querySelectorAll('.reveal-ready').forEach(el => el.classList.add('is-visible')); }
-  });
-}
+// Entrance motion lives in site-growth/motion/ (see 00-core.js); content is complete without it.
 
 // Native buttons keep the service examples usable by pointer and keyboard.
 document.querySelectorAll('[data-automation-choice]').forEach(button => {

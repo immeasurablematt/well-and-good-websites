@@ -6,15 +6,46 @@ from hashlib import sha256
 import shutil
 import json
 import re
+import sys
 from urllib.parse import urlencode
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import growth_art as art  # noqa: E402  shared bridge geometry, ship symbol, logo mark, grain
+import art_showpieces as showpieces  # noqa: E402,F401  homepage hero bridge, service drawings, automation lock, 404, thank-you
+import art_local as local  # noqa: E402,F401  boat journey, canal map, results columns
 
 ROOT = Path(__file__).resolve().parents[1]
 DESIGN = ROOT / 'site-growth'
+MOTION = DESIGN / 'motion'
 OUTPUT = ROOT / 'public'
+SOCIAL_IMAGE = 'https://www.wellandgoodgrowth.ca/assets/well-and-good-growth-social-20260925.png'
+
+
+def bundle(name):
+    """style.css or site.js plus the motion partials of the same type, in name order.
+
+    Each script partial is wrapped so an error in one piece is logged without
+    stopping the others (partials are IIFEs and share nothing but window.WG).
+    """
+    base = DESIGN / name
+    parts = [base] + sorted(MOTION.glob('*' + base.suffix))
+    chunks = []
+    for part in parts:
+        label = part.relative_to(DESIGN).as_posix()
+        text = part.read_text().rstrip() + '\n'
+        if base.suffix == '.js':
+            text = f'try {{\n{text}}} catch (error) {{ console.error("{label}", error); }}\n'
+        chunks.append(f'/* ---- {label} ---- */\n{text}')
+    return '\n'.join(chunks)
+
+
+BUNDLES = {name: bundle(name) for name in ('style.css', 'site.js')}
 # Content-addressed assets keep returning visitors on the matching stylesheet and script.
-ASSETS = {name: f'{Path(name).stem}.{sha256((DESIGN / name).read_bytes()).hexdigest()[:12]}{Path(name).suffix}' for name in ('style.css', 'site.js')}
-# NOTE: wgw-logo-primary.png and wgw-logo-primary-transparent.png are DEPRECATED (show "WEBSITES" branding).
-# Site now uses bridge-magic-clean-edge.webp (emblem only) with "Well and Good Growth" in HTML text.
+ASSETS = {name: f'{Path(name).stem}.{sha256(BUNDLES[name].encode()).hexdigest()[:12]}{Path(name).suffix}' for name in BUNDLES}
+BRAND = f'<a class="brand" href="/">{art.HEADER_MARK}<span class="brand-name">Well <em>and</em> Good Growth</span></a>'
+# The canal reading bar (motion piece 5): a water line along the top edge with the freighter riding it.
+CANAL_BAR = (f'<div class="canal-bar" aria-hidden="true"><span class="canal-track"></span><span class="canal-fill"></span>'
+             f'<svg class="canal-ship" viewBox="{art.SHIP_VB}" focusable="false"><use href="#ship" x="-36" y="-24" width="72" height="34"/></svg></div>')
 
 
 def cta(label='Let’s talk', service='Help me choose'):
@@ -56,8 +87,8 @@ def page(title, description, body, active=''):
     body = body.replace('data-contact="Help me choose"', f'data-contact="{current_service}"')
     nav = ''.join(f'<a href="{url}"' + (' aria-current="page"' if key == active else '') + f'>{label}</a>' for key,label,url in links)
     html = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index,follow"><link rel="icon" href="/assets/brand-mark.webp" type="image/webp"><title>{escape(title)} | Well and Good Growth</title><meta name="description" content="{escape(description)}"><link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/{ASSETS['style.css']}"><script defer src="/{ASSETS['site.js']}"></script></head>
-<body><a href="#main" class="skip-link">Skip to content</a><header class="site-header container"><a class="brand brand-with-logo" href="/"><span class="bridge-emblem" aria-hidden="true"><img src="/assets/bridge-magic-clean-edge.webp" alt="" width="600" height="600"></span><span class="brand-name">Well <em>and</em> Good Growth</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button><nav class="main-nav" id="main-nav" aria-label="Main navigation">{nav}<a href="/#about">Meet Matt</a>{cta(service=current_service)}</nav></header><main id="main">{body}</main><footer class="container"><a class="brand brand-with-logo" href="/"><span class="bridge-emblem" aria-hidden="true"><img src="/assets/bridge-magic-clean-edge.webp" alt="" width="600" height="600"></span><span class="brand-name">Well <em>and</em> Good Growth</span></a><div><span>Matthew Baggetta · Welland, Ontario</span><a href="/website-design-niagara/">Website design Niagara</a><a href="/website-design-welland/">Website design Welland</a><a href="/website-design-st-catharines/">Website design St. Catharines</a><a href="/niagara-seo/">Niagara SEO</a><a href="/privacy/">Privacy</a><a href="mailto:matt@wellandgoodwebsites.ca">Email Matt</a></div></footer>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="index,follow"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><title>{escape(title)} | Well and Good Growth</title><meta name="description" content="{escape(description)}"><link rel="preload" href="/fonts/libre-franklin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/besley.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/{ASSETS['style.css']}"><script defer src="/{ASSETS['site.js']}"></script></head>
+<body>{art.SPRITE}<a href="#main" class="skip-link">Skip to content</a>{CANAL_BAR}<header class="site-header"><div class="site-header-inner container">{BRAND}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button><nav class="main-nav" id="main-nav" aria-label="Main navigation">{nav}<a href="/#about">Meet Matt</a>{cta(service=current_service)}</nav></div></header><main id="main">{body}</main><footer class="container">{BRAND}<div><span>Matthew Baggetta · Welland, Ontario</span><a href="/website-design-niagara/">Website design Niagara</a><a href="/website-design-welland/">Website design Welland</a><a href="/website-design-st-catharines/">Website design St. Catharines</a><a href="/niagara-seo/">Niagara SEO</a><a href="/privacy/">Privacy</a><a href="mailto:matt@wellandgoodwebsites.ca">Email Matt</a></div></footer>
 <dialog class="contact-preview" aria-labelledby="contact-title"><button class="dialog-close" type="button">Close</button><h2 id="contact-title">Tell me what you need a hand with.</h2><p id="contact-intro" aria-live="polite">Choose a service, or leave it on “Help me choose.” I’ll read your enquiry and reply personally.</p><form class="enquiry-form" action="https://formsubmit.co/835081ce825a6a057837907299436066" method="post" data-page-service="{current_service}"><input type="hidden" name="_subject" value="Well and Good Growth: service enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://www.wellandgoodgrowth.ca/thank-you/"><input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><label>What would you like help with?<select name="service"><option value="Help me choose">Help me choose</option><option value="Web development">Web development</option><option value="Growth marketing">Growth marketing</option><option value="AI automation">AI automation</option></select></label><label id="package-field" hidden>Package you’re considering (optional)<select name="package" disabled><option value="">Help me choose</option><option>Launch</option><option>Grow</option><option>Dominate</option><option>Custom project</option></select></label><p class="service-form-note" id="automation-form-note" hidden>The build, software costs, and support are quoted before paid work begins.</p><label>Business name or website (optional)<input name="business" autocomplete="off"></label><label><span id="message-label">What would you like to improve?</span><textarea name="message" required placeholder="What does your business do, and what would you like to change or take off your plate?"></textarea></label><div class="contact-details"><label>Your name<input name="name" autocomplete="name" required></label><label>Email address<input name="email" type="email" autocomplete="email" required></label></div><button class="button" type="submit">Send enquiry <span aria-hidden="true">↗</span></button><p class="form-privacy">Your details are sent through FormSubmit for email delivery and used to respond to your enquiry. <a href="/privacy/">Privacy notice</a>.</p></form><p class="form-result" role="status"></p></dialog></body></html>'''
     # Link fallback allows enquiries with scripts disabled or opening a new tab.
     def contact_link(match):
@@ -179,14 +210,14 @@ def build():
     for name in ['assets', 'fonts']:
         shutil.copytree(DESIGN / name, OUTPUT / name)
     for name, versioned_name in ASSETS.items():
-        shutil.copy2(DESIGN / name, OUTPUT / versioned_name)
+        (OUTPUT / versioned_name).write_text(BUNDLES[name])
     urls = []
     for name, html in pages.items():
         route = '/' + name.removesuffix('index.html')
         url = 'https://www.wellandgoodgrowth.ca' + route
         title = re.search(r'<title>(.*?)</title>', html).group(1)
         description = re.search(r'<meta name="description" content="([^"]*)">', html).group(1)
-        metadata = f'<link rel="canonical" href="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="Well and Good Growth"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://www.wellandgoodgrowth.ca/assets/well-and-good-growth-social-20260909.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Well and Good Growth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}"><meta name="twitter:image" content="https://www.wellandgoodgrowth.ca/assets/well-and-good-growth-social-20260909.png"><meta name="twitter:image:alt" content="Well and Good Growth">'
+        metadata = f'<link rel="canonical" href="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="Well and Good Growth"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SOCIAL_IMAGE}"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Well and Good Growth"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}"><meta name="twitter:image" content="{SOCIAL_IMAGE}"><meta name="twitter:image:alt" content="Well and Good Growth">'
         schema = {'@context':'https://schema.org', '@type':'ProfessionalService', 'name':'Well and Good Growth', 'url':'https://www.wellandgoodgrowth.ca/', 'email':'matt@wellandgoodwebsites.ca', 'founder':{'@type':'Person','name':'Matthew Baggetta'}, 'areaServed':['Niagara Region, Ontario','Greater Toronto Area, Ontario']}
         metadata += '<script type="application/ld+json">' + json.dumps(schema) + '</script><script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script>'
         html = html.replace('</head>', metadata + '</head>')
