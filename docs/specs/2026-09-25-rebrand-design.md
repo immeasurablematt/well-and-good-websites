@@ -1,6 +1,6 @@
 # Well and Good Growth rebrand: design
 
-- Status: draft, waiting for Matthew's sign-off
+- Status: approved 2026-09-25, being built on the preview branch
 - Date: 2026-09-25
 - Workstream: `handoffs/rebrand-look-and-feel.md` (pull request #61)
 - Preview: https://claude.ai/artifact/DHDY3gazersy8Q374mdtVs (private to Matthew's account). Source: `design/rebrand-preview/`
@@ -63,7 +63,7 @@ Contrast on paper: ink 11.5:1, body text 6.6:1, marigold text 4.8:1 (meets WCAG 
 ## 5. Motion
 
 - **Homepage hero:** the bridge draws itself in both inks, then the span lifts and settles back, once, the first time it is on screen. This replaces the six-second video ident (see open question 1).
-- **Header mark:** static.
+- **Header mark:** static at rest; the span lifts on hover, focus, or tap (section 8, piece 3).
 - **AI automation page:** the canal lock animation, described below.
 - **Reduced motion:** every animation shows its finished state instead, and nothing loops.
 
@@ -108,7 +108,49 @@ Contrast on paper: ink 11.5:1, body text 6.6:1, marigold text 4.8:1 (meets WCAG 
 
 1. **Homepage animation.** Answered 2026-09-25: yes, replace the bridge video with the drawn bridge animation.
 2. **AI automation page.** Answered 2026-09-25: yes, the lock drawing gets its own section below the hero and the task picker stays.
-3. **Rollout.** Not yet. Before launch, Matthew wants a motion layer across the whole site: subtle animations plus dynamic ones triggered by scrolling, hovering, and clicking. A motion catalogue is being prototyped; the approved pieces will be added to this spec as section 8.
+3. **Rollout.** Answered 2026-09-25: Matthew approved all 17 pieces of the motion catalogue (section 8) and asked for the whole site to be rebuilt on the preview branch. Nothing goes live until he merges pull request #61.
+
+## 8. Motion layer (approved 2026-09-25, all 17 pieces)
+
+Reference implementations for every piece are in `design/rebrand-preview/catalogue_template.html` (demo sections `#m1` to `#m17`, CSS and JS in the same file) and `build_catalogue.py` (the SVG for the ship, header mark, bridge up, and map). The lock simulation's reference is `design/rebrand-preview/preview_template.html`.
+
+| # | Piece | Where on the site | Trigger |
+|---|---|---|---|
+| 1 | Headlines print in: marigold copy slides into register under the indigo | Every H1 on load, section H2s when they enter the screen | Load, scroll |
+| 2 | Letterpress buttons: the marigold shadow closes on hover, the button presses in on click | Every `.button` | Hover, press |
+| 3 | Header bridge span lifts | Header and footer logo | Hover, focus, tap |
+| 4 | Ink underline draws under text links | `.text-link` and links in paragraphs | Hover, focus |
+| 5 | Canal reading bar: a thin water line with a freighter at the top edge | Every page | Scroll |
+| 6 | Enquiry form: fields draw an ink line on focus, a freighter casts off on send | Dialog form and contact page | Focus, submit |
+| 7 | FAQ icons are lift gates that rise when a question opens | Every FAQ | Click |
+| 8 | Process step numbers fill like lock chambers in turn | Every `.process-list` | Scroll |
+| 9 | Launch, Grow, Dominate as three rising water levels | Every pricing section | Scroll |
+| 10 | Real results fill water columns and count up | Growth marketing case results, Frank's case stats | Scroll |
+| 11 | Portfolio screenshots glide and tilt toward the pointer | Every portfolio grid | Hover, pointer |
+| 12 | Founder photo develops from an indigo and marigold duotone to colour | Founder section | Scroll, hover |
+| 13 | Service drawings draw themselves | Homepage services list | Scroll, hover |
+| 14 | Boat journey: Find you, See the fit, Get in touch | Growth marketing and Niagara SEO heroes (replaces `.growth-art`) | Scroll |
+| 15 | Welland Canal map with the page's town pinned | Niagara, Welland, and St. Catharines website design pages | Scroll, click |
+| 16 | Bridge up: sign, lamps, and barrier lower when you reach for Back to home | 404 page | Hover, focus, tap |
+| 17 | A freighter passes through a last lock | Thank-you page | Load |
+
+Also built in this round, from sections 5 and 6: the homepage hero bridge (draws, then the span lifts, replacing the video) and the AI automation lock section.
+
+**Rules for every piece.**
+- Content is complete at rest. Nothing sits at opacity 0 waiting for a script. Animations start from a visible state or add detail to one.
+- Reduced motion (`prefers-reduced-motion: reduce`) shows the finished state immediately and nothing loops.
+- Every hover effect has a focus and a tap equivalent, or is purely decorative.
+- Loops (`requestAnimationFrame`) run only while their element is on screen and the tab is visible.
+- No libraries. No layout shift. No blocking of reading, navigation, or sending an enquiry: the send animation never delays the form by more than it takes to submit.
+- Real data only. Numbers come from the approved copy (SeamlessFi 1,412 to 3,871 views per post; io.net 5,097 to 27,022 estimated monthly visits; Frank nearly 3 times the organic traffic from Google).
+- Decorative SVG is `aria-hidden="true"`. SVG that carries meaning has `role="img"` and an `aria-label`.
+
+**Code layout.**
+- `site-growth/style.css` holds tokens, type, and components. Each piece adds its own partials in `site-growth/motion/`, named `NN-name.css` and `NN-name.js` (NN is the piece number, `00` for shared helpers, `20` and up for the hero bridge and the lock). The build concatenates `style.css` plus the CSS partials in name order into the one hashed stylesheet, and `site.js` plus the JS partials into the one hashed script.
+- `site-growth/motion/00-core.js` defines `window.WG`: `reduce` (reduced motion flag), `onceInView(el, fn, threshold)`, `whileVisible(el, start, stop)`, `tween(ms, fn, ease)`, `ease` (out, inOut, backOut), `wait(ms)`.
+- Shared drawing code lives in `scripts/growth_art.py` (bridge geometry, the ship symbol, the logo mark). The page shell includes one hidden SVG sprite with the ship symbol so any page can use it. Page artwork lives in its own modules (`scripts/art_showpieces.py` for the homepage, automation, 404, and thank-you pages; `scripts/art_local.py` for the journey, map, and results).
+
+**New wording in this round.** Approved copy stays unchanged. The few new labels (for example the heading above the lock drawing, image descriptions, and the BRIDGE UP sign) are written in the house style and listed in pull request #61 for Matthew to check.
 
 ## Not in scope
 
