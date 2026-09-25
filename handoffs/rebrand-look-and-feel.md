@@ -3,7 +3,7 @@
 Status: active
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 12:50 UTC by Claude cloud
+Updated: 2026-09-25 12:40 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
@@ -24,6 +24,7 @@ Matthew reviewed the preview and said the animations look nothing like the examp
 - Rebuild lane B (shared sections) merged: enquiry form ink lines and castoff (piece 6, never delays sending), FAQ lift gates (7), process steps fill like locks (8), plans as water levels (9), portfolio glide and tilt (11), founder photo develops from duotone (12). All in `site-growth/motion/06` to `12`; build_growth.py changes limited to `faq()`, `founder()`, and the enquiry form. No new wording.
 - Rebuild lanes C and D merged. C (showpieces, `scripts/art_showpieces.py`, motion 13, 16, 17, 20, 21): the homepage hero bridge draws and lifts its span (the video and its files are gone), service drawings, the canal lock section on the AI automation page (picker kept), 404 Bridge up, thank-you last lock. D (local, `scripts/art_local.py`, motion 10, 14, 15): the scroll-driven journey in the Growth marketing and Niagara SEO heroes, the canal map on the three location pages, and results columns for the Jetta Grove numbers and Frank's nearly 3x. Build and validation pass. Next: whole-site QA (lane E), then check the Vercel preview and list the new wording in pull request #61. Known leftovers: unused `.hero-motion`, `.motion-view`, and `.growth-art` rules in style.css.
 - Rebuild lane E (whole-site QA) done (last commit 5019a2a): every page checked at 1280 and 390 wide, with reduced motion and with scripts off; no console errors, no sideways scroll, interactions and anchor links work, approved copy unchanged against main, no em-dashes. Fixes: marigold text darkened to #8c5100 for AA contrast on the grain (spec updated), case stories aligned with other sections, lock section tightened (heading max 38px), no jump when scripts load late, unused old styles removed, Welland Votes screenshot shrunk to 149 KB.
+- Found why the preview had no animations and crude drawings: `.vercelignore` listed `motion/` (meant for the old video project at the repository root), which also excluded `site-growth/motion/`, so Vercel built the site without any animation scripts or drawing styles. Local builds were unaffected, which is why local QA passed. Fixed by anchoring it to `/motion/` (commit dd02655); the build now fails if the partials are missing (b88ff51). Verified the deployed script matches the local build byte for byte.
 
 ## Waiting on Matthew
 - Nothing right now. Asked him which animations looked most off and on which device.
