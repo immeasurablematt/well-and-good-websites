@@ -3,7 +3,7 @@
 Status: active
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 05:20 UTC by Claude cloud
+Updated: 2026-09-25 05:50 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
@@ -21,6 +21,7 @@ Build the approved rebrand across the whole site on this branch, following `docs
 - Fixed the gate heights and republished as version 4: every gate now reaches the top of the higher chamber's wall (COPES + 6), 12 units above the highest level on either side, with three braced panels like the bridge towers; closed end gates sit at both ends of the flight. `build_preview.py` asserts the clearance so this cannot regress. The lock drawing's viewBox is now 0 -60 600 332 so raised gates fit.
 
 - Rebuild lane A (foundation) done and pushed (commits d0f6d1b, e81c2bc, b4dbdbe): Besley and Libre Franklin self-hosted, `site-growth/style.css` rewritten in Lake & Marigold on paper with grain, new logo SVGs, favicon, touch icon and social image (`scripts/make_brand_images.py`), header and footer bridge lockup, ship sprite, `site-growth/motion/` partials bundled into the hashed CSS and JS, `window.WG` helpers in `motion/00-core.js`, and motion pieces 1 to 5. Shared drawing code is in `scripts/growth_art.py`; `scripts/art_showpieces.py` and `scripts/art_local.py` are stubs for lanes C and D. Build and validation pass. Lanes B, C, D are next (briefs are summarised under Next step).
+- Rebuild lane B (shared sections) merged: enquiry form ink lines and castoff (piece 6, never delays sending), FAQ lift gates (7), process steps fill like locks (8), plans as water levels (9), portfolio glide and tilt (11), founder photo develops from duotone (12). All in `site-growth/motion/06` to `12`; build_growth.py changes limited to `faq()`, `founder()`, and the enquiry form. No new wording.
 
 ## Waiting on Matthew
 - Nothing right now. When the rebuild is done: review the Vercel preview and the list of new wording in pull request #61. Motion catalogue for reference: https://claude.ai/artifact/DXkW5LHxed24eMhzgEiCYg
