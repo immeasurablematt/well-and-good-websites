@@ -174,17 +174,17 @@ LOCK_SVG = ('<svg class="cl-art" viewBox="0 -60 600 332" role="img" '
             + f'<path class="cl-earth" d="{_EARTH}"/><path class="cl-hatch-fill" d="{_EARTH}"/><path class="cl-bed" d="{_BED}"/>'
             + ''.join(_gates) + _END_GATES + _BADGE + '</svg>')
 
-_STEPS = ['A new enquiry arrives.', 'Research prepared.', 'Follow-up drafted.', 'You review.', 'Sent, and records updated.']
+_STEPS = ['New enquiry received.', 'Research prepared.', 'Follow-up drafted.', 'Reviewed and approved by you.', 'Follow-up sent and records updated.']
 LOCK_STEPS = ('<ol class="cl-steps">' + ''.join(
     f'<li class="is-done{" cl-yours" if n == 4 else ""}"><span class="cl-n">{n}</span><span class="cl-t">{text}</span></li>'
     for n, text in enumerate(_STEPS, 1)) + '</ol>')
 
 LOCK_SECTION = ('<section class="lock-section container section" aria-labelledby="lock-heading">'
                 '<p class="label">How a workflow runs</p>'
-                '<h2 id="lock-heading">The routine work runs itself.<br>You approve what goes out.</h2>'
+                '<h2 id="lock-heading">Routine steps run automatically.<br>You approve what goes out.</h2>'
                 '<figure class="lock-figure is-approved">' + LOCK_SVG + LOCK_STEPS
-                + '<figcaption><span>Illustrative example.</span> Each lock lifts the job one step while '
-                'the routine work runs itself. The fourth gate is yours: it stays shut until you have checked the work.</figcaption></figure>'
+                + '<figcaption><span>Illustrative example.</span> Each lock moves the task forward. '
+                'At the fourth gate, the workflow waits for your approval.</figcaption></figure>'
                 '<button class="cl-replay" type="button" hidden>Watch again</button></section>')
 
 # ---------------------------------------------------------------- 16: bridge up (404)
