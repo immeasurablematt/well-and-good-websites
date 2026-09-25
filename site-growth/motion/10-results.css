@@ -1,0 +1,42 @@
+/* 10. Real results rise: before and after water columns that restate results already written on the page
+   (markup from scripts/art_local.py). Levels are drawn to scale within each chart. At rest every column is
+   full to its level and every number is printed; 10-results.js fills them and counts up when a chart first
+   comes on screen. The charts are aria-hidden because the sentences beside them already give each figure. */
+/* Columns line up by row (number, tank, label), so a label that wraps never lifts its tank. */
+.rise-cols{display:grid;grid-template-columns:repeat(2,minmax(0,104px));gap:16px;align-items:start}
+.rise-col{display:grid;justify-items:center;gap:6px;min-width:0}
+.rise-val{font:800 19px/1.1 var(--serif);color:var(--ink);white-space:nowrap}
+.rise-tank{position:relative;display:block;width:100%;height:118px;border:2.5px solid var(--ink);border-top:0;border-radius:0 0 3px 3px;background:var(--wall);overflow:hidden}
+.rise-level{position:absolute;left:0;right:0;bottom:0;height:var(--h);background:var(--water);box-shadow:inset 0 2px 0 rgb(255 255 255 / .45);transform-origin:50% 100%}
+.rise-col.is-after .rise-level{background:var(--water-deep)}
+/* One line, so tanks in neighbouring charts share a baseline; a long period may run into the gap. */
+.rise-when{font-size:12.5px;line-height:1.3;text-align:center;white-space:nowrap;color:var(--soft)}
+
+/* Growth marketing: two charts under the Jetta Grove results. */
+.results-rise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(20px,4vw,48px);margin-top:32px}
+.rise{display:flex;flex-direction:column;gap:16px;padding-top:16px;border-top:3px solid var(--ink)}
+.rise-title{margin:0;font-size:14px;line-height:1.45;color:var(--soft)}
+.rise-title strong{display:block;font:700 18px/1.25 var(--serif);color:var(--ink)}
+.rise .rise-cols{margin-top:auto}
+
+/* Frank's case study: a before and after pair under "Nearly 3x". style.css styles every span in
+   .case-stats as a caption, so the chart's own spans are reset here. */
+.stat-rise .rise-frank{margin-top:20px}
+.case-stats .rise-group span{margin-top:0;max-width:none}
+.case-stats .rise-when{font-size:12.5px;line-height:1.3}
+.rise-frank .rise-cols{grid-template-columns:repeat(2,minmax(0,64px))}
+.rise-frank .rise-tank{height:92px}
+
+@media (max-width:420px){
+  .results-rise{gap:20px 16px}
+  .rise-cols{gap:12px}
+  .rise-when{font-size:11.5px}
+  .rise-val{font-size:17px}
+  .rise-tank{height:104px}
+}
+
+@keyframes wg-rise{from{transform:scaleY(0)}to{transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .rise-group.is-armed .rise-level{transform:scaleY(0)}
+  .rise-group.is-rising .rise-level{animation:wg-rise 1.4s var(--d,0ms) cubic-bezier(.2,.7,.3,1) both}
+}
