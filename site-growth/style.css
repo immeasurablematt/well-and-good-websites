@@ -14,7 +14,10 @@
   --card:#f8f5ee;           /* lighter card stock */
   --ink:#1c2a6b;            /* text, lines, structure */
   --accent:#f0a30a;         /* marigold: fills, the print echo, button shadows. Never text on paper */
-  --accent-text:#9a5a00;    /* marigold text on paper: emphasis, labels, "and" */
+  --accent-text:#8c5100;    /* marigold text on paper: emphasis, labels, "and". The spec's #9a5a00 is 4.8:1 on flat
+                               paper but falls to about 4.2:1 on the grained paper and 4:1 on the tinted pricing band,
+                               under WCAG AA for the small labels; this is at least 4.6:1 on both. The logo files keep
+                               #9a5a00 (flat colour, large text). */
   --water:#93a2dc;          /* water in illustrations */
   --water-deep:#6372af;     /* water 60% with ink */
   --soft:#475184;           /* ink 80% on paper: body text */
