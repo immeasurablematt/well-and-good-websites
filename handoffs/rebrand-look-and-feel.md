@@ -3,7 +3,7 @@
 Status: waiting
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 04:18 UTC by Claude cloud
+Updated: 2026-09-25 04:22 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
@@ -19,7 +19,7 @@ Workshop phase, one question at a time (brainstorming approach: no site code cha
 - Built round three (Lake & Marigold only, simulated lock animation, no dot artifacts at the start of line drawings) and republished it as version 3.
 
 ## Waiting on Matthew
-- Does the refined lock animation (round three) feel right? Any changes to speed, detail, or how the boat moves?
+- Nothing right now. In progress: fixing the gate heights (every gate as tall as the chamber walls, 12 units above the highest level on either side, plus closed end gates at both ends of the flight), then republishing version 4 and asking if the lock is now right.
 
 ## Decisions
 - How deep (2026-09-25, option 2): keep the name Well and Good Growth, redraw the logo too, and reinvent the look, animations, and custom graphics. Which parts of the current crest survive the redraw is still an open question.
@@ -29,6 +29,7 @@ Workshop phase, one question at a time (brainstorming approach: no site code cha
 - Direction (2026-09-25): B, Canal lock (two-ink print look, Besley and Libre Franklin, heavier lines, paper grain, lock drawing for automation), with three changes Matthew asked for: totally reimagined colours (no forest and coral), both bridge towers the same height, and a better-executed lock animation (he likes the concept).
 - Palette (2026-09-25): Lake & Marigold. Indigo ink #1c2a6b, marigold #f0a30a (text-safe marigold #9a5a00), paper #f3efe6, water #93a2dc.
 - Lock drawing (2026-09-25): he loves the concept. Refine it: more detail, really neat. Rising water looked cheap (a flat block moving up), so the water must behave like water.
+- Lock drawing, round three feedback (2026-09-25): "Incredible." One fix: when a chamber filled, its water rose above the gate on its low side as a floating block. Every gate must be taller than the highest level on either side, and the first and last locks need end walls.
 
 ## Notes for the next tool
 - Current look: forest green, cream, and coral; Fraunces headings and Inter body text; a repeating bridge pattern behind the hero; one fade-in animation. Tokens are at the top of `site-growth/style.css`.
