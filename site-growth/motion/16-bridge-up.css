@@ -1,0 +1,40 @@
+/* 16. Bridge up on the 404 page: the span is raised, the BRIDGE UP sign's lamps flash, and the road
+   barrier is down. Reaching for Back to home (hover, keyboard focus, or a tap) brings the span down,
+   stops the lamps, and lifts the barrier (16-bridge-up.js sets .is-lowered). The lamps flash only while
+   the sign is on screen (.is-live), and not at all under reduced motion.
+   Markup: BRIDGE_UP in scripts/art_showpieces.py. */
+.bridge-up{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:var(--gap);align-items:center}
+.bu-copy .hero-description{max-width:46ch}
+.bu-copy .button{margin-top:28px}
+.bu-stage{min-width:0}
+.bu-art{display:block;width:100%;max-width:640px;height:auto;margin-inline:auto;overflow:visible}
+.bu-road{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round}
+.bu-line{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.bu-line.bu-water{stroke:var(--water)}
+.bu-echo{stroke:var(--accent);mix-blend-mode:multiply;opacity:.9}
+.bu-ink{stroke:var(--ink)}
+.bu-span{transform:translateY(-70px);transition:transform 1.2s cubic-bezier(.45,0,.2,1)}
+.bu-post{fill:none;stroke:var(--ink);stroke-width:4;stroke-linecap:round}
+.bu-plate{fill:var(--paper);stroke:var(--ink);stroke-width:3}
+.bu-sign text{font:700 11.5px var(--sans);letter-spacing:.05em;fill:var(--ink);transition:opacity .4s}
+.bu-lamp{fill:var(--accent);stroke:var(--ink);stroke-width:2}
+.bu-barrier{transform-box:view-box;transform-origin:374px 574.5px;transition:transform .9s .25s cubic-bezier(.45,0,.2,1)}
+.bu-arm{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.bu-stripes{fill:none;stroke:var(--accent);stroke-width:5}
+.bu-pivot{fill:var(--ink)}
+@keyframes bu-blink{50%{fill:var(--paper)}}
+@media (prefers-reduced-motion:no-preference){
+  .bridge-up.is-live .bu-lamp{animation:bu-blink 1s steps(1) infinite}
+  .bridge-up.is-live .bu-lamp-2{animation-delay:.5s}
+}
+/* The way is clear. */
+.bridge-up.is-lowered .bu-span{transform:none}
+.bridge-up.is-lowered .bu-lamp{animation:none;fill:var(--paper)}
+.bridge-up.is-lowered .bu-sign text{opacity:.35}
+.bridge-up.is-lowered .bu-barrier{transform:rotate(80deg)}
+/* Phones: the drawing sits above the heading. */
+@media (max-width:760px){
+  .bridge-up{grid-template-columns:minmax(0,1fr);gap:20px}
+  .bu-stage{grid-row:1}
+  .bu-art{max-width:420px;margin-inline:0}
+}

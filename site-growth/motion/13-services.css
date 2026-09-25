@@ -1,0 +1,42 @@
+/* 13. Service drawings: each homepage service card carries a small line drawing from the motion catalogue.
+   A lock lifts a boat (AI automation), a page lays itself out (Web development), a search finds a pin
+   (Growth marketing). Each plays the first time its card is on screen and again on hover or keyboard
+   focus (13-services.js adds .is-on). The static drawing is the finished state; .is-armed holds a
+   drawing at its first frame, and is only ever set while that drawing is off screen.
+   Markup: SERVICE_GLYPHS in scripts/art_showpieces.py. */
+.service-name{display:grid;gap:14px;justify-items:start;align-content:start;min-width:0}
+.service-glyph{display:block;width:88px;height:58px;overflow:visible}
+.sg-line{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sg-line.sg-route{stroke:var(--rule);stroke-width:5}
+.sg-line.sg-lens{fill:var(--paper)}
+.sg-fill{fill:var(--ink)}
+.sg-acc{fill:var(--accent)}
+.sg-pin-shape{stroke:var(--ink);stroke-width:1.6}
+.sg-water{fill:var(--water)}
+.sg-rise{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.8)}
+.sg-frame{stroke-dasharray:1 2}
+.sg-gate{transform:translateY(-14px)}
+.sg-boat{transform:translate(34px,-10px)}
+.sg-mag{transform:translate(46px,22px)}
+@keyframes sg-draw{from{stroke-dashoffset:1.02}to{stroke-dashoffset:0}}
+@keyframes sg-pop{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes sg-water{from{transform:scaleY(.35)}to{transform:scaleY(.8)}}
+@keyframes sg-gate{from{transform:none}to{transform:translateY(-14px)}}
+@keyframes sg-boat{0%{transform:none}45%,58%{transform:translate(0,-10px)}100%{transform:translate(34px,-10px)}}
+@keyframes sg-mag{from{transform:translate(12px,30px)}to{transform:translate(46px,22px)}}
+@keyframes sg-pin{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .service-glyph:is(.is-on,.is-armed) .sg-frame{animation:sg-draw .7s both}
+  .service-glyph:is(.is-on,.is-armed) .sg-pop{animation:sg-pop .45s var(--d,0s) cubic-bezier(.3,1.5,.5,1) both}
+  .service-glyph:is(.is-on,.is-armed) .sg-rise{animation:sg-water 1s .2s cubic-bezier(.2,.7,.3,1) both}
+  .service-glyph:is(.is-on,.is-armed) .sg-gate{animation:sg-gate .5s 1.25s cubic-bezier(.3,1.4,.5,1) both}
+  .service-glyph:is(.is-on,.is-armed) .sg-boat{animation:sg-boat 2.3s .2s cubic-bezier(.45,0,.25,1) both}
+  .service-glyph:is(.is-on,.is-armed) .sg-mag{animation:sg-mag 1.3s cubic-bezier(.45,0,.2,1) both}
+  .service-glyph:is(.is-on,.is-armed) .sg-pin{animation:sg-pin .6s 1.2s cubic-bezier(.3,1.6,.5,1) both}
+  .service-glyph.is-armed :is(.sg-frame,.sg-pop,.sg-rise,.sg-gate,.sg-boat,.sg-mag,.sg-pin){animation-play-state:paused}
+}
+/* Phones: the drawing sits to the right of the service name. */
+@media (max-width:760px){
+  .service-name{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px}
+  .service-glyph{order:2;width:76px;height:50px}
+}

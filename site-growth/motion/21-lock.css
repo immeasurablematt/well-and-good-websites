@@ -1,0 +1,77 @@
+/* The canal lock on the AI automation page (spec section 6), ported from the approved preview
+   (design/rebrand-preview/preview_template.html, round four). Five locks rise left to right; a freighter
+   is lifted one step per lock, and the fourth gate (the review) is marigold. The step list is HTML under
+   the drawing: one label under each lock on wide screens, stacked on phones. The markup is the finished
+   state; 21-lock.js runs the simulation. Markup: LOCK_SECTION in scripts/art_showpieces.py. */
+.lock-section{border-top:1px solid var(--rule)}
+.lock-figure{max-width:1000px;margin:28px 0 0}
+.cl-art{display:block;width:100%;height:auto;overflow:visible}
+/* The drawing keeps 70 units of headroom above the locks (viewBox top -60) so the raised gates fit.
+   On wide screens the heading never reaches the fourth gate's column (80% across), so the drawing moves
+   up into that headroom (-11.5% of its width is 69 units): gate 4 rises beside the heading, and the
+   48px margin keeps gate 3 (60% across, 24 units above) clear of it. */
+@media (min-width:761px){
+  .lock-figure{margin-top:48px}
+  .cl-art{margin-top:-11.5%}
+}
+
+/* The drawing */
+.cl-wallface{fill:var(--wall)}
+.cl-masonry{fill:url(#cl-masonry)}
+.cl-wet{fill:var(--ink);opacity:0}
+.cl-locknum{font:700 9.5px var(--sans);letter-spacing:.14em;fill:var(--ink);opacity:.5}
+.cl-coping{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.cl-water{fill:url(#cl-water-fill);opacity:.92}
+.cl-surf{fill:none;stroke:var(--paper);stroke-width:1.3;opacity:.75;stroke-linecap:round;stroke-linejoin:round}
+.cl-rip{fill:none;stroke:var(--ink);stroke-width:1.1;opacity:.14;stroke-dasharray:9 9;stroke-linecap:round}
+.cl-p-b{fill:var(--paper);opacity:.8}
+.cl-p-d{fill:var(--water-deep)}
+.cl-p-f{fill:var(--paper)}
+.cl-splash{fill:none;stroke:var(--paper);stroke-width:1}
+.cl-earth{fill:var(--earth)}
+.cl-hatch-fill{fill:url(#cl-hatching)}
+.cl-bed{fill:none;stroke:var(--ink);stroke-width:4.5;stroke-linejoin:round;stroke-linecap:round}
+.cl-gate rect,.cl-gate-end rect{fill:var(--ink)}
+.cl-gate .cl-rib,.cl-gate-end .cl-rib{fill:none;stroke:var(--paper);stroke-width:.9;opacity:.55}
+.cl-gate.cl-yours rect{fill:var(--accent)}
+.cl-gate.cl-yours .cl-rib{stroke:var(--ink);opacity:.45}
+.cl-hull{fill:var(--ink)}
+.cl-stripe{fill:none;stroke:var(--accent);stroke-width:1.6}
+.cl-house{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.cl-stack{fill:var(--accent);stroke:var(--ink);stroke-width:1}
+.cl-win{fill:var(--ink)}
+.cl-mast,.cl-hatch{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-linecap:round}
+/* The review badge: the ring fills while the job waits, then the tick lands and the disc turns marigold. */
+.cl-ring{fill:none;stroke:var(--accent-text);stroke-width:2;stroke-dasharray:1 2;stroke-linecap:round}
+.cl-disc{fill:var(--paper);stroke:var(--accent-text);stroke-width:1.6;transition:fill .3s}
+.cl-tick{fill:none;stroke:var(--accent-text);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2;transition:stroke .3s}
+.lock-figure.is-approved .cl-disc{fill:var(--accent)}
+.lock-figure.is-approved .cl-tick{stroke:var(--ink)}
+@keyframes cl-pulse{from{opacity:1}to{opacity:.35}}
+@media (prefers-reduced-motion:no-preference){
+  .lock-figure.is-waiting .cl-gate.cl-yours rect{animation:cl-pulse .8s ease-in-out infinite alternate}
+}
+
+/* The steps, one under each lock */
+.cl-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:14px 0 0;padding:0;list-style:none}
+.cl-steps li{display:grid;gap:4px;align-content:start;padding:12px 12px 0 0;border-top:3px solid var(--rule);transition:border-color .3s}
+.cl-steps li.is-done{border-top-color:var(--ink)}
+.cl-steps li.is-active{border-top-color:var(--accent)}
+.cl-n{font:700 13px/1.3 var(--sans);letter-spacing:.06em;color:var(--accent-text)}
+.cl-t{font:500 15px/1.35 var(--sans);color:var(--ink)}
+.cl-steps li.cl-yours .cl-t{font-weight:600;color:var(--accent-text)}
+
+/* Caption, then the replay button under the figure (shown by 21-lock.js only when motion is welcome) */
+.lock-figure figcaption{max-width:62ch;margin-top:22px;font-size:14px;line-height:1.55;color:var(--soft)}
+.lock-figure figcaption span{font-weight:600;color:var(--ink)}
+.cl-replay{display:inline-flex;align-items:center;min-height:44px;margin-top:18px;padding:8px 16px;border:2px solid var(--ink);border-radius:2px;background:transparent;color:var(--ink);font:600 14px/1 var(--sans);white-space:nowrap;transition:background-color .2s}
+.cl-replay:hover,.cl-replay:focus-visible{background:var(--tint)}
+.cl-replay[hidden]{display:none}
+
+@media (max-width:640px){
+  .cl-locknum{font-size:15px;letter-spacing:.1em}
+  .cl-steps{grid-template-columns:minmax(0,1fr);gap:8px}
+  .cl-steps li{grid-template-columns:24px minmax(0,1fr);padding:4px 0 4px 12px;border-top:0;border-left:3px solid var(--rule)}
+  .cl-steps li.is-done{border-left-color:var(--ink)}
+  .cl-steps li.is-active{border-left-color:var(--accent)}
+}
