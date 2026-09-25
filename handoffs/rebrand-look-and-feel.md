@@ -1,15 +1,15 @@
 # Rebrand the site with a new look, animations, and custom graphics
 
-Status: waiting
+Status: active
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 12:35 UTC by Claude cloud
+Updated: 2026-09-25 12:50 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
 
 ## Next step
-The full rebuild is done and on the Vercel preview for pull request #61: https://well-and-good-websites-git-claude-copy-optimi-5783c6-matthew-ok.vercel.app . Waiting on Matthew to review it on phone and desktop, and to check the list of new wording in the pull request description (lock section label and heading, Watch again, BRIDGE UP, chart and map labels, image descriptions). When he replies, apply his changes on this branch (spec: `docs/specs/2026-09-25-rebrand-design.md`; code layout in its section 8: `site-growth/style.css`, partials in `site-growth/motion/`, drawings in `scripts/growth_art.py`, `scripts/art_showpieces.py`, `scripts/art_local.py`), run `python3 scripts/build_public.py` and `python3 scripts/validate_growth.py`, and push. Matthew merges pull request #61 himself when he is happy; merging publishes the site.
+Matthew reviewed the preview and said the animations look nothing like the examples he approved in the motion catalogue. Next: a side-by-side fidelity audit of every piece (frames from `design/rebrand-preview/motion-catalogue.html` and `well-and-good-growth-rebrand.html` against the built site), then rework each piece that drifted so it matches the catalogue, then rebuild, validate, push, and ask Matthew to look again. The preview is still at https://well-and-good-websites-git-claude-copy-optimi-5783c6-matthew-ok.vercel.app . Code layout: spec section 8.
 
 ## Done so far
 - Reviewed the current production site (built from `scripts/build_growth.py` and `site-growth/`), the brand crest (`assets/wgw-logo-primary.png`), and the bridge motion piece in `motion/bridge-magic/`.
@@ -26,7 +26,7 @@ The full rebuild is done and on the Vercel preview for pull request #61: https:/
 - Rebuild lane E (whole-site QA) done (last commit 5019a2a): every page checked at 1280 and 390 wide, with reduced motion and with scripts off; no console errors, no sideways scroll, interactions and anchor links work, approved copy unchanged against main, no em-dashes. Fixes: marigold text darkened to #8c5100 for AA contrast on the grain (spec updated), case stories aligned with other sections, lock section tightened (heading max 38px), no jump when scripts load late, unused old styles removed, Welland Votes screenshot shrunk to 149 KB.
 
 ## Waiting on Matthew
-- Review the rebuilt site on the Vercel preview (link under Next step) on phone and desktop, and the new wording listed in pull request #61. Reply with anything to change, or merge the pull request to publish.
+- Nothing right now. Asked him which animations looked most off and on which device.
 
 ## Decisions
 - How deep (2026-09-25, option 2): keep the name Well and Good Growth, redraw the logo too, and reinvent the look, animations, and custom graphics. Which parts of the current crest survive the redraw is still an open question.
@@ -40,6 +40,7 @@ The full rebuild is done and on the Vercel preview for pull request #61: https:/
 - Round four (2026-09-25): "Amazing." The look and the lock animation are approved. Next is the written design for sign-off.
 - Spec open questions (2026-09-25): (1) yes, replace the homepage bridge video with the drawn bridge animation. (2) yes, lock drawing in its own section below the automation hero, keep the task picker. (3) not yet: before launching, Matthew wants many more animations across the site, subtle ones and dynamic ones triggered by scrolling, hovering, and clicking. His words: "I want this site to blow away the luddites."
 - Motion catalogue (2026-09-25): "I love everything." All 17 pieces are approved. Matthew asked for the whole site to be rebuilt with them, using subagents, until the full working preview is ready. New labels (like a heading above the lock drawing) may be written in his style, as long as every new line is listed for him to check. Spec section 8 records the pieces and the code layout.
+- Preview review (2026-09-25): "the animations look nothing like the examples we agreed on." The catalogue demos are the standard; the site must match them.
 
 ## Notes for the next tool
 - Current look: forest green, cream, and coral; Fraunces headings and Inter body text; a repeating bridge pattern behind the hero; one fade-in animation. Tokens are at the top of `site-growth/style.css`.
