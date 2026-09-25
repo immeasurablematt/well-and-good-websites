@@ -154,18 +154,32 @@ for i in range(5):
     surfaces.append('<path class="surf" d="M' + ' L'.join(f'{x} {y:.2f}' for x, y in pts) + '"/>')
     ripples.append(f'<path class="rip" d="M{x0 + 12} {LOWS[i] + 13} H{x1 - 12}"/><path class="rip" d="M{x0 + 12} {LOWS[i] + 27} H{x1 - 12}"/>')
     wets.append(f'<rect class="wet" x="{x0}" y="{LOWS[i]}" width="{W}" height="{FLOORS[i] - LOWS[i]}"/>')
-    numbers.append(f'<text class="locknum" x="{x0 + 8}" y="{COPES[i] + 14}">LOCK {i + 1}</text>')
+    numbers.append(f'<text class="locknum" x="{x0 + 14}" y="{COPES[i] + 14}">LOCK {i + 1}</text>')
 
-gates = []
-for i in range(4):
-    b, lo, fl = (i + 1) * W, LOWS[i + 1], FLOORS[i + 1]
-    top = lo - 14
-    h = fl - top
-    yours = ' yours' if i == 3 else ''
-    gates.append(
-        f'<g class="gate{yours}"><rect x="{b - 5}" y="{top}" width="10" height="{h}" rx="1.2"/>'
-        f'<path class="rib" d="M{b - 5} {top + h / 3:.1f} H{b + 5} M{b - 5} {top + 2 * h / 3:.1f} H{b + 5} '
-        f'M{b - 3.5} {top + 3} L{b + 3.5} {fl - 3} M{b + 3.5} {top + 3} L{b - 3.5} {fl - 3}"/></g>')
+
+def gate(b, top, sill, cls):
+    """A lift gate in three braced panels, like the bridge towers."""
+    h = sill - top
+    d = []
+    for p in range(3):
+        y0, y1 = top + p * h / 3, top + (p + 1) * h / 3
+        d.append(f"M{b - 3.5} {y0 + 2:.1f} L{b + 3.5} {y1 - 2:.1f} M{b + 3.5} {y0 + 2:.1f} L{b - 3.5} {y1 - 2:.1f}")
+        if p:
+            d.append(f"M{b - 5} {y0:.1f} H{b + 5}")
+    return (f'<g class="{cls}"><rect x="{b - 5}" y="{top}" width="10" height="{h}" rx="1.2"/>'
+            f'<path class="rib" d="{" ".join(d)}"/></g>')
+
+
+# Every gate reaches the top of the higher chamber's wall, 12 above the highest
+# level on either side (a chamber fills to the next chamber's resting level),
+# so filled water never rises above the gate on a chamber's low side.
+gates = [gate((i + 1) * W, COPES[i + 1] + 6, FLOORS[i + 1], 'gate yours' if i == 3 else 'gate') for i in range(4)]
+# Closed end gates give the first and last locks a proper wall on the outside.
+END_GATES = gate(5, COPES[0] + 6, FLOORS[0], 'gate-end') + gate(595, COPES[4] + 6, FLOORS[4], 'gate-end')
+for i in range(5):
+    highest = LOWS[min(i + 1, 4)]   # a chamber fills to the next chamber's resting level
+    low_side_gate_top = COPES[i] + 6  # the end gate for lock 1, otherwise the shared gate below
+    assert low_side_gate_top <= highest - 12, f'lock {i + 1}: water would rise above its low-side gate'
 
 # A Great Lakes freighter: long low hull, stripe at the waterline, stern house and stack, pilothouse at the bow.
 BOAT = (f'<g class="boat" transform="translate({4 * W + W // 2} {LOWS[4]})"><g class="rock">'
@@ -191,14 +205,14 @@ DEFS = ('<defs>'
         '<path d="M0 11.5 H24 M0 23.5 H24 M6 0 V11.5 M18 12 V23.5" style="fill:none;stroke:var(--ink);stroke-width:.8;opacity:.08"/></pattern>'
         '</defs>')
 
-LOCK_SVG = ('<svg viewBox="0 -30 600 302" role="img" aria-label="Side view of five canal locks rising left to right. '
+LOCK_SVG = ('<svg viewBox="0 -60 600 332" role="img" aria-label="Side view of five canal locks rising left to right. '
             'A lake freighter rises lock by lock as each chamber fills. The fourth gate, your review, waits until you approve.">'
             + DEFS
             + f'<path class="wallface" d="{WALL}"/><path class="masonry" d="{WALL}"/>'
             + ''.join(wets) + ''.join(numbers) + f'<path class="coping" d="{COPINGS}"/>'
             + BOAT + ''.join(water) + ''.join(surfaces) + ''.join(ripples) + '<g class="fx"></g>'
             + f'<path class="earth" d="{EARTH}"/><path class="hatch-fill" d="{EARTH}"/><path class="bed" d="{BED}"/>'
-            + ''.join(gates) + BADGE + '</svg>')
+            + ''.join(gates) + END_GATES + BADGE + '</svg>')
 
 STEPS = ('<ol class="steps">'
          '<li class="done"><span class="n">1</span><span class="t">A new enquiry arrives</span></li>'
