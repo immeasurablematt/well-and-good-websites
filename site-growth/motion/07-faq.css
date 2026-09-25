@@ -1,0 +1,26 @@
+/* 7. FAQ gates: each question's icon is a small lift gate. Opening the question raises the gate about
+   9 units so the water runs through, and the answer eases in. The <details> element is untouched, so
+   keyboard and screen readers behave as normal; the icon is decorative. Markup: faq() in
+   scripts/build_growth.py. No script needed. */
+.faq summary{align-items:flex-start}
+.faq .gate-ic{flex:none;width:26px;height:26px;margin-top:-1px;overflow:visible}
+.gate-ic .gi-post{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.gate-ic .gi-water{fill:var(--water)}
+.gate-ic .gi-gate{fill:var(--accent);stroke:var(--ink);stroke-width:1;transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+/* A small lift on hover or keyboard focus hints that the gate opens. */
+.faq summary:hover .gi-gate,.faq summary:focus-visible .gi-gate{transform:translateY(-2px)}
+.faq details[open] .gi-gate{transform:translateY(-9px)}
+.faq details[open]>p{animation:wg-answer-in .42s cubic-bezier(.2,.7,.2,1) both}
+@keyframes wg-answer-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* Where the browser can, the answer's space opens and closes smoothly too. */
+@supports selector(::details-content){
+  @media (prefers-reduced-motion:no-preference){
+    .faq details{interpolate-size:allow-keywords}
+    .faq details::details-content{block-size:0;overflow:hidden;transition:block-size .38s cubic-bezier(.3,.7,.2,1),content-visibility .38s allow-discrete}
+    .faq details[open]::details-content{block-size:auto}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .gate-ic .gi-gate{transition:none}
+  .faq details[open]>p{animation:none}
+}

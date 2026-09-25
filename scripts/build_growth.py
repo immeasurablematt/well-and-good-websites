@@ -53,8 +53,13 @@ def cta(label='Let’s talk', service='Help me choose'):
 
 
 def faq(items):
+    # Motion piece 7: each question's icon is a small lift gate (two posts, water, and a marigold gate
+    # that rises when the answer opens). Decorative: the <details> element does all the work.
+    gate = ('<svg class="gate-ic" viewBox="0 0 26 26" aria-hidden="true" focusable="false">'
+            '<rect class="gi-water" x="3" y="17" width="20" height="7"/><rect class="gi-gate" x="9" y="8" width="8" height="15" rx="1"/>'
+            '<path class="gi-post" d="M5 24 V4 M21 24 V4"/></svg>')
     return '<section class="container section faq"><h2>A few practical questions.</h2><div>' + ''.join(
-        f'<details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>' for question, answer in items) + '</div></section>'
+        f'<details><summary>{question}{gate}</summary><p>{answer}</p></details>' for question, answer in items) + '</div></section>'
 
 
 def contact(title='Let’s take something<br>off your plate.', body='Share the task you want to automate or the website and marketing you need. You’ll get a personal reply from Matt to discuss a practical starting point.', label='Discuss your project', service='Help me choose'):
