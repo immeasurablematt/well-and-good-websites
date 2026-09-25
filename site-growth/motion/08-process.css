@@ -1,0 +1,9 @@
+/* 8. Process steps fill like lock chambers: when a .process-list comes on screen, the water in each
+   numbered chamber rises in turn, surges a little, and settles. At rest (no script, reduced motion, or
+   a list already on screen at load) the chambers are full, as style.css draws them. The number sits
+   over the water in ink and stays readable throughout. 08-process.js adds the classes and --step. */
+.process-list li::before{background:linear-gradient(rgb(243 239 230 / .85) 0 1.5px,var(--water) 1.5px) 0 100%/100% 72% no-repeat}
+.process-list.is-waiting li::before{background-size:100% 0%}
+.process-list.is-filling li::before{animation:wg-lock-fill 1.05s calc(var(--step,0) * .45s + .1s) cubic-bezier(.3,.75,.35,1.18) both}
+@keyframes wg-lock-fill{from{background-size:100% 0%}to{background-size:100% 72%}}
+@media (prefers-reduced-motion:reduce){.process-list li::before{animation:none!important;background-size:100% 72%!important}}

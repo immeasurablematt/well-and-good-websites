@@ -1,0 +1,14 @@
+/* 12. Founder photo develops: before the section scrolls in, Matt's photo shows as a two-ink print
+   (indigo shadows, marigold highlights), then develops into full colour. Pointing at it with a mouse
+   shows the print again; on touch screens a tap does. Without scripts, and under reduced motion, it is
+   simply the colour photo. The print is an overlay (.founder-duo) above the colour photo, hidden at rest:
+   the grey copy multiplies onto marigold, then indigo is laid over it with lighten. Markup: founder() in
+   scripts/build_growth.py. 12-founder.js adds .is-print. */
+.founder-print{position:relative;overflow:hidden;border:2px solid var(--ink);border-radius:3px;box-shadow:8px 8px 0 var(--accent);background:var(--wall)}
+.founder-photo .founder-print img{border:0;border-radius:0;box-shadow:none}
+.founder-duo{position:absolute;inset:0;isolation:isolate;background:var(--accent);opacity:0;transition:opacity 2.4s cubic-bezier(.45,0,.3,1);pointer-events:none}
+.founder-photo .founder-duo img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.founder-duo::after{content:"";position:absolute;inset:0;background:var(--ink);mix-blend-mode:lighten}
+.founder-print.is-print .founder-duo{opacity:1;transition-duration:.5s}
+@media (hover:hover){.founder-print:hover .founder-duo{opacity:1;transition-duration:.6s}}
+@media (prefers-reduced-motion:reduce){.founder-duo{display:none}}
