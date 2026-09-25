@@ -1,0 +1,328 @@
+<title>Well and Good Growth Rebrand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Besley:ital,wght@0,500;0,700;0,800;1,500;1,600&family=Commissioner:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{color-scheme:dark;--table:#151d1a;--table-ink:#eee7d9;--table-soft:#a6b0a8;--table-line:#2f3b36;--pin:#ff9275}
+*{box-sizing:border-box}
+body{margin:0;background:var(--table);color:var(--table-ink);font:16px/1.6 Commissioner,"Segoe UI",system-ui,sans-serif;padding-inline:max(16px,3vw);padding-block:36px 96px;-webkit-font-smoothing:antialiased}
+main{max-width:1160px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(64px,9vw,112px)}
+h1,h2,h3,p,figure{margin:0}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
+
+.intro{display:grid;gap:18px;max-width:760px}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--pin)}
+.intro h1{font:400 clamp(36px,5.6vw,64px)/1.04 Fraunces,Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
+.intro p{color:var(--table-soft);max-width:62ch}
+.intro .lede{font-size:18px;color:var(--table-ink)}
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.jump a{color:var(--table-ink);text-decoration:none;border:1px solid var(--table-line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500}
+.jump a:hover{border-color:var(--table-soft)}
+.jump a b{color:var(--pin);font-weight:600;margin-right:6px}
+
+.board{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;scroll-margin-top:24px}
+.board-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:start}
+.letter{font:400 64px/.9 Fraunces,Georgia,serif;color:var(--pin)}
+.board-head h2{font:500 30px/1.15 Fraunces,Georgia,serif;letter-spacing:-.015em;text-wrap:balance}
+.board-head p{color:var(--table-soft);max-width:62ch;margin-top:6px}
+.replay{background:transparent;color:var(--table-ink);border:1px solid var(--table-line);border-radius:999px;padding:9px 16px;font:500 14px Commissioner,system-ui,sans-serif;cursor:pointer;min-height:40px}
+.replay:hover{border-color:var(--table-soft)}
+.tradeoffs{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-top:6px}
+.tradeoffs h3{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--table-soft);margin-bottom:6px}
+.tradeoffs p{color:var(--table-ink);max-width:52ch}
+.closing{display:grid;gap:14px;max-width:720px;border-top:1px solid var(--table-line);padding-top:40px}
+.closing h2{font:400 clamp(28px,4vw,40px)/1.1 Fraunces,Georgia,serif;text-wrap:balance}
+.closing p{color:var(--table-soft);max-width:62ch}
+.closing strong{color:var(--table-ink);font-weight:600}
+
+/* Paper sheets: one per direction */
+.sheet{--pad:clamp(20px,4.5vw,60px);background-color:var(--paper);color:var(--ink);font-family:var(--body);padding:var(--pad);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(44px,7vw,84px);position:relative;overflow:hidden;border-radius:3px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.sheet>*{position:relative;z-index:1}
+.part{display:grid;gap:20px;min-width:0}
+.sheet .part-tag{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:12px}
+.sheet .part-tag::after{content:"";flex:1;height:1px;background:var(--rule)}
+.lockup{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(18px,3.5vw,40px)}
+.mark{width:clamp(120px,20vw,188px);height:auto;flex:none;overflow:visible}
+.sheet .wordmark{font-family:var(--display);font-size:clamp(34px,5.4vw,62px);line-height:1;color:var(--ink);text-wrap:balance}
+.sizes{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;color:var(--soft);font-size:12px}
+.sizes span{display:grid;justify-items:start;gap:6px}
+.sizes svg{overflow:visible}
+.site-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--rule);font-size:13px}
+.mini{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:18px;color:var(--ink);white-space:nowrap;min-width:0}
+.mini svg{flex:none;overflow:visible}
+.links{display:flex;gap:22px;color:var(--soft)}
+.pill{font-weight:600;padding:8px 14px;border:1px solid var(--ink);border-radius:999px;color:var(--ink);white-space:nowrap}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hl{font-family:var(--display);font-size:clamp(32px,4.4vw,54px);line-height:1.08;color:var(--ink);text-wrap:balance;font-weight:400}
+.hl em{color:var(--accent)}
+.copy{display:grid;gap:18px;justify-items:start;align-content:start}
+.sheet .copy p{font-size:17px;max-width:44ch;color:var(--soft)}
+.btn{display:inline-flex;align-items:center;gap:14px;font-weight:600;font-size:15px;padding:12px 18px}
+.art svg{display:block;width:100%;height:auto;max-width:560px;margin-inline:auto;overflow:visible}
+.auto-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.sheet .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.diagram{display:grid;gap:12px;justify-items:center}
+.diagram svg{width:100%;max-width:400px;height:auto;display:block;overflow:visible}
+.diagram figcaption{font-size:14px;color:var(--soft);max-width:46ch;justify-self:stretch}
+.diagram figcaption span{font-weight:600;color:var(--ink)}
+.diagram text{fill:var(--ink);font-family:var(--body)}
+@media (max-width:760px){.hero,.auto-grid{grid-template-columns:minmax(0,1fr)}.links{display:none}.art svg{max-width:440px}}
+@media (max-width:640px){.board-head{grid-template-columns:auto 1fr}.replay{grid-column:1/-1;justify-self:start}.letter{font-size:48px}.tradeoffs{grid-template-columns:1fr;gap:18px}.pill{display:none}}
+
+/* Drawing and motion */
+.ln{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.b-ink{stroke:var(--ink)}
+.b-accent{stroke:var(--accent)}
+.draw,.route,.tick,.cline{stroke-dasharray:1}
+.play .draw{animation:draw var(--t,1.2s) var(--d,0s) cubic-bezier(.55,0,.25,1) both}
+.play .span-lift{animation:lift 2.8s 2.4s cubic-bezier(.45,0,.2,1) both}
+.play .fade{animation:fade .9s ease both}
+.play .dim{animation:dim 2.8s 2.4s ease both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes lift{0%{transform:translateY(0)}30%,64%{transform:translateY(-38px)}100%{transform:translateY(0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes dim{0%{opacity:.4}30%,64%{opacity:1}100%{opacity:.4}}
+@media (prefers-reduced-motion:reduce){.play .draw,.play .span-lift,.play .fade,.play .dim{animation:none}}
+.tick{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* A: Ink line */
+.sheet-a{--paper:#fbf7ef;--ink:#1e3d34;--soft:#52655c;--accent:#b8472f;--water:#6fb0c2;--rule:#e2d8c6;--display:Fraunces,Georgia,serif;--body:Commissioner,"Segoe UI",system-ui,sans-serif}
+.sheet-a .wordmark{font-weight:300;letter-spacing:-.02em}
+.sheet-a i{font-style:italic;color:var(--accent)}
+.sheet-a .hl{font-weight:300;letter-spacing:-.022em}
+.sheet-a .hl em{font-style:italic}
+.sheet-a .btn{border:1.5px solid var(--ink);border-radius:999px;color:var(--ink)}
+.sheet-a .route{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.sheet-a .stn circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.6;transition:fill .3s}
+.sheet-a .stn.reached circle{fill:var(--ink)}
+.sheet-a .stn text{font-size:17px;font-family:var(--display)}
+.sheet-a .stn .sub{font-size:13px;fill:var(--soft);font-family:var(--body)}
+.sheet-a .stn.ok text.main{fill:var(--accent)}
+.sheet-a .dot{fill:var(--accent)}
+
+/* B: Canal lock */
+.sheet-b{--paper:#efe2cf;--ink:#1e3d34;--soft:#3c4c44;--accent:#c24d2c;--water:#c24d2c;--rule:#d2bea3;--display:Besley,Georgia,serif;--body:"Libre Franklin","Segoe UI",system-ui,sans-serif}
+.sheet-b::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.32;mix-blend-mode:multiply;background-image:%%GRAIN%%}
+.sheet-b .wordmark{font-weight:800;letter-spacing:-.015em}
+.sheet-b i{font-style:italic;font-weight:600;color:var(--accent)}
+.sheet-b .mini{font-weight:800;font-size:17px}
+.sheet-b .hl{font-weight:700;letter-spacing:-.012em}
+.sheet-b .hl em{font-style:normal}
+.sheet-b .btn{background:var(--ink);color:var(--paper);box-shadow:4px 4px 0 var(--accent);border-radius:2px}
+.sheet-b .part-tag{color:var(--accent)}
+.sheet-b .pill{border-radius:2px;border-width:2px}
+.sheet-b .wall{fill:none;stroke:var(--ink);stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.sheet-b .water{fill:var(--accent);opacity:.78;transform-box:fill-box;transform-origin:50% 100%}
+.sheet-b .num{font-weight:700;fill:var(--accent);font-size:15px}
+.sheet-b .lbl text{font-size:15px;font-weight:500;fill:var(--soft);transition:fill .3s}
+.sheet-b .lbl.on text{fill:var(--ink)}
+.sheet-b .lbl.on text.num{fill:var(--accent)}
+.sheet-b .lbl text.sub{font-size:13px;font-style:italic;font-weight:400}
+.sheet-b .chamber.ok .lbl text.main{fill:var(--accent)}
+.sheet-b .gate{fill:var(--accent)}
+.sheet-b .hull{fill:var(--ink)}
+.sheet-b .cabin{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+
+/* C: Draftsman */
+.sheet-c{--paper:#f4f4ef;--ink:#23322d;--soft:#55635d;--accent:#b8472f;--water:#5f9fb2;--construct:#86bccb;--rule:#cfdad8;--grid:#dce8e8;--grid2:#ebf0ef;--display:Newsreader,Georgia,serif;--body:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px}
+.sheet-c .wordmark{font-weight:500;letter-spacing:-.015em}
+.sheet-c i{font-style:normal}
+.sheet-c .place{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft);margin-top:12px;font-weight:600}
+.sheet-c .mini{font-weight:500}
+.sheet-c .hl{letter-spacing:-.015em}
+.sheet-c .hl em{font-style:italic}
+.sheet-c .copy p{font-size:18px}
+.sheet-c .btn{background:var(--ink);color:var(--paper);text-transform:uppercase;letter-spacing:.1em;font-size:14px}
+.sheet-c .pill{border-radius:0;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.sheet-c .elev{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);text-align:right;margin-top:8px;font-weight:600}
+.sheet-c .construct line{stroke:var(--construct);stroke-width:1.3;stroke-dasharray:7 6;fill:none}
+.sheet-c .cl{font-size:11px;letter-spacing:.12em;fill:var(--construct);font-family:var(--body);font-weight:700}
+.sheet-c .dim{opacity:.4}
+.sheet-c .dim line,.sheet-c .dim path{stroke:var(--accent);stroke-width:1.3;fill:none}
+.sheet-c .dim text{fill:var(--accent);font-family:var(--body);font-size:11px;letter-spacing:.16em;font-weight:700}
+.sheet-c .cline{fill:none;stroke:var(--construct);stroke-width:1.6}
+.sheet-c .balloon circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.4;transition:fill .25s}
+.sheet-c .balloon text{font-size:14px;font-weight:700;text-anchor:middle;transition:fill .25s}
+.sheet-c .balloon.reached circle{fill:var(--ink)}
+.sheet-c .balloon.reached text{fill:var(--paper)}
+.sheet-c .leader{stroke:var(--ink);stroke-width:1}
+.sheet-c .clbl{font-size:15px;font-weight:600;letter-spacing:.08em}
+.sheet-c .marker{fill:none;stroke:var(--accent);stroke-width:2.4}
+.sheet-c .stamp{transform-box:fill-box;transform-origin:50% 50%}
+.sheet-c .stamp rect{fill:none;stroke:var(--accent);stroke-width:2.2}
+.sheet-c .stamp text{fill:var(--accent);font-size:13px;font-weight:700;letter-spacing:.2em}
+.sheet-c .tblock rect,.sheet-c .tblock line{fill:none;stroke:var(--ink);stroke-width:1}
+.sheet-c .tblock text{font-size:9.5px;letter-spacing:.1em;font-weight:500}
+.sheet-c .tblock text.big{font-size:11px;font-weight:700}
+</style>
+
+%%SYMBOLS%%
+
+<main>
+<header class="intro">
+<p class="kicker">Rebrand preview</p>
+<h1>Three directions for Well and Good Growth</h1>
+<p class="lede">All three keep your name, your approved copy, and the Welland lift bridge. They differ in how the bridge is drawn, the type, and how things move.</p>
+<p>Each one shows the new mark, the homepage, and the AI automation page with a moving drawing of a follow-up workflow. The logo uses a simpler bridge than the illustrations so it stays clear at small sizes, like a browser tab.</p>
+<p>This is a preview only. Your website has not changed. The drawings are quick studies, and the one you pick gets refined.</p>
+<nav class="jump" aria-label="Directions"><a href="#a"><b>A</b>Ink line</a><a href="#b"><b>B</b>Canal lock</a><a href="#c"><b>C</b>Draftsman</a></nav>
+</header>
+
+<section class="board" id="a" aria-labelledby="a-title">
+<div class="board-head"><span class="letter" aria-hidden="true">A</span><div><h2 id="a-title">Ink line</h2><p>Fine ink lines that draw themselves on warm paper. Fraunces stays, set lighter, so this is the closest to your current site.</p></div><button class="replay" type="button" id="replay-a">Replay</button></div>
+%%SHEET_A%%
+<div class="tradeoffs"><div><h3>Why pick it</h3><p>It is exactly the mood you chose, and the calmest of the three. It is also the easiest to roll out, because it keeps your current typeface.</p></div><div><h3>Watch out for</h3><p>It is the smallest change from the site you have now, so some visitors may not notice a rebrand at all.</p></div></div>
+</section>
+
+<section class="board" id="b" aria-labelledby="b-title">
+<div class="board-head"><span class="letter" aria-hidden="true">B</span><div><h2 id="b-title">Canal lock</h2><p>A two-colour print look: forest and coral inks on sand paper, heavier lines, and a sturdy serif. The automation drawing is a boat rising through canal locks.</p></div><button class="replay" type="button" id="replay-b">Replay</button></div>
+%%SHEET_B%%
+<div class="tradeoffs"><div><h3>Why pick it</h3><p>It is the most memorable, and it is rooted in Welland. The lock drawing shows your review step in one picture: the job only rises once you open the gate.</p></div><div><h3>Watch out for</h3><p>It is the biggest change, and the printed look leans a little retro. The lock idea needs its caption to land the first time.</p></div></div>
+</section>
+
+<section class="board" id="c" aria-labelledby="c-title">
+<div class="board-head"><span class="letter" aria-hidden="true">C</span><div><h2 id="c-title">Draftsman</h2><p>An engineer's drawing: grid paper, construction lines, and numbered callouts. The review step is a hold point, the term builders use for where work stops until it is checked.</p></div><button class="replay" type="button" id="replay-c">Replay</button></div>
+%%SHEET_C%%
+<div class="tradeoffs"><div><h3>Why pick it</h3><p>It signals care and precision, which suits the automation work, and the hold point is a clear way to explain review.</p></div><div><h3>Watch out for</h3><p>It is the coolest of the three. It could read as an engineering firm rather than a local partner.</p></div></div>
+</section>
+
+<section class="closing" aria-labelledby="pick-title">
+<h2 id="pick-title">My pick: B, Canal lock</h2>
+<p>It is the most distinct from other agencies and from your current site, and the lock drawing turns your promise of clear review points into a picture people remember. If it feels too heavy, the fine lines of A with the lock drawing from B would work well.</p>
+<p><strong>Reply in chat with A, B, or C.</strong> Mixing is fine, for example "A, but with the lock drawing".</p>
+</section>
+</main>
+
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease = t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const lin = t => t;
+  const tween = (ms, fn, alive, e = ease) => new Promise(res => {
+    const t0 = performance.now();
+    const step = now => {
+      if (!alive()) return res();
+      const t = Math.min(1, (now - t0) / ms);
+      fn(e(t));
+      if (t < 1) requestAnimationFrame(step); else res();
+    };
+    requestAnimationFrame(step);
+  });
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const dash = (el, v) => { el.style.strokeDashoffset = v; };
+
+  function nearestLen(path, x, y) {
+    const L = path.getTotalLength();
+    let best = 0, bd = Infinity;
+    for (let i = 0; i <= 600; i++) {
+      const l = (L * i) / 600, p = path.getPointAtLength(l);
+      const d = (p.x - x) ** 2 + (p.y - y) ** 2;
+      if (d < bd) { bd = d; best = l; }
+    }
+    return best;
+  }
+
+  const runs = {
+    async a(el, alive) {
+      const route = el.querySelector('.route'), dot = el.querySelector('.dot'), tick = el.querySelector('.tick');
+      const stns = [...el.querySelectorAll('.stn')];
+      const L = route.getTotalLength();
+      const lens = stns.map(s => nearestLen(route, +s.dataset.x, +s.dataset.y));
+      const place = l => {
+        const p = route.getPointAtLength(l);
+        dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y);
+        stns.forEach((s, i) => s.classList.toggle('reached', l >= lens[i] - 1));
+      };
+      stns.forEach(s => s.classList.remove('reached', 'ok'));
+      dash(route, 1); dash(tick, 1); dot.style.opacity = 0; place(0); stns[0].classList.remove('reached');
+      await tween(1400, t => dash(route, 1 - t), alive);
+      if (!alive()) return;
+      dot.style.opacity = 1;
+      await tween(2600, t => place(lens[3] * t), alive);
+      await wait(350); if (!alive()) return;
+      await tween(500, t => dash(tick, 1 - t), alive, lin);
+      stns[3].classList.add('ok');
+      await wait(500); if (!alive()) return;
+      await tween(1100, t => place(lens[3] + (L - lens[3]) * t), alive);
+    },
+    async b(el, alive) {
+      const boat = el.querySelector('.boat'), gate = el.querySelector('.gate'), tick = el.querySelector('.tick');
+      const ch = [...el.querySelectorAll('.chamber')];
+      const pos = ch.map(c => [+c.dataset.bx, +c.dataset.by]);
+      const water = ch.map(c => c.querySelector('.water'));
+      const lbl = ch.map(c => c.querySelector('.lbl'));
+      const setBoat = (x, y) => boat.setAttribute('transform', `translate(${x} ${y})`);
+      water.forEach((w, i) => { w.style.transform = `scaleY(${i ? .3 : 1})`; });
+      lbl.forEach((l, i) => l.classList.toggle('on', i === 0));
+      ch[3].classList.remove('ok');
+      gate.style.transform = 'translateX(0px)';
+      dash(tick, 1); setBoat(...pos[0]);
+      await wait(700); if (!alive()) return;
+      const move = async i => {
+        const [x0, y0] = pos[i - 1], [x1, y1] = pos[i];
+        await tween(1000, t => {
+          water[i].style.transform = `scaleY(${.3 + .7 * Math.min(1, t * 1.6)})`;
+          setBoat(x0 + (x1 - x0) * t, y0 + (y1 - y0) * t);
+        }, alive);
+        lbl[i].classList.add('on');
+      };
+      for (let i = 1; i <= 3; i++) { await move(i); await wait(250); if (!alive()) return; }
+      await wait(400); if (!alive()) return;
+      await tween(500, t => dash(tick, 1 - t), alive, lin);
+      ch[3].classList.add('ok');
+      await wait(300); if (!alive()) return;
+      await tween(650, t => { gate.style.transform = `translateX(${-76 * t}px)`; }, alive);
+      if (!alive()) return;
+      await move(4);
+    },
+    async c(el, alive) {
+      const line = el.querySelector('.cline'), mk = el.querySelector('.marker'), stamp = el.querySelector('.stamp'), tick = el.querySelector('.tick');
+      const balls = [...el.querySelectorAll('.balloon')];
+      const ys = balls.map(b => +b.dataset.y);
+      const top = 18;
+      const place = y => {
+        mk.setAttribute('transform', `translate(64 ${y})`);
+        balls.forEach((b, i) => b.classList.toggle('reached', y >= ys[i] - 1));
+      };
+      dash(line, 1); dash(tick, 1);
+      stamp.style.opacity = 0; stamp.style.transform = 'scale(1.5)';
+      mk.style.opacity = 0; place(top);
+      await tween(900, t => dash(line, 1 - t), alive);
+      if (!alive()) return;
+      mk.style.opacity = 1;
+      await tween(2400, t => place(top + (ys[3] - top) * t), alive);
+      if (!alive()) return;
+      await tween(320, t => { stamp.style.opacity = t; stamp.style.transform = `scale(${1.5 - .5 * t})`; }, alive, lin);
+      await wait(700); if (!alive()) return;
+      await tween(450, t => dash(tick, 1 - t), alive, lin);
+      await wait(350); if (!alive()) return;
+      await tween(900, t => place(ys[3] + (ys[4] - ys[3]) * t), alive);
+    }
+  };
+
+  function play(el) {
+    if (reduce) return;
+    el.classList.remove('play');
+    void el.getBoundingClientRect();
+    el.classList.add('play');
+    const kind = el.dataset.kind;
+    if (kind && runs[kind]) {
+      const id = (el._run = (el._run || 0) + 1);
+      runs[kind](el, () => el._run === id).catch(() => {});
+    }
+  }
+
+  const anims = [...document.querySelectorAll('.anim')];
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); play(e.target); } });
+    }, { threshold: .35 });
+    anims.forEach(el => io.observe(el));
+  }
+  document.querySelectorAll('.replay').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.board').querySelectorAll('.anim').forEach(play);
+    });
+  });
+})();
+</script>

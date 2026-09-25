@@ -3,20 +3,21 @@
 Status: waiting
 Branch: claude/copy-optimization-skills-2xydff
 Pull request: #61 (draft)
-Updated: 2026-09-25 03:37 UTC by Claude cloud
+Updated: 2026-09-25 03:49 UTC by Claude cloud
 
 ## Goal
 Matthew wants a more creative new look and feel for wellandgoodgrowth.ca: animations, custom graphics made in code (SVG, some of them moving), and a fresh visual identity. He wants to workshop the direction together before anything is built.
 
 ## Next step
-Workshop phase, one question at a time (brainstorming approach: no site code changes until Matthew approves a written design). All four workshop questions are answered, see "Decisions". Now show 3 visual directions on one private preview page on claude.ai (an Artifact), not on the site, so nothing reaches the live site. Each direction shows: the redrawn bridge mark with the Well and Good Growth wordmark; the homepage hero with its real copy and the bridge drawing itself; and an AI automation section with an animated system diagram. Build the bridge from the traced geometry in `motion/bridge-magic/src/paths.json` (left tower, span, right tower, water). Get his pick, write the design to `docs/specs/2026-09-25-rebrand-design.md`, get his approval, and only then build the pilot.
+Workshop phase, one question at a time (brainstorming approach: no site code changes until Matthew approves a written design). Matthew is choosing between three visual directions on a private preview page: https://claude.ai/artifact/DHDY3gazersy8Q374mdtVs (only his account can open it). A "Ink line": fine ink lines, Fraunces set light, closest to the current site. B "Canal lock": two-colour print look, Besley and Libre Franklin, the automation drawing is a boat rising through canal locks with his review as the lock gate. C "Draftsman": engineer's drawing on grid paper, Newsreader and Barlow Semi Condensed, the review step is a "hold point". Recommended to him: B, or A's lines with B's lock drawing. When he answers, record it under "Decisions", then write `docs/specs/2026-09-25-rebrand-design.md` (mark and lockup, palette, type, motion, the automation drawing, and the two open questions under "Notes for the next tool": the homepage video ident and the drawing versus the task picker), get his approval, and only then build the pilot (homepage plus AI automation page) in `site-growth/` and `scripts/build_growth.py`.
 
 ## Done so far
 - Reviewed the current production site (built from `scripts/build_growth.py` and `site-growth/`), the brand crest (`assets/wgw-logo-primary.png`), and the bridge motion piece in `motion/bridge-magic/`.
 - At Matthew's request, updated `CLAUDE.md` to the current name: Well and Good Growth at www.wellandgoodgrowth.ca (confirmed in the production build). It notes the old name so tools don't rename older files. Other sessions only see this once PR #61 merges.
+- Built the three-direction preview. Source is in `design/rebrand-preview/` (not published to the site: the public build only copies generated pages plus `site-growth/assets` and `fonts`). Regenerate with `python3 design/rebrand-preview/build_preview.py`; it reads the traced bridge from `motion/bridge-magic/src/paths.json`. To update the page Matthew sees, republish the generated HTML from a Claude session to the same artifact URL. The logo uses a simplified bridge (tower outline, cap and one zigzag each, arch, deck, verticals, one water line) so it holds up at small sizes; illustrations use the full lattice.
 
 ## Waiting on Matthew
-- Nothing yet. Next ask: pick one of the 3 visual directions once the preview page is up.
+- Pick a direction on the preview page: A, B, C, or a mix.
 
 ## Decisions
 - How deep (2026-09-25, option 2): keep the name Well and Good Growth, redraw the logo too, and reinvent the look, animations, and custom graphics. Which parts of the current crest survive the redraw is still an open question.
