@@ -1,0 +1,35 @@
+/* 6. Enquiry form: each field draws its line on focus, the marigold plate first and then the indigo
+   over it, a little out of register like the logo. When a valid enquiry is sent, a freighter casts off
+   from beside Send enquiry and leaves a wake. Markup: the enquiry <dialog> in page() in
+   scripts/build_growth.py, which /contact/ also shows inline. */
+
+/* Every visible field sits last in its label, so the label's bottom edge is the field's bottom edge. */
+.enquiry-form label{position:relative}
+.enquiry-form label::before,.enquiry-form label::after{content:"";position:absolute;left:0;right:0;height:2.5px;pointer-events:none;transform:scaleX(0);transform-origin:0 50%;transition:transform .3s cubic-bezier(.5,0,.2,1)}
+.enquiry-form label::before{bottom:-4px;background:var(--accent);transition-delay:.1s}
+.enquiry-form label::after{bottom:0;background:var(--ink)}
+.enquiry-form label:focus-within::before{transform:scaleX(1);transition:transform .4s cubic-bezier(.5,0,.2,1)}
+.enquiry-form label:focus-within::after{transform:scaleX(1);transition:transform .5s .14s cubic-bezier(.5,0,.2,1)}
+/* The focused field also darkens and thickens its border at once, so focus never depends on the drawing. */
+.enquiry-form :is(input,select,textarea):focus-visible{outline:1px solid var(--ink);outline-offset:0;border-color:var(--ink)}
+
+/* The castoff. Hidden at rest; 06-form.js sets --travel to the room beside the button. The ship sits
+   behind the button (z-index -1 inside the isolated row), so its trailing wake starts out tucked under it. */
+.enquiry-form .send-row{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-self:start;max-width:100%}
+.send-row .castoff{position:absolute;z-index:-1;left:100%;top:50%;width:52px;height:25px;margin:-14px 0 0 8px;overflow:visible;opacity:0;pointer-events:none}
+.castoff .wake path{fill:none;stroke:var(--water-deep);stroke-width:2.2;stroke-linecap:round}
+.castoff .wake path:nth-child(2){opacity:.6}
+.castoff .wake path:nth-child(3){opacity:.32}
+.castoff .wake path:nth-child(4){opacity:.14}
+.castoff .wake{opacity:0}
+.send-row .castoff.is-going{animation:wg-castoff-move 1.7s cubic-bezier(.5,0,.35,1) both,wg-castoff-fade 1.7s linear both,wg-castoff-bob .55s ease-in-out 3 alternate}
+.send-row .castoff.is-going .wake{animation:wg-wake-in .45s .2s ease-out both}
+@keyframes wg-castoff-move{from{transform:translateX(0)}to{transform:translateX(var(--travel,120px))}}
+@keyframes wg-castoff-fade{0%{opacity:0}12%,72%{opacity:1}100%{opacity:0}}
+@keyframes wg-castoff-bob{from{translate:0 0}to{translate:0 -1.5px}}
+@keyframes wg-wake-in{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .enquiry-form label::before,.enquiry-form label::after{transition:none}
+  .send-row .castoff{display:none}
+}
