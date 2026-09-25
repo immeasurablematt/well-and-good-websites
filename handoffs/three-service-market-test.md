@@ -2,8 +2,8 @@
 
 Status: active
 Branch: codex/three-service-market-test
-Pull request: none yet
-Updated: 2026-09-25 16:39 EDT by Codex on Mac
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
+Updated: 2026-09-25 16:41 EDT by Codex on Mac
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
@@ -14,6 +14,7 @@ In Claude, read docs/strategy/three-service-market-test/claude-prompt.md and per
 ## Done so far
 - Saved the analysis and commercial-test plan, including economics, evidence standards, cross-selling, fair comparisons, and decision rules.
 - Saved the complete Claude prompt and a public-source index.
+- Synced the packet to GitHub and opened draft pull request #65 for Claude to continue. No merge or site deployment was performed.
 - Included two successful raw September 25 keyword-data responses and an 18-row CSV; these cover automation only and cost US$0.18 in total when originally collected.
 - Verified the packet contains no production changes, private conversation screenshot, or private client anecdotes.
 - Kept unrelated local output and writing folders untouched. The plan was prepared in an isolated checkout.
