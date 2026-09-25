@@ -1,0 +1,24 @@
+/* 14. The customer's journey: a freighter sails a canal route past three stops in the Growth marketing and
+   Niagara SEO heroes (markup from scripts/art_local.py, JOURNEY). At rest the whole route is travelled and
+   every stop is lit; 14-journey.js moves the boat and lights the stops as the page scrolls. The labels are
+   a real HTML list under the drawing, one column per stop. */
+.journey{width:100%;max-width:600px;min-width:0;justify-self:end}
+.journey-art{display:block;width:100%;height:auto;overflow:visible}
+.journey-bank{fill:none;stroke:var(--ink);stroke-width:9;stroke-linecap:round}
+.journey-route{fill:none;stroke:var(--water);stroke-width:5;stroke-linecap:round}
+/* The stretch already sailed, in deeper water. pathLength is 1, so the dash offset is the share still ahead. */
+.journey-done{fill:none;stroke:var(--water-deep);stroke-width:5;stroke-linecap:round;stroke-dasharray:1 2;stroke-dashoffset:0}
+.journey-post{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-dasharray:.1 5}
+.journey-stop circle{fill:var(--paper);stroke:var(--ink);stroke-width:2.5;transition:fill .35s ease}
+.journey-stop.is-reached circle{fill:var(--accent)}
+.journey-icon{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.journey-stops{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:12px 0 0;padding:0;list-style:none;text-align:center}
+.journey-stops li{font:700 clamp(17px,1.85vw,24px)/1.2 var(--serif);letter-spacing:-.012em;color:var(--soft);transition:color .35s ease}
+.journey-stops li.is-reached{color:var(--ink)}
+.journey-stops li:last-child.is-reached{color:var(--accent-text)}
+@media (max-width:760px){
+  .journey{justify-self:stretch;max-width:520px}
+  .journey-stops{margin-top:8px}
+}
+@media (max-width:420px){.journey-stops li{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.journey-stop circle,.journey-stops li{transition:none}}
