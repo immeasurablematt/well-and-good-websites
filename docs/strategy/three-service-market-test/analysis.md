@@ -19,7 +19,8 @@ By this analysis's own rules (see "What would change this recommendation"), answ
 - **The first paid client is the real test.** Every price in `comparison.csv` is untested against an actual buyer. Growth marketing and automation stay available as add-ons for those clients.
 - **Why websites, at 10 hours a week:** a build is a bounded project with a deposit, and the site, preview offer, and delivery process already exist. A Grow client at about 12 hours a month would use roughly a third of available time on its own. Automation still has no measured client result.
 - **Why one industry:** it gives outreach a list to work from, lets one case study speak to the next buyer, and turns "websites for anyone" into a specific offer. Local search is small in every line, so geography was never the main source of buyers.
-- **Open decision:** which industry. The next step is a short comparison of three or four candidate industries using the same evidence template. The experiment in `experiment.md` should be scaled to about 3 hours a week of selling and one project at a time.
+- **Industry chosen (September 26):** independent wedding and event venues, with small manufacturers as runner-up. See `target-industry/recommendation.md`, which also contains a smaller first test that replaces the lanes in `experiment.md`.
+- **Earlier open decision:** which industry. The next step is a short comparison of three or four candidate industries using the same evidence template. The experiment in `experiment.md` should be scaled to about 3 hours a week of selling and one project at a time.
 - **Positioning:** Matthew is now open to a small positioning change. Test the industry offer with private collateral first. Change the site only after the test produces paying clients in that industry.
 
 The original recommendation below is kept as the record of the September 25 analysis.
