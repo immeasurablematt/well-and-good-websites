@@ -2,8 +2,8 @@
 
 Status: waiting
 Branch: codex/niagara-seo-review
-Pull request: none yet
-Updated: 2026-09-26 10:19 EDT by Codex on Mac
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/67 (draft)
+Updated: 2026-09-26 10:21 EDT by Codex on Mac
 
 ## Goal
 Audit the Niagara SEO page against live search data and competing pages, inspect the unindexed URL, and prepare a concrete revision for review before implementation or publication.
