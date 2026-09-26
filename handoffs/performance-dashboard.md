@@ -2,8 +2,8 @@
 
 Status: waiting
 Branch: codex/performance-dashboard
-Pull request: none yet
-Updated: 2026-09-25 23:56 EDT by Codex on Mac
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/66
+Updated: 2026-09-25 23:58 EDT by Codex on Mac
 
 ## Goal
 Set up a private performance dashboard for Well and Good Growth, using the Welland Votes and Frank Baggetta dashboards as references.
