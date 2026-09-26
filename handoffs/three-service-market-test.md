@@ -3,16 +3,16 @@
 Status: waiting
 Branch: codex/three-service-market-test
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
-Updated: 2026-09-26 13:30 EDT by Claude desktop
+Updated: 2026-09-26 13:45 EDT by Claude desktop
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
 
 ## Next step
-Direction changed after Matthew's answers (see the September 26 update at the top of analysis.md): priority is now websites for small and medium businesses in ONE industry, sold remotely across Canada, at about 10 hours a week. Next: pick the industry. Agree 3 or 4 candidate industries with Matthew, compare them with the same evidence template (reachable buyers, what a website is worth to them, what they pay now, vertical-specific competitors and platforms, fit with existing proof), recommend one, then scale experiment.md down to about 3 selling hours a week and one project at a time. Do not contact prospects, change the site, or merge until Matthew says so.
+Direction changed after Matthew's answers (see the September 26 update at the top of analysis.md): priority is now websites for small and medium businesses in ONE industry, sold remotely to Canada AND the US (Matthew wants the US included: bigger market, USD), at about 10 hours a week. There are no paying clients yet: the one completed site was free, for family. Next: pick the industry. Agree 3 or 4 candidate industries with Matthew, compare them with the same evidence template (reachable buyers, what a website is worth to them, what they pay now, vertical-specific competitors and platforms, fit with existing proof), recommend one, then scale experiment.md down to about 3 selling hours a week and one project at a time. Do not contact prospects, change the site, or merge until Matthew says so.
 
 ## Done so far
-- Matthew answered the four questions on September 26 (no income target, about 10 hours a week, no more B2B consultancy work, the one client was a personal relationship). analysis.md now opens with the revised direction; the September 25 recommendation is kept below it as the record.
+- Matthew answered the four questions on September 26 (no income target, about 10 hours a week, no more B2B consultancy work, the one completed site was unpaid family work, so no paying clients yet; include the US). analysis.md now opens with the revised direction; the September 25 recommendation is kept below it as the record.
 - Recommendation (analysis.md): initial sales priority is growth marketing for B2B tech and software teams through Matthew's professional network, GTA first, with automation needs recorded in the same conversations. Confidence low to medium and gated on a private count of qualified network contacts. Credible alternative: fixed-scope website builds (from about CAD 3,000) for established local service businesses through warm relationships and referrals, confidence medium. Local Launch/Grow/Dominate packages and standalone local automation stay available but should not lead acquisition.
 - Comparable research for all three lines by three specialist agents, plus an independent cross-line challenge that changed the recommendation (research/ folder).
 - comparison.csv (regenerate with python3 build_comparison.py): 10 service, buyer, and channel rows plus 2 exclusions. Prices observed; hours and exchange rate are assumptions. Base-case net CAD per founder hour, first 90 days: B2B content 130, network automation 137, local website build 78, Grow package 45, Launch by cold outreach 31.

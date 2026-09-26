@@ -11,11 +11,12 @@ Matthew answered the four questions (summarized here without private detail):
 1. No income target or deadline. The business is being bootstrapped alongside a job.
 2. About 10 hours a week in total.
 3. He does not want more B2B consultancy work. He wants to serve small and medium businesses, and chose local only because of his network. Local outreach has not produced much.
-4. The one completed website client came through a personal relationship. It shows delivery quality, not arm's-length demand or a repeatable channel.
+4. The one completed website was for a family member, done for free. There are no paying clients yet in any line. The site and its search results show the quality of the work; nothing yet shows that a buyer will pay, or at what price.
 
 By this analysis's own rules (see "What would change this recommendation"), answer 3 removes the B2B network lane. The revised direction:
 
-- **Priority: websites for small and medium businesses in one chosen industry, sold remotely across Canada.** The local network still counts, but it is no longer the boundary. Growth marketing and automation stay available as add-ons for those clients.
+- **Priority: websites for small and medium businesses in one chosen industry, sold remotely to Canada and the US.** The US has roughly 7 to 11 times the search volume on the same terms in this study, and US prices paid in USD are worth about a third more in CAD. With no paying clients anywhere, a lack of US proof is no bigger a gap than a lack of Canadian proof. Record which country responds rather than assuming. The local network still counts, but it is no longer the boundary.
+- **The first paid client is the real test.** Every price in `comparison.csv` is untested against an actual buyer. Growth marketing and automation stay available as add-ons for those clients.
 - **Why websites, at 10 hours a week:** a build is a bounded project with a deposit, and the site, preview offer, and delivery process already exist. A Grow client at about 12 hours a month would use roughly a third of available time on its own. Automation still has no measured client result.
 - **Why one industry:** it gives outreach a list to work from, lets one case study speak to the next buyer, and turns "websites for anyone" into a specific offer. Local search is small in every line, so geography was never the main source of buyers.
 - **Open decision:** which industry. The next step is a short comparison of three or four candidate industries using the same evidence template. The experiment in `experiment.md` should be scaled to about 3 hours a week of selling and one project at a time.
@@ -35,7 +36,7 @@ The original recommendation below is kept as the record of the September 25 anal
 
 1. Launch, Grow, and Dominate as the lead offer for small local businesses. Their evidence is the weakest of anything studied, and Grow may lose money per hour at volume (below).
 2. AI automation as a standalone local funnel. Local search demand is effectively zero, two priced competitors already sell to Niagara, and there is no measured client result yet.
-3. Cold outreach to US businesses in any line. There is no US proof and no relationship advantage.
+3. Cold outreach to US businesses in any line. There is no US proof and no relationship advantage. (Superseded September 26: with an industry focus and remote delivery, the US is included. See the update above.)
 
 ## Why this order
 
