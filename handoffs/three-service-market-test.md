@@ -1,15 +1,15 @@
 # Compare markets across all three service lines
 
-Status: waiting
+Status: active
 Branch: codex/three-service-market-test
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
-Updated: 2026-09-26 16:10 EDT by Claude desktop
+Updated: 2026-09-26 16:30 EDT by Claude desktop
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
 
 ## Next step
-Matthew reviews docs/strategy/three-service-market-test/target-industry/recommendation.md. If he agrees with venues, help him with step 1 of its first test only: build the private list of 40 owner-run venues (about 20 US, 10 Ontario outside Niagara, 10 Niagara including winery event spaces) in ~/Hermes/Workbench/market-test/, then run the 15-minute checks. Draft outreach notes for his approval; send nothing without his go-ahead. If he prefers the runner-up (small manufacturers), use the same test shape. Do not change the site or merge.
+Matthew said "go venues". Building the private list of 40 owner-run venues (10 each: Ohio, North Carolina, Ontario outside Niagara, Niagara including winery event spaces) with website checks, in ~/Hermes/Workbench/market-test/ (brief: venue-list-brief.md; outputs: venues-*.md). When all four files exist, merge them into one private venue-list.csv there, then draft personal outreach notes for Matthew's approval. Nothing is sent without his go-ahead. Keep names and contacts out of this repository.
 
 ## Done so far
 - Drafted the venue one-page offer (target-industry/venue-one-pager.md) for Matthew's review. Placeholders remain for per-venue findings, timeline, hosting and support terms, photo permissions, and his email. No landing page needed for the first test.
@@ -23,7 +23,7 @@ Matthew reviews docs/strategy/three-service-market-test/target-industry/recommen
 - Codex earlier saved plan.md, claude-prompt.md, sources.md, and the automation-only keyword data, and opened draft pull request #65. No production files changed, no outreach, no merge.
 
 ## Waiting on Matthew
-- Agree or disagree with venues as the target (or pick the runner-up), and approve list building.
+- Nothing until the list is ready. Then: run the ChatGPT and Claude visibility check per venue, fill his email and the timeline and hosting terms in the one-pager, and approve outreach.
 
 ## Notes for the next tool
 - Previous research centered on automation and cannot justify prioritizing that service over websites or growth marketing.
