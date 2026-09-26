@@ -3,15 +3,16 @@
 Status: active
 Branch: codex/three-service-market-test
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
-Updated: 2026-09-26 16:30 EDT by Claude desktop
+Updated: 2026-09-26 17:40 EDT by Claude desktop
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
 
 ## Next step
-Matthew said "go venues". Building the private list of 40 owner-run venues (10 each: Ohio, North Carolina, Ontario outside Niagara, Niagara including winery event spaces) with website checks, in ~/Hermes/Workbench/market-test/ (brief: venue-list-brief.md; outputs: venues-*.md). When all four files exist, merge them into one private venue-list.csv there, then draft personal outreach notes for Matthew's approval. Nothing is sent without his go-ahead. Keep names and contacts out of this repository.
+The private list of 40 venues is ready at ~/Hermes/Workbench/market-test/venue-list.csv (merged from venues-*.md; 20 US, 20 Canada; priority A 21, B 13, C 6; 33 with a published email). Next, with Matthew's go-ahead only: draft one short personal note per A-priority venue from the "findings_for_note" column, for his approval. He runs the ChatGPT and Claude visibility check and fills his email, timeline, and hosting terms in target-industry/venue-one-pager.md. Nothing is sent without his explicit approval. Keep names and contacts out of this repository.
 
 ## Done so far
+- Built the private 40-venue list with website checks (four parallel agents, read-only web research; no one contacted). Most common gap: no starting price on the venue's own site.
 - Drafted the venue one-page offer (target-industry/venue-one-pager.md) for Matthew's review. Placeholders remain for per-venue findings, timeline, hosting and support terms, photo permissions, and his email. No landing page needed for the first test.
 - Industry chosen: independent wedding and event venues (Canada and US), runner-up small manufacturers and job shops. See target-industry/recommendation.md; research in target-industry/research/. Private website-sample names are in ~/Hermes/Workbench/market-test/, not in the repo. Earlier progress note: industry selection started (Matthew asked for a first-principles choice). Criteria and knock-out screen drafted; 8 shortlisted industries (design-build contractors, auto detailing, independent auto repair, wedding/event venues, wineries and craft beverage, event performers, small manufacturers and job shops, accounting and bookkeeping) being researched by three agents. Keyword data for their customers and owners saved in data/keyword-sample-verticals.csv (2 calls, US$0.18; workstream total US$0.54). If cut off: rerun the research using docs/strategy/three-service-market-test/target-industry/criteria.md, do not rebuy keywords.
 - Matthew answered the four questions on September 26 (no income target, about 10 hours a week, no more B2B consultancy work, the one completed site was unpaid family work, so no paying clients yet; include the US). analysis.md now opens with the revised direction; the September 25 recommendation is kept below it as the record.
@@ -23,7 +24,7 @@ Matthew said "go venues". Building the private list of 40 owner-run venues (10 e
 - Codex earlier saved plan.md, claude-prompt.md, sources.md, and the automation-only keyword data, and opened draft pull request #65. No production files changed, no outreach, no merge.
 
 ## Waiting on Matthew
-- Nothing until the list is ready. Then: run the ChatGPT and Claude visibility check per venue, fill his email and the timeline and hosting terms in the one-pager, and approve outreach.
+- Approve drafting outreach notes; run the AI visibility check; fill the one-pager placeholders.
 
 ## Notes for the next tool
 - Previous research centered on automation and cannot justify prioritizing that service over websites or growth marketing.
