@@ -4,6 +4,25 @@ Prepared September 25, 2026 by Claude desktop. Status: recommendation for Matthe
 
 Companion files: `comparison.csv` (economics by service, buyer, and channel; regenerate with `python3 build_comparison.py`), `source-register.md` (dated evidence and costs), `experiment.md` (the proposed test), and `research/` (the three specialist reports and the cross-line challenge).
 
+## Update, September 26, 2026: Matthew's answers change the recommendation
+
+Matthew answered the four questions (summarized here without private detail):
+
+1. No income target or deadline. The business is being bootstrapped alongside a job.
+2. About 10 hours a week in total.
+3. He does not want more B2B consultancy work. He wants to serve small and medium businesses, and chose local only because of his network. Local outreach has not produced much.
+4. The one completed website client came through a personal relationship. It shows delivery quality, not arm's-length demand or a repeatable channel.
+
+By this analysis's own rules (see "What would change this recommendation"), answer 3 removes the B2B network lane. The revised direction:
+
+- **Priority: websites for small and medium businesses in one chosen industry, sold remotely across Canada.** The local network still counts, but it is no longer the boundary. Growth marketing and automation stay available as add-ons for those clients.
+- **Why websites, at 10 hours a week:** a build is a bounded project with a deposit, and the site, preview offer, and delivery process already exist. A Grow client at about 12 hours a month would use roughly a third of available time on its own. Automation still has no measured client result.
+- **Why one industry:** it gives outreach a list to work from, lets one case study speak to the next buyer, and turns "websites for anyone" into a specific offer. Local search is small in every line, so geography was never the main source of buyers.
+- **Open decision:** which industry. The next step is a short comparison of three or four candidate industries using the same evidence template. The experiment in `experiment.md` should be scaled to about 3 hours a week of selling and one project at a time.
+- **Positioning:** Matthew is now open to a small positioning change. Test the industry offer with private collateral first. Change the site only after the test produces paying clients in that industry.
+
+The original recommendation below is kept as the record of the September 25 analysis.
+
 ## Recommendation
 
 **Initial sales priority: growth marketing for B2B tech and software teams, sold through Matthew's existing professional network.** Start with teams in the GTA, which is inside the stated service area, and accept wider Canadian and US teams that come through the same network. Lead with a fixed-price content and positioning sprint, with a monthly content retainer as the follow-on. In the same conversations, record automation needs and quote a workflow sprint when the buyer raises one.
