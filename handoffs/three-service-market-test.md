@@ -3,7 +3,7 @@
 Status: waiting
 Branch: codex/three-service-market-test
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/65
-Updated: 2026-09-26 15:30 EDT by Claude desktop
+Updated: 2026-09-26 16:10 EDT by Claude desktop
 
 ## Goal
 Compare websites, growth marketing, and AI automation across local, wider Canadian, and US buyers. Recommend the next sales priority and a bounded experiment while preserving the current brand, website positioning, and three-service structure.
@@ -12,6 +12,7 @@ Compare websites, growth marketing, and AI automation across local, wider Canadi
 Matthew reviews docs/strategy/three-service-market-test/target-industry/recommendation.md. If he agrees with venues, help him with step 1 of its first test only: build the private list of 40 owner-run venues (about 20 US, 10 Ontario outside Niagara, 10 Niagara including winery event spaces) in ~/Hermes/Workbench/market-test/, then run the 15-minute checks. Draft outreach notes for his approval; send nothing without his go-ahead. If he prefers the runner-up (small manufacturers), use the same test shape. Do not change the site or merge.
 
 ## Done so far
+- Drafted the venue one-page offer (target-industry/venue-one-pager.md) for Matthew's review. Placeholders remain for per-venue findings, timeline, hosting and support terms, photo permissions, and his email. No landing page needed for the first test.
 - Industry chosen: independent wedding and event venues (Canada and US), runner-up small manufacturers and job shops. See target-industry/recommendation.md; research in target-industry/research/. Private website-sample names are in ~/Hermes/Workbench/market-test/, not in the repo. Earlier progress note: industry selection started (Matthew asked for a first-principles choice). Criteria and knock-out screen drafted; 8 shortlisted industries (design-build contractors, auto detailing, independent auto repair, wedding/event venues, wineries and craft beverage, event performers, small manufacturers and job shops, accounting and bookkeeping) being researched by three agents. Keyword data for their customers and owners saved in data/keyword-sample-verticals.csv (2 calls, US$0.18; workstream total US$0.54). If cut off: rerun the research using docs/strategy/three-service-market-test/target-industry/criteria.md, do not rebuy keywords.
 - Matthew answered the four questions on September 26 (no income target, about 10 hours a week, no more B2B consultancy work, the one completed site was unpaid family work, so no paying clients yet; include the US). analysis.md now opens with the revised direction; the September 25 recommendation is kept below it as the record.
 - Recommendation (analysis.md): initial sales priority is growth marketing for B2B tech and software teams through Matthew's professional network, GTA first, with automation needs recorded in the same conversations. Confidence low to medium and gated on a private count of qualified network contacts. Credible alternative: fixed-scope website builds (from about CAD 3,000) for established local service businesses through warm relationships and referrals, confidence medium. Local Launch/Grow/Dominate packages and standalone local automation stay available but should not lead acquisition.
