@@ -10,7 +10,7 @@ This dashboard reports on Well and Good Growth. It is independent of the public 
 - `scripts/build_performance.mjs`: validate the reviewed snapshot, preserve app identity, build and export.
 - `scripts/publish_performance.mjs`: publish the existing portable report, after verified owner-only access. Refuses unexpected policy or version changes.
 
-The working app lives in the isolated checkout `/private/tmp/wgg-performance-dashboard/private/performance/dashboard`. A private backup of the initial report is saved at `/Users/mbaggetta/.codex/visualizations/2026/09/26/01a0db5a-ae02-7930-bb73-b3ae9192a943/performance-backup`. Preserve this checkout and its ignored files for refreshes. The main checkout contains unrelated files and must not be cleaned or changed by a refresh.
+The working app lives in the isolated checkout `/private/tmp/wgg-performance-refresh-20261001/private/performance/dashboard`. A private backup of the latest validated report is saved at `/Users/mbaggetta/.codex/visualizations/2026/09/26/01a0db5a-ae02-7930-bb73-b3ae9192a943/performance-backup`. Preserve this checkout and its ignored files for refreshes. The main checkout contains unrelated files and must not be cleaned or changed by a refresh.
 
 ## Source collection
 
