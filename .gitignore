@@ -10,3 +10,6 @@ __pycache__/
 .hermes/
 /public/
 /private-data/positioning/
+
+# Owner-only analytics and generated dashboard artifacts
+/private/performance/
