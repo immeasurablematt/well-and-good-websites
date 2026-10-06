@@ -11,3 +11,4 @@ __pycache__/
 /public/
 /private-data/positioning/
 /private/copy-review/
+/.playwright-cli/

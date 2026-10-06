@@ -1,15 +1,15 @@
 # Broader website copy with an editable comparison preview
 
-Status: active
+Status: waiting
 Branch: codex/broader-copy-review
 Pull request: none yet
-Updated: 2026-10-06 11:46 EDT by Codex on Mac
+Updated: 2026-10-06 12:08 EDT by Codex on Mac
 
 ## Goal
 Draft broader geographic website copy while retaining the current benefits, three services, prices and factual proof. Let Matthew review current and proposed wording on the actual site and edit the proposal before approving any release.
 
 ## Next step
-Finish the scoped proposal manifest and local Copy Studio comparison preview, then verify all-page review, editable proposed text, durable local saves, import/export and mobile rendering. Production publication is not authorized.
+Matthew can review http://127.0.0.1:4193/tools/copy-studio/, choose any page, switch Current/Proposed and edit text in Proposed. Edits save privately on this Mac. After he approves wording, apply the reviewed draft to production source in a separate step. Production publication is not authorized.
 
 ## Done so far
 - Investigated the recently saved performance workstream. Its Codex chat is idle; the prepared tracking and privacy changes are on a separate branch. Keep those changes separate.
@@ -17,8 +17,13 @@ Finish the scoped proposal manifest and local Copy Studio comparison preview, th
 - Matthew authorized subagents. Copy review, the existing Copy Studio interface and the local preview pipeline have separate responsibilities.
 - Scope preserves the four local landing pages, factual business and case-study locations, core headlines, prices, package deliverables and proof. Only the geographic sentence in the founder bio is proposed for revision.
 
+- Completed the manifest: all 15 routes, 32 body-field changes and five search-title/description changes. Core messaging broadens customer fit; four local landing pages and local package obligations stay explicit. Schema and social-image changes are recorded as follow-up proposals only.
+- Built the local same-origin comparison editor with page selection, Current/Proposed, editable body text and metadata, change highlights, responsive widths, durable saves, export/import and reset.
+- Verified all 15 pages at desktop and 390px; scroll stays at 800px across toggles. Browser checks passed edit/reload/rebuild persistence, export/import/reset, source-conflict retention, intentional rejection export/import, page-switch editing lock, heading formatting, menus, FAQ, automation picker and the local-services disclosure. Form submissions are blocked in the editor and on direct preview pages. Production build and route validation passed.
+- Installed and restarted the local user LaunchAgent ca.wellandgoodgrowth.copy-review. Its config is /Users/mbaggetta/Library/LaunchAgents/ca.wellandgoodgrowth.copy-review.plist. It serves only 127.0.0.1:4193 and preserves saved drafts across restart.
+
 ## Waiting on Matthew
-- Nothing required to prepare the draft. Approval is required before applying or publishing reviewed copy.
+- Review and edit the proposed wording. Approval is required before applying or publishing reviewed copy.
 
 ## Notes for the next tool
 - Proposal source: docs/copy-review/broader-copy.json. The production copy builder stays unchanged during this review.

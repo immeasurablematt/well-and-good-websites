@@ -6,3 +6,4 @@ tools/copy-studio/
 # Editable motion sources and render history are not website build inputs.
 /motion/
 /private/copy-review/
+/.playwright-cli/
