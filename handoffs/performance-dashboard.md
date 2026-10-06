@@ -3,15 +3,20 @@
 Status: waiting
 Branch: codex/performance-dashboard
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/66
-Updated: 2026-10-06 10:51 EDT by Codex on Mac
+Updated: 2026-10-06 11:18 EDT by Codex on Mac
 
 ## Goal
 Set up a private performance dashboard for Well and Good Growth, using the Welland Votes and Frank Baggetta dashboards as references.
 
 ## Next step
-Matthew must explicitly authorize uploading the private traffic and Search Console figures to an owner-only here.now site. The publication command was blocked by automatic approval review and did not run. When authorized, run `node scripts/publish_performance.mjs --initialize` from the isolated checkout, then verify the private hosted result and update this note. Monthly local refresh is now scheduled for the first day of each month at 8 a.m. Toronto time.
+Review and approve the prepared enquiry instrumentation and privacy-notice release in this workstream's draft PR. Do not merge main or deploy without that approval. After release, verify real event ingestion; a controlled FormSubmit submission and inbox check require separate explicit permission. The private dashboard improvements are locally validated. Daily traffic could not be retrieved from the analytics API and remains unavailable. Monthly refresh remains active. Hosting permission for private analytics is still pending.
 
 ## Done so far
+- October 6: Matthew approved work on the measurement plan and explicitly requested subagents. Treat this very new business as an early baseline, without invented targets or strong conclusions from small samples.
+- Prepared four privacy-conscious enquiry events, allowed campaign labels, production-host gating and deduplicated return signals. Native forms remain in charge. Updated the privacy notice and measurement runbook. No live submissions, event tests or deployment.
+- Improved the three-view dashboard with distinct enquiry stages, honest missing-data states, explicit aggregate date windows, hostname traffic and independently sourced search audience and query-by-page detail. Private source receipts and the empty enquiry-register template stay outside Git. Original headline windows and source timestamps remain intact.
+- The improved private dashboard is now served from the durable backup at the usual port 4187. Browser reload confirmed the new sections and no console errors. The prior successful backup is preserved at /Users/mbaggetta/.codex/visualizations/2026/09/26/01a0db5a-ae02-7930-bb73-b3ae9192a943/performance-archive-2026-10-01.
+- Twenty-one focused tests and both builds passed. All three dashboard views, date filtering, query grouping, source inspection and local popup open/close were verified; no browser console errors. Narrow dashboard viewport verification remains limited because the browser override did not apply. A separate read-only mobile Lighthouse baseline for the public site found no urgent speed problem; private report saved with the visualization files. No broad copy rewrite was applied.
 - October 6 preview repair: replaced the temporary command-session server with a macOS LaunchAgent named `ca.wellandgoodgrowth.performance-preview`. It serves the validated backup at `http://127.0.0.1:4187/`, binds only to loopback, starts at login, and restarts if it exits. Verified a managed restart and an HTTP response identical to the saved dashboard. Browser reload verification was blocked by the browser control policy; Matthew needs to reload the existing error tab. Report data was not refreshed or uploaded.
 - October 1 monthly refresh completed locally. Both reporting sources were accessible; source totals reconciled and all three views, date filtering, source inspection, desktop/mobile charts and browser errors were checked. Detailed private receipts are in private/performance/raw/2026-10-01/. No public website change or hosted upload.
 - Temporary checkout files had been cleared. Restored the saved branch and private backup into /private/tmp/wgg-performance-refresh-20261001. Use that checkout for the next refresh if it still exists; otherwise restore the branch and latest private backup. The older incomplete checkout was left untouched.
@@ -24,6 +29,7 @@ Matthew must explicitly authorize uploading the private traffic and Search Conso
 - Added public-safe content templates, build, health and guarded publication scripts, plus collection instructions in reporting/performance/README.md. Private data, compiled output and receipts are excluded from Git and Vercel uploads.
 
 ## Waiting on Matthew
+- Approval to release the reviewed website instrumentation and privacy notice. Form delivery and production ingestion are not established by mocked tests.
 - Permission to send private analytics to here.now with owner-only access. Automatic approval review required explicit destination authorization.
 
 

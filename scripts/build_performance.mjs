@@ -4,23 +4,17 @@ import {resolve} from 'node:path';
 import {homedir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
+import {validatePerformance} from './validate_performance.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const store=resolve(root,'private/performance');
 const project=resolve(store,'dashboard');
 const data=JSON.parse(await readFile(resolve(store,'snapshot.json'),'utf8'));
-if(!data.id?.startsWith('dashboard:')||data.title!=='Well and Good Growth · Site performance')throw Error('Unexpected dashboard identity');
-for(const id of ['traffic','pages','referrers','devices','countries','searchDaily','searchQueries','searchPages','measurement','health']){
- const q=data.queries[id];
- if(!Array.isArray(q?.rows)||!q.source?.executedAt||!q.source?.evidenceFlow?.length)throw Error(`Missing reviewed evidence: ${id}`);
-}
-const dates=data.queries.searchDaily.rows.map(r=>r.date);
-if(new Set(dates).size!==dates.length||dates.some((d,i)=>!/^\d{4}-\d{2}-\d{2}$/.test(d)||(i&&d<=dates[i-1])))throw Error('Search days must be unique and chronological');
-for(const row of data.queries.searchDaily.rows)if(!['clicks','impressions'].every(k=>Number.isSafeInteger(row[k])&&row[k]>=0))throw Error('Invalid search counts');
+validatePerformance(data);
 // Fail closed if the existing app belongs to a different report.
 const prior=JSON.parse(await readFile(resolve(project,'src/data.json'),'utf8'));
 if(prior.id!==data.id)throw Error('Dashboard identity changed');
 await writeFile(resolve(project,'src/data.json'),JSON.stringify(data,null,2)+'\n',{mode:0o600});
-for(const name of ['DashboardContent.jsx','performance.css'])await copyFile(resolve(root,'reporting/performance',name),resolve(project,'src/content/dashboard',name));
+for(const name of ['DashboardContent.jsx','performance.css','metrics.mjs'])await copyFile(resolve(root,'reporting/performance',name),resolve(project,'src/content/dashboard',name));
 const base=resolve(homedir(),'.codex/plugins/cache/openai-curated-remote/data-analytics');
 const version=(await readdir(base)).sort((a,b)=>b.localeCompare(a,undefined,{numeric:true}))[0];
 const cli=resolve(base,version,'scripts/data-app.mjs');
