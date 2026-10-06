@@ -1,0 +1,480 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "3.0420 sec.",
+  "cost": 0.09,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09251840-1014-0367-0000-52002b9060d6",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "2.9499 sec.",
+      "cost": 0.09,
+      "result_count": 9,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "search_volume",
+        "live"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "search_volume",
+        "se": "google_ads",
+        "keywords": [
+          "ai automation agency",
+          "ai automation services",
+          "ai automation consultant",
+          "ai automation near me",
+          "ai automation niagara",
+          "ai automation welland",
+          "workflow automation consulting",
+          "marketing automation consultant",
+          "business process automation"
+        ],
+        "location_code": 2124,
+        "language_code": "en",
+        "date_from": "2025-09-01",
+        "date_to": "2026-08-31",
+        "search_partners": false
+      },
+      "result": [
+        {
+          "keyword": "ai automation agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 46,
+          "search_volume": 480,
+          "low_top_of_page_bid": 3.86,
+          "high_top_of_page_bid": 10,
+          "cpc": 11.09,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 880
+            }
+          ]
+        },
+        {
+          "keyword": "ai automation services",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 50,
+          "search_volume": 50,
+          "low_top_of_page_bid": 5.24,
+          "high_top_of_page_bid": 25.38,
+          "cpc": 33.08,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 140
+            }
+          ]
+        },
+        {
+          "keyword": "ai automation consultant",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "ai automation near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "ai automation niagara",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "ai automation welland",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "workflow automation consulting",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 16,
+          "search_volume": 10,
+          "low_top_of_page_bid": 4.65,
+          "high_top_of_page_bid": 15.47,
+          "cpc": 18.46,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "marketing automation consultant",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 43,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 70
+            }
+          ]
+        },
+        {
+          "keyword": "business process automation",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 32,
+          "search_volume": 90,
+          "low_top_of_page_bid": 4.13,
+          "high_top_of_page_bid": 40,
+          "cpc": 9.78,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 90
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 210
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

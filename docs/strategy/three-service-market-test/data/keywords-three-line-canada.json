@@ -1,0 +1,3551 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "3.0299 sec.",
+  "cost": 0.09,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09252045-1014-0367-0000-6a33d37e1094",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "2.9634 sec.",
+      "cost": 0.09,
+      "result_count": 47,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "search_volume",
+        "live"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "search_volume",
+        "se": "google_ads",
+        "keywords": [
+          "web design",
+          "website design",
+          "web design near me",
+          "website design near me",
+          "web design agency",
+          "web design services",
+          "website designer",
+          "small business website design",
+          "website redesign",
+          "web design niagara",
+          "web design st catharines",
+          "web design welland",
+          "web design toronto",
+          "website cost",
+          "how much does a website cost",
+          "website builder",
+          "squarespace",
+          "wix website",
+          "seo services",
+          "seo agency",
+          "seo company",
+          "seo near me",
+          "local seo",
+          "seo consultant",
+          "seo niagara",
+          "seo st catharines",
+          "seo toronto",
+          "digital marketing agency",
+          "marketing agency near me",
+          "digital marketing niagara",
+          "social media management",
+          "social media marketing agency",
+          "google business profile",
+          "google business profile optimization",
+          "content marketing agency",
+          "marketing consultant",
+          "growth marketing agency",
+          "ai seo",
+          "generative engine optimization",
+          "ai consultant",
+          "ai consulting",
+          "ai agency",
+          "ai consultant near me",
+          "ai automation toronto",
+          "zapier consultant",
+          "ai for small business",
+          "chatgpt for business"
+        ],
+        "location_code": 2124,
+        "language_code": "en",
+        "date_from": "2025-09-01",
+        "date_to": "2026-08-31",
+        "search_partners": false
+      },
+      "result": [
+        {
+          "keyword": "web design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 41,
+          "search_volume": 6600,
+          "low_top_of_page_bid": 2.68,
+          "high_top_of_page_bid": 12.28,
+          "cpc": 13.73,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 12100
+            }
+          ]
+        },
+        {
+          "keyword": "website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 41,
+          "search_volume": 6600,
+          "low_top_of_page_bid": 2.68,
+          "high_top_of_page_bid": 12.28,
+          "cpc": 13.73,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 12100
+            }
+          ]
+        },
+        {
+          "keyword": "web design near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 12,
+          "search_volume": 1000,
+          "low_top_of_page_bid": 3.12,
+          "high_top_of_page_bid": 11.79,
+          "cpc": 4.35,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "website design near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 14,
+          "search_volume": 880,
+          "low_top_of_page_bid": 4.2,
+          "high_top_of_page_bid": 17.99,
+          "cpc": 12.74,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1600
+            }
+          ]
+        },
+        {
+          "keyword": "web design agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 28,
+          "search_volume": 1600,
+          "low_top_of_page_bid": 3.02,
+          "high_top_of_page_bid": 10.55,
+          "cpc": 10.52,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 4400
+            }
+          ]
+        },
+        {
+          "keyword": "web design services",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 16,
+          "search_volume": 720,
+          "low_top_of_page_bid": 2.87,
+          "high_top_of_page_bid": 8.96,
+          "cpc": 16.68,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "website designer",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 41,
+          "search_volume": 6600,
+          "low_top_of_page_bid": 2.68,
+          "high_top_of_page_bid": 12.28,
+          "cpc": 13.73,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 12100
+            }
+          ]
+        },
+        {
+          "keyword": "small business website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 33,
+          "search_volume": 210,
+          "low_top_of_page_bid": 2.69,
+          "high_top_of_page_bid": 18.22,
+          "cpc": 24.06,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 720
+            }
+          ]
+        },
+        {
+          "keyword": "website redesign",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 30,
+          "search_volume": 390,
+          "low_top_of_page_bid": 2.81,
+          "high_top_of_page_bid": 13.72,
+          "cpc": 12.56,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 720
+            }
+          ]
+        },
+        {
+          "keyword": "web design niagara",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 18,
+          "search_volume": 210,
+          "low_top_of_page_bid": 3.51,
+          "high_top_of_page_bid": 14.58,
+          "cpc": 19.71,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 390
+            }
+          ]
+        },
+        {
+          "keyword": "web design st catharines",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 28,
+          "search_volume": 90,
+          "low_top_of_page_bid": 3.17,
+          "high_top_of_page_bid": 11.88,
+          "cpc": 7.61,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 260
+            }
+          ]
+        },
+        {
+          "keyword": "web design welland",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 2,
+          "search_volume": 40,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "web design toronto",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 7,
+          "search_volume": 4400,
+          "low_top_of_page_bid": 3.19,
+          "high_top_of_page_bid": 16.72,
+          "cpc": 25.81,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 9900
+            }
+          ]
+        },
+        {
+          "keyword": "website cost",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 70,
+          "search_volume": 140,
+          "low_top_of_page_bid": 1.77,
+          "high_top_of_page_bid": 6.2,
+          "cpc": 5.66,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 140
+            }
+          ]
+        },
+        {
+          "keyword": "how much does a website cost",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 56,
+          "search_volume": 210,
+          "low_top_of_page_bid": 1.66,
+          "high_top_of_page_bid": 6.53,
+          "cpc": 6.54,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 260
+            }
+          ]
+        },
+        {
+          "keyword": "website builder",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 60,
+          "search_volume": 9900,
+          "low_top_of_page_bid": 4.59,
+          "high_top_of_page_bid": 20.18,
+          "cpc": 20.39,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 6600
+            }
+          ]
+        },
+        {
+          "keyword": "squarespace",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 54,
+          "search_volume": 90500,
+          "low_top_of_page_bid": 2.75,
+          "high_top_of_page_bid": 17.2,
+          "cpc": 2.45,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 74000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 74000
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 74000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90500
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 90500
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 90500
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 90500
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 74000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 74000
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 74000
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 74000
+            }
+          ]
+        },
+        {
+          "keyword": "wix website",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 56,
+          "search_volume": 6600,
+          "low_top_of_page_bid": 0.9,
+          "high_top_of_page_bid": 9.02,
+          "cpc": 3.78,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 8100
+            }
+          ]
+        },
+        {
+          "keyword": "seo services",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 10,
+          "search_volume": 6600,
+          "low_top_of_page_bid": 5.9,
+          "high_top_of_page_bid": 33.27,
+          "cpc": 28.29,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 8100
+            }
+          ]
+        },
+        {
+          "keyword": "seo agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 15,
+          "search_volume": 2900,
+          "low_top_of_page_bid": 5.29,
+          "high_top_of_page_bid": 32.49,
+          "cpc": 19.2,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 6600
+            }
+          ]
+        },
+        {
+          "keyword": "seo company",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 17,
+          "search_volume": 3600,
+          "low_top_of_page_bid": 8.56,
+          "high_top_of_page_bid": 35.89,
+          "cpc": 33.5,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 5400
+            }
+          ]
+        },
+        {
+          "keyword": "seo near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 12,
+          "search_volume": 590,
+          "low_top_of_page_bid": 3.51,
+          "high_top_of_page_bid": 17.2,
+          "cpc": 13.42,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1000
+            }
+          ]
+        },
+        {
+          "keyword": "local seo",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 30,
+          "search_volume": 880,
+          "low_top_of_page_bid": 3.77,
+          "high_top_of_page_bid": 17.51,
+          "cpc": 19.59,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "seo consultant",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 12,
+          "search_volume": 1900,
+          "low_top_of_page_bid": 2.9,
+          "high_top_of_page_bid": 27.43,
+          "cpc": 4.09,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 3600
+            }
+          ]
+        },
+        {
+          "keyword": "seo niagara",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 18,
+          "search_volume": 70,
+          "low_top_of_page_bid": 2.83,
+          "high_top_of_page_bid": 5.67,
+          "cpc": 5.02,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 90
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 210
+            }
+          ]
+        },
+        {
+          "keyword": "seo st catharines",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 33,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 55.46,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 30
+            }
+          ]
+        },
+        {
+          "keyword": "seo toronto",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 26,
+          "search_volume": 4400,
+          "low_top_of_page_bid": 3.67,
+          "high_top_of_page_bid": 17.95,
+          "cpc": 10.35,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 6600
+            }
+          ]
+        },
+        {
+          "keyword": "digital marketing agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 12,
+          "search_volume": 3600,
+          "low_top_of_page_bid": 3.25,
+          "high_top_of_page_bid": 10.78,
+          "cpc": 12.8,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 5400
+            }
+          ]
+        },
+        {
+          "keyword": "marketing agency near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 22,
+          "search_volume": 1900,
+          "low_top_of_page_bid": 3.04,
+          "high_top_of_page_bid": 12.78,
+          "cpc": 6.11,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "digital marketing niagara",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 31,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 90
+            }
+          ]
+        },
+        {
+          "keyword": "social media management",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 44,
+          "search_volume": 720,
+          "low_top_of_page_bid": 2.78,
+          "high_top_of_page_bid": 20.15,
+          "cpc": 20.04,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1300
+            }
+          ]
+        },
+        {
+          "keyword": "social media marketing agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 30,
+          "search_volume": 880,
+          "low_top_of_page_bid": 3.38,
+          "high_top_of_page_bid": 10.79,
+          "cpc": 16.72,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "google business profile",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 5,
+          "search_volume": 60500,
+          "low_top_of_page_bid": 3.09,
+          "high_top_of_page_bid": 13.56,
+          "cpc": 12.56,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 135000
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 74000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 49500
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 49500
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 49500
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40500
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 33100
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 33100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 40500
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 33100
+            }
+          ]
+        },
+        {
+          "keyword": "google business profile optimization",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 7,
+          "search_volume": 320,
+          "low_top_of_page_bid": 4.97,
+          "high_top_of_page_bid": 56.78,
+          "cpc": 42.99,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 210
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 170
+            }
+          ]
+        },
+        {
+          "keyword": "content marketing agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 29,
+          "search_volume": 140,
+          "low_top_of_page_bid": 3.04,
+          "high_top_of_page_bid": 9.29,
+          "cpc": 9.81,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 170
+            }
+          ]
+        },
+        {
+          "keyword": "marketing consultant",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 26,
+          "search_volume": 880,
+          "low_top_of_page_bid": 2.14,
+          "high_top_of_page_bid": 13.47,
+          "cpc": 11.49,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1300
+            }
+          ]
+        },
+        {
+          "keyword": "growth marketing agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 41,
+          "search_volume": 70,
+          "low_top_of_page_bid": 3.6,
+          "high_top_of_page_bid": 10.48,
+          "cpc": 6.49,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 210
+            }
+          ]
+        },
+        {
+          "keyword": "ai seo",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 60,
+          "search_volume": 880,
+          "low_top_of_page_bid": 9.36,
+          "high_top_of_page_bid": 24.7,
+          "cpc": 31.65,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1000
+            }
+          ]
+        },
+        {
+          "keyword": "generative engine optimization",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 70,
+          "search_volume": 590,
+          "low_top_of_page_bid": 6,
+          "high_top_of_page_bid": 22.74,
+          "cpc": 20.88,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 720
+            }
+          ]
+        },
+        {
+          "keyword": "ai consultant",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 1000,
+          "low_top_of_page_bid": 4.18,
+          "high_top_of_page_bid": 17.15,
+          "cpc": 14.94,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1300
+            }
+          ]
+        },
+        {
+          "keyword": "ai consulting",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 1000,
+          "low_top_of_page_bid": 4.18,
+          "high_top_of_page_bid": 17.15,
+          "cpc": 14.94,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 480
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1300
+            }
+          ]
+        },
+        {
+          "keyword": "ai agency",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 57,
+          "search_volume": 8100,
+          "low_top_of_page_bid": 4.46,
+          "high_top_of_page_bid": 13.42,
+          "cpc": 14.24,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 18100
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 6600
+            }
+          ]
+        },
+        {
+          "keyword": "ai consultant near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 19,
+          "search_volume": 40,
+          "low_top_of_page_bid": 4.8,
+          "high_top_of_page_bid": 39.38,
+          "cpc": 22.59,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 40
+            }
+          ]
+        },
+        {
+          "keyword": "ai automation toronto",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": null,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": null
+        },
+        {
+          "keyword": "zapier consultant",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "ai for small business",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 55,
+          "search_volume": 260,
+          "low_top_of_page_bid": 4.06,
+          "high_top_of_page_bid": 15.01,
+          "cpc": 14.86,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 260
+            }
+          ]
+        },
+        {
+          "keyword": "chatgpt for business",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 13,
+          "search_volume": 390,
+          "low_top_of_page_bid": 3.51,
+          "high_top_of_page_bid": 27.46,
+          "cpc": 12.74,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 390
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 590
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
