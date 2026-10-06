@@ -22,7 +22,7 @@ SOCIAL_IMAGE = 'https://www.wellandgoodgrowth.ca/assets/well-and-good-growth-soc
 
 
 def bundle(name):
-    """style.css or site.js plus the motion partials of the same type, in name order.
+    """Base styles or script, enquiry measurement, then matching motion partials.
 
     Each script partial is wrapped so an error in one piece is logged without
     stopping the others (partials are IIFEs and share nothing but window.WG).
@@ -31,7 +31,7 @@ def bundle(name):
     partials = sorted(MOTION.glob('*' + base.suffix))
     # Fail loudly rather than publish a site without its animations (a deploy ignore rule once dropped this folder).
     assert partials, f'No motion partials found in {MOTION}: check .vercelignore and the checkout'
-    parts = [base] + partials
+    parts = [base] + ([DESIGN / 'enquiry-measurement.js'] if name == 'site.js' else []) + partials
     chunks = []
     for part in parts:
         label = part.relative_to(DESIGN).as_posix()
