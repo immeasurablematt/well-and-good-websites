@@ -1,15 +1,15 @@
 # Broader website copy with an editable comparison preview
 
-Status: waiting
+Status: active
 Branch: codex/broader-copy-review
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/70
-Updated: 2026-10-06 12:12 EDT by Codex on Mac
+Updated: 2026-10-06 16:03 EDT by Codex on Mac
 
 ## Goal
 Draft broader geographic website copy while retaining the current benefits, three services, prices and factual proof. Let Matthew review current and proposed wording on the actual site and edit the proposal before approving any release.
 
 ## Next step
-Matthew can review http://127.0.0.1:4193/tools/copy-studio/, choose any page, switch Current/Proposed and edit text in Proposed. Edits save privately on this Mac. After he approves wording, apply the reviewed draft to production source in a separate step. Production publication is not authorized.
+Review the Vercel preview of the implemented copy, then merge PR #70 and verify all live pages and redirects. Matthew explicitly authorized publication with "lets ship it" on October 6, 2026. Preserve his exact per-page edits, including differing founder and pricing variants.
 
 ## Done so far
 - Investigated the recently saved performance workstream. Its Codex chat is idle; the prepared tracking and privacy changes are on a separate branch. Keep those changes separate.
@@ -24,12 +24,16 @@ Matthew can review http://127.0.0.1:4193/tools/copy-studio/, choose any page, sw
 
 - Saved the review package in draft PR #70. The in-app browser shows the prepared proposal, Saved on this Mac, 37 changes and all 15 page choices. Keep this checkout while review is in progress.
 
+- Applied the approved export to source: 35 body-field instances plus five metadata changes, with per-page founder/pricing variants preserved. Build/validator, 45 responsive page views, widgets, full source comparison and independent review passed. Schema and sharing-card updates are implemented. Next is the Vercel preview and approved publication.
+
+- Preserved the complete private review, draft saves and QA artifacts outside the checkout at /Users/mbaggetta/Hermes/Workbench/well-and-good-copy-review-2026-10-06-160310.
+
 ## Waiting on Matthew
-- Review and edit the proposed wording. Approval is required before applying or publishing reviewed copy.
+- Nothing. The exported copy and publication are approved.
 
 ## Notes for the next tool
-- Proposal source: docs/copy-review/broader-copy.json. The production copy builder stays unchanged during this review.
+- Approved export: docs/copy-review/approved-draft.json. Production source implements its per-page edits; docs/copy-review/broader-copy.json now starts with zero changes against the approved baseline.
 - Preview tooling: tools/copy-studio and scripts/build_copy_review.py plus scripts/serve_copy_review.py.
 - Local preview root and edited drafts: private/copy-review, ignored by Git and deployment. Keep draft saves outside the rebuilt site folder.
 - Use port 4193 for this copy review. Do not interfere with the private performance dashboard on port 4187.
-- Do not merge the tracking branch, deploy, submit the live form, or publish private edits as part of this workstream.
+- Do not merge the separate tracking branch or submit the live enquiry form. Publication of this approved copy is now authorized. Private draft saves remain excluded.

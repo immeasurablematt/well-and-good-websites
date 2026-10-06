@@ -7,7 +7,7 @@ Writes to site-growth/assets/:
   favicon.svg        the mark alone, no marigold echo, heavy strokes for 16 px
   favicon-32.png     favicon.svg at 32 px
   apple-touch-icon.png   180 px, paper background
-  well-and-good-growth-social-20260925.png   1200 by 630 social image
+  well-and-good-growth-social-20261006.png   1200 by 630 social image
 
 The SVGs are written here. The PNGs are rendered from HTML by headless Chromium
 through Node Playwright (scripts/render_brand_images.js), using the self-hosted
@@ -30,7 +30,7 @@ import growth_art as art
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'site-growth' / 'assets'
 FONTS = ROOT / 'site-growth' / 'fonts'
-SOCIAL = 'well-and-good-growth-social-20260925.png'
+SOCIAL = 'well-and-good-growth-social-20261006.png'
 C = art.PALETTE
 NAME = 'Well and Good Growth'
 
@@ -199,7 +199,7 @@ def social_page():
             f'{inline_mark(330, 11)}'
             f'<p class="name">Well <i>and</i> Good Growth</p>'
             f'<p class="line">AI automation, websites and growth marketing</p>'
-            f'<p class="where">Niagara and the GTA</p>'
+            f'<p class="where">Work directly with Matt</p>'
             f'<div class="canal"></div><div class="bank"></div>{ship}</div></body>')
 
 
