@@ -1,17 +1,18 @@
 # Private website performance dashboard
 
-Status: active
+Status: done
 Branch: codex/performance-dashboard
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/66
-Updated: 2026-10-06 16:44 EDT by Codex on Mac
+Updated: 2026-10-06 16:48 EDT by Codex on Mac
 
 ## Goal
 Set up a private performance dashboard for Well and Good Growth, using the Welland Votes and Frank Baggetta dashboards as references.
 
 ## Next step
-Matthew approved publishing the tracking and privacy update on October 6. Merge this reviewed release and verify the production build, privacy notice and analytics collection. A real FormSubmit submission and inbox check still require separate permission. Private analytics hosting remains unauthorized.
+The approved tracking and privacy release is live. Continue the existing monthly private reporting refresh. Use the private deployment change log to separate verification events from business activity and preserve the current-domain measurement start. A real FormSubmit submission and inbox check still require separate permission. Private analytics hosting remains unauthorized.
 
 ## Done so far
+- Released October 6: PR #66 merged as c1306c5 and Vercel production deployment dpl_9ULFAjpGV9sEt21nVKY8LCaKjPre reached READY. Live homepage, privacy, contact and thank-you pages returned HTTP 200. Deployed JavaScript matched the reviewed build. The popup opened and closed without browser errors, and production analytics recorded its verification event. No form submission or inbox access occurred. Private verification receipts and change log are in the durable backup.
 - Release preparation: preserved the latest main-branch copy, homepage and current email address while resolving ignore-file and privacy-date conflicts. The 21 focused tests and public build/validation passed against that combined version.
 - October 6: Matthew approved work on the measurement plan and explicitly requested subagents. Treat this very new business as an early baseline, without invented targets or strong conclusions from small samples.
 - Prepared four privacy-conscious enquiry events, allowed campaign labels, production-host gating and deduplicated return signals. Native forms remain in charge. Updated the privacy notice and measurement runbook. No live submissions, event tests or deployment.

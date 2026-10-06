@@ -1,6 +1,6 @@
 # Enquiry measurement
 
-Prepared October 6, 2026. These changes are not live until released. No live events or forms were submitted during development. The signed-in Vercel team showed Pro on October 6; ingestion still needs checking after release.
+Released October 6, 2026 through PR #66 (production merge c1306c5). The signed-in Vercel team showed Pro. Production received a popup-open verification event after release; no form was submitted or inbox accessed. Start, submission-attempt and return delivery remain unverified in production. Exclude recorded verification activity from business outcomes; private receipts and the deployment change log preserve its details.
 
 This is a new business. Start with a reliable baseline and individual enquiries rather than a conversion-rate target. Keep monthly counts alongside their dates and small denominators. Do not treat a few visits, zero observed events, or a change in percentage as a trend by itself.
 
@@ -30,7 +30,7 @@ Ad blockers, unavailable analytics, disabled JavaScript, unavailable storage, a 
 
 Run `node --test scripts/tests/enquiry-measurement.test.mjs`, `python3 scripts/build_growth.py`, and `python3 scripts/validate_growth.py`. The dependency-free mocked browser checks cover native-submit preservation, invalid/prevented/honeypot submits, deduplication, direct visits, stale markers, Back restoration, unavailable storage/analytics, production gating and data allowlists. They make no network requests and submit no forms.
 
-After an authorized release, verify Vercel receives real events as organic enquiries occur. Until ingestion is observed, show measurement as unverified or unavailable, never zero. A complete controlled FormSubmit delivery test requires separate permission because it sends a real submission. That check must confirm the fragment survives the provider redirect and the enquiry arrives in the inbox. A successful build or mocked return does not verify provider delivery. Avoid changing analytics plans or settings to make the code work.
+Popup-open ingestion was verified at release. Verify the remaining events as organic enquiries occur. Until ingestion is observed, show measurement as unverified or unavailable, never zero. A complete controlled FormSubmit delivery test requires separate permission because it sends a real submission. That check must confirm the fragment survives the provider redirect and the enquiry arrives in the inbox. A successful build or mocked return does not verify provider delivery. Avoid changing analytics plans or settings to make the code work.
 
 ## Link tagging
 
