@@ -2,8 +2,8 @@
 
 Status: waiting
 Branch: codex/broader-copy-review
-Pull request: none yet
-Updated: 2026-10-06 12:08 EDT by Codex on Mac
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/70
+Updated: 2026-10-06 12:12 EDT by Codex on Mac
 
 ## Goal
 Draft broader geographic website copy while retaining the current benefits, three services, prices and factual proof. Let Matthew review current and proposed wording on the actual site and edit the proposal before approving any release.
@@ -21,6 +21,8 @@ Matthew can review http://127.0.0.1:4193/tools/copy-studio/, choose any page, sw
 - Built the local same-origin comparison editor with page selection, Current/Proposed, editable body text and metadata, change highlights, responsive widths, durable saves, export/import and reset.
 - Verified all 15 pages at desktop and 390px; scroll stays at 800px across toggles. Browser checks passed edit/reload/rebuild persistence, export/import/reset, source-conflict retention, intentional rejection export/import, page-switch editing lock, heading formatting, menus, FAQ, automation picker and the local-services disclosure. Form submissions are blocked in the editor and on direct preview pages. Production build and route validation passed.
 - Installed and restarted the local user LaunchAgent ca.wellandgoodgrowth.copy-review. Its config is /Users/mbaggetta/Library/LaunchAgents/ca.wellandgoodgrowth.copy-review.plist. It serves only 127.0.0.1:4193 and preserves saved drafts across restart.
+
+- Saved the review package in draft PR #70. The in-app browser shows the prepared proposal, Saved on this Mac, 37 changes and all 15 page choices. Keep this checkout while review is in progress.
 
 ## Waiting on Matthew
 - Review and edit the proposed wording. Approval is required before applying or publishing reviewed copy.
