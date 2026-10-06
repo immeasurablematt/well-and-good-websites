@@ -23,4 +23,13 @@ Matthew approved the exported copy and publication on October 6, 2026. The autho
 
 ## Publication
 
-Pending the verified Vercel preview and approved merge of PR #70. Pre-release production commit: `bcc83cdc610e2693ea49555b856e8698c6858ca7`; deployment: `dpl_CnEFjrVRMSP8mAGnStfRDCUzpzrb`.
+PR #70 merged on October 6, 2026 at 20:07:57 UTC. Production commit: `469400becfd8c687ede394de78e86eaade1fc72b`. Vercel deployment `dpl_CUVxQYmeYTQWbWyju5Mc3ChfU31K` reached READY on the production target.
+
+- Preview: https://well-and-good-websites-qev9irqxn-matthew-ok.vercel.app, source commit `2c76ed5cd5b0f719e43fceee253b96f2f261ca5b`. All pages and changed assets matched the local build byte for byte.
+- Live: https://www.wellandgoodgrowth.ca/. Verified anonymously at 20:12 UTC: all 15 generated HTML pages, CSS, JavaScript, sharing image, robots.txt, sitemap.xml and llms.txt matched the verified build.
+- All nine configured route redirects and the apex/legacy domains returned permanent redirects to the correct destinations. Domain redirects preserved the tested path and query string.
+- Editor, private draft and repository-document URLs returned 404 on production. Live founder copy rendered correctly without browser errors. No production error/fatal runtime log groups were returned for this deployment in the preceding hour.
+- The local editor remains available at http://127.0.0.1:4193/tools/copy-studio/, now served from the main project checkout. Its approved baseline starts at zero changes and its saved draft is retained.
+- Original and final private review snapshots are preserved at `/Users/mbaggetta/Hermes/Workbench/well-and-good-copy-review-2026-10-06-160310`.
+
+Rollback reference. Pre-release production commit: `bcc83cdc610e2693ea49555b856e8698c6858ca7`; deployment: `dpl_CnEFjrVRMSP8mAGnStfRDCUzpzrb`.
