@@ -4,44 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Copy Studio - Well and Good Websites</title>
+<title>Copy review | Well and Good Growth</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <style>
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; }
-  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#12181f; color:#e8ecf1; }
-  header { display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:12px 18px; background:#1b232d; border-bottom:1px solid #2a3542; position:sticky; top:0; z-index:10; }
-  header h1 { font-size:14px; font-weight:700; margin:0; letter-spacing:0.02em; color:#f2c9b6; }
-  .stats { display:flex; gap:14px; font-size:12.5px; color:#9fb0c0; }
-  .stats strong { color:#fff; }
-  .spacer { flex:1; }
-  .btn-group { display:flex; gap:6px; background:#0f151b; padding:4px; border-radius:8px; }
-  .btn-group button { border:0; background:transparent; color:#9fb0c0; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
-  .btn-group button.active { background:#2a3542; color:#fff; }
-  .action { border:1px solid #3a4756; background:#212b36; color:#e8ecf1; padding:7px 14px; border-radius:7px; font-size:12.5px; font-weight:600; cursor:pointer; }
-  .action:hover { background:#2a3542; }
-  .action.danger { border-color:#7a3b2e; color:#f2b8a4; }
-  .file-btn { display:inline-flex; align-items:center; }
-  #frame-wrap { margin:24px auto; width:100%; max-width:1280px; transition:width 0.2s ease; background:#fff; box-shadow:0 20px 60px rgba(0,0,0,0.4); }
-  iframe { width:100%; height:calc(100vh - 120px); border:0; display:block; background:#fff; }
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#e9e5da;color:#18392f}header{background:#163a30;color:#faf4e6;padding:16px 22px}h1{font-size:18px;margin:0 0 12px;font-weight:650}.toolbar,.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.actions{margin-top:12px;font-size:13px}select,button,.file-btn{font:inherit;font-size:13px;border-radius:6px;padding:8px 12px;border:1px solid #a8b8a7;background:#faf5e9;color:#18392f;cursor:pointer}.btn-group{display:flex;gap:3px}.btn-group button{background:#224a3e;color:#e9ecdf;border-color:#668274}.btn-group button.active{background:#e9b057;border-color:#e9b057;color:#18392f}.file-btn{display:inline-block}select{max-width:300px}.spacer{flex:1}.stats{font-size:12px;color:#ccd6cb}.help{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;margin:12px 22px;font-size:13px}.help p{margin:4px 0}.error{color:#ffcc9e}#source-conflicts{margin:12px 22px;padding:12px;background:#fff0c7;border:1px solid #c98b33;font-size:13px}#frame-wrap{margin:16px auto;width:1280px;max-width:100%;background:white;box-shadow:0 8px 30px #18392f22;transition:width .15s}iframe{display:block;width:100%;height:calc(100vh - 255px);min-height:460px;border:0;background:white}details.metadata{margin:12px 22px;background:#faf6ec;border:1px solid #cbcbbd;border-radius:6px;padding:12px}summary{cursor:pointer;font-size:13px}.metadata-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}.metadata-grid label{display:block;font-size:13px;margin-top:12px;font-weight:600}.metadata-grid p{font-size:13px;margin:8px 0;font-weight:400}.metadata-grid textarea{width:100%;resize:vertical;min-height:64px;font:inherit;font-size:13px;padding:8px;border:1px solid #9fae9d;border-radius:4px}.metadata-grid textarea:disabled{background:#eee}@media(max-width:700px){header{padding:14px}.help,details.metadata{margin:12px 14px}.metadata-grid{grid-template-columns:1fr}iframe{height:70vh}.toolbar{gap:8px}.spacer{display:none}}
 </style>
 </head>
 <body>
 <header>
-  <h1>Copy Studio</h1>
-  <div class="stats">Fields <strong id="stat-fields">0</strong> &middot; Changed <strong id="stat-changed">0</strong></div>
-  <div class="btn-group">
-    <button data-viewport="1280px" class="active">Desktop</button>
-    <button data-viewport="768px">Tablet</button>
-    <button data-viewport="390px">Mobile</button>
-  </div>
-  <div class="spacer"></div>
-  <button class="action" id="btn-export">Export draft</button>
-  <label class="action file-btn">Import draft<input type="file" id="input-import" accept="application/json" style="display:none;"></label>
-  <button class="action danger" id="btn-reset">Reset to source</button>
-</header>
-<div id="frame-wrap">
-  <iframe id="studio-frame" title="Well and Good Websites (live preview)"></iframe>
+<h1 id="review-title">Well and Good Growth copy review</h1>
+<div class="toolbar">
+<label>Page <select id="page-select" aria-label="Choose a page"></select></label>
+<div class="btn-group" aria-label="Compare copy"><button data-mode="current" aria-pressed="false">Current</button><button data-mode="proposed" class="active" aria-pressed="true">Proposed</button></div>
+<label><input type="checkbox" id="highlight-changes" checked> Highlight changes</label>
+<div class="spacer"></div>
+<div class="btn-group" aria-label="Preview width"><button data-viewport="1280px" class="active">Desktop</button><button data-viewport="768px">Tablet</button><button data-viewport="390px">Mobile</button></div>
 </div>
+<div class="actions">
+<span id="save-status" role="status" aria-live="polite">Loading draft…</span>
+<span class="stats"><strong id="stat-changed">0</strong> changes on this page · <strong id="stat-total">0</strong> across the site · <strong id="stat-fields">0</strong> editable fields</span>
+<div class="spacer"></div>
+<button id="btn-export">Export all changes</button>
+<label class="file-btn">Import draft<input id="input-import" type="file" accept="application/json" hidden></label>
+<button id="btn-reset">Reset to proposed draft</button>
+</div>
+</header>
+<div class="help"><p id="mode-note">Proposed copy. Click any text to edit it.</p><p>Review only. Edits save on this Mac. Nothing is published.</p><p id="page-note"></p></div>
+<div id="source-conflicts" role="alert" hidden></div>
+<details class="metadata"><summary>Search title and description</summary><div class="metadata-grid"><div><strong>Current</strong><label>Search title</label><p id="current-title"></p><label>Search description</label><p id="current-description"></p></div><div><strong>Proposed</strong><label for="proposed-title">Search title</label><textarea id="proposed-title" rows="2"></textarea><label for="proposed-description">Search description</label><textarea id="proposed-description" rows="3"></textarea></div></div></details>
+<div id="frame-wrap"><iframe id="studio-frame" title="Well and Good Growth copy preview"></iframe></div>
 <script type="module" src="./app.mjs"></script>
 </body>
 </html>
