@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "title": "Well and Good Growth: website copy",
+  "pages": [
+    {
+      "path": "/",
+      "label": "Homepage",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "AI automation, websites and growth marketing | Well and Good Growth",
+          "current": "AI automation, websites and growth marketing | Well and Good Growth"
+        },
+        "description": {
+          "original": "Get recurring work off your plate with AI automation, plus websites and marketing that help customers find and choose your business.",
+          "current": "Get recurring work off your plate with AI automation, plus websites and marketing that help customers find and choose your business."
+        }
+      }
+    },
+    {
+      "path": "/services/websites/",
+      "label": "Websites",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Website design & development | Well and Good Growth",
+          "current": "Website design & development | Well and Good Growth"
+        },
+        "description": {
+          "original": "Website strategy, copy, design, and development with Matthew Baggetta in Welland. Compare packages or request a free private website preview.",
+          "current": "Website strategy, copy, design, and development with Matthew Baggetta in Welland. Compare packages or request a free private website preview."
+        }
+      }
+    },
+    {
+      "path": "/services/growth/",
+      "label": "Growth marketing",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "SEO & content marketing | Well and Good Growth",
+          "current": "SEO & content marketing | Well and Good Growth"
+        },
+        "description": {
+          "original": "SEO and content marketing built around your customers. Improve your pages and content, and review visibility in Google, ChatGPT, and Claude.",
+          "current": "SEO and content marketing built around your customers. Improve your pages and content, and review visibility in Google, ChatGPT, and Claude."
+        }
+      }
+    },
+    {
+      "path": "/services/automation/",
+      "label": "AI automation",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Custom AI automation | Well and Good Growth",
+          "current": "Custom AI automation | Well and Good Growth"
+        },
+        "description": {
+          "original": "AI workflows for recurring research, marketing drafts, data, and project tasks. Start with one process, agree on the review points, then refine and expand.",
+          "current": "AI workflows for recurring research, marketing drafts, data, and project tasks. Start with one process, agree on the review points, then refine and expand."
+        }
+      }
+    },
+    {
+      "path": "/website-design-niagara/",
+      "label": "Website design in Niagara",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Website design in Niagara | Well and Good Growth",
+          "current": "Website design in Niagara | Well and Good Growth"
+        },
+        "description": {
+          "original": "Website design for Niagara businesses, with clear services, local information, and a direct route to enquire. Work with Matt and request a free preview.",
+          "current": "Website design for Niagara businesses, with clear services, local information, and a direct route to enquire. Work with Matt and request a free preview."
+        }
+      }
+    },
+    {
+      "path": "/website-design-welland/",
+      "label": "Website design in Welland",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Website design in Welland | Well and Good Growth",
+          "current": "Website design in Welland | Well and Good Growth"
+        },
+        "description": {
+          "original": "Website copy, design, and development with Matt in Welland. Show customers what you do and how to get started. Request a free private preview.",
+          "current": "Website copy, design, and development with Matt in Welland. Show customers what you do and how to get started. Request a free private preview."
+        }
+      }
+    },
+    {
+      "path": "/website-design-st-catharines/",
+      "label": "Website design in St. Catharines",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Website design in St. Catharines | Well and Good Growth",
+          "current": "Website design in St. Catharines | Well and Good Growth"
+        },
+        "description": {
+          "original": "Website design for St. Catharines businesses. Clear services, work examples, and a direct way to enquire. Work with Matt in Welland. Free preview available.",
+          "current": "Website design for St. Catharines businesses. Clear services, work examples, and a direct way to enquire. Work with Matt in Welland. Free preview available."
+        }
+      }
+    },
+    {
+      "path": "/niagara-seo/",
+      "label": "Niagara SEO",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Niagara SEO services | Well and Good Growth",
+          "current": "Niagara SEO services | Well and Good Growth"
+        },
+        "description": {
+          "original": "Local SEO for Niagara businesses. Service pages, Google Business Profile, and content built around what you do and where you work. Discuss your site with Matt.",
+          "current": "Local SEO for Niagara businesses. Service pages, Google Business Profile, and content built around what you do and where you work. Discuss your site with Matt."
+        }
+      }
+    },
+    {
+      "path": "/frank-baggetta/",
+      "label": "Frank Baggetta case study",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Frank Baggetta website case study | Well and Good Growth",
+          "current": "Frank Baggetta website case study | Well and Good Growth"
+        },
+        "description": {
+          "original": "See Frank Baggetta’s website rebuild, his reported first-month enquiries, and a later increase in clicks from Google Search.",
+          "current": "See Frank Baggetta’s website rebuild, his reported first-month enquiries, and a later increase in clicks from Google Search."
+        }
+      }
+    },
+    {
+      "path": "/work/evelyns/",
+      "label": "Evelyn’s concept",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Evelyn’s Sandwich Factory concept | Well and Good Growth",
+          "current": "Evelyn’s Sandwich Factory concept | Well and Good Growth"
+        },
+        "description": {
+          "original": "A concept website I built to show how a local sandwich shop can bring its menu, ordering information, and story together on a fast, mobile-first site.",
+          "current": "A concept website I built to show how a local sandwich shop can bring its menu, ordering information, and story together on a fast, mobile-first site."
+        }
+      }
+    },
+    {
+      "path": "/work/jk-motors/",
+      "label": "JK Motors concept",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "JK Motors concept | Well and Good Growth",
+          "current": "JK Motors concept | Well and Good Growth"
+        },
+        "description": {
+          "original": "A concept website I built to show how a local auto shop can lead with a phone call, list services clearly, and keep the next step obvious.",
+          "current": "A concept website I built to show how a local auto shop can lead with a phone call, list services clearly, and keep the next step obvious."
+        }
+      }
+    },
+    {
+      "path": "/contact/",
+      "label": "Contact",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Contact Matthew Baggetta | Well and Good Growth",
+          "current": "Contact Matthew Baggetta | Well and Good Growth"
+        },
+        "description": {
+          "original": "Discuss a website, growth marketing, or custom AI automation with Matthew Baggetta.",
+          "current": "Discuss a website, growth marketing, or custom AI automation with Matthew Baggetta."
+        }
+      }
+    },
+    {
+      "path": "/privacy/",
+      "label": "Privacy",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Privacy notice | Well and Good Growth",
+          "current": "Privacy notice | Well and Good Growth"
+        },
+        "description": {
+          "original": "How Well and Good Growth handles the information you submit through this website.",
+          "current": "How Well and Good Growth handles the information you submit through this website."
+        }
+      }
+    },
+    {
+      "path": "/thank-you/",
+      "label": "Thank you",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Thank you | Well and Good Growth",
+          "current": "Thank you | Well and Good Growth"
+        },
+        "description": {
+          "original": "Thank you for contacting Well and Good Growth.",
+          "current": "Thank you for contacting Well and Good Growth."
+        }
+      }
+    },
+    {
+      "path": "/404.html",
+      "label": "Page not found",
+      "note": "The approved wording is now the baseline. Switch Current/Proposed to review any new edits.",
+      "fields": [],
+      "metadata": {
+        "title": {
+          "original": "Page not found | Well and Good Growth",
+          "current": "Page not found | Well and Good Growth"
+        },
+        "description": {
+          "original": "Find websites, growth marketing, and AI automation services from Well and Good Growth.",
+          "current": "Find websites, growth marketing, and AI automation services from Well and Good Growth."
+        }
+      }
+    }
+  ],
+  "schemaProposal": {
+    "note": "Implemented in the approved source. General pages have no regional restriction; four local pages retain their specific areas.",
+    "originalAreaServed": [
+      "Niagara Region, Ontario",
+      "Greater Toronto Area, Ontario"
+    ],
+    "generalPages": {
+      "areaServed": null
+    },
+    "localPages": {
+      "/website-design-niagara/": {
+        "areaServed": [
+          "Niagara Region, Ontario"
+        ]
+      },
+      "/website-design-welland/": {
+        "areaServed": [
+          "Welland, Ontario"
+        ]
+      },
+      "/website-design-st-catharines/": {
+        "areaServed": [
+          "St. Catharines, Ontario"
+        ]
+      },
+      "/niagara-seo/": {
+        "areaServed": [
+          "Niagara Region, Ontario"
+        ]
+      }
+    }
+  },
+  "socialImageProposal": {
+    "original": "Niagara and the GTA",
+    "current": "Work directly with Matt",
+    "note": "Implemented in well-and-good-growth-social-20261006.png. The previous image is preserved."
+  }
+}

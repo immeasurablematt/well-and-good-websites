@@ -8,3 +8,5 @@ tools/copy-studio/
 
 # Private reporting never belongs in deployment uploads
 /private/performance/
+/private/copy-review/
+/.playwright-cli/

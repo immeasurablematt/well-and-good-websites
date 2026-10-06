@@ -1,17 +1,18 @@
 # Private website performance dashboard
 
-Status: waiting
+Status: active
 Branch: codex/performance-dashboard
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/66
-Updated: 2026-10-06 11:18 EDT by Codex on Mac
+Updated: 2026-10-06 16:44 EDT by Codex on Mac
 
 ## Goal
 Set up a private performance dashboard for Well and Good Growth, using the Welland Votes and Frank Baggetta dashboards as references.
 
 ## Next step
-Review and approve the prepared enquiry instrumentation and privacy-notice release in this workstream's draft PR. Do not merge main or deploy without that approval. After release, verify real event ingestion; a controlled FormSubmit submission and inbox check require separate explicit permission. The private dashboard improvements are locally validated. Daily traffic could not be retrieved from the analytics API and remains unavailable. Monthly refresh remains active. Hosting permission for private analytics is still pending.
+Matthew approved publishing the tracking and privacy update on October 6. Merge this reviewed release and verify the production build, privacy notice and analytics collection. A real FormSubmit submission and inbox check still require separate permission. Private analytics hosting remains unauthorized.
 
 ## Done so far
+- Release preparation: preserved the latest main-branch copy, homepage and current email address while resolving ignore-file and privacy-date conflicts. The 21 focused tests and public build/validation passed against that combined version.
 - October 6: Matthew approved work on the measurement plan and explicitly requested subagents. Treat this very new business as an early baseline, without invented targets or strong conclusions from small samples.
 - Prepared four privacy-conscious enquiry events, allowed campaign labels, production-host gating and deduplicated return signals. Native forms remain in charge. Updated the privacy notice and measurement runbook. No live submissions, event tests or deployment.
 - Improved the three-view dashboard with distinct enquiry stages, honest missing-data states, explicit aggregate date windows, hostname traffic and independently sourced search audience and query-by-page detail. Private source receipts and the empty enquiry-register template stay outside Git. Original headline windows and source timestamps remain intact.
@@ -29,7 +30,7 @@ Review and approve the prepared enquiry instrumentation and privacy-notice relea
 - Added public-safe content templates, build, health and guarded publication scripts, plus collection instructions in reporting/performance/README.md. Private data, compiled output and receipts are excluded from Git and Vercel uploads.
 
 ## Waiting on Matthew
-- Approval to release the reviewed website instrumentation and privacy notice. Form delivery and production ingestion are not established by mocked tests.
+- Only a real form-delivery/inbox test remains separately permissioned; the tracking and privacy release is approved.
 - Permission to send private analytics to here.now with owner-only access. Automatic approval review required explicit destination authorization.
 
 
