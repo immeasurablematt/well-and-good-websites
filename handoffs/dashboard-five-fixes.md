@@ -1,15 +1,15 @@
 # Close five dashboard measurement and usability gaps
 
-Status: active
+Status: done
 Branch: codex/dashboard-five-fixes
 Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/79
-Updated: 2026-10-22 16:15 EDT by Codex on Mac
+Updated: 2026-10-22 16:16 EDT by Codex on Mac
 
 ## Goal
 Resolve five gaps in the private Growth dashboard: stale tracking status, unverified received enquiries, a clearer first-screen summary, sparse referrer context, and limited page health checks. Keep private analytics out of the public repository and preserve the subtle opt-in choice.
 
 ## Next step
-Check pull request 79 and merge it when checks pass, then verify repository and live local report state. The remaining received-enquiry count stays unavailable until a classified receipt register and delivery coverage are established.
+No dashboard code or source refresh remains after pull request 79 merges. The existing monthly refresh will use the merged runbook and the separate daily heartbeat will sample page health. A numeric received-enquiry count requires a classified receipt register and verified delivery coverage.
 
 ## Done so far
 - Started from clean isolated checkout /private/tmp/wgg-report-refresh-20261022 because the main checkout has unrelated edits. Created codex/dashboard-five-fixes from the verified current origin/main.
@@ -18,9 +18,10 @@ Check pull request 79 and merge it when checks pass, then verify repository and 
 - The updated private dashboard was built, the previous version archived, and the usual owner-only localhost view refreshed and visually verified. Sixteen focused tests pass. The latest health sample returned successful HTML responses for all eight named pages.
 - Updated the existing monthly dashboard refresh and created a separate quiet daily page-health heartbeat. The daily check is one sample, not continuous uptime monitoring.
 - Opened pull request 79 for public-safe code after reviewing the staged and outgoing diffs. The branch contains no private analytics snapshot, inbox receipts or generated HTML.
+- Pull request 79 is mergeable and its Vercel checks passed. The usual local report and its private backup match by file hash.
 
 ## Waiting on Matthew
-- Nothing right now.
+- A verified received-enquiry count would require reviewing ambiguous direct-email and form receipts and separately authorizing a real delivery test. The dashboard correctly shows Unavailable until then.
 
 ## Notes for the next tool
 - The ignored private/performance folder contains report data and receipts. Never commit it. Do not submit a live test enquiry without Matthew's specific authorization. Do not add a banner or paid analytics.
