@@ -1,15 +1,15 @@
 # Set up free GA4 and Clarity for Well and Good Growth
 
-Status: active
+Status: waiting
 Branch: codex/ga4-clarity-growth
-Pull request: none yet
-Updated: 2026-10-22 11:17 EDT by Codex on Mac
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/76
+Updated: 2026-10-22 11:22 EDT by Codex on Mac
 
 ## Goal
 Create separate free GA4 and Microsoft Clarity projects for Well and Good Growth, add visitor-choice-based tracking, and add reviewed aggregate GA4 reporting to the private performance dashboard.
 
 ## Next step
-Finish code and preview checks, commit and push this branch, and open a review pull request stacked on PR #75. After Matthew reviews the production release, verify consented collection without a real enquiry, then import only verified aggregate data into the private dashboard.
+Matthew reviews draft PR #76 after PR #75. Merging to main publishes the site, so keep #76 as a draft until he approves that release. After publication, verify consented collection without a real enquiry, update the existing monthly reporting automation, and import only verified aggregate GA4 data into the private dashboard.
 
 ## Done so far
 - Inspected the active performance report handoff and confirmed with Matthew that its other editing session stopped.
@@ -19,6 +19,7 @@ Finish code and preview checks, commit and push this branch, and open a review p
 - Prepared a site tracking draft that loads optional GA4 and Clarity only after a visitor allows analytics. It reuses four existing enquiry actions, limits campaign and event values, masks the form for Clarity, and adds a choice control and privacy copy. The code now has the issued IDs.
 - Prepared optional GA4 sections in the private dashboard and a validation contract. No GA4 data has been collected or imported.
 - The site builds and validates with 15 HTML pages. The private dashboard build succeeds against a copied private fixture. Focused consent, enquiry and dashboard tests pass. A local preview shows the consent banner and footer control.
+- Reviewed the complete outgoing branch diff with the Karpathy Guidelines gate, corrected one stale documentation sentence, pushed the branch, and opened draft PR #76 against the still-open PR #75 branch. Production remains unchanged.
 
 ## Waiting on Matthew
 - Final review before a production site release.
