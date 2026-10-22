@@ -22,3 +22,21 @@ export const queryGroups = ['All queries', 'Brand', 'Services', 'Project or busi
 export function filterQueryGroup(rows, group) {
  return group === 'All queries' ? rows : rows.filter(row => row.queryGroup === group);
 }
+// Aggregate only observed rows in the selected dates, retaining weighted position.
+export function searchBreakdown(rows, dimension, dates) {
+ const allowed = new Set(dates);
+ const sourceRows = rows.filter(row => allowed.has(row.date));
+ const groups = new Map();
+ for (const row of sourceRows) {
+  const group = groups.get(row[dimension]) ?? {[dimension]:row[dimension],clicks:0,impressions:0,weightedPosition:0};
+  group.clicks += row.clicks;
+  group.impressions += row.impressions;
+  group.weightedPosition += (row.position ?? 0) * row.impressions;
+  groups.set(row[dimension],group);
+ }
+ const displayRows = [...groups.values()].map(({weightedPosition,...row})=>({...row,
+  ctr:row.impressions ? row.clicks/row.impressions : null,
+  position:row.impressions ? weightedPosition/row.impressions : null,
+ })).sort((a,b)=>b.impressions-a.impressions || a[dimension].localeCompare(b[dimension]));
+ return {sourceRows,displayRows};
+}

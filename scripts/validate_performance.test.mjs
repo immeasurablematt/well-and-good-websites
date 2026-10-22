@@ -1,12 +1,36 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validatePerformance} from './validate_performance.mjs';
-import {enquiryRows,searchTotals,filterQueryGroup} from '../reporting/performance/metrics.mjs';
+import {enquiryRows,searchTotals,filterQueryGroup,searchBreakdown} from '../reporting/performance/metrics.mjs';
 const source={executedAt:'2026-10-06T14:00:00Z',metricDefinitions:[{label:'Test',definition:'Synthetic verification only'}],caveats:[],evidenceFlow:[{title:'Synthetic test fixture'}]};
 const scope={start:'2026-09-03',end:'2026-09-30',timezone:'America/Toronto'};
 function snapshot() {
  return {id:'dashboard:753ab71f-4039-4cc4-800e-37d5039539ad',title:'Well and Good Growth · Site performance',queries:Object.fromEntries(['traffic','pages','referrers','devices','countries','searchDaily','searchQueries','searchPages','measurement','health'].map(id=>[id,{rows:[],source}]))};
 }
+test('selected-date search detail uses weighted rates and matching source rows',()=>{
+ const rows=[{date:'2026-09-03',page:'/a',clicks:1,impressions:10,position:2},{date:'2026-09-04',page:'/a',clicks:0,impressions:90,position:10},{date:'2026-09-04',page:'/b',clicks:0,impressions:2,position:20}];
+ const all=searchBreakdown(rows,'page',['2026-09-03','2026-09-04']);
+ assert.equal(all.displayRows[0].position,9.2);
+ assert.equal(all.displayRows[0].ctr,0.01);
+ assert.deepEqual(all.sourceRows,rows);
+ const first=searchBreakdown(rows,'page',['2026-09-03']);
+ assert.equal(first.displayRows[0].position,2);
+ assert.equal(first.displayRows[0].ctr,0.1);
+ assert.equal(first.sourceRows.length,1);
+ assert.deepEqual(searchBreakdown(rows,'page',[]),{sourceRows:[],displayRows:[]});
+});
+test('dated search detail rejects duplicate, out-of-window and unweighted evidence',()=>{
+ const data=snapshot();
+ const row={date:scope.start,page:'https://example.test/',clicks:0,impressions:2,position:4};
+ data.queries.searchPageHistory={source,scope,rows:[row]};
+ validatePerformance(data);
+ data.queries.searchPageHistory.rows=[row,{...row}];
+ assert.throws(()=>validatePerformance(data),/dated search/);
+ data.queries.searchPageHistory.rows=[{...row,date:'2026-10-01'}];
+ assert.throws(()=>validatePerformance(data),/dated search/);
+ data.queries.searchPageHistory.rows=[{...row,position:null}];
+ assert.throws(()=>validatePerformance(data),/dated search/);
+});
 test('missing evidence stays unavailable while observed zero stays zero',()=>{
  assert.deepEqual(searchTotals([]),{clicks:null,impressions:null,ctr:null});
  assert.deepEqual(searchTotals([{clicks:0,impressions:0}]),{clicks:0,impressions:0,ctr:null});

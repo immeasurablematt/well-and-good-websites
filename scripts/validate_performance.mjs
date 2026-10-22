@@ -13,11 +13,23 @@ export function validatePerformance(data) {
   if (!isDate(row.date) || (i && row.date <= daily[i-1].date)) throw Error('Search days must be unique and chronological');
   if (!count(row.clicks) || !count(row.impressions)) throw Error('Invalid search counts');
  }
- for (const id of ['trafficDaily','trafficHostnames','searchDetails','searchCountries','searchDevices','enquiryStages']) {
+ for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages']) {
   const q = data.queries[id];
   if (!q) continue;
   if (!Array.isArray(q.rows) || !q.source?.executedAt || !q.source?.evidenceFlow?.length || !q.source?.metricDefinitions?.length || !Array.isArray(q.source?.caveats)) throw Error(`Missing reviewed evidence: ${id}`);
   if (!isDate(q.scope?.start) || !isDate(q.scope?.end) || q.scope.start > q.scope.end || !q.scope.timezone) throw Error(`Missing dated scope: ${id}`);
+  if (id === 'searchPageHistory' || id === 'searchQueryHistory') {
+   const dimension = id === 'searchPageHistory' ? 'page' : 'query';
+   const seen = new Set();
+   for (const row of q.rows) {
+    const key = JSON.stringify([row.date,row[dimension]]);
+    if (!isDate(row.date) || row.date < q.scope.start || row.date > q.scope.end || !row[dimension] || seen.has(key) || !count(row.clicks) || !count(row.impressions) || (row.impressions > 0 && !Number.isFinite(row.position))) throw Error('Invalid dated search breakdown');
+    seen.add(key);
+   }
+  }
+  if (id === 'trafficAcquisition') for (const row of q.rows) {
+   if (!row.referrer || !count(row.views) || !count(row.visitors)) throw Error('Invalid acquisition breakdown');
+  }
   if (id === 'enquiryStages') {
    const seen = new Set();
    for (const row of q.rows) {
