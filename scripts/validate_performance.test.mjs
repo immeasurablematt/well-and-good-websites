@@ -95,3 +95,26 @@ test('query-page detail does not require fabricated audience combinations',()=>{
  data.queries.searchDetails.rows[0].classificationNote='';
  assert.throws(()=>validatePerformance(data),/search detail/);
 });
+test('optional GA4 rows require dated source evidence and valid aggregate counts',()=>{
+ const data=snapshot();
+ const ga4Source={...source,propertyId:'560094220'};
+ data.queries.ga4Daily={source:ga4Source,scope,rows:[{date:'2026-09-03',sessions:3,engagedSessions:2}]};
+ data.queries.ga4Acquisition={source:ga4Source,scope,rows:[{channel:'Organic Search',sessions:3,engagedSessions:2}]};
+ data.queries.ga4Campaigns={source:ga4Source,scope,rows:[{campaign:'site_launch',source:'linkedin',medium:'organic_social',sessions:1,engagedSessions:1}]};
+ data.queries.ga4Events={source:ga4Source,scope,rows:[{eventName:'enquiry_open',count:1}]};
+ validatePerformance(data);
+ data.queries.ga4Daily.rows[0].engagedSessions=4;
+ assert.throws(()=>validatePerformance(data),/GA4 daily/);
+ data.queries.ga4Daily.rows[0].engagedSessions=2;
+ data.queries.ga4Campaigns.rows[0].campaign='private-client';
+ assert.throws(()=>validatePerformance(data),/GA4 campaign/);
+ data.queries.ga4Campaigns.rows[0].campaign='site_launch';
+ data.queries.ga4Events.rows[0].eventName='form_submit';
+ assert.throws(()=>validatePerformance(data),/GA4 enquiry event/);
+ data.queries.ga4Events.rows[0].eventName='enquiry_open';
+ data.queries.ga4Daily.scope={...scope,timezone:'UTC'};
+ assert.throws(()=>validatePerformance(data),/Growth property/);
+ data.queries.ga4Daily.scope=scope;
+ data.queries.ga4Acquisition.rows[0].sessions=2;
+ assert.throws(()=>validatePerformance(data),/do not reconcile/);
+});

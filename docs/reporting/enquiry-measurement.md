@@ -26,6 +26,14 @@ A return marker contains a random token, timestamp and the same allowlisted cate
 
 Ad blockers, unavailable analytics, disabled JavaScript, unavailable storage, a changed tab/origin, or a redirect that does not retain the fragment can cause undercounting. Native HTML validation, FormSubmit delivery and existing motion remain unchanged. Storage/randomness failures preserve the original thank-you redirect. No tracking script waits before navigation or prevents submission. Failure to install the analytics privacy hook stops this optional helper without throwing into native site code.
 
+## Optional GA4 and Clarity layer
+
+The optional GA4 and Clarity tags are a separate consent-based layer. Until production IDs are added and a visitor selects Allow analytics, neither optional tag loads. Declining leaves the existing Vercel measurement unchanged. The footer lets visitors change their choice. A later decline denies optional analytics consent and reloads without those tags. A blocked browser store may cause the visitor to be asked again on a later page.
+
+After consent, GA4 receives one manual page view with a sanitized path, only approved campaign labels, and an origin-only referrer. The existing four enquiry event names are forwarded once each from the same helper, using only its allowlisted page, placement and service categories. Keep GA4 enhanced measurement form interactions off so automatic form events do not duplicate those actions or inspect fields. The Google Signals and ads personalization settings remain off. The tag does not load on preview or local hosts, and no historical GA4 data exists before activation.
+
+Clarity receives consent only after the visitor allows analytics. Configure strict project masking and consent mode before activating the tag. The form has explicit masking in the page markup. Its tag skips the thank-you page, fragments and URLs with unknown or duplicated campaign parameters, since Clarity may otherwise capture the browser's full URL. Do not treat a session recording, a return signal, or an attempted submit as confirmed delivery. The private dashboard may show only dated aggregate summaries with source evidence; recordings remain in the owner project.
+
 ## Verification and release follow-up
 
 Run `node --test scripts/tests/enquiry-measurement.test.mjs`, `python3 scripts/build_growth.py`, and `python3 scripts/validate_growth.py`. The dependency-free mocked browser checks cover native-submit preservation, invalid/prevented/honeypot submits, deduplication, direct visits, stale markers, Back restoration, unavailable storage/analytics, production gating and data allowlists. They make no network requests and submit no forms.

@@ -116,6 +116,35 @@ export function DashboardContent(){
    <p className="wgg-context">{scopedRange('trafficAcquisition')}. No referrer recorded includes visits where the source was absent or stripped. It does not prove someone typed the address.</p>
    <Plot id="traffic-acquisition" queryId="trafficAcquisition" title="Page views by recorded referrer" rows={rows('trafficAcquisition')} x="referrer" y="views" height={300}/>
   </Section>}
+  {!!queries.ga4Daily?.rows.length&&<Section id="ga4-engagement-heading" title="Google Analytics engagement">
+   <p className="wgg-context">{scopedRange('ga4Daily')}. Consent-based GA4 sessions begin after activation. These counts are separate from Vercel visitors and page views above.</p>
+   <Section id="ga4-engagement-metrics" columns={3} spacing="none">
+    {(() => {
+     const data=rows('ga4Daily');
+     const sessions=data.reduce((sum,row)=>sum+row.sessions,0);
+     const engaged=data.reduce((sum,row)=>sum+row.engagedSessions,0);
+     return <>
+      <MetricCard id="ga4-sessions" queryId="ga4Daily" title="Sessions" value={number(sessions)} displayRows={[{sessions}]} sourceRows={data}/>
+      <MetricCard id="ga4-engaged" queryId="ga4Daily" title="Engaged sessions" value={number(engaged)} displayRows={[{engagedSessions:engaged}]} sourceRows={data}/>
+      <MetricCard id="ga4-engagement-rate" queryId="ga4Daily" title="Engagement rate" value={sessions?`${(100*engaged/sessions).toFixed(1)}%`:'Unavailable'} displayRows={[{sessions,engagedSessions:engaged}]} sourceRows={data}/>
+     </>;
+    })()}
+   </Section>
+   <Plot id="ga4-sessions-daily" queryId="ga4Daily" title="Daily sessions" rows={rows('ga4Daily')} x="date" y="sessions" type="line" height={250}/>
+  </Section>}
+  {queries.ga4Acquisition&&<Section id="ga4-acquisition-heading" title="How GA4 sessions arrived">
+   <p className="wgg-context">{scopedRange('ga4Acquisition')}. Each session belongs to one saved channel row. GA4 sessions and Vercel visitors have different definitions.</p>
+   <Plot id="ga4-channels" queryId="ga4Acquisition" title="Sessions by channel" rows={rows('ga4Acquisition')} x="channel" y="sessions" height={280}/>
+   <Table id="ga4-channel-detail" queryId="ga4Acquisition" title="Channel engagement" rows={rows('ga4Acquisition').map(row=>({...row,engagementRate:row.sessions?`${(100*row.engagedSessions/row.sessions).toFixed(1)}%`:'Unavailable'}))} sourceRows={rows('ga4Acquisition')} fields={[["channel","Channel"],["sessions","Sessions"],["engagedSessions","Engaged sessions"],["engagementRate","Engagement rate"]]}/>
+  </Section>}
+  {queries.ga4Campaigns&&<Section id="ga4-campaigns-heading" title="Tagged campaign visits">
+   <p className="wgg-context">{scopedRange('ga4Campaigns')}. Only the site's approved campaign labels are shown. Untagged visits and unapproved labels are outside this table.</p>
+   <Table id="ga4-campaigns" queryId="ga4Campaigns" title="Captured campaign sessions" rows={rows('ga4Campaigns')} fields={[["campaign","Campaign"],["source","Source"],["medium","Medium"],["sessions","Sessions"],["engagedSessions","Engaged sessions"]]}/>
+  </Section>}
+  {queries.ga4Events&&<Section id="ga4-enquiry-heading" title="GA4 enquiry activity">
+   <p className="wgg-context">{scopedRange('ga4Events')}. These are consent-based actions, not unique people or confirmed received enquiries. Verification activity is excluded where the source permits.</p>
+   <Table id="ga4-enquiry-events" queryId="ga4Events" title="Enquiry actions recorded by GA4" rows={rows('ga4Events')} fields={[["eventName","Event"],["count","Recorded actions"]]}/>
+  </Section>}
   <Section id="enquiry-heading" title="Enquiry measurement">
    <Table id="enquiry-status" queryId={enquiryQuery} title="Enquiry signals and confirmed receipt" rows={enquiryRows(rows('enquiryStages'))} sourceRows={rows(enquiryQuery)} fields={[["stage","Stage"],["count","Count"],["from","From"],["through","Through"],["meaning","Meaning"]]}/>
    <p className="wgg-context">Unavailable means no reviewed count has been imported. These are separate signals, not a deduplicated funnel: repeated actions, blocked analytics and different coverage can affect counts. Only confirmed receipt establishes an enquiry arrived. No enquiry rate is inferred from traffic.</p>

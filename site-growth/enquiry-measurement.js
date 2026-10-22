@@ -40,6 +40,7 @@
   function track(name, data) {
     // Analytics being unavailable must never prevent an enquiry.
     try { window.va?.('event', { name, data }); } catch { /* Native form still works. */ }
+    try { window.wggAnalyticsTrack?.(name, data); } catch { /* Native form still works. */ }
   }
   if (page === '/thank-you/') {
     const token = new URLSearchParams(location.hash.slice(1)).get('enquiry-return');

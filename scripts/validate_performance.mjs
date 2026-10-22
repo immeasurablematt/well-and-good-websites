@@ -13,11 +13,37 @@ export function validatePerformance(data) {
   if (!isDate(row.date) || (i && row.date <= daily[i-1].date)) throw Error('Search days must be unique and chronological');
   if (!count(row.clicks) || !count(row.impressions)) throw Error('Invalid search counts');
  }
- for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages']) {
+ for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
   const q = data.queries[id];
   if (!q) continue;
   if (!Array.isArray(q.rows) || !q.source?.executedAt || !q.source?.evidenceFlow?.length || !q.source?.metricDefinitions?.length || !Array.isArray(q.source?.caveats)) throw Error(`Missing reviewed evidence: ${id}`);
   if (!isDate(q.scope?.start) || !isDate(q.scope?.end) || q.scope.start > q.scope.end || !q.scope.timezone) throw Error(`Missing dated scope: ${id}`);
+  if (id.startsWith('ga4') && (q.scope.timezone !== 'America/Toronto' || q.source.propertyId !== '560094220')) throw Error('GA4 source must use the verified Growth property and its time zone');
+  if (id === 'ga4Daily') for (const [i,row] of q.rows.entries()) {
+   if (!isDate(row.date) || (i && row.date <= q.rows[i-1].date) || row.date < q.scope.start || row.date > q.scope.end || !count(row.sessions) || !count(row.engagedSessions) || row.engagedSessions > row.sessions) throw Error('Invalid GA4 daily sessions');
+  }
+  if (id === 'ga4Acquisition') {
+   const seen = new Set();
+   for (const row of q.rows) {
+    if (!row.channel || seen.has(row.channel) || !count(row.sessions) || !count(row.engagedSessions) || row.engagedSessions > row.sessions) throw Error('Invalid GA4 acquisition');
+    seen.add(row.channel);
+   }
+  }
+  if (id === 'ga4Campaigns') {
+   const seen = new Set();
+   for (const row of q.rows) {
+    const key = JSON.stringify([row.campaign,row.source,row.medium]);
+    if (!['autumn_services','site_launch'].includes(row.campaign) || !['linkedin','facebook','email','newsletter','referral'].includes(row.source) || !['organic_social','email','referral'].includes(row.medium) || seen.has(key) || !count(row.sessions) || !count(row.engagedSessions) || row.engagedSessions > row.sessions) throw Error('Invalid GA4 campaign');
+    seen.add(key);
+   }
+  }
+  if (id === 'ga4Events') {
+   const seen = new Set();
+   for (const row of q.rows) {
+    if (!['enquiry_open','enquiry_start','enquiry_submit_attempt','enquiry_return'].includes(row.eventName) || seen.has(row.eventName) || !count(row.count)) throw Error('Invalid GA4 enquiry event');
+    seen.add(row.eventName);
+   }
+  }
   if (id === 'searchPageHistory' || id === 'searchQueryHistory') {
    const dimension = id === 'searchPageHistory' ? 'page' : 'query';
    const seen = new Set();
@@ -49,5 +75,12 @@ export function validatePerformance(data) {
   if (id === 'searchDetails') for (const row of q.rows) {
    if (!row.query || !row.page || !['Brand','Services','Project or business names','Other'].includes(row.queryGroup) || !row.classificationNote || !count(row.clicks) || !count(row.impressions) || !Number.isFinite(row.position)) throw Error('Invalid search detail');
   }
+ }
+ const dailyGa4=data.queries.ga4Daily;
+ const channelsGa4=data.queries.ga4Acquisition;
+ if (dailyGa4?.rows.length && channelsGa4?.rows.length &&
+     dailyGa4.scope.start === channelsGa4.scope.start && dailyGa4.scope.end === channelsGa4.scope.end &&
+     dailyGa4.rows.reduce((sum,row)=>sum+row.sessions,0) !== channelsGa4.rows.reduce((sum,row)=>sum+row.sessions,0)) {
+  throw Error('GA4 daily and channel session totals do not reconcile');
  }
 }
