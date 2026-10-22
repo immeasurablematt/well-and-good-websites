@@ -15,14 +15,18 @@ function setup(url, initialChoice = null) {
     dataset: { analyticsChoice: value },
     addEventListener(type, listener) { if (type === 'click') this.click = listener; }
   }));
-  const banner = { hidden: true, querySelectorAll: () => choiceButtons };
+  const closeButton = { addEventListener(type, listener) { if (type === 'click') this.click = listener; } };
+  const dialog = {
+    open: false, showModal() { this.open = true; }, close() { this.open = false; },
+    querySelector: () => closeButton, querySelectorAll: () => choiceButtons
+  };
   const settings = { addEventListener(type, listener) { if (type === 'click') this.click = listener; } };
   const location = new URL(url);
   location.reload = () => { location.reloaded = true; };
   const window = {};
   const document = {
     title: 'Well and Good Growth', referrer: 'https://referrer.example/private/path?email=secret',
-    querySelector: selector => selector === '.analytics-choice' ? banner : settings,
+    querySelector: selector => selector === '.analytics-choice' ? dialog : settings,
     createElement: () => ({}), head: { appendChild: tag => tags.push(tag) }
   };
   const localStorage = {
@@ -34,18 +38,22 @@ function setup(url, initialChoice = null) {
   if (window.gtag) {
     for (const args of window.dataLayer) calls.push([...args]);
   }
-  return { tags, calls, saved, choiceButtons, banner, settings, window, location };
+  return { tags, calls, saved, choiceButtons, dialog, closeButton, settings, window, location };
 }
 
-test('optional tags stay absent before a visitor choice and on preview hosts', () => {
+test('no automatic prompt or optional tags before a visitor choice or on preview hosts', () => {
   const pending = setup('https://www.wellandgoodgrowth.ca/');
-  assert.equal(pending.banner.hidden, false);
+  assert.equal(pending.dialog.open, false);
   assert.equal(pending.tags.length, 0);
   const declined = setup('https://www.wellandgoodgrowth.ca/', 'deny');
-  assert.equal(declined.banner.hidden, true);
+  assert.equal(declined.dialog.open, false);
   assert.equal(declined.tags.length, 0);
   const preview = setup('https://preview.vercel.app/', 'allow');
   assert.equal(preview.tags.length, 0);
+  pending.settings.click();
+  assert.equal(pending.dialog.open, true);
+  pending.closeButton.click();
+  assert.equal(pending.dialog.open, false);
 });
 
 test('consent loads both tags and sends only sanitized location and referrer', () => {
@@ -69,8 +77,9 @@ test('safe production URLs load Clarity and changing to decline unloads optional
   assert.equal(s.tags.length, 2);
   assert.match(s.tags[1].src, /clarity\.ms\/tag\/test123/);
   s.settings.click();
-  assert.equal(s.banner.hidden, false);
+  assert.equal(s.dialog.open, true);
   s.choiceButtons[1].click();
+  assert.equal(s.dialog.open, false);
   assert.equal(s.saved.get('wgg-optional-analytics-v1'), 'deny');
   assert.equal(s.location.reloaded, true);
   assert.equal(setup('https://www.wellandgoodgrowth.ca/', 'deny').tags.length, 0);

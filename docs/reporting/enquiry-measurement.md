@@ -28,7 +28,7 @@ Ad blockers, unavailable analytics, disabled JavaScript, unavailable storage, a 
 
 ## Optional GA4 and Clarity layer
 
-The optional GA4 and Clarity tags are a separate consent-based layer. Neither optional tag loads until the visitor selects Allow analytics on the production site. Declining leaves the existing Vercel measurement unchanged. The footer lets visitors change their choice. A later decline denies optional analytics consent and reloads without those tags. A blocked browser store may cause the visitor to be asked again on a later page.
+The optional GA4 and Clarity tags are a separate consent-based layer. Neither optional tag loads until the visitor opens Analytics choices in the footer and selects Allow analytics on the production site. There is no automatic banner or prompt. Declining leaves the existing Vercel measurement unchanged. The footer lets visitors change their choice. A later decline denies optional analytics consent and reloads without those tags. A blocked browser store may require a new choice on a later page.
 
 After consent, GA4 receives one manual page view with a sanitized path, only approved campaign labels, and an origin-only referrer. The existing four enquiry event names are forwarded once each from the same helper, using only its allowlisted page, placement and service categories. Keep GA4 enhanced measurement form interactions off so automatic form events do not duplicate those actions or inspect fields. The Google Signals and ads personalization settings remain off. The tag does not load on preview or local hosts, and no historical GA4 data exists before activation.
 

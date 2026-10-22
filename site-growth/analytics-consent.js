@@ -5,7 +5,7 @@
   const GA4_ID = 'G-9V037QTGCE';
   const CLARITY_ID = 'z1rewvqi70';
   const choiceKey = 'wgg-optional-analytics-v1';
-  const banner = document.querySelector('.analytics-choice');
+  const dialog = document.querySelector('.analytics-choice');
   const settings = document.querySelector('[data-analytics-settings]');
   const allowed = {
     utm_source: ['linkedin', 'facebook', 'email', 'newsletter', 'referral'],
@@ -37,15 +37,8 @@
     }
   } catch { /* Unknown referrers are omitted. */ }
   let choice = null;
-  try { choice = localStorage.getItem(choiceKey); } catch { /* Keep the prompt visible. */ }
+  try { choice = localStorage.getItem(choiceKey); } catch { /* Ask again on a later visit. */ }
   let loaded = false;
-
-  function showChoice() {
-    if (banner) banner.hidden = false;
-  }
-  function hideChoice() {
-    if (banner) banner.hidden = true;
-  }
   function enable() {
     if (!production || loaded) return;
     loaded = true;
@@ -93,16 +86,16 @@
   };
 
   if (choice === 'allow') enable();
-  else if (choice !== 'deny') showChoice();
-  settings?.addEventListener('click', showChoice);
-  banner?.querySelectorAll('[data-analytics-choice]').forEach(button => {
+  settings?.addEventListener('click', () => dialog?.showModal());
+  dialog?.querySelector('[data-analytics-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.querySelectorAll('[data-analytics-choice]').forEach(button => {
       button.addEventListener('click', () => {
         const next = button.dataset.analyticsChoice;
         if (!['allow', 'deny'].includes(next)) return;
         const wasAllowed = choice === 'allow';
         choice = next;
         try { localStorage.setItem(choiceKey, next); } catch { /* Choice lasts for this page only. */ }
-        hideChoice();
+        dialog.close();
         if (next === 'allow') enable();
         if (next === 'deny' && wasAllowed) {
           try {
