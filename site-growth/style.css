@@ -262,6 +262,9 @@ footer details summary{cursor:pointer;padding-block:6px}
 footer details a{display:block}
 footer .brand-name{font-size:20px}
 
+.analytics-choice{display:inline-flex;align-items:center;gap:10px;margin-top:8px;font:600 15px var(--sans);cursor:pointer}
+.analytics-choice input{width:18px;height:18px;accent-color:var(--ink)}
+
 /* ---------------------------------------------------------------- responsive */
 @media (max-width:1100px){
   .menu-toggle{display:inline-flex;align-items:center}
