@@ -135,6 +135,14 @@ test('selected traffic periods reconcile views without adding visitor groups',()
  }
  data.queries.trafficMonthly={source,scope:periodScope,rows:[{month:'2026-09',views:5}]};
  validatePerformance(data);
+ data.queries.trafficComparisons={source,scope:{start:'2026-08-02',end:'2026-09-30',timezone:'America/Toronto'},rows:[{period:'Week',start:'2026-09-24',end:'2026-09-30',priorStart:'2026-09-17',priorEnd:'2026-09-23',views:2,priorViews:4}]};
+ validatePerformance(data);
+ data.queries.trafficComparisons.rows[0].priorEnd='2026-09-22';
+ assert.throws(()=>validatePerformance(data),/traffic comparison/);
+ data.queries.trafficComparisons.rows[0].priorEnd='2026-09-23';
+ data.queries.trafficComparisons.rows[0].views=3;
+ assert.throws(()=>validatePerformance(data),/traffic comparison/);
+ delete data.queries.trafficComparisons;
  data.queries.trafficPeriodAcquisition.rows[0].views=1;
  assert.throws(()=>validatePerformance(data),/do not reconcile/);
 });

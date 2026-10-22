@@ -13,7 +13,7 @@ export function validatePerformance(data) {
   if (!isDate(row.date) || (i && row.date <= daily[i-1].date)) throw Error('Search days must be unique and chronological');
   if (!count(row.clicks) || !count(row.impressions)) throw Error('Invalid search counts');
  }
- for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','trafficPeriods','trafficPeriodPages','trafficPeriodReferrers','trafficPeriodDevices','trafficPeriodCountries','trafficPeriodAcquisition','trafficMonthly','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
+ for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','trafficPeriods','trafficComparisons','trafficPeriodPages','trafficPeriodReferrers','trafficPeriodDevices','trafficPeriodCountries','trafficPeriodAcquisition','trafficMonthly','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
   const q = data.queries[id];
   if (!q) continue;
   if (!Array.isArray(q.rows) || !q.source?.executedAt || !q.source?.evidenceFlow?.length || !q.source?.metricDefinitions?.length || !Array.isArray(q.source?.caveats)) throw Error(`Missing reviewed evidence: ${id}`);
@@ -65,6 +65,21 @@ export function validatePerformance(data) {
   }
   if (id === 'trafficDaily') for (const [i,row] of q.rows.entries()) {
    if (!isDate(row.date) || (i && row.date <= q.rows[i-1].date) || row.date < q.scope.start || row.date > q.scope.end || !count(row.views) || (row.visitors != null && !count(row.visitors))) throw Error('Invalid daily traffic');
+  }
+  if (id === 'trafficComparisons') {
+   if (!data.queries.trafficPeriods) throw Error('Traffic comparisons need period totals');
+   const seen=new Set();
+   for (const row of q.rows) {
+    const current=data.queries.trafficPeriods.rows.find(item=>item.period===row.period);
+    const days=(start,end)=>Math.round((Date.parse(`${end}T00:00:00Z`)-Date.parse(`${start}T00:00:00Z`))/86400000)+1;
+    if (!['Week','Month'].includes(row.period) || seen.has(row.period) || !current ||
+        ![row.start,row.end,row.priorStart,row.priorEnd].every(isDate) ||
+        row.start!==current.start || row.end!==current.end || row.views!==current.views ||
+        !count(row.priorViews) || row.priorStart<q.scope.start || row.end>q.scope.end ||
+        days(row.start,row.end)!==days(row.priorStart,row.priorEnd) ||
+        Date.parse(`${row.start}T00:00:00Z`)-Date.parse(`${row.priorEnd}T00:00:00Z`)!==86400000) throw Error('Invalid traffic comparison');
+    seen.add(row.period);
+   }
   }
   if (id === 'trafficMonthly') for (const [i,row] of q.rows.entries()) {
    if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(row.month) || (i && row.month <= q.rows[i-1].month) || !count(row.views)) throw Error('Invalid monthly traffic');
