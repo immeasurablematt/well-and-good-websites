@@ -13,7 +13,7 @@ export function validatePerformance(data) {
   if (!isDate(row.date) || (i && row.date <= daily[i-1].date)) throw Error('Search days must be unique and chronological');
   if (!count(row.clicks) || !count(row.impressions)) throw Error('Invalid search counts');
  }
- for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
+ for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','trafficPeriods','trafficPeriodPages','trafficPeriodReferrers','trafficPeriodDevices','trafficPeriodCountries','trafficPeriodAcquisition','trafficMonthly','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
   const q = data.queries[id];
   if (!q) continue;
   if (!Array.isArray(q.rows) || !q.source?.executedAt || !q.source?.evidenceFlow?.length || !q.source?.metricDefinitions?.length || !Array.isArray(q.source?.caveats)) throw Error(`Missing reviewed evidence: ${id}`);
@@ -66,6 +66,9 @@ export function validatePerformance(data) {
   if (id === 'trafficDaily') for (const [i,row] of q.rows.entries()) {
    if (!isDate(row.date) || (i && row.date <= q.rows[i-1].date) || row.date < q.scope.start || row.date > q.scope.end || !count(row.views) || (row.visitors != null && !count(row.visitors))) throw Error('Invalid daily traffic');
   }
+  if (id === 'trafficMonthly') for (const [i,row] of q.rows.entries()) {
+   if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(row.month) || (i && row.month <= q.rows[i-1].month) || !count(row.views)) throw Error('Invalid monthly traffic');
+  }
   if (id === 'trafficHostnames') for (const row of q.rows) {
    if (!row.hostname || !(row.views == null || count(row.views)) || !(row.visitors == null || count(row.visitors)) || (row.views == null && row.visitors == null)) throw Error('Invalid hostname traffic');
   }
@@ -75,6 +78,33 @@ export function validatePerformance(data) {
   if (id === 'searchDetails') for (const row of q.rows) {
    if (!row.query || !row.page || !['Brand','Services','Project or business names','Other'].includes(row.queryGroup) || !row.classificationNote || !count(row.clicks) || !count(row.impressions) || !Number.isFinite(row.position)) throw Error('Invalid search detail');
   }
+ }
+ const periodQueries=['trafficPeriods','trafficPeriodPages','trafficPeriodReferrers','trafficPeriodDevices','trafficPeriodCountries','trafficPeriodAcquisition','trafficMonthly'];
+ if (data.queries.traffic.rows.length && periodQueries.some(id=>!data.queries[id])) throw Error('Incomplete traffic period evidence');
+ if (periodQueries.some(id=>data.queries[id])) {
+  if (periodQueries.some(id=>!data.queries[id]) || !data.queries.trafficDaily) throw Error('Incomplete traffic period evidence');
+  const periods=data.queries.trafficPeriods.rows;
+  if (periods.length!==3 || periods.map(row=>row.period).join('|')!=='Week|Month|All time') throw Error('Invalid traffic periods');
+  for (const row of periods) {
+   if (!isDate(row.start) || !isDate(row.end) || row.start>row.end || !count(row.visitors) || !count(row.views) || !Number.isFinite(row.bounceRate) || row.bounceRate<0 || row.bounceRate>1) throw Error('Invalid traffic period total');
+   if (row.end !== data.queries.trafficDaily.scope.end) throw Error('Traffic period and daily history dates differ');
+   const start=new Date(`${row.end}T00:00:00Z`);
+   if (row.period==='All time') {
+    if (row.start!==data.queries.trafficPeriods.scope.start) throw Error('Invalid all-time coverage');
+   } else {
+    start.setUTCDate(start.getUTCDate()-(row.period==='Week'?6:29));
+    if (row.start!==start.toISOString().slice(0,10)) throw Error('Invalid traffic period dates');
+   }
+   for (const id of periodQueries.slice(1,-1)) {
+    const q=data.queries[id], selected=q.rows.filter(item=>item.period===row.period);
+    if ((!selected.length && row.views>0 && id!=='trafficPeriodReferrers') || selected.some(item=>!count(item.visitors) || (item.views!=null && !count(item.views)) || (item.visitorShare!=null && (!Number.isFinite(item.visitorShare) || item.visitorShare<0 || item.visitorShare>1)))) throw Error(`Invalid traffic period breakdown: ${id}`);
+    if (['trafficPeriodDevices','trafficPeriodCountries'].includes(id) && selected.some(item=>!Number.isFinite(item.visitorShare) || Math.abs(item.visitorShare-item.visitors/row.visitors)>1e-9)) throw Error(`Traffic visitor share does not reconcile: ${id}`);
+    if (['trafficPeriodPages','trafficPeriodAcquisition'].includes(id) && selected.reduce((sum,item)=>sum+item.views,0)!==row.views) throw Error(`Traffic period page views do not reconcile: ${id}`);
+   }
+   const days=data.queries.trafficDaily.rows.filter(day=>day.date>=row.start&&day.date<=row.end);
+   if (row.period!=='All time' && days.reduce((sum,day)=>sum+day.views,0)!==row.views) throw Error('Traffic period daily views do not reconcile');
+  }
+  if (data.queries.trafficMonthly.rows.reduce((sum,row)=>sum+row.views,0)!==periods[2].views) throw Error('Monthly traffic does not reconcile to all time');
  }
  const dailyGa4=data.queries.ga4Daily;
  const channelsGa4=data.queries.ga4Acquisition;

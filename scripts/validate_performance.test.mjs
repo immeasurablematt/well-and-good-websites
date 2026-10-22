@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validatePerformance} from './validate_performance.mjs';
-import {enquiryRows,searchTotals,filterQueryGroup,searchBreakdown} from '../reporting/performance/metrics.mjs';
+import {enquiryRows,searchTotals,filterQueryGroup,searchBreakdown,rowsForPeriod} from '../reporting/performance/metrics.mjs';
 const source={executedAt:'2026-10-06T14:00:00Z',metricDefinitions:[{label:'Test',definition:'Synthetic verification only'}],caveats:[],evidenceFlow:[{title:'Synthetic test fixture'}]};
 const scope={start:'2026-09-03',end:'2026-09-30',timezone:'America/Toronto'};
 function snapshot() {
@@ -116,5 +116,25 @@ test('optional GA4 rows require dated source evidence and valid aggregate counts
  assert.throws(()=>validatePerformance(data),/Growth property/);
  data.queries.ga4Daily.scope=scope;
  data.queries.ga4Acquisition.rows[0].sessions=2;
+ assert.throws(()=>validatePerformance(data),/do not reconcile/);
+});
+test('week and month use calendar days through each source latest date',()=>{
+ const rows=[{date:'2026-09-01',views:1},{date:'2026-09-24',views:2},{date:'2026-09-25',views:3},{date:'2026-10-01',views:4}];
+ assert.deepEqual(rowsForPeriod(rows,'Week'),rows.slice(2));
+ assert.deepEqual(rowsForPeriod(rows,'Month'),rows.slice(1));
+ assert.deepEqual(rowsForPeriod(rows,'All time'),rows);
+});
+test('selected traffic periods reconcile views without adding visitor groups',()=>{
+ const data=snapshot();
+ const dates=[['Week','2026-09-24',1,2],['Month','2026-09-01',3,5],['All time','2026-09-01',3,5]];
+ const periodScope={...scope,start:'2026-09-01'};
+ data.queries.trafficDaily={source,scope,rows:[{date:'2026-09-03',views:3},{date:'2026-09-30',views:2}]};
+ data.queries.trafficPeriods={source,scope:periodScope,rows:dates.map(([period,start,visitors,views])=>({period,start,end:'2026-09-30',visitors,views,bounceRate:.5}))};
+ for (const [id,key] of [['trafficPeriodPages','page'],['trafficPeriodReferrers','referrer'],['trafficPeriodDevices','device'],['trafficPeriodCountries','country'],['trafficPeriodAcquisition','referrer']]) {
+  data.queries[id]={source,scope:periodScope,rows:dates.map(([period,,visitors,views])=>({period,[key]:'example',visitors:1,views,visitorShare:1/visitors}))};
+ }
+ data.queries.trafficMonthly={source,scope:periodScope,rows:[{month:'2026-09',views:5}]};
+ validatePerformance(data);
+ data.queries.trafficPeriodAcquisition.rows[0].views=1;
  assert.throws(()=>validatePerformance(data),/do not reconcile/);
 });

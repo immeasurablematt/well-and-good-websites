@@ -18,6 +18,16 @@ export function searchTotals(rows) {
  const impressions = rows.reduce((sum, row) => sum + row.impressions, 0);
  return {clicks, impressions, ctr: impressions ? clicks / impressions : null};
 }
+export const reportPeriods = ['Week', 'Month', 'All time'];
+export function rowsForPeriod(rows, period, dateField = 'date') {
+ if (period === 'All time' || !rows.length) return rows;
+ const latest = rows.at(-1)[dateField].slice(0,10);
+ const days = period === 'Week' ? 7 : 30;
+ const start = new Date(`${latest}T00:00:00Z`);
+ start.setUTCDate(start.getUTCDate() - days + 1);
+ const floor = start.toISOString().slice(0,10);
+ return rows.filter(row => row[dateField].slice(0,10) >= floor && row[dateField].slice(0,10) <= latest);
+}
 export const queryGroups = ['All queries', 'Brand', 'Services', 'Project or business names', 'Other'];
 export function filterQueryGroup(rows, group) {
  return group === 'All queries' ? rows : rows.filter(row => row.queryGroup === group);
