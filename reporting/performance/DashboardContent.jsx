@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {DataComponent, DataTable, Dropdown, EvidenceChart, MetricCard, Section, SortableItem, SortableRegion, useDashboardTabs, useDataApp} from '../../data-app-public.jsx';
 import './performance.css';
-import {enquiryRows, searchTotals, queryGroups, filterQueryGroup, searchBreakdown} from './metrics.mjs';
+import {enquiryRows, searchTotals, queryGroups, filterQueryGroup, searchBreakdown, reportPeriods, rowsForPeriod} from './metrics.mjs';
 const tabs=[{id:'traffic',label:'Traffic'},{id:'search',label:'Google Search'},{id:'health',label:'Site Health'}];
 const number=n=>n==null?'Unavailable':n.toLocaleString('en-CA');
 const date=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
@@ -18,12 +18,16 @@ function Table({id,queryId,title,rows,fields,sourceRows=rows}) {
 export function DashboardContent(){
  const {queries}=useDataApp();
  const {activeTabId}=useDashboardTabs(tabs);
- const [period,setPeriod]=useState('All available days');
+ const [period,setPeriod]=useState('Month');
  const [queryGroup,setQueryGroup]=useState('All queries');
  const rows=id=>queries[id]?.rows??[];
- const traffic=rows('traffic')[0];
+ const traffic=rows('trafficPeriods').find(row=>row.period===period);
+ const trafficRows=id=>rows(id).filter(row=>row.period===period);
+ const topPages=trafficRows('trafficPeriodPages').sort((a,b)=>b.visitors-a.visitors).slice(0,7);
+ const topReferrers=trafficRows('trafficPeriodReferrers').sort((a,b)=>b.visitors-a.visitors).slice(0,7);
+ const ga4Daily=rowsForPeriod(rows('ga4Daily'),period);
  const history=rows('searchDaily');
- const daily=period==='Latest 7 available days'?history.slice(-7):history;
+ const daily=rowsForPeriod(history,period);
  const {clicks,impressions,ctr}=searchTotals(daily);
  const pageHistory=searchBreakdown(rows('searchPageHistory'),'page',daily.map(row=>row.date));
  const queryHistory=searchBreakdown(rows('searchQueryHistory'),'query',daily.map(row=>row.date));
@@ -36,7 +40,7 @@ export function DashboardContent(){
  const completeWeeks=recent.length===7&&prior.length===7&&Date.parse(recent.at(-1).date)-Date.parse(prior[0].date)===13*86400000;
  const comparison=completeWeeks?[['Previous 7 days',prior],['Latest 7 days',recent]].map(([period,rs])=>({period,start:rs[0].date,end:rs.at(-1).date,impressions:rs.reduce((n,r)=>n+r.impressions,0),clicks:rs.reduce((n,r)=>n+r.clicks,0)})):[];
  if(activeTabId==='search')return <div className="wgg-report">
-  <Section id="search-period-heading" title="Search visibility" spacing="none" filters={<Dropdown label="History" value={period} choices={['All available days','Latest 7 available days']} onChange={setPeriod} showLabel/>}>
+  <Section id="search-period-heading" title="Search visibility" spacing="none" filters={<Dropdown label="Period" value={period} choices={reportPeriods} onChange={setPeriod} showLabel/>}>
    <p className="wgg-context">{range}. Google Web (text) results for wellandgoodgrowth.ca.</p>
    <Section id="search-metrics" columns={3} spacing="none">
     <MetricCard id="search-impressions" queryId="searchDaily" title="Impressions" value={number(impressions)} displayRows={[{impressions}]} sourceRows={daily}/>
@@ -47,7 +51,7 @@ export function DashboardContent(){
    <Plot id="search-click-trend" queryId="searchDaily" title="Daily search clicks" rows={daily} x="date" y="clicks" type="line" height={200}/>
   </Section>
   {(queries.searchPageHistory&&queries.searchQueryHistory)&&<Section id="search-exploration-heading" title="Search discovery in the selected dates">
-   <p className="wgg-context">{range}. These rankings follow History. Page impressions can overlap and Google omits anonymized queries. Neither breakdown replaces the property totals above.</p>
+   <p className="wgg-context">{range}. These rankings follow Period. Page impressions can overlap and Google omits anonymized queries. Neither breakdown replaces the property totals above.</p>
    <Section id="search-exploration-charts" columns={2} spacing="none">
     <Plot id="search-page-ranking" queryId="searchPageHistory" title="Top pages by search impressions" rows={pageHistory.displayRows.slice(0,10).map(row=>({...row,page:new URL(row.page).pathname}))} sourceRows={pageHistory.sourceRows.filter(row=>pageHistory.displayRows.slice(0,10).some(top=>top.page===row.page))} x="page" y="impressions" height={300}/>
     <Plot id="search-query-ranking" queryId="searchQueryHistory" title="Top disclosed queries by impressions" rows={queryHistory.displayRows.slice(0,10)} sourceRows={queryHistory.sourceRows.filter(row=>queryHistory.displayRows.slice(0,10).some(top=>top.query===row.query))} x="query" y="impressions" height={300}/>
@@ -63,7 +67,7 @@ export function DashboardContent(){
     <p>This is an early baseline for a new business. Small counts and short history can move sharply; there is no established growth target.</p><p>This property covers the new domain. Earlier-domain results are excluded. Impressions measure visibility, not visits or enquiries.</p>
    </DataComponent>
   </Section>
-  <p className="wgg-context">History changes the headline counts, daily trends and selected-date discovery above. The week comparison and aggregate tables below retain their saved windows. Query rows omit anonymized searches and must not be added to reconstruct property totals.</p>
+  <p className="wgg-context">Period changes the headline counts, daily trends and selected-date discovery above. The week comparison and aggregate tables below retain their saved windows. Query rows omit anonymized searches and must not be added to reconstruct property totals.</p>
   {(queries.searchQueries?.scope||queries.searchPages?.scope)&&<p className="wgg-context">Query table: {scopedRange('searchQueries')}. Page table: {scopedRange('searchPages')}.</p>}
   <Section id="search-discovery-heading" title="Search queries and landing pages" columns={2}>
    <Table id="search-queries" queryId="searchQueries" title="Top 10 queries, saved search window" rows={rows('searchQueries')} fields={[["query","Query"],["impressions","Impressions"],["clicks","Clicks"],["position","Avg. position"]]}/>
@@ -83,44 +87,48 @@ export function DashboardContent(){
    <Table id="page-health" queryId="health" title="Website availability" rows={rows('health').filter(r=>r.checkedAt===rows('health').at(-1)?.checkedAt)} fields={[["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"],["checkedAt","Checked at (UTC)"]]}/>
    <p className="wgg-context">These are individual HTTP checks, not continuous uptime or browser loading-speed measurements.</p>
   </Section>
-  <Section id="health-history-heading" title="Page-check history">
-   <Table id="page-health-history" queryId="health" title="Retained checks" rows={rows('health')} fields={[["checkedAt","Checked at (UTC)"],["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"]]}/>
+  <Section id="health-history-heading" title="Page-check history" filters={<Dropdown label="Period" value={period} choices={reportPeriods} onChange={setPeriod} showLabel/>}>
+   <p className="wgg-context">{period} of saved checks through {rows('health').at(-1)?.checkedAt?.slice(0,10)??'an unverified date'}. Current page checks above always show the latest run.</p>
+   <Table id="page-health-history" queryId="health" title="Retained checks" rows={rowsForPeriod(rows('health'),period,'checkedAt')} fields={[["checkedAt","Checked at (UTC)"],["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"]]}/>
   </Section>
   <Section id="measurement-heading" title="Measurement coverage">
    <Table id="measurement-coverage" queryId="measurement" title="What is and is not measured" rows={rows('measurement')} fields={[["measure","Measure"],["status","Status"],["detail","Meaning"]]}/>
   </Section>
  </div>;
  return <div className="wgg-report">
-  <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Traffic unavailable'} · Production, all project hostnames · Toronto time</p>
-  <p className="wgg-context">An early baseline for a new business. Use this to understand discovery and measurement coverage before setting growth expectations. A bounce is not evidence that an enquiry failed.</p>
+  <Section id="traffic-period-heading" title="Traffic" spacing="none" filters={<Dropdown label="Period" value={period} choices={reportPeriods} onChange={setPeriod} showLabel/>}>
+   <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Traffic unavailable'} · Production, all project hostnames · Toronto time</p>
+   {period==='All time'&&<p className="wgg-context">All available Vercel records begin June 1, 2026. Earlier history is outside the saved source coverage.</p>}
+   <p className="wgg-context">An early baseline for a new business. A bounce is not evidence that an enquiry failed.</p>
+  </Section>
   <SortableRegion id="traffic-canvas" variant="canvas" columns={12} spacing="standard" rows={[
    {id:'traffic-metrics',kind:'metrics',items:['visitors','page-views','bounce-rate']},
    {id:'traffic-discovery',items:['popular-pages','named-referrers']},
    {id:'traffic-audience',items:['device-share','country-share']}
   ]}>
-   {[['visitors','Visitors',traffic?.visitors],['page-views','Page views',traffic?.views],['bounce-rate','Bounce rate',traffic?`${Math.round(traffic.bounceRate*100)}%`:null]].map(([id,title,value])=><SortableItem key={id} id={id} label={title} kind="metric" span={4}><MetricCard id={id} queryId="traffic" title={title} value={typeof value==='number'?number(value):value??'Unavailable'} displayRows={rows('traffic')} sourceRows={rows('traffic')}/></SortableItem>)}
-   <SortableItem id="popular-pages" label="Top pages" kind="chart" span={6}><Plot id="popular-pages" queryId="pages" title="Top pages by visitors" rows={rows('pages')} x="page" y="visitors" height={320}><p className="wgg-context">Top seven pages. Visitors can appear on more than one page.</p></Plot></SortableItem>
-   <SortableItem id="named-referrers" label="Referrers" kind="chart" span={6}><Plot id="named-referrers" queryId="referrers" title="Top named referrers" rows={rows('referrers')} x="referrer" y="visitors" height={320}><p className="wgg-context">Top seven named sources. This is not the full traffic mix.</p></Plot></SortableItem>
-   <SortableItem id="device-share" label="Devices" kind="chart" span={6}><Plot id="device-share" queryId="devices" title="Visitors by device" rows={rows('devices')} x="device" y="visitorShare" height={230}/></SortableItem>
-   <SortableItem id="country-share" label="Countries" kind="chart" span={6}><Plot id="country-share" queryId="countries" title="Top countries by visitor share" rows={rows('countries')} x="country" y="visitorShare" height={230}><p className="wgg-context">Rounded shares for the top five countries.</p></Plot></SortableItem>
+   {[['visitors','Visitors',traffic?.visitors],['page-views','Page views',traffic?.views],['bounce-rate','Bounce rate',traffic?`${Math.round(traffic.bounceRate*100)}%`:null]].map(([id,title,value])=><SortableItem key={id} id={id} label={title} kind="metric" span={4}><MetricCard id={id} queryId="trafficPeriods" title={title} value={typeof value==='number'?number(value):value??'Unavailable'} displayRows={traffic?[traffic]:[]} sourceRows={traffic?[traffic]:[]}/></SortableItem>)}
+   <SortableItem id="popular-pages" label="Top pages" kind="chart" span={6}><Plot id="popular-pages" queryId="trafficPeriodPages" title="Top pages by visitors" rows={topPages} x="page" y="visitors" height={320}><p className="wgg-context">Top seven pages. Visitors can appear on more than one page.</p></Plot></SortableItem>
+   <SortableItem id="named-referrers" label="Referrers" kind="chart" span={6}><Plot id="named-referrers" queryId="trafficPeriodReferrers" title="Top named referrers" rows={topReferrers} x="referrer" y="visitors" height={320}><p className="wgg-context">Top seven named sources. This is not the full traffic mix.</p></Plot></SortableItem>
+   <SortableItem id="device-share" label="Devices" kind="chart" span={6}><Plot id="device-share" queryId="trafficPeriodDevices" title="Visitors by device" rows={trafficRows('trafficPeriodDevices')} x="device" y="visitorShare" height={230}/></SortableItem>
+   <SortableItem id="country-share" label="Countries" kind="chart" span={6}><Plot id="country-share" queryId="trafficPeriodCountries" title="Top countries by visitor share" rows={trafficRows('trafficPeriodCountries').slice(0,5).map(row=>({...row,country:/^[A-Z]{2}$/.test(row.country)?new Intl.DisplayNames(['en'],{type:'region'}).of(row.country):row.country}))} sourceRows={trafficRows('trafficPeriodCountries').slice(0,5)} x="country" y="visitorShare" height={230}><p className="wgg-context">Top five countries. A visitor can appear in more than one group.</p></Plot></SortableItem>
   </SortableRegion>
-  {queries.trafficDaily&&<Section id="traffic-trend-heading" title="Daily traffic">
-   <p className="wgg-context">{scopedRange('trafficDaily')}. Daily visitor counts are not added to produce period visitors.</p>
-   <Plot id="traffic-daily-views" queryId="trafficDaily" title="Daily page views" rows={rows('trafficDaily')} x="date" y="views" type="line" height={260}/>
+  {queries.trafficDaily&&<Section id="traffic-trend-heading" title={period==='All time'?'Monthly traffic':'Daily traffic'}>
+   <p className="wgg-context">{period==='All time'?'June 1 to October 21, 2026. October is a partial month.':`${date(traffic?.start??queries.trafficDaily.scope.start)} to ${date(traffic?.end??queries.trafficDaily.scope.end)}.`} Period visitors come from the exact window total, not summed daily or monthly visitor counts.</p>
+   {period==='All time'?<Plot id="traffic-daily-views" queryId="trafficMonthly" title="Monthly page views" rows={rows('trafficMonthly')} x="month" y="views" type="line" height={260}/>:<Plot id="traffic-daily-views" queryId="trafficDaily" title="Daily page views" rows={rowsForPeriod(rows('trafficDaily'),period)} x="date" y="views" type="line" height={260}/>}
   </Section>}
   {queries.trafficHostnames&&<Section id="traffic-hostnames-heading" title="Current and former domains">
-   <p className="wgg-context">{scopedRange('trafficHostnames')}. A visitor can appear on more than one hostname; hostname visitors are not added together.</p>
+   <p className="wgg-context">Saved hostname window: {scopedRange('trafficHostnames')}. This table has its own saved dates and does not follow Period. A visitor can appear on more than one hostname; hostname visitors are not added together.</p>
    <Table id="traffic-hostnames" queryId="trafficHostnames" title="Captured hostname traffic" rows={rows('trafficHostnames').map(row=>({...row,views:row.views??'Unavailable',visitors:row.visitors??'Unavailable'}))} sourceRows={rows('trafficHostnames')} fields={[["hostname","Hostname"],["views","Page views"],["visitors","Visitors"]]}/>
   </Section>}
-  {queries.trafficAcquisition&&<Section id="traffic-acquisition-heading" title="Acquisition coverage">
-   <p className="wgg-context">{scopedRange('trafficAcquisition')}. No referrer recorded includes visits where the source was absent or stripped. It does not prove someone typed the address.</p>
-   <Plot id="traffic-acquisition" queryId="trafficAcquisition" title="Page views by recorded referrer" rows={rows('trafficAcquisition')} x="referrer" y="views" height={300}/>
+  {queries.trafficPeriodAcquisition&&<Section id="traffic-acquisition-heading" title="Acquisition coverage">
+   <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Selected period'}. “No referrer recorded” means Vercel received no referring website address. This can happen with bookmarks, typed addresses, links from email or apps, or browser privacy settings. It does not mean every visit was direct. These are page views, not people.</p>
+   <Plot id="traffic-acquisition" queryId="trafficPeriodAcquisition" title="Page views by recorded referrer" rows={trafficRows('trafficPeriodAcquisition')} x="referrer" y="views" height={300}/>
   </Section>}
   {!!queries.ga4Daily?.rows.length&&<Section id="ga4-engagement-heading" title="Google Analytics engagement">
-   <p className="wgg-context">{scopedRange('ga4Daily')}. Consent-based GA4 sessions begin after activation. These counts are separate from Vercel visitors and page views above.</p>
+   <p className="wgg-context">{period} of available GA4 days through {rows('ga4Daily').at(-1)?.date}. Consent-based sessions begin after activation. These counts are separate from Vercel visitors and page views above.</p>
    <Section id="ga4-engagement-metrics" columns={3} spacing="none">
     {(() => {
-     const data=rows('ga4Daily');
+     const data=ga4Daily;
      const sessions=data.reduce((sum,row)=>sum+row.sessions,0);
      const engaged=data.reduce((sum,row)=>sum+row.engagedSessions,0);
      return <>
@@ -130,10 +138,10 @@ export function DashboardContent(){
      </>;
     })()}
    </Section>
-   <Plot id="ga4-sessions-daily" queryId="ga4Daily" title="Daily sessions" rows={rows('ga4Daily')} x="date" y="sessions" type="line" height={250}/>
+   <Plot id="ga4-sessions-daily" queryId="ga4Daily" title="Daily sessions" rows={ga4Daily} x="date" y="sessions" type="line" height={250}/>
   </Section>}
   {queries.ga4Acquisition&&<Section id="ga4-acquisition-heading" title="How GA4 sessions arrived">
-   <p className="wgg-context">{scopedRange('ga4Acquisition')}. Each session belongs to one saved channel row. GA4 sessions and Vercel visitors have different definitions.</p>
+   <p className="wgg-context">Saved GA4 channel window: {scopedRange('ga4Acquisition')}. This section has its own saved dates and does not follow Period. Each session belongs to one saved channel row. GA4 sessions and Vercel visitors have different definitions.</p>
    <Plot id="ga4-channels" queryId="ga4Acquisition" title="Sessions by channel" rows={rows('ga4Acquisition')} x="channel" y="sessions" height={280}/>
    <Table id="ga4-channel-detail" queryId="ga4Acquisition" title="Channel engagement" rows={rows('ga4Acquisition').map(row=>({...row,engagementRate:row.sessions?`${(100*row.engagedSessions/row.sessions).toFixed(1)}%`:'Unavailable'}))} sourceRows={rows('ga4Acquisition')} fields={[["channel","Channel"],["sessions","Sessions"],["engagedSessions","Engaged sessions"],["engagementRate","Engagement rate"]]}/>
   </Section>}
