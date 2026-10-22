@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {DataComponent, DataTable, Dropdown, EvidenceChart, MetricCard, Section, SortableItem, SortableRegion, useDashboardTabs, useDataApp} from '../../data-app-public.jsx';
 import './performance.css';
-import {enquiryRows, searchTotals, queryGroups, filterQueryGroup} from './metrics.mjs';
+import {enquiryRows, searchTotals, queryGroups, filterQueryGroup, searchBreakdown} from './metrics.mjs';
 const tabs=[{id:'traffic',label:'Traffic'},{id:'search',label:'Google Search'},{id:'health',label:'Site Health'}];
 const number=n=>n==null?'Unavailable':n.toLocaleString('en-CA');
 const date=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
 const columns=fields=>fields.map(([field,label])=>({field,label}));
-function Plot({id,queryId,title,rows,x,y,type='horizontalBar',height=260,children}) {
- return <EvidenceChart id={id} queryId={queryId} title={title} variant="card" rows={rows} sourceRows={rows} height={height}
+function Plot({id,queryId,title,rows,sourceRows=rows,x,y,type='horizontalBar',height=260,children}) {
+ return <EvidenceChart id={id} queryId={queryId} title={title} variant="card" rows={rows} sourceRows={sourceRows} height={height}
   spec={{type,x,y,stackable:false,showXAxisLabel:false,showYAxisLabel:false,valueDecimals:y==='visitorShare'?2:0}}>{children}</EvidenceChart>;
 }
 function Table({id,queryId,title,rows,fields,sourceRows=rows}) {
@@ -25,6 +25,8 @@ export function DashboardContent(){
  const history=rows('searchDaily');
  const daily=period==='Latest 7 available days'?history.slice(-7):history;
  const {clicks,impressions,ctr}=searchTotals(daily);
+ const pageHistory=searchBreakdown(rows('searchPageHistory'),'page',daily.map(row=>row.date));
+ const queryHistory=searchBreakdown(rows('searchQueryHistory'),'query',daily.map(row=>row.date));
  const scopedRange=id=>queries[id]?.scope?`${date(queries[id].scope.start)} to ${date(queries[id].scope.end)} (${queries[id].scope.timezone})`:'the saved source window';
  const details=filterQueryGroup(rows('searchDetails'),queryGroup);
  const enquiryQuery=queries.enquiryStages?'enquiryStages':'measurement';
@@ -42,7 +44,16 @@ export function DashboardContent(){
     <MetricCard id="search-ctr" queryId="searchDaily" title="Click-through rate" value={ctr!=null?`${(100*ctr).toFixed(2)}%`:'Unavailable'} displayRows={[{clicks,impressions,ctr}]} sourceRows={daily}/>
    </Section>
    <Plot id="search-trend" queryId="searchDaily" title="Daily search impressions" rows={daily} x="date" y="impressions" type="line" height={300}/>
+   <Plot id="search-click-trend" queryId="searchDaily" title="Daily search clicks" rows={daily} x="date" y="clicks" type="line" height={200}/>
   </Section>
+  {(queries.searchPageHistory&&queries.searchQueryHistory)&&<Section id="search-exploration-heading" title="Search discovery in the selected dates">
+   <p className="wgg-context">{range}. These rankings follow History. Page impressions can overlap and Google omits anonymized queries. Neither breakdown replaces the property totals above.</p>
+   <Section id="search-exploration-charts" columns={2} spacing="none">
+    <Plot id="search-page-ranking" queryId="searchPageHistory" title="Top pages by search impressions" rows={pageHistory.displayRows.slice(0,10).map(row=>({...row,page:new URL(row.page).pathname}))} sourceRows={pageHistory.sourceRows.filter(row=>pageHistory.displayRows.slice(0,10).some(top=>top.page===row.page))} x="page" y="impressions" height={300}/>
+    <Plot id="search-query-ranking" queryId="searchQueryHistory" title="Top disclosed queries by impressions" rows={queryHistory.displayRows.slice(0,10)} sourceRows={queryHistory.sourceRows.filter(row=>queryHistory.displayRows.slice(0,10).some(top=>top.query===row.query))} x="query" y="impressions" height={300}/>
+   </Section>
+   <Table id="search-page-performance" queryId="searchPageHistory" title="Landing page search performance" rows={pageHistory.displayRows.map(row=>({...row,page:new URL(row.page).pathname,ctr:row.ctr==null?'Unavailable':`${(row.ctr*100).toFixed(2)}%`,position:row.position==null?'Unavailable':row.position.toFixed(1)}))} sourceRows={pageHistory.sourceRows} fields={[["page","Page"],["impressions","Impressions"],["clicks","Clicks"],["ctr","CTR"],["position","Avg. position"]]}/>
+  </Section>}
   <Section id="search-comparison-heading" title="Latest two complete search weeks" columns={2}>
    <DataComponent id="search-weeks" queryId="searchDaily" title="Week comparison" kind="table" variant="card" displayRows={comparison} sourceRows={[...prior,...recent]}>
     {comparison.length?<DataTable rows={comparison} columns={columns([['period','Period'],['start','From'],['end','Through'],['impressions','Impressions'],['clicks','Clicks']])} searchable={false} label="Search week comparison"/>:<p>Two complete weeks are not yet available.</p>}
@@ -52,7 +63,7 @@ export function DashboardContent(){
     <p>This is an early baseline for a new business. Small counts and short history can move sharply; there is no established growth target.</p><p>This property covers the new domain. Earlier-domain results are excluded. Impressions measure visibility, not visits or enquiries.</p>
    </DataComponent>
   </Section>
-  <p className="wgg-context">The history control changes the headline counts and daily trend only. The week comparison and aggregate tables below retain their saved windows. Query rows omit anonymized searches and must not be added to reconstruct property totals.</p>
+  <p className="wgg-context">History changes the headline counts, daily trends and selected-date discovery above. The week comparison and aggregate tables below retain their saved windows. Query rows omit anonymized searches and must not be added to reconstruct property totals.</p>
   {(queries.searchQueries?.scope||queries.searchPages?.scope)&&<p className="wgg-context">Query table: {scopedRange('searchQueries')}. Page table: {scopedRange('searchPages')}.</p>}
   <Section id="search-discovery-heading" title="Search queries and landing pages" columns={2}>
    <Table id="search-queries" queryId="searchQueries" title="Top 10 queries, saved search window" rows={rows('searchQueries')} fields={[["query","Query"],["impressions","Impressions"],["clicks","Clicks"],["position","Avg. position"]]}/>
@@ -71,6 +82,9 @@ export function DashboardContent(){
   <Section id="health-heading" title="Current page checks" spacing="none">
    <Table id="page-health" queryId="health" title="Website availability" rows={rows('health').filter(r=>r.checkedAt===rows('health').at(-1)?.checkedAt)} fields={[["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"],["checkedAt","Checked at (UTC)"]]}/>
    <p className="wgg-context">These are individual HTTP checks, not continuous uptime or browser loading-speed measurements.</p>
+  </Section>
+  <Section id="health-history-heading" title="Page-check history">
+   <Table id="page-health-history" queryId="health" title="Retained checks" rows={rows('health')} fields={[["checkedAt","Checked at (UTC)"],["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"]]}/>
   </Section>
   <Section id="measurement-heading" title="Measurement coverage">
    <Table id="measurement-coverage" queryId="measurement" title="What is and is not measured" rows={rows('measurement')} fields={[["measure","Measure"],["status","Status"],["detail","Meaning"]]}/>
@@ -97,6 +111,10 @@ export function DashboardContent(){
   {queries.trafficHostnames&&<Section id="traffic-hostnames-heading" title="Current and former domains">
    <p className="wgg-context">{scopedRange('trafficHostnames')}. A visitor can appear on more than one hostname; hostname visitors are not added together.</p>
    <Table id="traffic-hostnames" queryId="trafficHostnames" title="Captured hostname traffic" rows={rows('trafficHostnames').map(row=>({...row,views:row.views??'Unavailable',visitors:row.visitors??'Unavailable'}))} sourceRows={rows('trafficHostnames')} fields={[["hostname","Hostname"],["views","Page views"],["visitors","Visitors"]]}/>
+  </Section>}
+  {queries.trafficAcquisition&&<Section id="traffic-acquisition-heading" title="Acquisition coverage">
+   <p className="wgg-context">{scopedRange('trafficAcquisition')}. No referrer recorded includes visits where the source was absent or stripped. It does not prove someone typed the address.</p>
+   <Plot id="traffic-acquisition" queryId="trafficAcquisition" title="Page views by recorded referrer" rows={rows('trafficAcquisition')} x="referrer" y="views" height={300}/>
   </Section>}
   <Section id="enquiry-heading" title="Enquiry measurement">
    <Table id="enquiry-status" queryId={enquiryQuery} title="Enquiry signals and confirmed receipt" rows={enquiryRows(rows('enquiryStages'))} sourceRows={rows(enquiryQuery)} fields={[["stage","Stage"],["count","Count"],["from","From"],["through","Through"],["meaning","Meaning"]]}/>
