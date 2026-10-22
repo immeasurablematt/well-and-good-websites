@@ -1,20 +1,55 @@
 import {mkdir,readFile,writeFile,rename} from 'node:fs/promises';
 import {resolve} from 'node:path';
-const store=resolve(process.argv[2]||'private/performance');
-const origin='https://www.wellandgoodgrowth.ca';
-const checkedAt=new Date().toISOString();
-const rows=await Promise.all(['/', '/services/websites/','/services/growth/','/services/automation/','/contact/'].map(async page=>{
-  const start=performance.now();
-  try {
-    const r=await fetch(origin+page,{method:'HEAD',signal:AbortSignal.timeout(20000)});
-    return {page,status:r.status,responseMs:Math.round(performance.now()-start),result:r.ok&&new URL(r.url).origin===origin?'Available':'Check needed',checkedAt};
-  } catch {return {page,status:null,responseMs:null,result:'Check failed',checkedAt};}
-}));
-await mkdir(store,{recursive:true});
-let history=[];
-try{history=JSON.parse(await readFile(resolve(store,'health-history.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
-history=[...history.filter(r=>r.checkedAt.slice(0,10)!==checkedAt.slice(0,10)),...rows];
-const path=resolve(store,'health-history.json');
-await writeFile(path+'.tmp',JSON.stringify(history,null,2)+'\n',{mode:0o600});
-await rename(path+'.tmp',path);
-console.log(JSON.stringify({checkedAt,rows}));
+import {pathToFileURL} from 'node:url';
+
+const DEFAULT_ORIGIN='https://www.wellandgoodgrowth.ca';
+export const HEALTH_PAGES=[
+ '/',
+ '/services/websites/',
+ '/services/growth/',
+ '/services/automation/',
+ '/contact/',
+ '/niagara-seo/',
+ '/website-design-welland/',
+ '/website-design-niagara/'
+];
+
+function normalizedPath(pathname) {
+ return pathname==='/' ? '/' : pathname.replace(/\/$/,'');
+}
+
+export async function checkPage(page,{origin=DEFAULT_ORIGIN,checkedAt=new Date().toISOString(),fetchImpl=fetch}={}) {
+ const start=performance.now();
+ let status=null;
+ try {
+  const response=await fetchImpl(origin+page,{method:'GET',signal:AbortSignal.timeout(20000)});
+  status=response.status;
+  const destination=new URL(response.url);
+  const contentType=response.headers.get('content-type')||'';
+  const html=await response.text();
+  const expectedDestination=destination.origin===origin&&normalizedPath(destination.pathname)===normalizedPath(page);
+  const isHtml=contentType.toLowerCase().includes('text/html')&&/<html[\s>]/i.test(html)&&/<body[\s>]/i.test(html);
+  const result=response.ok&&expectedDestination&&isHtml?'Available':'Check needed';
+  const reason=!response.ok?'HTTP status':!expectedDestination?'Unexpected destination':!isHtml?'Missing HTML page':null;
+  return {page,status,responseMs:Math.round(performance.now()-start),result,checkedAt,method:'GET',redirected:response.redirected,finalUrl:response.url,reason};
+ } catch {
+  return {page,status,responseMs:null,result:'Check failed',checkedAt,method:'GET',redirected:null,finalUrl:null,reason:'Request or response failed'};
+ }
+}
+
+export async function collectHealth(store,{origin=DEFAULT_ORIGIN,checkedAt=new Date().toISOString(),fetchImpl=fetch}={}) {
+ const rows=await Promise.all(HEALTH_PAGES.map(page=>checkPage(page,{origin,checkedAt,fetchImpl})));
+ await mkdir(store,{recursive:true});
+ const path=resolve(store,'health-history.json');
+ let history=[];
+ try {history=JSON.parse(await readFile(path,'utf8'));} catch(error) {if(error.code!=='ENOENT')throw error;}
+ history=[...history.filter(row=>row.checkedAt.slice(0,10)!==checkedAt.slice(0,10)),...rows];
+ await writeFile(path+'.tmp',JSON.stringify(history,null,2)+'\n',{mode:0o600});
+ await rename(path+'.tmp',path);
+ return {checkedAt,rows};
+}
+
+if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url) {
+ const store=resolve(process.argv[2]||'private/performance');
+ console.log(JSON.stringify(await collectHealth(store)));
+}

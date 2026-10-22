@@ -5,6 +5,7 @@ import {enquiryRows, searchTotals, queryGroups, filterQueryGroup, searchBreakdow
 const tabs=[{id:'traffic',label:'Traffic'},{id:'search',label:'Google Search'},{id:'health',label:'Site Health'}];
 const number=n=>n==null?'Unavailable':n.toLocaleString('en-CA');
 const date=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+const dayCount=(start,end)=>start&&end?Math.round((Date.parse(`${end}T00:00:00Z`)-Date.parse(`${start}T00:00:00Z`))/86400000)+1:0;
 const columns=fields=>fields.map(([field,label])=>({field,label}));
 function Plot({id,queryId,title,rows,sourceRows=rows,x,y,type='horizontalBar',height=260,children}) {
  return <EvidenceChart id={id} queryId={queryId} title={title} variant="card" rows={rows} sourceRows={sourceRows} height={height}
@@ -23,6 +24,23 @@ export function DashboardContent(){
  const rows=id=>queries[id]?.rows??[];
  const traffic=rows('trafficPeriods').find(row=>row.period===period);
  const trafficRows=id=>rows(id).filter(row=>row.period===period);
+ const acquisition=trafficRows('trafficPeriodAcquisition');
+ const acquisitionViews=acquisition.reduce((sum,row)=>sum+row.views,0);
+ const unrecorded=acquisition.find(row=>row.referrer==='No referrer recorded');
+ const referrerCoverage=traffic&&acquisition.length&&acquisitionViews===traffic.views&&traffic.views>0&&unrecorded?{
+  views:unrecorded.views,total:acquisitionViews,percent:Math.round(100*unrecorded.views/acquisitionViews)
+ }:null;
+ const received=rows('enquiryStages').find(row=>row.stage==='confirmed_received'&&Number.isInteger(row.count)&&row.count>=0&&row.start&&row.end);
+ const candidateComparison=rows('trafficComparisons').find(row=>row.period===period);
+ const trafficComparison=period!=='All time'&&traffic&&candidateComparison&&
+  candidateComparison.start===traffic.start&&candidateComparison.end===traffic.end&&candidateComparison.views===traffic.views&&
+  Number.isInteger(candidateComparison.priorViews)&&candidateComparison.priorViews>=0&&
+  dayCount(candidateComparison.start,candidateComparison.end)===dayCount(candidateComparison.priorStart,candidateComparison.priorEnd)&&
+  Date.parse(`${candidateComparison.start}T00:00:00Z`)-Date.parse(`${candidateComparison.priorEnd}T00:00:00Z`)===86400000
+  ?candidateComparison:null;
+ const comparisonDays=period==='Week'?'7':period==='Month'?'30':null;
+ const viewChange=trafficComparison?trafficComparison.views-trafficComparison.priorViews:null;
+ const changePercent=trafficComparison?.priorViews?Math.round(100*viewChange/trafficComparison.priorViews):null;
  const topPages=trafficRows('trafficPeriodPages').sort((a,b)=>b.visitors-a.visitors).slice(0,7);
  const topReferrers=trafficRows('trafficPeriodReferrers').sort((a,b)=>b.visitors-a.visitors).slice(0,7);
  const ga4Daily=rowsForPeriod(rows('ga4Daily'),period);
@@ -84,8 +102,8 @@ export function DashboardContent(){
  </div>;
  if(activeTabId==='health')return <div className="wgg-report">
   <Section id="health-heading" title="Current page checks" spacing="none">
-   <Table id="page-health" queryId="health" title="Website availability" rows={rows('health').filter(r=>r.checkedAt===rows('health').at(-1)?.checkedAt)} fields={[["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"],["checkedAt","Checked at (UTC)"]]}/>
-   <p className="wgg-context">These are individual HTTP checks, not continuous uptime or browser loading-speed measurements.</p>
+   <Table id="page-health" queryId="health" title="Latest HTTP page checks" rows={rows('health').filter(r=>r.checkedAt===rows('health').at(-1)?.checkedAt)} fields={[["page","Page"],["result","Result"],["status","HTTP status"],["responseMs","Response (ms)"],["checkedAt","Checked date (UTC)"]]}/>
+   <p className="wgg-context">Each row records one request at the shown time. These checks do not measure continuous uptime or how quickly a page loads in a browser.</p>
   </Section>
   <Section id="health-history-heading" title="Page-check history" filters={<Dropdown label="Period" value={period} choices={reportPeriods} onChange={setPeriod} showLabel/>}>
    <p className="wgg-context">{period} of saved checks through {rows('health').at(-1)?.checkedAt?.slice(0,10)??'an unverified date'}. Current page checks above always show the latest run.</p>
@@ -101,6 +119,36 @@ export function DashboardContent(){
    {period==='All time'&&<p className="wgg-context">All available Vercel records begin June 1, 2026. Earlier history is outside the saved source coverage.</p>}
    <p className="wgg-context">An early baseline for a new business. A bounce is not evidence that an enquiry failed.</p>
   </Section>
+  <Section id="traffic-summary-heading" title="What to know" columns={3} spacing="none">
+   <DataComponent id="traffic-comparison" queryId={trafficComparison?'trafficComparisons':'trafficPeriods'} title="Change from the prior period" kind="custom" variant="card" displayRows={trafficComparison?[{...trafficComparison,change:viewChange,changePercent}]:traffic?[traffic]:[]} sourceRows={trafficComparison?[trafficComparison]:traffic?[traffic]:[]}>
+    <div className="wgg-summary-card">
+     <p className="wgg-summary-label">Page views {comparisonDays?`vs previous ${comparisonDays} days`:''}</p>
+     {trafficComparison?<>
+      <p className="wgg-summary-value">{viewChange>0?'+':''}{number(viewChange)}{changePercent!=null?` (${changePercent>0?'+':''}${changePercent}%)`:''}</p>
+      <p className="wgg-summary-detail">{number(trafficComparison.views)} from {date(trafficComparison.start)} to {date(trafficComparison.end)}; {number(trafficComparison.priorViews)} from {date(trafficComparison.priorStart)} to {date(trafficComparison.priorEnd)}.</p>
+      <p className="wgg-summary-detail">Both windows include the former domain. One comparison does not establish a cause or trend.</p>
+     </>:<>
+      <p className="wgg-summary-value">Unavailable</p>
+      <p className="wgg-summary-detail">{period==='All time'?'All available history has no comparable prior period.':'A verified, equal-length prior window is not in this report.'}</p>
+     </>}
+    </div>
+   </DataComponent>
+   <DataComponent id="confirmed-enquiries-summary" queryId={enquiryQuery} title="Confirmed enquiries" kind="custom" variant="card" displayRows={received?[received]:[]} sourceRows={received?[received]:rows(enquiryQuery)}>
+    <div className="wgg-summary-card">
+     <p className="wgg-summary-label">Received enquiries</p>
+     <p className="wgg-summary-value">{received?number(received.count):'Unavailable'}</p>
+     <p className="wgg-summary-detail">{received?`${date(received.start)} to ${date(received.end)}. Receipt count has its own source window.`:'No reviewed receipt count is in the report. A form open is not a received enquiry.'}</p>
+    </div>
+   </DataComponent>
+   <DataComponent id="referrer-coverage-summary" queryId="trafficPeriodAcquisition" title="Referrer coverage" kind="custom" variant="card" displayRows={referrerCoverage?[{...referrerCoverage,period}]:[]} sourceRows={acquisition}>
+    <div className="wgg-summary-card">
+     <p className="wgg-summary-label">No referrer recorded</p>
+     <p className="wgg-summary-value">{referrerCoverage?`${referrerCoverage.percent}%`:'Unavailable'}</p>
+     <p className="wgg-summary-detail">{referrerCoverage?`${number(referrerCoverage.views)} of ${number(referrerCoverage.total)} page views in ${period.toLowerCase()}.`: 'The selected page-view groups do not reconcile to the period total.'} This does not mean all were direct visits.</p>
+    </div>
+   </DataComponent>
+  </Section>
+  <p className="wgg-next-check">Next check: {received?'compare verified receipts with the separate form activity signals.':'review form and direct-email receipts before reporting enquiries.'}</p>
   <SortableRegion id="traffic-canvas" variant="canvas" columns={12} spacing="standard" rows={[
    {id:'traffic-metrics',kind:'metrics',items:['visitors','page-views','bounce-rate']},
    {id:'traffic-discovery',items:['popular-pages','named-referrers']},
@@ -108,7 +156,7 @@ export function DashboardContent(){
   ]}>
    {[['visitors','Visitors',traffic?.visitors],['page-views','Page views',traffic?.views],['bounce-rate','Bounce rate',traffic?`${Math.round(traffic.bounceRate*100)}%`:null]].map(([id,title,value])=><SortableItem key={id} id={id} label={title} kind="metric" span={4}><MetricCard id={id} queryId="trafficPeriods" title={title} value={typeof value==='number'?number(value):value??'Unavailable'} displayRows={traffic?[traffic]:[]} sourceRows={traffic?[traffic]:[]}/></SortableItem>)}
    <SortableItem id="popular-pages" label="Top pages" kind="chart" span={6}><Plot id="popular-pages" queryId="trafficPeriodPages" title="Top pages by visitors" rows={topPages} x="page" y="visitors" height={320}><p className="wgg-context">Top seven pages. Visitors can appear on more than one page.</p></Plot></SortableItem>
-   <SortableItem id="named-referrers" label="Referrers" kind="chart" span={6}><Plot id="named-referrers" queryId="trafficPeriodReferrers" title="Top named referrers" rows={topReferrers} x="referrer" y="visitors" height={320}><p className="wgg-context">Top seven named sources. This is not the full traffic mix.</p></Plot></SortableItem>
+   <SortableItem id="named-referrers" label="Referrers" kind="chart" span={6}><Plot id="named-referrers" queryId="trafficPeriodReferrers" title="Top named referrers" rows={topReferrers} x="referrer" y="visitors" height={320}><p className="wgg-context">Top seven named sources by visitors. The referrer coverage above shows how much of the selected period has no recorded referring website.</p></Plot></SortableItem>
    <SortableItem id="device-share" label="Devices" kind="chart" span={6}><Plot id="device-share" queryId="trafficPeriodDevices" title="Visitors by device" rows={trafficRows('trafficPeriodDevices')} x="device" y="visitorShare" height={230}/></SortableItem>
    <SortableItem id="country-share" label="Countries" kind="chart" span={6}><Plot id="country-share" queryId="trafficPeriodCountries" title="Top countries by visitor share" rows={trafficRows('trafficPeriodCountries').slice(0,5).map(row=>({...row,country:/^[A-Z]{2}$/.test(row.country)?new Intl.DisplayNames(['en'],{type:'region'}).of(row.country):row.country}))} sourceRows={trafficRows('trafficPeriodCountries').slice(0,5)} x="country" y="visitorShare" height={230}><p className="wgg-context">Top five countries. A visitor can appear in more than one group.</p></Plot></SortableItem>
   </SortableRegion>
@@ -121,7 +169,7 @@ export function DashboardContent(){
    <Table id="traffic-hostnames" queryId="trafficHostnames" title="Captured hostname traffic" rows={rows('trafficHostnames').map(row=>({...row,views:row.views??'Unavailable',visitors:row.visitors??'Unavailable'}))} sourceRows={rows('trafficHostnames')} fields={[["hostname","Hostname"],["views","Page views"],["visitors","Visitors"]]}/>
   </Section>}
   {queries.trafficPeriodAcquisition&&<Section id="traffic-acquisition-heading" title="Acquisition coverage">
-   <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Selected period'}. “No referrer recorded” means Vercel received no referring website address. This can happen with bookmarks, typed addresses, links from email or apps, or browser privacy settings. It does not mean every visit was direct. These are page views, not people.</p>
+   <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Selected period'}. “No referrer recorded” means Vercel received no referring website address. This can happen with bookmarks, typed addresses, links from email or apps, or browser privacy settings. These are page views, not people.</p>
    <Plot id="traffic-acquisition" queryId="trafficPeriodAcquisition" title="Page views by recorded referrer" rows={trafficRows('trafficPeriodAcquisition')} x="referrer" y="views" height={300}/>
   </Section>}
   {!!queries.ga4Daily?.rows.length&&<Section id="ga4-engagement-heading" title="Google Analytics engagement">

@@ -1,2 +1,7 @@
 .wgg-report .wgg-context {color:var(--text);font-size:13px;line-height:1.55;margin:0 0 16px;}
 .wgg-report p {line-height:1.6;}
+.wgg-report .wgg-summary-card {min-height:112px;padding:2px 3px 4px;}
+.wgg-report .wgg-summary-label {color:var(--text);font-size:12px;margin:0 0 2px;}
+.wgg-report .wgg-summary-value {color:var(--text);font-size:clamp(20px,2vw,27px);font-weight:700;line-height:1.2;margin:0 0 8px;overflow-wrap:anywhere;}
+.wgg-report .wgg-summary-detail {color:var(--text);font-size:12px;line-height:1.45;margin:0;}
+.wgg-report .wgg-next-check {border-left:2px solid var(--text);color:var(--text);font-size:13px;line-height:1.45;margin:8px 0 18px;padding:2px 0 2px 12px;}
