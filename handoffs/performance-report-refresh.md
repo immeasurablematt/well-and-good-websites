@@ -1,9 +1,9 @@
 # Refresh private dashboard and add applicable performance reports
 
-Status: active
+Status: waiting
 Branch: codex/performance-report-refresh
-Pull request: none yet
-Updated: 2026-10-22 10:44 EDT by Codex on Mac
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/75
+Updated: 2026-10-22 10:46 EDT by Codex on Mac
 
 ## Goal
 Refresh the private Growth dashboard and add applicable report sections from Welland Votes, preserving its view, identity, presentation and source provenance.
