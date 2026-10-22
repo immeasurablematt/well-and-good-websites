@@ -258,17 +258,12 @@ footer{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px 48px;align
 footer>div{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:8px 24px;font-size:13.5px;color:var(--soft)}
 footer>div a{padding-block:6px;color:var(--soft)}
 footer>div a:hover{color:var(--ink)}
-footer .footer-privacy{border:0;padding:6px 0;background:none;color:var(--soft);font:inherit;text-decoration:underline;cursor:pointer}
-footer .footer-privacy:hover{color:var(--ink)}
 footer details summary{cursor:pointer;padding-block:6px}
 footer details a{display:block}
 footer .brand-name{font-size:20px}
 
-.analytics-choice p{font-size:15px;line-height:1.5}
-.analytics-choice a{color:var(--ink);text-decoration:underline}
-.analytics-choice-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.analytics-choice button{min-height:40px;padding:8px 12px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font:600 13px var(--sans);cursor:pointer}
-.analytics-choice button[data-analytics-choice="allow"]{background:var(--ink);color:var(--paper)}
+.analytics-choice{display:inline-flex;align-items:center;gap:10px;margin-top:8px;font:600 15px var(--sans);cursor:pointer}
+.analytics-choice input{width:18px;height:18px;accent-color:var(--ink)}
 
 /* ---------------------------------------------------------------- responsive */
 @media (max-width:1100px){

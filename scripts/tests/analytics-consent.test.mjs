@@ -7,26 +7,17 @@ const source = readFileSync(new URL('../../site-growth/analytics-consent.js', im
   .replace("const GA4_ID = 'G-9V037QTGCE';", "const GA4_ID = 'G-TEST123';")
   .replace("const CLARITY_ID = 'z1rewvqi70';", "const CLARITY_ID = 'test123';");
 
-function setup(url, initialChoice = null) {
+function setup(url, initialChoice = null, hasToggle = true) {
   const tags = [];
   const calls = [];
   const saved = new Map(initialChoice ? [['wgg-optional-analytics-v1', initialChoice]] : []);
-  const choiceButtons = ['allow', 'deny'].map(value => ({
-    dataset: { analyticsChoice: value },
-    addEventListener(type, listener) { if (type === 'click') this.click = listener; }
-  }));
-  const closeButton = { addEventListener(type, listener) { if (type === 'click') this.click = listener; } };
-  const dialog = {
-    open: false, showModal() { this.open = true; }, close() { this.open = false; },
-    querySelector: () => closeButton, querySelectorAll: () => choiceButtons
-  };
-  const settings = { addEventListener(type, listener) { if (type === 'click') this.click = listener; } };
+  const toggle = { checked: false, addEventListener(type, listener) { if (type === 'change') this.change = listener; } };
   const location = new URL(url);
   location.reload = () => { location.reloaded = true; };
   const window = {};
   const document = {
     title: 'Well and Good Growth', referrer: 'https://referrer.example/private/path?email=secret',
-    querySelector: selector => selector === '.analytics-choice' ? dialog : settings,
+    querySelector: selector => selector === '[data-analytics-toggle]' && hasToggle ? toggle : null,
     createElement: () => ({}), head: { appendChild: tag => tags.push(tag) }
   };
   const localStorage = {
@@ -38,27 +29,27 @@ function setup(url, initialChoice = null) {
   if (window.gtag) {
     for (const args of window.dataLayer) calls.push([...args]);
   }
-  return { tags, calls, saved, choiceButtons, dialog, closeButton, settings, window, location };
+  return { tags, calls, saved, toggle, window, location };
 }
 
-test('no automatic prompt or optional tags before a visitor choice or on preview hosts', () => {
-  const pending = setup('https://www.wellandgoodgrowth.ca/');
-  assert.equal(pending.dialog.open, false);
+test('optional tags stay absent without a footer choice, including on other pages', () => {
+  const pending = setup('https://www.wellandgoodgrowth.ca/privacy/');
+  assert.equal(pending.toggle.checked, false);
   assert.equal(pending.tags.length, 0);
-  const declined = setup('https://www.wellandgoodgrowth.ca/', 'deny');
-  assert.equal(declined.dialog.open, false);
+  const declined = setup('https://www.wellandgoodgrowth.ca/privacy/', 'deny');
+  assert.equal(declined.toggle.checked, false);
   assert.equal(declined.tags.length, 0);
+  assert.equal(setup('https://www.wellandgoodgrowth.ca/', null, false).tags.length, 0);
   const preview = setup('https://preview.vercel.app/', 'allow');
   assert.equal(preview.tags.length, 0);
-  pending.settings.click();
-  assert.equal(pending.dialog.open, true);
-  pending.closeButton.click();
-  assert.equal(pending.dialog.open, false);
+  pending.toggle.checked = true;
+  pending.toggle.change();
+  assert.equal(pending.saved.get('wgg-optional-analytics-v1'), 'allow');
+  assert.equal(pending.tags.length, 2);
 });
 
 test('consent loads both tags and sends only sanitized location and referrer', () => {
-  const s = setup('https://www.wellandgoodgrowth.ca/services/growth/?utm_source=linkedin&utm_campaign=site_launch&email=private@example.com#private');
-  s.choiceButtons[0].click();
+  const s = setup('https://www.wellandgoodgrowth.ca/services/growth/?utm_source=linkedin&utm_campaign=site_launch&email=private@example.com#private', 'allow', false);
   assert.equal(s.tags.length, 1, 'Clarity skips an unsafe URL');
   assert.match(s.tags[0].src, /googletagmanager\.com/);
   const events = [...s.window.dataLayer].map(args => [...args]);
@@ -72,14 +63,13 @@ test('consent loads both tags and sends only sanitized location and referrer', (
   assert.equal([...s.window.dataLayer].filter(args => args[0] === 'event' && args[1] === 'enquiry_open').length, 1);
 });
 
-test('safe production URLs load Clarity and changing to decline unloads optional tags', () => {
-  const s = setup('https://www.wellandgoodgrowth.ca/?utm_source=linkedin', 'allow');
+test('safe production URLs load Clarity and the privacy-page checkbox revokes consent', () => {
+  const s = setup('https://www.wellandgoodgrowth.ca/privacy/', 'allow');
   assert.equal(s.tags.length, 2);
   assert.match(s.tags[1].src, /clarity\.ms\/tag\/test123/);
-  s.settings.click();
-  assert.equal(s.dialog.open, true);
-  s.choiceButtons[1].click();
-  assert.equal(s.dialog.open, false);
+  assert.equal(s.toggle.checked, true);
+  s.toggle.checked = false;
+  s.toggle.change();
   assert.equal(s.saved.get('wgg-optional-analytics-v1'), 'deny');
   assert.equal(s.location.reloaded, true);
   assert.equal(setup('https://www.wellandgoodgrowth.ca/', 'deny').tags.length, 0);

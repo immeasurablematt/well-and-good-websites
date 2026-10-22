@@ -5,8 +5,7 @@
   const GA4_ID = 'G-9V037QTGCE';
   const CLARITY_ID = 'z1rewvqi70';
   const choiceKey = 'wgg-optional-analytics-v1';
-  const dialog = document.querySelector('.analytics-choice');
-  const settings = document.querySelector('[data-analytics-settings]');
+  const choiceToggle = document.querySelector('[data-analytics-toggle]');
   const allowed = {
     utm_source: ['linkedin', 'facebook', 'email', 'newsletter', 'referral'],
     utm_medium: ['organic_social', 'email', 'referral'],
@@ -86,24 +85,21 @@
   };
 
   if (choice === 'allow') enable();
-  settings?.addEventListener('click', () => dialog?.showModal());
-  dialog?.querySelector('[data-analytics-close]')?.addEventListener('click', () => dialog.close());
-  dialog?.querySelectorAll('[data-analytics-choice]').forEach(button => {
-      button.addEventListener('click', () => {
-        const next = button.dataset.analyticsChoice;
-        if (!['allow', 'deny'].includes(next)) return;
-        const wasAllowed = choice === 'allow';
-        choice = next;
-        try { localStorage.setItem(choiceKey, next); } catch { /* Choice lasts for this page only. */ }
-        dialog.close();
-        if (next === 'allow') enable();
-        if (next === 'deny' && wasAllowed) {
-          try {
-            window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
-            window.clarity?.('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
-          } catch { /* Reload still removes the optional tags. */ }
-          location.reload();
-        }
-      });
-  });
+  if (choiceToggle) {
+    choiceToggle.checked = choice === 'allow';
+    choiceToggle.addEventListener('change', () => {
+      const next = choiceToggle.checked ? 'allow' : 'deny';
+      const wasAllowed = choice === 'allow';
+      choice = next;
+      try { localStorage.setItem(choiceKey, next); } catch { /* Choice lasts for this page only. */ }
+      if (next === 'allow') enable();
+      if (next === 'deny' && wasAllowed) {
+        try {
+          window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
+          window.clarity?.('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
+        } catch { /* Reload still removes the optional tags. */ }
+        location.reload();
+      }
+    });
+  }
 })();
