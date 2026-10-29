@@ -1,0 +1,3460 @@
+{
+  "version": "0.1.20260917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "2.1674 sec.",
+  "cost": 0.09,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09261813-1014-0367-0000-7e8ac38aa710",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "2.0866 sec.",
+      "cost": 0.09,
+      "result_count": 45,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "search_volume",
+        "live"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "search_volume",
+        "se": "google_ads",
+        "keywords": [
+          "kitchen renovation",
+          "home renovation contractors",
+          "custom home builders",
+          "landscape design",
+          "pool builders near me",
+          "contractor website design",
+          "website for contractors",
+          "landscaping website design",
+          "builder website design",
+          "ceramic coating near me",
+          "auto detailing near me",
+          "paint protection film",
+          "auto detailing website",
+          "detailing website design",
+          "auto repair near me",
+          "mechanic near me",
+          "auto repair website design",
+          "auto repair shop website",
+          "wedding venues",
+          "wedding venues near me",
+          "event venues near me",
+          "wedding venue website design",
+          "venue website design",
+          "wineries near me",
+          "winery tours",
+          "distillery tours",
+          "winery website design",
+          "winery website",
+          "wedding band",
+          "dj for wedding",
+          "live music for events",
+          "website for musicians",
+          "dj website design",
+          "musician website",
+          "cnc machining services",
+          "metal fabrication near me",
+          "machine shop near me",
+          "manufacturing website design",
+          "website for manufacturers",
+          "accountant near me",
+          "bookkeeping services",
+          "tax preparer near me",
+          "accounting firm website design",
+          "cpa website design",
+          "website for accountants"
+        ],
+        "location_code": 2124,
+        "language_code": "en",
+        "date_from": "2025-09-01",
+        "date_to": "2026-08-31",
+        "search_partners": false
+      },
+      "result": [
+        {
+          "keyword": "kitchen renovation",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 56,
+          "search_volume": 5400,
+          "low_top_of_page_bid": 2.08,
+          "high_top_of_page_bid": 8.63,
+          "cpc": 8.13,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 6600
+            }
+          ]
+        },
+        {
+          "keyword": "home renovation contractors",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 37,
+          "search_volume": 2900,
+          "low_top_of_page_bid": 2.44,
+          "high_top_of_page_bid": 11.32,
+          "cpc": 11.37,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 4400
+            }
+          ]
+        },
+        {
+          "keyword": "custom home builders",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 28,
+          "search_volume": 2900,
+          "low_top_of_page_bid": 1.49,
+          "high_top_of_page_bid": 11.74,
+          "cpc": 7,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 5400
+            }
+          ]
+        },
+        {
+          "keyword": "landscape design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 40,
+          "search_volume": 2900,
+          "low_top_of_page_bid": 0.98,
+          "high_top_of_page_bid": 4.13,
+          "cpc": 3.68,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 3600
+            }
+          ]
+        },
+        {
+          "keyword": "pool builders near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 21,
+          "search_volume": 390,
+          "low_top_of_page_bid": 1.74,
+          "high_top_of_page_bid": 10.18,
+          "cpc": 9.45,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 210
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 320
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 260
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 720
+            }
+          ]
+        },
+        {
+          "keyword": "contractor website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 23,
+          "search_volume": 90,
+          "low_top_of_page_bid": 3.76,
+          "high_top_of_page_bid": 11.6,
+          "cpc": 1.81,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 390
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 40
+            }
+          ]
+        },
+        {
+          "keyword": "website for contractors",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 60,
+          "search_volume": 90,
+          "low_top_of_page_bid": 3.66,
+          "high_top_of_page_bid": 12.8,
+          "cpc": 25.61,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 50
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 110
+            }
+          ]
+        },
+        {
+          "keyword": "landscaping website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 29,
+          "search_volume": 30,
+          "low_top_of_page_bid": 3.08,
+          "high_top_of_page_bid": 7.68,
+          "cpc": 7.21,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "builder website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 43,
+          "search_volume": 20,
+          "low_top_of_page_bid": 1.72,
+          "high_top_of_page_bid": 15.11,
+          "cpc": 13.78,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "ceramic coating near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 30,
+          "search_volume": 2900,
+          "low_top_of_page_bid": 0.99,
+          "high_top_of_page_bid": 4.16,
+          "cpc": 3.17,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 2900
+            }
+          ]
+        },
+        {
+          "keyword": "auto detailing near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 47,
+          "search_volume": 6600,
+          "low_top_of_page_bid": 0.78,
+          "high_top_of_page_bid": 2.37,
+          "cpc": 1.87,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 6600
+            }
+          ]
+        },
+        {
+          "keyword": "paint protection film",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 8100,
+          "low_top_of_page_bid": 1.05,
+          "high_top_of_page_bid": 4.39,
+          "cpc": 3.21,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 6600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 9900
+            }
+          ]
+        },
+        {
+          "keyword": "auto detailing website",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 47,
+          "search_volume": 50,
+          "low_top_of_page_bid": 0.82,
+          "high_top_of_page_bid": 2.38,
+          "cpc": 2.46,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 90
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 30
+            }
+          ]
+        },
+        {
+          "keyword": "detailing website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 57,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "auto repair near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 54,
+          "search_volume": 33100,
+          "low_top_of_page_bid": 0.96,
+          "high_top_of_page_bid": 3.64,
+          "cpc": 1.85,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 40500
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40500
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40500
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 33100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 33100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 33100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 33100
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 33100
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 40500
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 33100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 33100
+            }
+          ]
+        },
+        {
+          "keyword": "mechanic near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 65,
+          "search_volume": 110000,
+          "low_top_of_page_bid": 0.92,
+          "high_top_of_page_bid": 3.46,
+          "cpc": 1.97,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 135000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 135000
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 110000
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 90500
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 110000
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 135000
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 110000
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 110000
+            }
+          ]
+        },
+        {
+          "keyword": "auto repair website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 64,
+          "search_volume": 10,
+          "low_top_of_page_bid": 1.81,
+          "high_top_of_page_bid": 2.69,
+          "cpc": 3.11,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 40
+            }
+          ]
+        },
+        {
+          "keyword": "auto repair shop website",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 51,
+          "search_volume": 10,
+          "low_top_of_page_bid": 1.11,
+          "high_top_of_page_bid": 2.71,
+          "cpc": 3.43,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "wedding venues",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 23,
+          "search_volume": 27100,
+          "low_top_of_page_bid": 0.41,
+          "high_top_of_page_bid": 2.2,
+          "cpc": 1.36,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 22200
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 27100
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 18100
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 27100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 33100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 33100
+            }
+          ]
+        },
+        {
+          "keyword": "wedding venues near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 38,
+          "search_volume": 14800,
+          "low_top_of_page_bid": 0.36,
+          "high_top_of_page_bid": 1.96,
+          "cpc": 1.02,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 18100
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 14800
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 14800
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 18100
+            }
+          ]
+        },
+        {
+          "keyword": "event venues near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 31,
+          "search_volume": 1600,
+          "low_top_of_page_bid": 0.86,
+          "high_top_of_page_bid": 3.13,
+          "cpc": 1.86,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "wedding venue website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "venue website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 43,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "wineries near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 39,
+          "search_volume": 14800,
+          "low_top_of_page_bid": 0.47,
+          "high_top_of_page_bid": 1.78,
+          "cpc": 0.71,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 27100
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 22200
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 18100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 5400
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 18100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 27100
+            }
+          ]
+        },
+        {
+          "keyword": "winery tours",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 76,
+          "search_volume": 2400,
+          "low_top_of_page_bid": 0.46,
+          "high_top_of_page_bid": 1.63,
+          "cpc": 1.46,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 2900
+            }
+          ]
+        },
+        {
+          "keyword": "distillery tours",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 38,
+          "search_volume": 170,
+          "low_top_of_page_bid": 0.31,
+          "high_top_of_page_bid": 1.48,
+          "cpc": 1,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 170
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 260
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 140
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 260
+            }
+          ]
+        },
+        {
+          "keyword": "winery website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 57,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 16.1,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "winery website",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 33,
+          "search_volume": 40,
+          "low_top_of_page_bid": 0.92,
+          "high_top_of_page_bid": 2.64,
+          "cpc": 1.14,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 20
+            }
+          ]
+        },
+        {
+          "keyword": "wedding band",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "HIGH",
+          "competition_index": 100,
+          "search_volume": 14800,
+          "low_top_of_page_bid": 0.74,
+          "high_top_of_page_bid": 2.45,
+          "cpc": 1.93,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 14800
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 12100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 12100
+            }
+          ]
+        },
+        {
+          "keyword": "dj for wedding",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 38,
+          "search_volume": 1300,
+          "low_top_of_page_bid": 1.12,
+          "high_top_of_page_bid": 5.75,
+          "cpc": 4.83,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1300
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1600
+            }
+          ]
+        },
+        {
+          "keyword": "live music for events",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 39,
+          "search_volume": 10,
+          "low_top_of_page_bid": 1.74,
+          "high_top_of_page_bid": 21.94,
+          "cpc": 9.63,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "website for musicians",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 43,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 2.89,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "dj website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 32,
+          "search_volume": 10,
+          "low_top_of_page_bid": 1.84,
+          "high_top_of_page_bid": 5.69,
+          "cpc": 5.67,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "musician website",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 43,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": 2.89,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 10
+            }
+          ]
+        },
+        {
+          "keyword": "cnc machining services",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 10,
+          "search_volume": 590,
+          "low_top_of_page_bid": 2.23,
+          "high_top_of_page_bid": 15,
+          "cpc": 17.72,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 480
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 590
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 720
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 720
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 320
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 260
+            }
+          ]
+        },
+        {
+          "keyword": "metal fabrication near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 50,
+          "search_volume": 1900,
+          "low_top_of_page_bid": 1.38,
+          "high_top_of_page_bid": 4.93,
+          "cpc": 3.61,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1900
+            }
+          ]
+        },
+        {
+          "keyword": "machine shop near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 41,
+          "search_volume": 5400,
+          "low_top_of_page_bid": 1.37,
+          "high_top_of_page_bid": 4.55,
+          "cpc": 3.11,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 4400
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 3600
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 4400
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 5400
+            }
+          ]
+        },
+        {
+          "keyword": "manufacturing website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 36,
+          "search_volume": 50,
+          "low_top_of_page_bid": 3.23,
+          "high_top_of_page_bid": 11.59,
+          "cpc": 21.8,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 110
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 40
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 70
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 210
+            }
+          ]
+        },
+        {
+          "keyword": "website for manufacturers",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 25,
+          "search_volume": 90,
+          "low_top_of_page_bid": 1.6,
+          "high_top_of_page_bid": 4.72,
+          "cpc": 5.29,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 40
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 50
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 70
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 110
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 140
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 170
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 210
+            }
+          ]
+        },
+        {
+          "keyword": "accountant near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 49,
+          "search_volume": 12100,
+          "low_top_of_page_bid": 2.41,
+          "high_top_of_page_bid": 10.32,
+          "cpc": 4.92,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 6600
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 8100
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 9900
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 18100
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 22200
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 12100
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 9900
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 9900
+            }
+          ]
+        },
+        {
+          "keyword": "bookkeeping services",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 19,
+          "search_volume": 1900,
+          "low_top_of_page_bid": 3.99,
+          "high_top_of_page_bid": 24.61,
+          "cpc": 14.69,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1900
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 2400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 1600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 1000
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 1300
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 1600
+            }
+          ]
+        },
+        {
+          "keyword": "tax preparer near me",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 30,
+          "search_volume": 1900,
+          "low_top_of_page_bid": 1.44,
+          "high_top_of_page_bid": 5.09,
+          "cpc": 5.38,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 880
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 1000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 5400
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 2900
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 1600
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 590
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 880
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 720
+            }
+          ]
+        },
+        {
+          "keyword": "accounting firm website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "MEDIUM",
+          "competition_index": 50,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 110
+            }
+          ]
+        },
+        {
+          "keyword": "cpa website design",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": null,
+          "competition_index": null,
+          "search_volume": 10,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 0
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 0
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 10
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 0
+            }
+          ]
+        },
+        {
+          "keyword": "website for accountants",
+          "spell": null,
+          "location_code": 2124,
+          "language_code": "en",
+          "search_partners": false,
+          "competition": "LOW",
+          "competition_index": 12,
+          "search_volume": 20,
+          "low_top_of_page_bid": null,
+          "high_top_of_page_bid": null,
+          "cpc": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 8,
+              "search_volume": 10
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 20
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 30
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 30
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 20
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 30
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
