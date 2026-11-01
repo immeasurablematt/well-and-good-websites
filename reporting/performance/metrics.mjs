@@ -50,3 +50,16 @@ export function searchBreakdown(rows, dimension, dates) {
  })).sort((a,b)=>b.impressions-a.impressions || a[dimension].localeCompare(b[dimension]));
  return {sourceRows,displayRows};
 }
+
+// Rank series within the selected dates. Null gaps are not measured zeroes.
+export function categoryTrend(rows, dimension, metric, dates, limit=5) {
+ const allowed=new Set(dates);
+ const selected=rows.filter(row=>allowed.has(row.date));
+ const totals=new Map();
+ for (const row of selected) totals.set(row[dimension],(totals.get(row[dimension])??0)+(row[metric]??0));
+ const categories=[...totals].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,limit).map(([name])=>name);
+ const sourceRows=selected.filter(row=>categories.includes(row[dimension]));
+ const observed=new Map(sourceRows.map(row=>[JSON.stringify([row.date,row[dimension]]),row]));
+ const displayRows=[...allowed].sort().flatMap(date=>categories.map(category=>observed.get(JSON.stringify([date,category]))??{date,[dimension]:category,[metric]:null}));
+ return {sourceRows,displayRows};
+}
