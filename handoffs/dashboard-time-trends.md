@@ -2,7 +2,7 @@
 
 Status: active
 Branch: codex/dashboard-time-trends
-Pull request: none yet
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/83
 Updated: 2026-11-01 14:02 EST by Codex on Mac
 
 ## Goal
