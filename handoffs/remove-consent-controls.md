@@ -2,7 +2,7 @@
 
 Status: waiting
 Branch: codex/remove-consent-controls
-Pull request: none yet
+Pull request: https://github.com/immeasurablematt/well-and-good-websites/pull/84
 Updated: 2026-11-02 15:20 EST by Codex on Mac
 
 ## Goal
