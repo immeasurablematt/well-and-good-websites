@@ -121,7 +121,7 @@ export function DashboardContent(){
  return <div className="wgg-report">
   <Section id="traffic-period-heading" title="Traffic" spacing="none" filters={<Dropdown label="Period" value={period} choices={reportPeriods} onChange={setPeriod} showLabel/>}>
    <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Traffic unavailable'} · Production, all project hostnames · Toronto time</p>
-   {period==='All time'&&<p className="wgg-context">All available Vercel records begin June 1, 2026. Earlier history is outside the saved source coverage.</p>}
+   {period==='All time'&&<p className="wgg-context">All available Vercel records begin {date(traffic?.start??queries.traffic.scope.start)}. Earlier history is outside the saved source coverage.</p>}
    <p className="wgg-context">An early baseline for a new business. A bounce is not evidence that an enquiry failed.</p>
   </Section>
   <Section id="traffic-summary-heading" title="What to know" columns={3} spacing="none">
@@ -166,7 +166,7 @@ export function DashboardContent(){
    <SortableItem id="country-share" label="Countries" kind="chart" span={6}>{queries.trafficHistory?trendPlot('country-share','country','Page views by country over time'):<Plot id="country-share" queryId="trafficPeriodCountries" title="Top countries by visitor share" rows={trafficRows('trafficPeriodCountries').slice(0,5).map(row=>({...row,country:/^[A-Z]{2}$/.test(row.country)?new Intl.DisplayNames(['en'],{type:'region'}).of(row.country):row.country}))} sourceRows={trafficRows('trafficPeriodCountries').slice(0,5)} x="country" y="visitorShare" height={230}><p className="wgg-context">Top five countries. A visitor can appear in more than one group.</p></Plot>}</SortableItem>
   </SortableRegion>
   {queries.trafficDaily&&<Section id="traffic-trend-heading" title={period==='All time'?'Monthly traffic':'Daily traffic'}>
-   <p className="wgg-context">{period==='All time'?'June 1 to October 21, 2026. October is a partial month.':`${date(traffic?.start??queries.trafficDaily.scope.start)} to ${date(traffic?.end??queries.trafficDaily.scope.end)}.`} Period visitors come from the exact window total, not summed daily or monthly visitor counts.</p>
+   <p className="wgg-context">{date(traffic?.start??queries.trafficDaily.scope.start)} to {date(traffic?.end??queries.trafficDaily.scope.end)}. {period==='All time'?'The final month contains completed days only and may be partial. ':''} Period visitors come from the exact window total, not summed daily or monthly visitor counts.</p>
    {period==='All time'?<Plot id="traffic-daily-views" queryId="trafficMonthly" title="Monthly page views" rows={rows('trafficMonthly')} x="month" y="views" type="line" height={260}/>:<Plot id="traffic-daily-views" queryId="trafficDaily" title="Daily page views" rows={rowsForPeriod(rows('trafficDaily'),period)} x="date" y="views" type="line" height={260}/>}
   </Section>}
   {queries.trafficHostnames&&<Section id="traffic-hostnames-heading" title="Current and former domains">
