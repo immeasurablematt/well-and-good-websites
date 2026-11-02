@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {DataComponent, DataTable, Dropdown, EvidenceChart, MetricCard, Section, SortableItem, SortableRegion, useDashboardTabs, useDataApp} from '../../data-app-public.jsx';
 import './performance.css';
-import {enquiryRows, searchTotals, queryGroups, filterQueryGroup, searchBreakdown, reportPeriods, rowsForPeriod} from './metrics.mjs';
+import {enquiryRows, searchTotals, queryGroups, filterQueryGroup, searchBreakdown, categoryTrend, reportPeriods, rowsForPeriod} from './metrics.mjs';
 const tabs=[{id:'traffic',label:'Traffic'},{id:'search',label:'Google Search'},{id:'health',label:'Site Health'}];
 const number=n=>n==null?'Unavailable':n.toLocaleString('en-CA');
 const date=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
 const dayCount=(start,end)=>start&&end?Math.round((Date.parse(`${end}T00:00:00Z`)-Date.parse(`${start}T00:00:00Z`))/86400000)+1:0;
 const columns=fields=>fields.map(([field,label])=>({field,label}));
-function Plot({id,queryId,title,rows,sourceRows=rows,x,y,type='horizontalBar',height=260,children}) {
+function Plot({id,queryId,title,rows,sourceRows=rows,x,y,series,type='horizontalBar',height=260,children}) {
  return <EvidenceChart id={id} queryId={queryId} title={title} variant="card" rows={rows} sourceRows={sourceRows} height={height}
-  spec={{type,x,y,stackable:false,showXAxisLabel:false,showYAxisLabel:false,valueDecimals:y==='visitorShare'?2:0}}>{children}</EvidenceChart>;
+  spec={{type,x,y,...(series?{series}:{}),stackable:false,showXAxisLabel:false,showYAxisLabel:false,valueDecimals:y==='visitorShare'?2:0}}>{children}</EvidenceChart>;
 }
 function Table({id,queryId,title,rows,fields,sourceRows=rows}) {
  return <DataComponent id={id} queryId={queryId} title={title} kind="table" variant="card" displayRows={rows} sourceRows={sourceRows}>
@@ -43,12 +43,17 @@ export function DashboardContent(){
  const changePercent=trafficComparison?.priorViews?Math.round(100*viewChange/trafficComparison.priorViews):null;
  const topPages=trafficRows('trafficPeriodPages').sort((a,b)=>b.visitors-a.visitors).slice(0,7);
  const topReferrers=trafficRows('trafficPeriodReferrers').sort((a,b)=>b.visitors-a.visitors).slice(0,7);
+ const trafficDates=period==='All time'?rows('trafficMonthly').map(row=>`${row.month}-01`):rows('trafficDaily').filter(row=>traffic&&row.date>=traffic.start&&row.date<=traffic.end).map(row=>row.date);
+ const trafficHistory=rows('trafficHistory').filter(row=>row.grain===(period==='All time'?'month':'day'));
+ const trafficTrends=Object.fromEntries(['page','referrer','device','country','namedReferrer'].map(dimension=>[dimension,categoryTrend(trafficHistory.filter(row=>row.dimension===(dimension==='namedReferrer'?'referrer':dimension)&&(dimension!=='namedReferrer'||row.category!=='No referrer recorded')),'category','views',trafficDates)]));
+ const trendPlot=(id,dimension,title)=><Plot id={id} queryId="trafficHistory" title={title} rows={trafficTrends[dimension].displayRows.map(row=>({...row,category:dimension==='country'&&/^[A-Z]{2}$/.test(row.category)?new Intl.DisplayNames(['en'],{type:'region'}).of(row.category):row.category}))} sourceRows={trafficTrends[dimension].sourceRows} x="date" y="views" series="category" type="line" height={320}><p className="wgg-context">{period==='All time'?'Monthly':'Daily'} page views for up to five leading {dimension==='namedReferrer'?'named referrers':dimension==='page'?'pages':dimension==='country'?'countries':dimension==='device'?'devices':'referrer groups'} in the selected period. Gaps are unreported buckets, not measured zeroes.{period==='All time'?' The final month ends on the report date and may be partial.':''}</p></Plot>;
  const ga4Daily=rowsForPeriod(rows('ga4Daily'),period);
  const history=rows('searchDaily');
  const daily=rowsForPeriod(history,period);
  const {clicks,impressions,ctr}=searchTotals(daily);
  const pageHistory=searchBreakdown(rows('searchPageHistory'),'page',daily.map(row=>row.date));
- const queryHistory=searchBreakdown(rows('searchQueryHistory'),'query',daily.map(row=>row.date));
+ const pageTrend=categoryTrend(rows('searchPageHistory'),'page','impressions',daily.map(row=>row.date));
+ const queryTrend=categoryTrend(rows('searchQueryHistory'),'query','impressions',daily.map(row=>row.date));
  const scopedRange=id=>queries[id]?.scope?`${date(queries[id].scope.start)} to ${date(queries[id].scope.end)} (${queries[id].scope.timezone})`:'the saved source window';
  const details=filterQueryGroup(rows('searchDetails'),queryGroup);
  const enquiryQuery=queries.enquiryStages?'enquiryStages':'measurement';
@@ -69,10 +74,10 @@ export function DashboardContent(){
    <Plot id="search-click-trend" queryId="searchDaily" title="Daily search clicks" rows={daily} x="date" y="clicks" type="line" height={200}/>
   </Section>
   {(queries.searchPageHistory&&queries.searchQueryHistory)&&<Section id="search-exploration-heading" title="Search discovery in the selected dates">
-   <p className="wgg-context">{range}. These rankings follow Period. Page impressions can overlap and Google omits anonymized queries. Neither breakdown replaces the property totals above.</p>
+   <p className="wgg-context">{range}. Daily trends for the five leading pages and disclosed queries in the selected dates. Missing observations remain gaps. Page impressions can overlap and Google omits anonymized queries.</p>
    <Section id="search-exploration-charts" columns={2} spacing="none">
-    <Plot id="search-page-ranking" queryId="searchPageHistory" title="Top pages by search impressions" rows={pageHistory.displayRows.slice(0,10).map(row=>({...row,page:new URL(row.page).pathname}))} sourceRows={pageHistory.sourceRows.filter(row=>pageHistory.displayRows.slice(0,10).some(top=>top.page===row.page))} x="page" y="impressions" height={300}/>
-    <Plot id="search-query-ranking" queryId="searchQueryHistory" title="Top disclosed queries by impressions" rows={queryHistory.displayRows.slice(0,10)} sourceRows={queryHistory.sourceRows.filter(row=>queryHistory.displayRows.slice(0,10).some(top=>top.query===row.query))} x="query" y="impressions" height={300}/>
+    <Plot id="search-page-ranking" queryId="searchPageHistory" title="Page search impressions over time" rows={pageTrend.displayRows.map(row=>({...row,page:new URL(row.page).pathname}))} sourceRows={pageTrend.sourceRows} x="date" y="impressions" series="page" type="line" height={320}/>
+    <Plot id="search-query-ranking" queryId="searchQueryHistory" title="Query impressions over time" rows={queryTrend.displayRows} sourceRows={queryTrend.sourceRows} x="date" y="impressions" series="query" type="line" height={320}/>
    </Section>
    <Table id="search-page-performance" queryId="searchPageHistory" title="Landing page search performance" rows={pageHistory.displayRows.map(row=>({...row,page:new URL(row.page).pathname,ctr:row.ctr==null?'Unavailable':`${(row.ctr*100).toFixed(2)}%`,position:row.position==null?'Unavailable':row.position.toFixed(1)}))} sourceRows={pageHistory.sourceRows} fields={[["page","Page"],["impressions","Impressions"],["clicks","Clicks"],["ctr","CTR"],["position","Avg. position"]]}/>
   </Section>}
@@ -116,7 +121,7 @@ export function DashboardContent(){
  return <div className="wgg-report">
   <Section id="traffic-period-heading" title="Traffic" spacing="none" filters={<Dropdown label="Period" value={period} choices={reportPeriods} onChange={setPeriod} showLabel/>}>
    <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Traffic unavailable'} · Production, all project hostnames · Toronto time</p>
-   {period==='All time'&&<p className="wgg-context">All available Vercel records begin June 1, 2026. Earlier history is outside the saved source coverage.</p>}
+   {period==='All time'&&<p className="wgg-context">All available Vercel records begin {date(traffic?.start??queries.traffic.scope.start)}. Earlier history is outside the saved source coverage.</p>}
    <p className="wgg-context">An early baseline for a new business. A bounce is not evidence that an enquiry failed.</p>
   </Section>
   <Section id="traffic-summary-heading" title="What to know" columns={3} spacing="none">
@@ -155,13 +160,13 @@ export function DashboardContent(){
    {id:'traffic-audience',items:['device-share','country-share']}
   ]}>
    {[['visitors','Visitors',traffic?.visitors],['page-views','Page views',traffic?.views],['bounce-rate','Bounce rate',traffic?`${Math.round(traffic.bounceRate*100)}%`:null]].map(([id,title,value])=><SortableItem key={id} id={id} label={title} kind="metric" span={4}><MetricCard id={id} queryId="trafficPeriods" title={title} value={typeof value==='number'?number(value):value??'Unavailable'} displayRows={traffic?[traffic]:[]} sourceRows={traffic?[traffic]:[]}/></SortableItem>)}
-   <SortableItem id="popular-pages" label="Top pages" kind="chart" span={6}><Plot id="popular-pages" queryId="trafficPeriodPages" title="Top pages by visitors" rows={topPages} x="page" y="visitors" height={320}><p className="wgg-context">Top seven pages. Visitors can appear on more than one page.</p></Plot></SortableItem>
-   <SortableItem id="named-referrers" label="Referrers" kind="chart" span={6}><Plot id="named-referrers" queryId="trafficPeriodReferrers" title="Top named referrers" rows={topReferrers} x="referrer" y="visitors" height={320}><p className="wgg-context">Top seven named sources by visitors. The referrer coverage above shows how much of the selected period has no recorded referring website.</p></Plot></SortableItem>
-   <SortableItem id="device-share" label="Devices" kind="chart" span={6}><Plot id="device-share" queryId="trafficPeriodDevices" title="Visitors by device" rows={trafficRows('trafficPeriodDevices')} x="device" y="visitorShare" height={230}/></SortableItem>
-   <SortableItem id="country-share" label="Countries" kind="chart" span={6}><Plot id="country-share" queryId="trafficPeriodCountries" title="Top countries by visitor share" rows={trafficRows('trafficPeriodCountries').slice(0,5).map(row=>({...row,country:/^[A-Z]{2}$/.test(row.country)?new Intl.DisplayNames(['en'],{type:'region'}).of(row.country):row.country}))} sourceRows={trafficRows('trafficPeriodCountries').slice(0,5)} x="country" y="visitorShare" height={230}><p className="wgg-context">Top five countries. A visitor can appear in more than one group.</p></Plot></SortableItem>
+   <SortableItem id="popular-pages" label="Top pages" kind="chart" span={6}>{queries.trafficHistory?trendPlot('popular-pages','page','Page views by page over time'):<Plot id="popular-pages" queryId="trafficPeriodPages" title="Top pages by visitors" rows={topPages} x="page" y="visitors" height={320}><p className="wgg-context">Top seven pages. Visitors can appear on more than one page.</p></Plot>}</SortableItem>
+   <SortableItem id="named-referrers" label="Referrers" kind="chart" span={6}>{queries.trafficHistory?trendPlot('named-referrers','namedReferrer','Named referrer traffic over time'):<Plot id="named-referrers" queryId="trafficPeriodReferrers" title="Top named referrers" rows={topReferrers} x="referrer" y="visitors" height={320}><p className="wgg-context">Top seven named sources by visitors. The referrer coverage above shows how much of the selected period has no recorded referring website.</p></Plot>}</SortableItem>
+   <SortableItem id="device-share" label="Devices" kind="chart" span={6}>{queries.trafficHistory?trendPlot('device-share','device','Page views by device over time'):<Plot id="device-share" queryId="trafficPeriodDevices" title="Visitors by device" rows={trafficRows('trafficPeriodDevices')} x="device" y="visitorShare" height={230}/>}</SortableItem>
+   <SortableItem id="country-share" label="Countries" kind="chart" span={6}>{queries.trafficHistory?trendPlot('country-share','country','Page views by country over time'):<Plot id="country-share" queryId="trafficPeriodCountries" title="Top countries by visitor share" rows={trafficRows('trafficPeriodCountries').slice(0,5).map(row=>({...row,country:/^[A-Z]{2}$/.test(row.country)?new Intl.DisplayNames(['en'],{type:'region'}).of(row.country):row.country}))} sourceRows={trafficRows('trafficPeriodCountries').slice(0,5)} x="country" y="visitorShare" height={230}><p className="wgg-context">Top five countries. A visitor can appear in more than one group.</p></Plot>}</SortableItem>
   </SortableRegion>
   {queries.trafficDaily&&<Section id="traffic-trend-heading" title={period==='All time'?'Monthly traffic':'Daily traffic'}>
-   <p className="wgg-context">{period==='All time'?'June 1 to October 21, 2026. October is a partial month.':`${date(traffic?.start??queries.trafficDaily.scope.start)} to ${date(traffic?.end??queries.trafficDaily.scope.end)}.`} Period visitors come from the exact window total, not summed daily or monthly visitor counts.</p>
+   <p className="wgg-context">{date(traffic?.start??queries.trafficDaily.scope.start)} to {date(traffic?.end??queries.trafficDaily.scope.end)}. {period==='All time'?'The final month contains completed days only and may be partial. ':''} Period visitors come from the exact window total, not summed daily or monthly visitor counts.</p>
    {period==='All time'?<Plot id="traffic-daily-views" queryId="trafficMonthly" title="Monthly page views" rows={rows('trafficMonthly')} x="month" y="views" type="line" height={260}/>:<Plot id="traffic-daily-views" queryId="trafficDaily" title="Daily page views" rows={rowsForPeriod(rows('trafficDaily'),period)} x="date" y="views" type="line" height={260}/>}
   </Section>}
   {queries.trafficHostnames&&<Section id="traffic-hostnames-heading" title="Current and former domains">
@@ -170,7 +175,7 @@ export function DashboardContent(){
   </Section>}
   {queries.trafficPeriodAcquisition&&<Section id="traffic-acquisition-heading" title="Acquisition coverage">
    <p className="wgg-context">{traffic?`${date(traffic.start)} to ${date(traffic.end)}`:'Selected period'}. “No referrer recorded” means Vercel received no referring website address. This can happen with bookmarks, typed addresses, links from email or apps, or browser privacy settings. These are page views, not people.</p>
-   <Plot id="traffic-acquisition" queryId="trafficPeriodAcquisition" title="Page views by recorded referrer" rows={trafficRows('trafficPeriodAcquisition')} x="referrer" y="views" height={300}/>
+   {queries.trafficHistory?trendPlot('traffic-acquisition','referrer','Referrer coverage over time'):<Plot id="traffic-acquisition" queryId="trafficPeriodAcquisition" title="Page views by recorded referrer" rows={trafficRows('trafficPeriodAcquisition')} x="referrer" y="views" height={300}/>}
   </Section>}
   {!!queries.ga4Daily?.rows.length&&<Section id="ga4-engagement-heading" title="Google Analytics engagement">
    <p className="wgg-context">{period} of available GA4 days through {rows('ga4Daily').at(-1)?.date}. Consent-based sessions begin after activation. These counts are separate from Vercel visitors and page views above.</p>

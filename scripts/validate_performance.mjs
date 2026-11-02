@@ -13,7 +13,7 @@ export function validatePerformance(data) {
   if (!isDate(row.date) || (i && row.date <= daily[i-1].date)) throw Error('Search days must be unique and chronological');
   if (!count(row.clicks) || !count(row.impressions)) throw Error('Invalid search counts');
  }
- for (const id of ['trafficDaily','trafficHostnames','trafficAcquisition','trafficPeriods','trafficComparisons','trafficPeriodPages','trafficPeriodReferrers','trafficPeriodDevices','trafficPeriodCountries','trafficPeriodAcquisition','trafficMonthly','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
+ for (const id of ['trafficDaily','trafficHistory','trafficHostnames','trafficAcquisition','trafficPeriods','trafficComparisons','trafficPeriodPages','trafficPeriodReferrers','trafficPeriodDevices','trafficPeriodCountries','trafficPeriodAcquisition','trafficMonthly','searchDetails','searchCountries','searchDevices','searchPageHistory','searchQueryHistory','enquiryStages','ga4Daily','ga4Acquisition','ga4Campaigns','ga4Events']) {
   const q = data.queries[id];
   if (!q) continue;
   if (!Array.isArray(q.rows) || !q.source?.executedAt || !q.source?.evidenceFlow?.length || !q.source?.metricDefinitions?.length || !Array.isArray(q.source?.caveats)) throw Error(`Missing reviewed evidence: ${id}`);
@@ -65,6 +65,28 @@ export function validatePerformance(data) {
   }
   if (id === 'trafficDaily') for (const [i,row] of q.rows.entries()) {
    if (!isDate(row.date) || (i && row.date <= q.rows[i-1].date) || row.date < q.scope.start || row.date > q.scope.end || !count(row.views) || (row.visitors != null && !count(row.visitors))) throw Error('Invalid daily traffic');
+  }
+  if (id === 'trafficHistory') {
+   const seen=new Set();
+   const dimensions=['page','referrer','device','country'];
+   const daily=data.queries.trafficDaily, monthly=data.queries.trafficMonthly;
+   if (!daily || !monthly || q.scope.timezone!=='America/Toronto' || q.scope.start!==monthly.scope.start || q.scope.end!==monthly.scope.end) throw Error('Traffic history needs matching daily and monthly scopes');
+   const totals=new Map();
+   for (const row of q.rows) {
+    const key=JSON.stringify([row.grain,row.date,row.dimension,row.category]);
+    const bucket=row.grain==='day'?daily.rows.find(item=>item.date===row.date):row.grain==='month'?monthly.rows.find(item=>`${item.month}-01`===row.date):null;
+    const nextMonth=new Date(`${row.date}T00:00:00Z`);
+    if (bucket&&row.grain==='month') nextMonth.setUTCMonth(nextMonth.getUTCMonth()+1,0);
+    const end=row.grain==='day'?row.date:bucket?[nextMonth.toISOString().slice(0,10),q.scope.end].sort()[0]:null;
+    if (!bucket || !isDate(row.date) || row.date<q.scope.start || row.date>q.scope.end || row.end!==end || !dimensions.includes(row.dimension) || !row.category || !count(row.views) || seen.has(key)) throw Error('Invalid traffic history bucket');
+    seen.add(key);
+    const totalKey=JSON.stringify([row.grain,row.date,row.dimension]);
+    totals.set(totalKey,(totals.get(totalKey)??0)+row.views);
+   }
+   for (const [grain,buckets] of [['day',daily.rows],['month',monthly.rows]]) for (const bucket of buckets) for (const dimension of dimensions) {
+    const date=grain==='day'?bucket.date:`${bucket.month}-01`;
+    if ((totals.get(JSON.stringify([grain,date,dimension]))??0)!==bucket.views) throw Error('Traffic history does not reconcile to saved totals');
+   }
   }
   if (id === 'trafficComparisons') {
    if (!data.queries.trafficPeriods) throw Error('Traffic comparisons need period totals');

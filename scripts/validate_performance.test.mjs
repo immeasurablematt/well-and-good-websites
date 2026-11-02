@@ -1,9 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validatePerformance} from './validate_performance.mjs';
-import {enquiryRows,searchTotals,filterQueryGroup,searchBreakdown,rowsForPeriod} from '../reporting/performance/metrics.mjs';
+import {enquiryRows,searchTotals,filterQueryGroup,searchBreakdown,categoryTrend,rowsForPeriod} from '../reporting/performance/metrics.mjs';
 const source={executedAt:'2026-10-06T14:00:00Z',metricDefinitions:[{label:'Test',definition:'Synthetic verification only'}],caveats:[],evidenceFlow:[{title:'Synthetic test fixture'}]};
 const scope={start:'2026-09-03',end:'2026-09-30',timezone:'America/Toronto'};
+test('trend series rank only selected dates and preserve absent observations as null',()=>{
+ const rows=[{date:'2026-09-01',page:'/old',views:1000},{date:'2026-09-03',page:'/a',views:2},{date:'2026-09-04',page:'/a',views:0},{date:'2026-09-04',page:'/b',views:3}];
+ const trend=categoryTrend(rows,'page','views',['2026-09-03','2026-09-04'],1);
+ assert.deepEqual(trend.sourceRows,[rows[3]]);
+ assert.deepEqual(trend.displayRows,[{date:'2026-09-03',page:'/b',views:null},rows[3]]);
+ const all=categoryTrend(rows,'page','views',['2026-09-03','2026-09-04']);
+ assert.equal(all.displayRows.find(row=>row.date==='2026-09-04'&&row.page==='/a').views,0);
+ assert.deepEqual(categoryTrend(rows,'page','views',[]),{sourceRows:[],displayRows:[]});
+});
 function snapshot() {
  return {id:'dashboard:753ab71f-4039-4cc4-800e-37d5039539ad',title:'Well and Good Growth · Site performance',queries:Object.fromEntries(['traffic','pages','referrers','devices','countries','searchDaily','searchQueries','searchPages','measurement','health'].map(id=>[id,{rows:[],source}]))};
 }
@@ -135,6 +144,21 @@ test('selected traffic periods reconcile views without adding visitor groups',()
  }
  data.queries.trafficMonthly={source,scope:periodScope,rows:[{month:'2026-09',views:5}]};
  validatePerformance(data);
+ data.queries.trafficHistory={source,scope:periodScope,rows:['page','referrer','device','country'].flatMap(dimension=>[
+  {date:'2026-09-03',end:'2026-09-03',grain:'day',dimension,category:'example',views:3},
+  {date:'2026-09-30',end:'2026-09-30',grain:'day',dimension,category:'example',views:2},
+  {date:'2026-09-01',end:'2026-09-30',grain:'month',dimension,category:'example',views:5},
+ ])};
+ validatePerformance(data);
+ data.queries.trafficHistory.rows[0].views=4;
+ assert.throws(()=>validatePerformance(data),/history does not reconcile/);
+ data.queries.trafficHistory.rows[0].views=3;
+ data.queries.trafficHistory.rows.push({...data.queries.trafficHistory.rows[0]});
+ assert.throws(()=>validatePerformance(data),/history bucket/);
+ data.queries.trafficHistory.rows.pop();
+ data.queries.trafficHistory.rows[0].grain='week';
+ assert.throws(()=>validatePerformance(data),/history bucket/);
+ data.queries.trafficHistory.rows[0].grain='day';
  data.queries.trafficComparisons={source,scope:{start:'2026-08-02',end:'2026-09-30',timezone:'America/Toronto'},rows:[{period:'Week',start:'2026-09-24',end:'2026-09-30',priorStart:'2026-09-17',priorEnd:'2026-09-23',views:2,priorViews:4}]};
  validatePerformance(data);
  data.queries.trafficComparisons.rows[0].priorEnd='2026-09-22';
